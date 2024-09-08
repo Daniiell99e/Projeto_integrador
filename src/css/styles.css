@@ -10,7 +10,7 @@ body{
     font-weight: 400;
     font-style: normal;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,50 +18,61 @@ body{
 }
 
 /*menu lateral*/
-.header-container{
+.aside-container{
+    position: fixed;
+    top: 0;
     background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
     padding: 20px;
-    width: 25%;
+    width: 25opx;
     min-height: 100vh;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.header-nav{
+.aside-nav{
     margin-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.header-nav ul li {
+.aside-header{
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.logo-img{
+    width: 100px;
+    height: 100px;
+    transition: transform 0.4s;
+}
+
+.logo-img:hover{
+    transform: scale(1.05);
+}
+
+.aside-nav ul li {
     margin: 15px 0;
 }
 
-.header-nav ul li a:hover {
+.aside-nav ul li a:hover {
     color: white;
 }
 
-.logo{
-    width: 7em;
-    height: 2.5em;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-}
 
-.header-lista{
+.aside-lista{
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.header-lista ul{
+.aside-lista ul{
     margin: 15px 0;
 }
 
-.header-lista  a{
+.aside-lista  a{
     text-decoration: none;
     padding: 0;
     margin: 0;
