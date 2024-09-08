@@ -53,11 +53,11 @@ body{
     transform: scale(1.05);
 }
 
-.aside-nav ul li {
+.aside-nav li {
     margin: 15px 0;
 }
 
-.aside-nav ul li a:hover {
+.aside-nav a:hover {
     color: white;
 }
 
@@ -66,6 +66,15 @@ body{
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.aside-lista li {
+    list-style: none;
+}
+
+.aside-lista i{
+    font-size: 24px;
+    margin-right: 8px
 }
 
 .aside-lista ul{
@@ -77,6 +86,8 @@ body{
     padding: 0;
     margin: 0;
     color: black;
+    display: flex;
+    align-items: center;
 }
 
 .create-itinerary-btn {
