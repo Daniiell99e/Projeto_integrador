@@ -1,0 +1,112 @@
+/* Reset de margens e preenchimentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    
+}
+
+/*menu lateral*/
+.sidebar-container{
+    background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
+    padding: 20px;
+    width: 25%;
+    min-height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-nav{
+    margin-top: 0;
+}
+
+.sidebar-nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar-nav ul li a:hover {
+    color: white;
+}
+
+.logo{
+    width: 7em;
+    height: 2.5em;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.sidebar-lista{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-lista ul{
+    margin: 15px 0;
+}
+
+.sidebar-lista  a{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+
+.create-itinerary-btn {
+    background-color: #fff;
+    color: #ff6161;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    display: block;
+    margin-top: 20px;
+}
+
+.create-itinerary-btn:hover {
+    background-color: #ffdcdc;
+    color: #ff6161;
+}
+
+.main-content {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.section-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.destinos-cidades{
+    background-color: rgba(0, 0, 0, 0.2);
+    width: auto;
+    padding: 0.5em 1.5em;
+    border-radius: 10px;
+}
+
+.destinos-cidades ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.destinos-cidades ul li img:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
