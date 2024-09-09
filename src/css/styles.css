@@ -210,7 +210,7 @@ body{
 .menu-mobile-active{
     width: 100vw;
     height: 100vh;
-    background-color: indianred;
+    background-color: rgba(243, 88, 88, 0.712);
     z-index: 99;
     position: fixed;
     top: 0;
