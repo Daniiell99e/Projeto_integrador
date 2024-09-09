@@ -31,15 +31,15 @@
         </aside>
 
         <!-- criando menu mobile -->
-         <button class="button-mobile">
+         <button class="button-mobile" onclick="toggleMenu()">
             <i class="material-symbols-outlined"> menu</i>
             <span>Menu</span>
          </button>
 
-         <nav class="menu-mobile">
+         <nav class="menu-mobile" id="menu-mobile">
             <button>
                 <span>
-                    <i class="material-symbols-outlined"> close</i>
+                    <i class="material-symbols-outlined" onclick="toggleMenu()"> close</i>
                 </span>
 
                 <ul class="mobile-text"></ul>
@@ -108,5 +108,7 @@
     
             </section>
         </main>
+
+        <script src="../js/script.js"></script>
 </body>
 </html>
