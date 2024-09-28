@@ -191,6 +191,30 @@ body{
         margin-left: 78px;
     }
 }
+    /* testes: Criar novo roteiro */
+.box {
+    width: 84.5vw;
+    height: 96vh;
+    background-color: #EBEBEB;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 1;
+}
+
+.text_title {
+    position: relative;
+    z-index: 2;
+    color: #EA2B59;
+    margin-top: 25px;
+    margin-left: 30px;
+}
+
+.search-box {
+    position: absolute;
+    z-index: 2;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
 
 .button-mobile{
     display: none;
