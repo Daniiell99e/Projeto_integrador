@@ -32,6 +32,14 @@ body{
     transition: all 0.35s;
 }
 
+/* div para afastar conteudo dentro do menu lateral */
+.container-nav{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8vh;
+}
+
 .aside-nav{
     margin-top: 0;
     display: flex;
@@ -45,7 +53,7 @@ body{
 }
 
 .logo-img{
-    width: 100px;
+    width: 110px;
     height: 100px;
     transition: transform 0.4s;
 }
@@ -98,9 +106,9 @@ body{
     text-align: center;
     font-weight: bold;
     text-decoration: none;
+    border: none;
     border-radius: 25px;
     display: block;
-
 }
 
 .create-itinerary-btn:hover {
