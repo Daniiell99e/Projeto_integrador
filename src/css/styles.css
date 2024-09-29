@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    border: 1px solid red;
 }
 
 body{
@@ -93,6 +93,10 @@ body{
     color: black;
     display: flex;
     align-items: center;
+}
+
+.create-but{
+    flex-grow: 1;
 }
 
 .create-itinerary-btn {
@@ -292,6 +296,12 @@ body{
         margin-left: 6px;
         margin-top: 20px;
     }
+}
+
+.local-perto{
+    width: 50%;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .rodape{
