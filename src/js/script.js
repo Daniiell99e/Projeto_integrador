@@ -13,6 +13,7 @@ function toggleMenu(){
     }
 }
 
+//trocar a cor do link quando clicar 
 const list = document.querySelectorAll('.list');
 function activeLink(){
     list.forEach((item) =>
