@@ -152,6 +152,9 @@ body{
     width: auto;
     padding: 0.5em 1.5em;
     border-radius: 10px;
+    overflow: hidden; /* Oculta as imagens que não estão visíveis no carrossel */
+    margin: 0 auto;
+    position: relative;
 }
 
 .destinos-cidades ul {
@@ -314,4 +317,31 @@ body{
 
 .rodape{
     margin-left: 250px;
+}
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color:black;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s;
+    user-select: none;
+}
+.prev-btn {
+    margin-left: 3px;
+    left: -9px; /* Ajusta a posição para que fique antes da lista */
+    border-radius: 3px 0 0 3px;
+}
+
+.next-btn {
+    right: -8px; /* Ajusta a posição para que fique depois da lista */
+    margin-right: 3px;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-btn:hover,.next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
