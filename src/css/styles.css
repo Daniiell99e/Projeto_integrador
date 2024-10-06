@@ -181,7 +181,7 @@ body{
     text-align: center;
 }
 
-/* Ajustando sidebar com apenas icones */
+/* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
     .aside-container{
         width: 72px;
@@ -200,8 +200,7 @@ body{
     }
 
     .aside-header a > img{
-        width: 50px;
-        height: 50px;
+        width: 110%; 
     }
 
     .main-content {
@@ -324,7 +323,7 @@ body{
     align-items: center;
        
 }
-
+/*Tela para smartphones*/
 @media (max-width: 480px){
     .aside-container{
         display: none;
