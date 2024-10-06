@@ -53,7 +53,7 @@ body{
 }
 
 .logo-img{
-    width: 140px;
+    max-width: 140px;
     transition: transform 0.4s;
     margin: 0;
 }
