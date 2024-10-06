@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /*border: 1px solid red;*/
 }
 
 body{
@@ -137,6 +138,9 @@ body{
     flex-direction: column;
 }
 
+.but-int{
+    display: none;
+}
 
 .section-title {
     font-size: 1.5em;
@@ -192,9 +196,7 @@ body{
     }
 
     .create-itinerary-btn{
-        width: 50px;
-        text-align: center;
-        font-size: 12px;
+        display: none;
     }
 
     .aside-header a > img{
@@ -206,6 +208,35 @@ body{
         transition: margin 0.4s;
         margin-left: 78px;
     }
+
+    .img-destaque{
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 90%;
+        height: 300px;
+        border-radius: 20px;
+    }
+
+    .but-int{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .create-itinerary-mob{
+        background-color:#ff4848;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 25px;
+        display: block;
+        width: 60%;
+        margin-top: -30px;
+    }
+
 }
     /* testes: Criar novo roteiro */
 .box {
