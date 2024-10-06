@@ -5,6 +5,7 @@ let scrollPosition = 0;
 const itemWidth = 95; // Largura de cada item, incluindo margem
 const visibleItems = 4; // Quantidade de itens visíveis na tela ao mesmo tempo
 
+
 // Função para alternar a visibilidade do menu em dispositivos móveis
 function toggleMenu(){
     // Obtém o elemento do menu móvel pelo ID "menu-mobile"
@@ -29,6 +30,7 @@ function activeLink(){
 }
 list.forEach((item) =>
     item.addEventListener('click', activeLink));
+
 
 nextBtn.addEventListener('click', () => {
     const maxScroll = (carousel.children.length - visibleItems) * itemWidth;
