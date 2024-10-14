@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /*border: 1px solid red;*/
 }
 
 body{
@@ -14,7 +15,7 @@ body{
     margin: 0;
     padding: 0;
     display: flex;
-    
+    flex-direction: column;
 }
 
 /*menu lateral*/
@@ -32,6 +33,14 @@ body{
     transition: all 0.35s;
 }
 
+/* div para afastar conteudo dentro do menu lateral */
+.container-nav{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8vh;
+}
+
 .aside-nav{
     margin-top: 0;
     display: flex;
@@ -39,15 +48,15 @@ body{
     justify-content: space-between;
 }
 
-.aside-header{
-    width: 100%;
-    margin-bottom: 16px;
+.aside-header a{
+    margin: 0;
+    padding: 0;
 }
 
 .logo-img{
-    width: 100px;
-    height: 100px;
+    max-width: 140px;
     transition: transform 0.4s;
+    margin: 0;
 }
 
 .logo-img:hover{
@@ -91,6 +100,18 @@ body{
     align-items: center;
 }
 
+.mobile-text a.active{
+    color: white;  
+}
+
+.aside-nav a.active{
+    color: white;
+}
+
+.create-but{
+    flex-grow: 1;
+}
+
 .create-itinerary-btn {
     background-color: #fff;
     color: #ff6161;
@@ -98,9 +119,9 @@ body{
     text-align: center;
     font-weight: bold;
     text-decoration: none;
+    border: none;
     border-radius: 25px;
     display: block;
-
 }
 
 .create-itinerary-btn:hover {
@@ -118,12 +139,20 @@ body{
     margin-left: 250px;
     margin-right: 6px;
     overflow: hidden;
+    flex-direction: column;
 }
 
+.but-int{
+    display: none;
+}
 
 .section-title {
     font-size: 1.5em;
     margin-bottom: 15px;
+}
+
+.destinos{
+    margin-bottom: 16px;
 }
 
 .destinos-cidades{
@@ -131,6 +160,9 @@ body{
     width: auto;
     padding: 0.5em 1.5em;
     border-radius: 10px;
+    overflow: hidden; /* Oculta as imagens que não estão visíveis no carrossel */
+    margin: 0 auto;
+    position: relative;
 }
 
 .destinos-cidades ul {
@@ -153,7 +185,7 @@ body{
     text-align: center;
 }
 
-/* Ajustando sidebar com apenas icones */
+/* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
     .aside-container{
         width: 72px;
@@ -168,21 +200,49 @@ body{
     }
 
     .create-itinerary-btn{
-        width: 50px;
-        text-align: center;
-        font-size: 12px;
+        display: none;
     }
 
     .aside-header a > img{
-        width: 50px;
-        height: 50px;
+        width: 110%; 
     }
 
     .main-content {
         transition: margin 0.4s;
         margin-left: 78px;
     }
+
+    .img-destaque{
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 90%;
+        height: 300px;
+        border-radius: 20px;
+    }
+
+    .but-int{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .create-itinerary-mob{
+        background-color:#ff4848;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 25px;
+        display: block;
+        width: 60%;
+        margin-top: -30px;
+    }
+
 }
+/* Fim tela para tabletes */
+
     /* testes: Criar novo roteiro */
 .box {
     width: 84.5vw;
@@ -208,6 +268,7 @@ body{
     margin-left: 30px;
   }
 
+/*Tela para smartphones*/
 .button-mobile{
     display: none;
 }
@@ -227,14 +288,19 @@ body{
     position: fixed;
 }
 
+.menu-mobile_close{
+    padding: 30px;
+    width: 100%;
+}
+
 .menu-mobile{
     display: none;
 }
 
 .menu-mobile-active{
-    width: 100vw;
+    width: 70vw;
     height: 100vh;
-    background-color: rgba(243, 88, 88, 0.712);
+    background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
     z-index: 99;
     position: fixed;
     top: 0;
@@ -242,17 +308,13 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
 }
 
 .menu-mobile-active button{
     background: transparent;
     border: none;
-}
-
-.mobile-text a{
-    background-color: white;
 }
 
 .menu-mobile-active li{
@@ -270,6 +332,7 @@ body{
        
 }
 
+
 @media (max-width: 480px){
     .aside-container{
         display: none;
@@ -283,4 +346,42 @@ body{
         margin-left: 6px;
         margin-top: 20px;
     }
+}
+/* Fim tela para smartphones */
+
+.local-perto{
+    width: 50%;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.rodape{
+    margin-left: 250px;
+}
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color:black;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s;
+    user-select: none;
+}
+.prev-btn {
+    margin-left: 3px;
+    left: -9px; /* Ajusta a posição para que fique antes da lista */
+    border-radius: 3px 0 0 3px;
+}
+
+.next-btn {
+    right: -8px; /* Ajusta a posição para que fique depois da lista */
+    margin-right: 3px;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-btn:hover,.next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
