@@ -248,7 +248,7 @@ body{
     width: 84.5vw;
     height: 96vh;
     background-color: #EBEBEB;
-    border-radius: 20px;
+    border-radius: 35px;
     position: absolute;
     z-index: 1;
 }
@@ -257,15 +257,32 @@ body{
     position: relative;
     z-index: 2;
     color: #EA2B59;
-    margin-top: 25px;
-    margin-left: 30px;
+    margin-top: 19px;
+    margin-left: 33px;
+    font-size: 25;
+}
+
+.text {
+    position: relative;
+    z-index: 2;
+    color: #FF5981;
+    margin-top: 17px;
+    margin-left: 33px;
 }
 
 .search-box {
     position: absolute;
     z-index: 2;
     margin-top: 10px;
-    margin-left: 30px;
+    margin-left: 33px;
+
+    background: #fff;
+    height: 40px;
+    width: 350px;
+    padding-left: 50px;
+    border-radius: 7px;
+    border-color: #cacaca;
+    outline-color: #EA2B59;
   }
 
 /*Tela para smartphones*/
