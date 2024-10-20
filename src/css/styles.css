@@ -388,39 +388,3 @@ body{
 .prev-btn:hover,.next-btn:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
-
-
-
-/*Carrocel imagem atrás da logo - inicio*/
-.img-destaque_logo{
-    width: 30%;
-    display: block;
-    position: absolute;
-    bottom: auto;
-    z-index: 99;
-}
-
-
-.slides {
-    display: flex;
-    transition: transform 1s ease-in-out;
-    min-height: 200px;
-    max-height: 250px;
-}
-
-.slide {
-    width: 100%;
-    object-fit: cover;
-    transition: transform 2s ease-in-out;
-    display: block;
-}
-
-.slide.zoom {
-    transform: scale(1.2);
-}
-
-.slide.reset {
-    transform: scale(1);
-}
-
-/*Carrocel imagem atrás da logo - final*/
