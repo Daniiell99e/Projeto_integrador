@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /*border: 1px solid red;*/
 }
 
 body{
@@ -14,7 +15,7 @@ body{
     margin: 0;
     padding: 0;
     display: flex;
-    
+    flex-direction: column;
 }
 
 /*menu lateral*/
@@ -30,6 +31,15 @@ body{
     flex-direction: column;
     align-items: flex-start;
     transition: all 0.35s;
+    z-index: 999;
+}
+
+/* div para afastar conteudo dentro do menu lateral */
+.container-nav{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8vh;
 }
 
 .aside-nav{
@@ -39,15 +49,15 @@ body{
     justify-content: space-between;
 }
 
-.aside-header{
-    width: 100%;
-    margin-bottom: 16px;
+.aside-header a{
+    margin: 0;
+    padding: 0;
 }
 
 .logo-img{
-    width: 100px;
-    height: 100px;
+    max-width: 140px;
     transition: transform 0.4s;
+    margin: 0;
 }
 
 .logo-img:hover{
@@ -91,6 +101,18 @@ body{
     align-items: center;
 }
 
+.mobile-text a.active{
+    color: white;  
+}
+
+.aside-nav a.active{
+    color: white;
+}
+
+.create-but{
+    flex-grow: 1;
+}
+
 .create-itinerary-btn {
     background-color: #fff;
     color: #ff6161;
@@ -98,9 +120,9 @@ body{
     text-align: center;
     font-weight: bold;
     text-decoration: none;
+    border: none;
     border-radius: 25px;
     display: block;
-
 }
 
 .create-itinerary-btn:hover {
@@ -118,12 +140,21 @@ body{
     margin-left: 250px;
     margin-right: 6px;
     overflow: hidden;
+    flex-direction: column;
 }
 
+.but-int{
+    display: none;
+}
 
 .section-title {
     font-size: 1.5em;
     margin-bottom: 15px;
+}
+
+/* carrocel - inicio */
+.destinos{
+    margin-bottom: 16px;
 }
 
 .destinos-cidades{
@@ -131,6 +162,9 @@ body{
     width: auto;
     padding: 0.5em 1.5em;
     border-radius: 10px;
+    overflow: hidden; /* Oculta as imagens que não estão visíveis no carrossel */
+    margin: 0 auto;
+    position: relative;
 }
 
 .destinos-cidades ul {
@@ -153,7 +187,13 @@ body{
     text-align: center;
 }
 
-/* Ajustando sidebar com apenas icones */
+/* carrocel - final */
+
+#open_btn {
+    display: none; /* Esconde o botão lateral de expanção do menu em telas maiores */
+}
+
+/* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
     .aside-container{
         width: 72px;
@@ -168,22 +208,113 @@ body{
     }
 
     .create-itinerary-btn{
-        width: 50px;
-        text-align: center;
-        font-size: 12px;
+        display: none;
     }
 
     .aside-header a > img{
-        width: 50px;
-        height: 50px;
+        width: 110%; 
     }
 
     .main-content {
         transition: margin 0.4s;
         margin-left: 78px;
     }
+/*carrossel automatico------------------------------------------------------------------------------*/
+    .img-destaque{
+        width: 90%;
+        min-height: 200px;
+        max-height: 250px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .but-int{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .create-itinerary-mob{
+        background-color:#ff4848;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 25px;
+        display: block;
+        width: 60%;
+        margin-top: -30px;
+        z-index: 9;
+    }
+
+
+/* botão para expandir menu lateral - inicio */
+    #open_btn {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: -10px;
+        background-color: #e3e9f7;
+        color: #ff4848;
+        border-radius: 100%;
+        width: 20px;
+        height: 20px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.5);
+          
+    }
+    
+    #open_btn_icon {
+        transition: transform .3s ease;
+        font-size: 10px;
+    }
+    
+    .open-sidebar #open_btn_icon {
+        transform: rotate(180deg);
+    }
+    
+    #sidebar.open-sidebar {
+        min-width: 250px;
+    }
+    
+    #sidebar.open-sidebar li a span {
+        opacity: 100%;
+    }
+/* botão para expandir menu lateral - final*/
+
+}
+/* Fim tela para tabletes */
+
+    /* testes: Criar novo roteiro */
+.box {
+    width: 84.5vw;
+    height: 96vh;
+    background-color: #EBEBEB;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 1;
 }
 
+.text_title {
+    position: relative;
+    z-index: 2;
+    color: #EA2B59;
+    margin-top: 25px;
+    margin-left: 30px;
+}
+
+.search-box {
+    position: absolute;
+    z-index: 2;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+/*Tela para smartphones*/
 .button-mobile{
     display: none;
 }
@@ -203,32 +334,34 @@ body{
     position: fixed;
 }
 
+.menu-mobile_close{
+    padding: 30px;
+    width: 100%;
+}
+
 .menu-mobile{
     display: none;
 }
 
 .menu-mobile-active{
-    width: 100vw;
+    width: 70vw;
     height: 100vh;
-    background-color: rgba(243, 88, 88, 0.712);
-    z-index: 99;
+    background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
+    z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
 }
 
 .menu-mobile-active button{
     background: transparent;
     border: none;
-}
-
-.mobile-text a{
-    background-color: white;
+   
 }
 
 .menu-mobile-active li{
@@ -246,6 +379,7 @@ body{
        
 }
 
+
 @media (max-width: 480px){
     .aside-container{
         display: none;
@@ -260,3 +394,90 @@ body{
         margin-top: 20px;
     }
 }
+/* Fim tela para smartphones */
+
+.local-perto{
+    width: 50%;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.rodape{
+    margin-left: 250px;
+}
+
+/* codigo carousel- inicio */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color:black;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.3s;
+    user-select: none;
+}
+.prev-btn {
+    margin-left: 3px;
+    left: -9px; /* Ajusta a posição para que fique antes da lista */
+    border-radius: 3px 0 0 3px;
+}
+
+.next-btn {
+    right: -8px; /* Ajusta a posição para que fique depois da lista */
+    margin-right: 3px;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-btn:hover,.next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*Carrocel imagem atrás da logo - inicio*/
+.img-destaque_logo{
+    width: 30%;
+    display: block;
+    position: absolute;
+    bottom: auto;
+    z-index: 99;
+}
+
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    min-height: 200px;
+    max-height: 250px;
+}
+
+.slide {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 2s ease-in-out;
+    display: block;
+}
+
+.slide.zoom {
+    transform: scale(1.2);
+}
+
+.slide.reset {
+    transform: scale(1);
+}
+
+/*Carrocel imagem atrás da logo - final*/
+
+
+.card-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* As imagens serão cortadas se necessário, mas sem distorção */
+    border-radius: 50%; /* Apenas uma borda arredondada opcional */
+   
+  }
+ 
+/* codigo carousel - final */
+
+

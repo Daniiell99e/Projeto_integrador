@@ -9,7 +9,6 @@
     <meta name="author" content="ByteExplorers">
     <link rel="stylesheet" href="../css/styles.css">
 
-    <!-- fabricio -->
     <!-- icones do google 👇 -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
@@ -17,19 +16,24 @@
     <body>
         <aside class="aside-container"> <!-- Menu lateral -->
             <header class="aside-header">
-                <a href="index.html" class="logo-link"><img src="../assets/imagens/logo_temp.png" alt="logo" class="logo-img"></a>
+                <a href="index.html" class="logo-link"><img src="../assets/imagens/Logo.png" alt="logo" class="logo-img"></a>
             </header>
-            <nav class="aside-nav"><!--Navegação do site-->
-                <ul class="aside-lista">
-                    <li><a href="index.html"><i class="material-symbols-outlined">home</i> <span>Página Inicial</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">light_mode</i> <span>Seus roteiros</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">language</i> <span>Explorar</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">notifications</i> <span>Notificações</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">settings</i> <span>Configurações</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">account_circle</i> <span>Perfil</span></a></li>
-                </ul>
-                <a href="#" class="create-itinerary-btn">Criar novo roteiro</a>
-            </nav>
+            <div class="container-nav">
+                <nav class="aside-nav"><!--Navegação do site-->
+                    <ul class="aside-lista">
+                        <li ><a href="index.html" class="list active"><i class="material-symbols-outlined">home</i> <span>Página Inicial</span></a></li>
+                        <li ><a href="#" class="list"><i class="material-symbols-outlined">light_mode</i> <span>Seus roteiros</span></a></li>
+                        <li ><a href="#" class="list"><i class="material-symbols-outlined">language</i> <span>Explorar</span></a></li>
+                        <li ><a href="#" class="list"><i class="material-symbols-outlined">notifications</i> <span>Notificações</span></a></li>
+                        <li ><a href="#" class="list"><i class="material-symbols-outlined">settings</i> <span>Configurações</span></a></li>
+                        <li ><a href="#" class="list"><i class="material-symbols-outlined">account_circle</i> <span>Perfil</span></a></li>
+                    </ul>
+                </nav>
+                
+            </div>
+            <div class="create-but"></div>
+                <a href="Criar novo roteiro.html" class="create-itinerary-btn">Criar novo roteiro</a>
+            </div>
         </aside>
 
         <!-- criando menu mobile -->
@@ -52,7 +56,7 @@
                     <li><a href="#"><i class="material-symbols-outlined">settings</i> <span>Configurações</span></a></li>
                     <li><a href="#"><i class="material-symbols-outlined">account_circle</i> <span>Perfil</span></a></li>
                 </ul>
-                <a href="#" class="create-itinerary-btn">Criar novo roteiro</a>
+                <a href="Criar novo roteiro.html" class="create-itinerary-btn">Criar novo roteiro</a>
             </button>
          </nav>
 
@@ -61,7 +65,7 @@
             <section class="destinos">
                 <h2 class="section-title">Destinos recomendados</h2>
                 <div class="destinos-cidades">
-                    <ul>
+                    <ul id="carousel-list">
                         <li>
                             <div class="destino-cidades__card">
                                 <img src="../assets/imagens/rio 1.png" alt="Rio" class="card-img">
@@ -94,7 +98,25 @@
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <div class="destino-cidades__card">
+                                <img src="../assets/imagens/salvador 1.png" alt="Salvador" class="card-img">
+                                <div class="title-cidade">
+                                    <h3 class="nome-cidade">Salvador</h3>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destino-cidades__card">
+                                <img src="../assets/imagens/natal 1.png" alt="Natal" class="card-img">
+                                <div class="title-cidade">
+                                    <h3 class="nome-cidade">Natal</h3>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
+                    <a id="prev-btn" class="prev-btn" >&#10094; </a>
+                      <a id="next-btn" class="next-btn">&#10095;</a>
                 </div>
             </section>
     
@@ -105,12 +127,11 @@
                 </div>
             </section>
             </div>
-    
-            <section class="esp">
-    
-            </section>
         </main>
 
         <script src="../js/script.js"></script>
+        <footer class="rodape">
+            Rodapé
+        </footer>
 </body>
 </html>
