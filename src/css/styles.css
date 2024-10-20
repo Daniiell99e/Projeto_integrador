@@ -214,12 +214,13 @@ body{
         transition: margin 0.4s;
         margin-left: 78px;
     }
-
+/*carrossel automatico------------------------------------------------------------------------------*/
     .img-destaque{
-        background-color: rgba(0, 0, 0, 0.2);
         width: 90%;
-        height: 300px;
+        min-height: 200px;
+        max-height: 250px;
         border-radius: 20px;
+        overflow: hidden;
     }
 
     .but-int{
@@ -241,6 +242,7 @@ body{
         display: block;
         width: 60%;
         margin-top: -30px;
+        z-index: 9;
     }
 
 }
@@ -304,7 +306,7 @@ body{
     width: 70vw;
     height: 100vh;
     background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
-    z-index: 99;
+    z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
@@ -318,6 +320,7 @@ body{
 .menu-mobile-active button{
     background: transparent;
     border: none;
+   
 }
 
 .menu-mobile-active li{
@@ -390,14 +393,4 @@ body{
 .prev-btn:hover,.next-btn:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
-.card-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover; /* As imagens serão cortadas se necessário, mas sem distorção */
-    border-radius: 50%; /* Apenas uma borda arredondada opcional */
-   
-  }
- 
-  
 
-/* codigo carousel - final */

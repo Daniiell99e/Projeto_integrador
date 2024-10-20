@@ -21,7 +21,7 @@ function toggleMenu(){
     }
 }
 
-//trocar a cor do link quando clicar 
+//trocar a cor do link quando clicar inicio
 const list = document.querySelectorAll('.list');
 function activeLink(){
     list.forEach((item) =>
@@ -30,7 +30,7 @@ function activeLink(){
 }
 list.forEach((item) =>
     item.addEventListener('click', activeLink));
-
+//trocar a cor do link quando clicar fim
 
 // Esse é o javascript do carrocel - inicio
 nextBtn.addEventListener('click', () => {
@@ -53,4 +53,3 @@ prevBtn.addEventListener('click', () => {
             carousel.style.transform = `translateX(-${scrollPosition}px)`;
         });
 
-// Esse é o javascript do carousl - final
