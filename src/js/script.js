@@ -32,6 +32,7 @@ list.forEach((item) =>
     item.addEventListener('click', activeLink));
 
 
+// Esse é o javascript do carrocel - inicio
 nextBtn.addEventListener('click', () => {
     const maxScroll = (carousel.children.length - visibleItems) * itemWidth;
 
@@ -51,3 +52,5 @@ prevBtn.addEventListener('click', () => {
             scrollPosition = Math.max(scrollPosition - itemWidth, 0);
             carousel.style.transform = `translateX(-${scrollPosition}px)`;
         });
+
+// Esse é o javascript do carousl - final
