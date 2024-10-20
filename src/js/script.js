@@ -32,6 +32,7 @@ list.forEach((item) =>
     item.addEventListener('click', activeLink));
 //trocar a cor do link quando clicar fim
 
+// Esse é o javascript do carrocel - inicio
 nextBtn.addEventListener('click', () => {
     const maxScroll = (carousel.children.length - visibleItems) * itemWidth;
 
@@ -52,5 +53,3 @@ prevBtn.addEventListener('click', () => {
             carousel.style.transform = `translateX(-${scrollPosition}px)`;
         });
 
-
-            

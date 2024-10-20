@@ -151,6 +151,7 @@ body{
     margin-bottom: 15px;
 }
 
+/* carrocel - inicio */
 .destinos{
     margin-bottom: 16px;
 }
@@ -184,6 +185,8 @@ body{
     font-size: 0.7em;
     text-align: center;
 }
+
+/* carrocel - final */
 
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
@@ -361,6 +364,8 @@ body{
 .rodape{
     margin-left: 250px;
 }
+
+/* codigo carousel- inicio */
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
@@ -388,3 +393,4 @@ body{
 .prev-btn:hover,.next-btn:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
+
