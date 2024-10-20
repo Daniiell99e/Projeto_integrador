@@ -31,6 +31,7 @@ body{
     flex-direction: column;
     align-items: flex-start;
     transition: all 0.35s;
+    z-index: 999;
 }
 
 /* div para afastar conteudo dentro do menu lateral */
@@ -188,6 +189,10 @@ body{
 
 /* carrocel - final */
 
+#open_btn {
+    display: none; /* Esconde o botão lateral de expanção do menu em telas maiores */
+}
+
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
     .aside-container{
@@ -244,6 +249,42 @@ body{
         margin-top: -30px;
         z-index: 9;
     }
+
+
+/* botão para expandir menu lateral - inicio */
+    #open_btn {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: -10px;
+        background-color: #e3e9f7;
+        color: #ff4848;
+        border-radius: 100%;
+        width: 20px;
+        height: 20px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 2px 0px 2px rgba(0, 0, 0, 0.5);
+          
+    }
+    
+    #open_btn_icon {
+        transition: transform .3s ease;
+        font-size: 10px;
+    }
+    
+    .open-sidebar #open_btn_icon {
+        transform: rotate(180deg);
+    }
+    
+    #sidebar.open-sidebar {
+        min-width: 250px;
+    }
+    
+    #sidebar.open-sidebar li a span {
+        opacity: 100%;
+    }
+/* botão para expandir menu lateral - final*/
 
 }
 /* Fim tela para tabletes */
@@ -437,7 +478,6 @@ body{
    
   }
  
-  
-
 /* codigo carousel - final */
+
 
