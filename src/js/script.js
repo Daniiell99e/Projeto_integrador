@@ -94,3 +94,9 @@ prevBtn.addEventListener('click', () => {
         // Inicia o slider
         startSlider();
     // slide - final
+
+// icone de clique para expandir menu lateral - inicio
+    document.getElementById('open_btn').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('open-sidebar');
+    });
+// icone de clique para expandir menu lateral - final

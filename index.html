@@ -14,12 +14,12 @@
 </head>
 <body>
     <body>
-        <aside class="aside-container"> <!-- Menu lateral -->
+        <aside class="aside-container" id="sidebar"> <!-- Menu lateral -->
             <header class="aside-header">
                 <a href="index.html" class="logo-link"><img src="src/assets/imagens/Logo.png" alt="logo" class="logo-img"></a>
             </header>
             <div class="container-nav">
-                <nav class="aside-nav"><!--Navegação do site-->
+                <nav class="aside-nav" ><!--Navegação do site-->
                     <ul class="aside-lista">
                         <li ><a href="index.html" class="list active"><i class="material-symbols-outlined">home</i> <span>Página Inicial</span></a></li>
                         <li ><a href="#" class="list"><i class="material-symbols-outlined">light_mode</i> <span>Seus roteiros</span></a></li>
@@ -28,8 +28,16 @@
                         <li ><a href="#" class="list"><i class="material-symbols-outlined">settings</i> <span>Configurações</span></a></li>
                         <li ><a href="#" class="list"><i class="material-symbols-outlined">account_circle</i> <span>Perfil</span></a></li>
                     </ul>
+
+                    <!-- botão para expandir menu lateral telas com width menor que 920 - inicio -->
+                    <button id="open_btn">
+                        <span id="open_btn_icon" class="material-symbols-outlined">
+                            arrow_forward_ios
+                            </span>
+                    </button>
+                    <!-- botão para expandir menu lateral telas com width menor que 920 - final -->
                 </nav>
-                
+
             </div>
             <div class="create-but"></div>
                 <a href="src/pages/Criar novo roteiro.html" class="create-itinerary-btn">Criar novo roteiro</a>
@@ -64,6 +72,7 @@
 
         <main class="main-content">
             <div class="main-content_cont">
+                <!-- slide automatico e logo - inicio -->
             <div class="but-int">
                 <img src="src/assets/imagens/Logo.png" alt="logo" class="img-destaque_logo">
                 <div class="img-destaque">
@@ -78,6 +87,8 @@
                 </div>
                 <a href="src/pages/Criar novo roteiro.html" class="create-itinerary-mob">Criar novo roteiro</a>
             </div>
+             <!-- slide automatico e logo - final-->
+
             <!-- Aqui começa o carousel - inicio -->
             <section class="destinos">
                 <h2 class="section-title">Destinos recomendados</h2>
