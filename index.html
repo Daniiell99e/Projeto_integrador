@@ -14,12 +14,12 @@
 </head>
 <body>
     <body>
-        <aside class="aside-container"> <!-- Menu lateral -->
+        <aside class="aside-container" id="sidebar"> <!-- Menu lateral -->
             <header class="aside-header">
                 <a href="index.html" class="logo-link"><img src="src/assets/imagens/Logo.png" alt="logo" class="logo-img"></a>
             </header>
             <div class="container-nav">
-                <nav class="aside-nav"><!--Navegação do site-->
+                <nav class="aside-nav" ><!--Navegação do site-->
                     <ul class="aside-lista">
                         <li ><a href="index.html" class="list active"><i class="material-symbols-outlined">home</i> <span>Página Inicial</span></a></li>
                         <li ><a href="#" class="list"><i class="material-symbols-outlined">light_mode</i> <span>Seus roteiros</span></a></li>
@@ -28,8 +28,16 @@
                         <li ><a href="#" class="list"><i class="material-symbols-outlined">settings</i> <span>Configurações</span></a></li>
                         <li ><a href="#" class="list"><i class="material-symbols-outlined">account_circle</i> <span>Perfil</span></a></li>
                     </ul>
+
+                    <!-- botão para expandir menu lateral telas com width menor que 920 - inicio -->
+                    <button id="open_btn">
+                        <span id="open_btn_icon" class="material-symbols-outlined">
+                            arrow_forward_ios
+                            </span>
+                    </button>
+                    <!-- botão para expandir menu lateral telas com width menor que 920 - final -->
                 </nav>
-                
+
             </div>
             <div class="create-but"></div>
                 <a href="src/pages/Criar novo roteiro.html" class="create-itinerary-btn">Criar novo roteiro</a>
@@ -64,19 +72,33 @@
 
         <main class="main-content">
             <div class="main-content_cont">
+                <!-- slide automatico e logo - inicio -->
             <div class="but-int">
+                <img src="src/assets/imagens/Logo.png" alt="logo" class="img-destaque_logo">
                 <div class="img-destaque">
-
+                    
+                    <div class="slides">
+                        <img src="src/assets/imagens/grupo-pessoas.jpg" alt="grupo de pessoas" class="slide">
+                        <img src="src/assets/imagens/homem-viajando.jpg" alt="homem viajando" class="slide">
+                        <img src="src/assets/imagens/avião.jpg" alt="avião voando" class="slide">
+                        <img src="src/assets/imagens/veneza.jpg" alt="cidade veneza" class="slide">
+                        <img src="src/assets/imagens/background.jpg" alt="imagem de fundo" class="slide">
+                    </div>
                 </div>
                 <a href="src/pages/Criar novo roteiro.html" class="create-itinerary-mob">Criar novo roteiro</a>
             </div>
+             <!-- slide automatico e logo - final-->
+
+            <!-- Aqui começa o carousel - inicio -->
             <section class="destinos">
                 <h2 class="section-title">Destinos recomendados</h2>
                 <div class="destinos-cidades">
                     <ul id="carousel-list">
+                        
+                        
                         <li>
                             <div class="destino-cidades__card">
-                                <img src="src/assets/imagens/rio 1.png" alt="Rio" class="card-img">
+                                <img src="src/assets/imagens/rio.jpeg" alt="Rio" class="card-img">
                                 <div class="title-cidade">
                                     <h3 class="nome-cidade">Rio de Janeiro</h3>
                                 </div>
@@ -84,7 +106,7 @@
                         </li>
                         <li>
                             <div class="destino-cidades__card">
-                                <img src="src/assets/imagens/recife 1.png" alt="Recife" class="card-img">
+                                <img src="src/assets/imagens/recife.jpeg" alt="Recife" class="card-img">
                                 <div class="title-cidade">
                                     <h3 class="nome-cidade">Recife</h3>
                                 </div>
@@ -92,7 +114,7 @@
                         </li>
                         <li>
                             <div class="destino-cidades__card">
-                                <img src="src/assets/imagens/Gramado 1.png" alt="Gramado" class="card-img">
+                                <img src="src/assets/imagens/gramado.jpeg" alt="Gramado" class="card-img">
                                 <div class="title-cidade">
                                     <h3 class="nome-cidade">Gramado</h3>
                                 </div>
@@ -100,7 +122,7 @@
                         </li>
                         <li>
                             <div class="destino-cidades__card">
-                                <img src="src/assets/imagens/buenos-aires 1.png" alt="Buenos Aires" class="card-img">
+                                <img src="src/assets/imagens/bueno.jpeg" alt="Buenos Aires" class="card-img">
                                 <div class="title-cidade">
                                     <h3 class="nome-cidade">Buenos Aires</h3>
                                 </div>
@@ -108,7 +130,7 @@
                         </li>
                         <li>
                             <div class="destino-cidades__card">
-                                <img src="src/assets/imagens/salvador 1.png" alt="Salvador" class="card-img">
+                                <img src="src/assets/imagens/salvador.jpeg" alt="Salvador" class="card-img">
                                 <div class="title-cidade">
                                     <h3 class="nome-cidade">Salvador</h3>
                                 </div>
@@ -116,17 +138,49 @@
                         </li>
                         <li>
                             <div class="destino-cidades__card">
-                                <img src="src/assets/imagens/natal 1.png" alt="Natal" class="card-img">
+                                <img src="src/assets/imagens/natal.jpeg" alt="Natal" class="card-img">
                                 <div class="title-cidade">
                                     <h3 class="nome-cidade">Natal</h3>
+                                    
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <div class="destino-cidades__card">
+                                <img src="src/assets/imagens/parabelem.png" alt="Pará" class="card-img">
+                                <div class="title-cidade">
+                                    <h3 class="nome-cidade">Belém</h3>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destino-cidades__card">
+                                <img src="src/assets/imagens/paris.jpeg" alt="paris" class="card-img">
+                                <div class="title-cidade">
+                                    <h3 class="nome-cidade">Paris</h3>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destino-cidades__card">
+                                <img src="src/assets/imagens/sao paulo.jpeg" alt="saopaulo" class="card-img">
+                                <div class="title-cidade">
+                                    <h3 class="nome-cidade">São Paulo</h3>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                        
                     </ul>
                     <a id="prev-btn" class="prev-btn" >&#10094; </a>
                       <a id="next-btn" class="next-btn">&#10095;</a>
                 </div>
+        
+    
             </section>
+            <!-- Aqui termina o carrocel - final -->
     
             <section class="local">
                 <h2 class="section-title">Perto de você</h2>
