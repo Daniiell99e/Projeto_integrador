@@ -142,10 +142,58 @@ body{
     overflow: hidden;
     flex-direction: column;
 }
-
+/*slide infinito imagem atrás da logo - inicio*/
 .but-int{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.create-itinerary-mob{
     display: none;
 }
+
+.img-destaque{
+    width: 95%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+.img-destaque_logo{
+    width: 25%;
+    display: block;
+    position: absolute;
+    bottom: auto;
+    z-index: 99;
+}
+
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    min-height: 200px;
+    max-height: 300px;
+}
+
+.slide {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 2s ease-in-out;
+    display: block;
+}
+
+.slide.zoom {
+    transform: scale(1.2);
+}
+
+.slide.reset {
+    transform: scale(1);
+}
+
+/*slide infito imagem atrás da logo - final*/
 
 .section-title {
     font-size: 1.5em;
@@ -350,21 +398,6 @@ body{
     .main-content {
         transition: margin 0.4s;
         margin-left: 78px;
-    }
-/*carrossel automatico------------------------------------------------------------------------------*/
-    .img-destaque{
-        width: 90%;
-        min-height: 200px;
-        max-height: 250px;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-    .but-int{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
     }
 
     .create-itinerary-mob{
@@ -581,39 +614,7 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/*Carrocel imagem atrás da logo - inicio*/
-.img-destaque_logo{
-    width: 30%;
-    display: block;
-    position: absolute;
-    bottom: auto;
-    z-index: 99;
-}
 
-
-.slides {
-    display: flex;
-    transition: transform 1s ease-in-out;
-    min-height: 200px;
-    max-height: 250px;
-}
-
-.slide {
-    width: 100%;
-    object-fit: cover;
-    transition: transform 2s ease-in-out;
-    display: block;
-}
-
-.slide.zoom {
-    transform: scale(1.2);
-}
-
-.slide.reset {
-    transform: scale(1);
-}
-
-/*Carrocel imagem atrás da logo - final*/
 
 
 .card-img {
