@@ -500,7 +500,8 @@ body{
 
     .main-content{
         margin-left: 60px;
-        margin-top: 20px;
+        margin-top: 5px;
+        padding: 5px;
     }
     #footer_content{
         grid-template-columns: repeat(1,1fr);
