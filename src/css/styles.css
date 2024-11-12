@@ -234,7 +234,55 @@ body{
     font-size: 0.7em;
     text-align: center;
 }
-
+/* style.css */
+/* Adiciona estilos para a versão móvel */
+@media (max-width: 767px) {
+    .carousel-container {
+      width: 100%;
+      overflow-x: scroll;
+      scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+      -ms-overflow-style: none; /* Oculta a barra de rolagem no Internet Explorer e Edge */
+      -webkit-overflow-scrolling: touch; /* Habilita a rolagem suave no iOS */
+    }
+  
+    .carousel {
+      display: flex;
+      width: fit-content;
+      scroll-snap-type: x mandatory;
+    }
+  
+    .slide {
+      flex-shrink: 0;
+      width: 100%;
+      scroll-snap-align: start;
+    }
+  
+    .slide img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+  
+  /* Mantém os estilos originais para a versão desktop */
+  .carousel-container {
+    /* Seus estilos anteriores */
+  }
+  
+  .carousel {
+    /* Seus estilos anteriores */
+  }
+  
+  .slide {
+    /* Seus estilos anteriores */
+  }
+  
+  .slide img {
+    /* Seus estilos anteriores */
+  }
+ 
+  
+ 
 /* carrocel - final */
 
 #open_btn {
@@ -486,6 +534,7 @@ body{
     margin-top: 10px;
     margin-left: 30px;
   }
+  /*fim ciar roteiro*/
 
 
 @media (max-width: 480px){
@@ -561,6 +610,7 @@ body{
     border-radius: 50%; /* Apenas uma borda arredondada opcional */
    
   }
+  
  
 /* codigo carousel - final */
 
