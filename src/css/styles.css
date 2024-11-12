@@ -483,9 +483,60 @@ body{
 .search-box {
     position: absolute;
     z-index: 2;
-    margin-top: 10px;
-    margin-left: 30px;
+    margin-top: 20px;
+    margin-left: 73px;
+    scale: 1.5;
   }
+  #destinos{
+    margin-top: 100px;
+  }
+  .listrecom{
+    
+    color: #f5f5f5;
+    display: grid;
+    grid-template-columns: repeat(4,200px);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    grid-template-rows: repeat(4,200px);
+    margin-top: 300px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+
+
+  }
+  .rj{background-image: url('/src/assets/imagens/rio.jpeg');
+    padding: 5px;
+border-radius: 10px;
+background-size: cover;}
+   .sp{background-image: url(/src/assets/imagens/sao\ paulo.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .recife{    background-image: url(/src/assets/imagens/recife.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .salvador{background-image: url(/src/assets/imagens/salvador.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .natal{background-image: url(/src/assets/imagens/natal.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .paris{background-image: url(/src/assets/imagens/paris.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .belem{background-image: url(/src/assets/imagens/parabelem.png);
+    padding: 5px;border-radius: 10px;
+    background-size: cover;}
+   .gramado{background-image: url(/src/assets/imagens/gramado.jpeg);
+padding: 5px;
+border-radius: 10px;
+background-size: cover;}
+
 
 
 @media (max-width: 480px){
