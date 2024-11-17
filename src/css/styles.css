@@ -234,54 +234,54 @@ body{
     font-size: 0.7em;
     text-align: center;
 }
-/* style.css */
-/* Adiciona estilos para a versão móvel */
-@media (max-width: 767px) {
-    .carousel-container {
-      width: 100%;
-      overflow-x: scroll;
-      scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
-      -ms-overflow-style: none; /* Oculta a barra de rolagem no Internet Explorer e Edge */
-      -webkit-overflow-scrolling: touch; /* Habilita a rolagem suave no iOS */
-    }
-  
-    .carousel {
-      display: flex;
-      width: fit-content;
-      scroll-snap-type: x mandatory;
-    }
-  
-    .slide {
-      flex-shrink: 0;
-      width: 100%;
-      scroll-snap-align: start;
-    }
-  
-    .slide img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-  }
-  
-  /* Mantém os estilos originais para a versão desktop */
-  .carousel-container {
-    /* Seus estilos anteriores */
-  }
-  
-  .carousel {
-    /* Seus estilos anteriores */
-  }
-  
-  .slide {
-    /* Seus estilos anteriores */
-  }
-  
-  .slide img {
-    /* Seus estilos anteriores */
-  }
- 
-  
+.carousel-container {
+    display: flex;
+    transition: transform 0.3s ease-out;
+    touch-action: pan-x;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.slidecarro {
+    min-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.destino-cidades_card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+.nome-cidade {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+
+    .dot {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.dot.active {
+    background: #333;
+}
  
 /* carrocel - final */
 
