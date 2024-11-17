@@ -531,10 +531,13 @@ body{
 .search-box {
     position: absolute;
     z-index: 2;
-    margin-top: 10px;
-    margin-left: 30px;
+    margin-top: 20px;
+    margin-left: 73px;
+    scale: 1.5;
   }
-  /*fim ciar roteiro*/
+  #destinos{
+    margin-top: 100px;
+  }
 
 
 @media (max-width: 480px){
