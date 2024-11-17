@@ -241,6 +241,13 @@ body{
     display: none; /* Esconde o botão lateral de expanção do menu em telas maiores */
 }
 /* começo da tela criar novo roteiro */
+.box {
+    width: 84.5vw;
+    height: 96vh;
+    background-color: #EBEBEB;
+    border-radius: 35px;
+    z-index: 1;
+}
 
 
 
