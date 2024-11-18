@@ -31,33 +31,20 @@
             </nav>
         </aside>
 
-        <!-- criando menu mobile -->
-         <button class="button-mobile" onclick="toggleMenu()">
-            <i class="material-symbols-outlined"> menu</i>
-            <span>Menu</span>
-         </button>
-
-         <nav class="menu-mobile" id="menu-mobile">
-            <button>
-                <span>
-                    <i class="material-symbols-outlined" onclick="toggleMenu()"> close</i>
-                </span>
-
-                <ul class="mobile-text"></ul>
-                    <li><a href="https://daniiell99e.github.io/Projeto_integrador/"><i class="material-symbols-outlined">home</i> <span>Página Inicial</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">light_mode</i> <span>Seus roteiros</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">language</i> <span>Explorar</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">notifications</i> <span>Notificações</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">settings</i> <span>Configurações</span></a></li>
-                    <li><a href="#"><i class="material-symbols-outlined">account_circle</i> <span>Perfil</span></a></li>
-                </ul>
-                <a href="#" class="create-itinerary-btn">Criar novo roteiro</a>
-            </button>
-         </nav>
-
         <main class="main-content">
-          <div class="main-content_cont">
-          <div class="box"></div>
+        <div class="main-content_cont">
+          <div class="box">
+            <div class="listrecom"">
+                <div class="rj" >Rio de Janeiro</div>
+                <div class="sp"> São Paulo</div>
+                <div class="recife">Recife</div>
+                <div class="salvador">Salvador</div>
+                <div class="natal">Natal</div>
+                <div class="paris">Paris</div>
+                <div class="belem">Belém</div>
+                <div class="gramado">Gramado</div>
+            </div>
+                     </div>
 
           <h1 class="text_title">Criar novo roteiro</h1>      
           <h2 class="text_title"> Escolha seu destino </h2>
@@ -65,7 +52,8 @@
               <input type="text" class="search-box" placeholder="Ex. Rio, Gramado...">
               <a class=" search-tbn">
               </a>
-                </div> 
+                </div>
+                <h2 id="destinos" class="text_title">Destinos populares</h2> 
         </main>
 
         <script src="../js/script.js"></script>

@@ -142,10 +142,58 @@ body{
     overflow: hidden;
     flex-direction: column;
 }
-
+/*slide infinito imagem atrás da logo - inicio*/
 .but-int{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.create-itinerary-mob{
     display: none;
 }
+
+.img-destaque{
+    width: 95%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+.img-destaque_logo{
+    width: 25%;
+    display: block;
+    position: absolute;
+    bottom: auto;
+    z-index: 99;
+}
+
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    min-height: 200px;
+    max-height: 300px;
+}
+
+.slide {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 2s ease-in-out;
+    display: block;
+}
+
+.slide.zoom {
+    transform: scale(1.2);
+}
+
+.slide.reset {
+    transform: scale(1);
+}
+
+/*slide infito imagem atrás da logo - final*/
 
 .section-title {
     font-size: 1.5em;
@@ -351,21 +399,6 @@ body{
         transition: margin 0.4s;
         margin-left: 78px;
     }
-/*carrossel automatico------------------------------------------------------------------------------*/
-    .img-destaque{
-        width: 90%;
-        min-height: 200px;
-        max-height: 250px;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-    .but-int{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 
     .create-itinerary-mob{
         background-color:#ff4848;
@@ -450,79 +483,66 @@ body{
 .search-box {
     position: absolute;
     z-index: 2;
-    margin-top: 10px;
-    margin-left: 30px;
+    margin-top: 20px;
+    margin-left: 73px;
+    scale: 1.5;
   }
-
-/*Tela para smartphones*/
-.button-mobile{
-    display: none;
-}
-
-.menu-mobile{
-    display: none;
-}
-
-.button-mobile{
-	display: none; 
-	align-self: flex-start; 
-    align-items: center; 
-    margin: 16px;
-    background: transparent;
-    color: black; 
-    border:0;
-    position: fixed;
-}
-
-.menu-mobile_close{
-    padding: 30px;
-    width: 100%;
-}
-
-.menu-mobile{
-    display: none;
-}
-
-.menu-mobile-active{
-    width: 70vw;
-    height: 100vh;
-    background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
-}
-
-.menu-mobile-active button{
-    background: transparent;
-    border: none;
-   
-}
-
-.menu-mobile-active li{
-    list-style-type: none;
+  #destinos{
+    margin-top: 100px;
+  }
+  .listrecom{
     
-}
+    color: #f5f5f5;
+    display: grid;
+    grid-template-columns: repeat(4,200px);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    grid-template-rows: repeat(4,200px);
+    margin-top: 300px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
 
-.menu-mobile-active a{
-    text-decoration: none;
-    padding: 10px;
-    margin: 15px;
-    color: black;
-    display: flex;
-    align-items: center;
-       
-}
+
+  }
+  .rj{background-image: url('/src/assets/imagens/rio.jpeg');
+    padding: 5px;
+border-radius: 10px;
+background-size: cover;}
+   .sp{background-image: url(/src/assets/imagens/sao\ paulo.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .recife{    background-image: url(/src/assets/imagens/recife.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .salvador{background-image: url(/src/assets/imagens/salvador.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .natal{background-image: url(/src/assets/imagens/natal.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .paris{background-image: url(/src/assets/imagens/paris.jpeg);
+    padding: 5px;
+    border-radius: 10px;
+    background-size: cover;}
+   .belem{background-image: url(/src/assets/imagens/parabelem.png);
+    padding: 5px;border-radius: 10px;
+    background-size: cover;}
+   .gramado{background-image: url(/src/assets/imagens/gramado.jpeg);
+padding: 5px;
+border-radius: 10px;
+background-size: cover;}
+
 
 
 @media (max-width: 480px){
     .aside-container{
-        display: none;
+        width: 50px;
+        padding: 13px;
     }
 
     .button-mobile{
@@ -530,8 +550,9 @@ body{
     }
 
     .main-content{
-        margin-left: 6px;
-        margin-top: 20px;
+        margin-left: 60px;
+        margin-top: 5px;
+        padding: 5px;
     }
     #footer_content{
         grid-template-columns: repeat(1,1fr);
@@ -539,7 +560,7 @@ body{
         padding: 2rem 3rem;
      }
      .rodape{
-        margin-left: 0px;
+        margin-left: 20px;
      }
 }
 /* Fim tela para smartphones */
@@ -581,39 +602,7 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/*Carrocel imagem atrás da logo - inicio*/
-.img-destaque_logo{
-    width: 30%;
-    display: block;
-    position: absolute;
-    bottom: auto;
-    z-index: 99;
-}
 
-
-.slides {
-    display: flex;
-    transition: transform 1s ease-in-out;
-    min-height: 200px;
-    max-height: 250px;
-}
-
-.slide {
-    width: 100%;
-    object-fit: cover;
-    transition: transform 2s ease-in-out;
-    display: block;
-}
-
-.slide.zoom {
-    transform: scale(1.2);
-}
-
-.slide.reset {
-    transform: scale(1);
-}
-
-/*Carrocel imagem atrás da logo - final*/
 
 
 .card-img {
