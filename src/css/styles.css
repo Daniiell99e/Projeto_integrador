@@ -547,6 +547,90 @@ body{
     font-weight: 100;
 }
 /* codigo Footer - fim */
+/* Tela de 1366px por 768px */
+@media (width <= 1366px){
+    .box {
+        width: 78.5vw;
+        height: 96vh;
+        background-color: #EBEBEB;
+        border-radius: 35px;
+        z-index: 1;
+         }
+    .grade_img{
+            display: grid;
+            grid-template-columns: repeat(4,220px);
+            margin-top: 40px;
+            margin-left: 50px;
+            column-gap: 25px;
+            row-gap: 25px;
+        
+          }  
+          .buenos h1{
+            margin-top: -170px;
+            margin-left: 53px;
+        
+        
+         }
+         .gramado h1{
+            margin-top: -170px;
+            margin-left: 70px;
+        
+         }
+         .natal h1{
+            margin-top: -170px;
+            margin-left: 85px;
+        
+         }
+        .belem h1{
+            margin-top: -170px;
+            margin-left: 85px;
+        
+        }
+        .paris h1{
+            margin-top: -160px;
+            margin-left: 85px;
+        
+        }
+        .recife h1{
+            margin-top: -160px;
+            margin-left: 83px;
+        
+        
+        }
+        .rio h1{
+            margin-top: -160px;
+            margin-left: 50px;
+        
+        
+        }
+        .salvador h1{
+            margin-top: -160px;
+            margin-left: 73px;
+        
+        
+        }              
+
+}
+/* tela hd 1280x720px */
+@media (width <= 1280px){
+    .box {
+        width: 78.1vw;
+        height: 96vh;
+        background-color: #EBEBEB;
+        border-radius: 35px;
+        z-index: 1;
+         } 
+    .grade_img{
+            display: grid;
+            grid-template-columns: repeat(4,220px);
+            margin-top: 40px;
+            margin-left: 25px;
+            column-gap: 25px;
+            row-gap: 25px;
+        
+          }        
+
+}
 
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
