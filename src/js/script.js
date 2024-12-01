@@ -18,6 +18,7 @@ list.forEach((item) =>
 //trocar a cor do link quando clicar fim
 
 // Esse é o javascript do carrocel - inicio
+
 nextBtn.addEventListener('click', () => {
     const maxScroll = (carousel.children.length - visibleItems) * itemWidth;
 
@@ -37,7 +38,123 @@ prevBtn.addEventListener('click', () => {
             scrollPosition = Math.max(scrollPosition - itemWidth, 0);
             carousel.style.transform = `translateX(-${scrollPosition}px)`;
         });
-//carrocel - final
+      
+//----------------------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.carousel-container');
+    const slides = document.querySelectorAll('.slidecarro');
+    const dotsContainer = document.querySelector('.dots-container');
+    
+    let currentIndex = 0;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let isDragging = false;
+    let animationID = 0;
+    
+    // Touch events
+    carousel.addEventListener('touchstart', touchStart);
+    carousel.addEventListener('touchmove', touchMove);
+    carousel.addEventListener('touchend', touchEnd);
+
+    // Mouse events (para teste no desktop)
+    carousel.addEventListener('mousedown', touchStart);
+    carousel.addEventListener('mousemove', touchMove);
+    carousel.addEventListener('mouseup', touchEnd);
+    carousel.addEventListener('mouseleave', touchEnd);
+
+    // Prevenir comportamento padrão de arrastar imagem
+    carousel.addEventListener('dragstart', (e) => e.preventDefault());
+
+    // Botões de navegação
+    prevBtn.addEventListener('click', () => navigate('prev'));
+    nextBtn.addEventListener('click', () => navigate('next'));
+
+    function touchStart(event) {
+        startX = getPositionX(event);
+        isDragging = true;
+        animationID = requestAnimationFrame(animation);
+        carousel.style.cursor = 'grabbing';
+    }
+
+    function touchMove(event) {
+        if (!isDragging) return;
+        
+        const currentX = getPositionX(event);
+        currentTranslate = prevTranslate + currentX - startX;
+    }
+
+    function touchEnd() {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        carousel.style.cursor = 'grab';
+
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Determinar se houve swipe significativo
+        if (Math.abs(movedBy) > 100) {
+            if (movedBy > 0) {
+                navigate('prev');
+            } else {
+                navigate('next');
+            }
+        } else {
+            // Voltar para a posição original se o movimento foi pequeno
+            goToSlide(currentIndex);
+        }
+    }
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+
+    function animation() {
+        setSliderPosition();
+        if (isDragging) requestAnimationFrame(animation);
+    }
+
+    function setSliderPosition() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function navigate(direction) {
+        const slideWidth = items[0].offsetWidth + 20; // 20 é o gap entre slides
+        
+        if (direction === 'prev' && currentIndex > 0) {
+            currentIndex--;
+        } else if (direction === 'next' && currentIndex < items.length - 1) {
+            currentIndex++;
+        }
+
+        goToSlide(currentIndex);
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        const slideWidth = items[0].offsetWidth + 20;
+        currentTranslate = prevTranslate = -slideWidth * currentIndex;
+        
+        carousel.style.transition = 'transform 0.3s ease-out';
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+
+        // Atualizar estado dos botões
+        updateNavigationButtons();
+    }
+
+    
+
+    // Ajustar carrossel quando a janela é redimensionada
+    window.addEventListener('resize', () => {
+        goToSlide(currentIndex);
+    });
+
+    // Inicializar estado dos botões
+    updateNavigationButtons();
+});
+        
+//carrocel final - 
+
 
 //slide inicio
         let currentIndex = 0;

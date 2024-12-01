@@ -205,7 +205,7 @@ body{
     margin-bottom: 16px;
 }
 
-.destinos-cidades{
+.carroselcont{
     background-color: rgba(0, 0, 0, 0.2);
     width: auto;
     padding: 0.5em 1.5em;
@@ -234,12 +234,187 @@ body{
     font-size: 0.7em;
     text-align: center;
 }
+.carroselcont {
+    display: flex;
+    transition: transform 0.3s ease-out;
+    touch-action: pan-x;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
+.slidecarro {
+    min-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.destino-cidades_card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+.nome-cidade {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+
+    .dot {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.dot.active {
+    background: #333;
+}
+ 
 /* carrocel - final */
+
 
 #open_btn {
     display: none; /* Esconde o botão lateral de expanção do menu em telas maiores */
 }
+/* começo da tela criar novo roteiro */
+.box {
+    width: 84.5vw;
+    height: 96vh;
+    background-color: #EBEBEB;
+    border-radius: 35px;
+    z-index: 1;
+}
+.text_title {
+    position: relative;
+    z-index: 2;
+    color: #EA2B59;
+    margin-top: 19px;
+    margin-left: 33px;
+    font-size: 25;
+}
+.text {
+    position: relative;
+    z-index: 2;
+    color: #FF5981;
+    margin-top: 30px;
+    margin-left: 33px;
+}
+.text1 {
+    position: relative;
+    z-index: 2;
+    color: #FF5981;
+    margin-top: 100px;
+    margin-left: 33px;
+}
+.search-box {
+    position: absolute;
+    z-index: 2;
+    margin-top: 20px;
+    margin-left: 33px;
+
+    background: #fff;
+    height: 40px;
+    width: 350px;
+    padding-left: 50px;
+    border-radius: 7px;
+    border-color: #cacaca;
+    outline-color: #EA2B59;
+  }
+
+  .grade_img{
+    display: grid;
+    grid-template-columns: repeat(4,250px);
+    margin-top: 80px;
+    margin-left: 50px;
+    column-gap: 25px;
+    row-gap: 25px;
+
+  }
+  .grade_img :hover{
+    transform: scale(1.01);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .grade_img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+  }
+ .grade_img h1{    
+    position: absolute;
+    color: white;
+    font-size: large;
+ }
+
+ .buenos h1{
+    margin-top: -190px;
+    margin-left: 65px;
+
+
+ }
+ .gramado h1{
+    margin-top: -190px;
+    margin-left: 80px;
+
+ }
+ .natal h1{
+    margin-top: -190px;
+    margin-left: 100px;
+
+ }
+.belem h1{
+    margin-top: -190px;
+    margin-left: 100px;
+
+}
+.paris h1{
+    margin-top: -180px;
+    margin-left: 100px;
+
+}
+.recife h1{
+    margin-top: -180px;
+    margin-left: 100px;
+
+
+}
+.rio h1{
+    margin-top: -180px;
+    margin-left: 60px;
+
+
+}
+.salvador h1{
+    margin-top: -180px;
+    margin-left: 85px;
+
+
+}
+
+ 
+  
+    
+
+
+
+
+
+/* Fim da tela criar novo roteiro*/
+
 /* codigo Footer - inicio */
 :root{
     --color-neutral-0: #0e0c0c;
@@ -372,6 +547,90 @@ body{
     font-weight: 100;
 }
 /* codigo Footer - fim */
+/* Tela de 1366px por 768px */
+@media (width <= 1366px){
+    .box {
+        width: 78.5vw;
+        height: 96vh;
+        background-color: #EBEBEB;
+        border-radius: 35px;
+        z-index: 1;
+         }
+    .grade_img{
+            display: grid;
+            grid-template-columns: repeat(4,220px);
+            margin-top: 40px;
+            margin-left: 50px;
+            column-gap: 25px;
+            row-gap: 25px;
+        
+          }  
+          .buenos h1{
+            margin-top: -170px;
+            margin-left: 53px;
+        
+        
+         }
+         .gramado h1{
+            margin-top: -170px;
+            margin-left: 70px;
+        
+         }
+         .natal h1{
+            margin-top: -170px;
+            margin-left: 85px;
+        
+         }
+        .belem h1{
+            margin-top: -170px;
+            margin-left: 85px;
+        
+        }
+        .paris h1{
+            margin-top: -160px;
+            margin-left: 85px;
+        
+        }
+        .recife h1{
+            margin-top: -160px;
+            margin-left: 83px;
+        
+        
+        }
+        .rio h1{
+            margin-top: -160px;
+            margin-left: 50px;
+        
+        
+        }
+        .salvador h1{
+            margin-top: -160px;
+            margin-left: 73px;
+        
+        
+        }              
+
+}
+/* tela hd 1280x720px */
+@media (width <= 1280px){
+    .box {
+        width: 78.1vw;
+        height: 96vh;
+        background-color: #EBEBEB;
+        border-radius: 35px;
+        z-index: 1;
+         } 
+    .grade_img{
+            display: grid;
+            grid-template-columns: repeat(4,220px);
+            margin-top: 40px;
+            margin-left: 25px;
+            column-gap: 25px;
+            row-gap: 25px;
+        
+          }        
+
+}
 
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
@@ -414,6 +673,7 @@ body{
         margin-top: -30px;
         z-index: 9;
     }
+   
 
 
 /* botão para expandir menu lateral - inicio */
@@ -458,87 +718,45 @@ body{
 .rodape{
     margin-left: 72px;
 }
+/* Resposividade para tablets da tela de criação de roteiros*/
+.grade_img{
+    display: grid;
+    grid-template-columns: repeat(2,250px);
+    margin-top: 40px;
+}
+.buenos h1{
+    margin-top: -160px;
+    margin-left: 65px;
+
+
+ }
+ .gramado h1{
+    margin-top: -160px;
+    margin-left: 80px;
+
+ }
+ .rio h1{
+    margin-top: -160px;
+    margin-left: 60px;
+
+
+}
+.salvador h1{
+    margin-top: -160px;
+    margin-left: 85px;
+
+
+}
+.prev-btn, .next-btn {
+    display: none;
+ }
 
 }
 /* Fim tela para tabletes */
 
-    /* testes: Criar novo roteiro */
-.box {
-    width: 84.5vw;
-    height: 96vh;
-    background-color: #EBEBEB;
-    border-radius: 20px;
-    position: absolute;
-    z-index: 1;
-}
-
-.text_title {
-    position: relative;
-    z-index: 2;
-    color: #EA2B59;
-    margin-top: 25px;
-    margin-left: 30px;
-}
-
-.search-box {
-    position: absolute;
-    z-index: 2;
-    margin-top: 20px;
-    margin-left: 73px;
-    scale: 1.5;
-  }
-  #destinos{
-    margin-top: 100px;
-  }
-  .listrecom{
-    
-    color: #f5f5f5;
-    display: grid;
-    grid-template-columns: repeat(4,200px);
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    grid-template-rows: repeat(4,200px);
-    margin-top: 300px;
-    margin-left: 50px;
-    margin-right: 50px;
-    text-align: center;
 
 
-  }
-  .rj{background-image: url('/src/assets/imagens/rio.jpeg');
-    padding: 5px;
-border-radius: 10px;
-background-size: cover;}
-   .sp{background-image: url(/src/assets/imagens/sao\ paulo.jpeg);
-    padding: 5px;
-    border-radius: 10px;
-    background-size: cover;}
-   .recife{    background-image: url(/src/assets/imagens/recife.jpeg);
-    padding: 5px;
-    border-radius: 10px;
-    background-size: cover;}
-   .salvador{background-image: url(/src/assets/imagens/salvador.jpeg);
-    padding: 5px;
-    border-radius: 10px;
-    background-size: cover;}
-   .natal{background-image: url(/src/assets/imagens/natal.jpeg);
-    padding: 5px;
-    border-radius: 10px;
-    background-size: cover;}
-   .paris{background-image: url(/src/assets/imagens/paris.jpeg);
-    padding: 5px;
-    border-radius: 10px;
-    background-size: cover;}
-   .belem{background-image: url(/src/assets/imagens/parabelem.png);
-    padding: 5px;border-radius: 10px;
-    background-size: cover;}
-   .gramado{background-image: url(/src/assets/imagens/gramado.jpeg);
-padding: 5px;
-border-radius: 10px;
-background-size: cover;}
-
-
-
+/*Começo de tela para celulares */
 @media (max-width: 480px){
     .aside-container{
         width: 50px;
@@ -559,9 +777,69 @@ background-size: cover;}
         gap:2rem;
         padding: 2rem 3rem;
      }
+     /* footer celular*/
      .rodape{
         margin-left: 20px;
      }
+    /* criar novo roteiro tela 1 celular*/
+    
+   .search-box{
+    width: 250px;
+   } 
+   .grade_img{
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    margin-left: 15px;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-right: 25px;
+    
+   }
+   .box{
+    width: 99%;
+   }
+   .buenos h1{
+    margin-top: -90px;
+    margin-left: 14px;
+
+
+ }
+ .gramado h1{
+    margin-top: -90px;
+    margin-left: 30px;
+ }
+ .natal h1{
+    margin-top: -110px;
+    margin-left: 50px;
+ }
+.belem h1{
+    margin-top: -110px;
+    margin-left: 50px;
+}
+.paris h1{
+    margin-top: -105px;
+    margin-left: 50px;
+}
+.recife h1{
+    margin-top: -105px;
+    margin-left: 45px;
+
+}
+.rio h1{
+    margin-top: -90px;
+    margin-left: 10px;
+
+
+}
+.salvador h1{
+    margin-top: -90px;
+    margin-left: 30px;
+
+}
+.prev-btn, .next-btn {
+    display: none;
+ }
+
 }
 /* Fim tela para smartphones */
 
@@ -612,6 +890,7 @@ background-size: cover;}
     border-radius: 50%; /* Apenas uma borda arredondada opcional */
    
   }
+  
  
 /* codigo carousel - final */
 
