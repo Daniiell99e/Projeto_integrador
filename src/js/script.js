@@ -206,7 +206,7 @@ function selectCity(city, event) {
     
     try {
       localStorage.setItem('dadosViagem', JSON.stringify(destination));
-      window.location.href = 'seusRoteiros.html';
+      window.location.href = '../pages/seusRoteiros.html';
     } catch (error) {
       console.error('Erro ao salvar dados:', error);
       alert('Ocorreu um erro ao salvar os dados. Por favor, tente novamente.');
