@@ -499,6 +499,331 @@ body{
 }
 /* codigo Footer - fim */
 
+
+
+/*---------------------------------------------------------------------------------------------------------*/
+/*Novos estilos*/
+
+button {
+    background-color: #f06292;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .destination, .hotel {
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .selected {
+    border: 2px solid #f06292;
+    background-color: #ffe4e1;
+  }
+
+.hidden {
+    display: none;
+  }
+
+  .step.hidden {
+    display: none;
+  }
+  
+  .hotel-list {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .hotel-card,
+  .hotel-details-card,
+  .hotel-confirmation-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .hotel-card img,
+  .hotel-details-card img,
+  .hotel-confirmation-card img {
+    width: 100%;
+    height: auto;
+  }
+
+/*--------------------------------------------------------------------------------------------------*/
+/*Tela SeusRoteiros*/
+.main-content_kanban {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffe0f0;
+    overflow-x: auto;
+    border-radius: 20px;
+  }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tabs button {
+    background-color: #f8bbd0;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .tabs .active {
+    background-color: #e91e63;
+    color: white;
+  }
+  
+  .kanban {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .day-column {
+    background-color: #ffc1e3;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+  }
+  
+  .day-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .task-card {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .add-task {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  #back-btn {
+    background-color: #f06292;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  #back-btn:hover {
+    background-color: #e91e63;
+  }
+  
+  
+  
+  
+  /* Estilos do Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .close-modal:hover {
+    color: #000;
+  }
+  
+  /* Estilos do Formulário */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Estilos dos Cards de Passeio */
+  .tour-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #4CAF50;
+  }
+  
+  .tour-content h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  
+  .tour-details {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .tour-details i {
+    margin-right: 5px;
+  }
+  
+  .location {
+    color: #666;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .description {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .category {
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .tour-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .edit-btn,
+  .remove-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .edit-btn {
+    background-color: #ffc107;
+    color: #000;
+  }
+  
+  .remove-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .edit-btn:hover {
+    background-color: #ffb300;
+  }
+  
+  .remove-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Botões do formulário */
+  .save-btn,
+  .cancel-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .save-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .save-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #5a6268;
+  }
+/*---------------------------------------------------------------------------------------------------------*/
+.container_q {
+    height: 140vh;
+}
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
     .aside-container{
