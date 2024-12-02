@@ -205,7 +205,7 @@ body{
     margin-bottom: 16px;
 }
 
-.destinos-cidades{
+.carroselcont{
     background-color: rgba(0, 0, 0, 0.2);
     width: auto;
     padding: 0.5em 1.5em;
@@ -234,8 +234,57 @@ body{
     font-size: 0.7em;
     text-align: center;
 }
+.carroselcont {
+    display: flex;
+    transition: transform 0.3s ease-out;
+    touch-action: pan-x;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
+.slidecarro {
+    min-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.destino-cidades_card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+.nome-cidade {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+
+    .dot {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.dot.active {
+    background: #333;
+}
+ 
 /* carrocel - final */
+
 
 #open_btn {
     display: none; /* Esconde o botão lateral de expanção do menu em telas maiores */
@@ -498,6 +547,90 @@ body{
     font-weight: 100;
 }
 /* codigo Footer - fim */
+/* Tela de 1366px por 768px */
+@media (width <= 1366px){
+    .box {
+        width: 78.5vw;
+        height: 96vh;
+        background-color: #EBEBEB;
+        border-radius: 35px;
+        z-index: 1;
+         }
+    .grade_img{
+            display: grid;
+            grid-template-columns: repeat(4,220px);
+            margin-top: 40px;
+            margin-left: 50px;
+            column-gap: 25px;
+            row-gap: 25px;
+        
+          }  
+          .buenos h1{
+            margin-top: -170px;
+            margin-left: 53px;
+        
+        
+         }
+         .gramado h1{
+            margin-top: -170px;
+            margin-left: 70px;
+        
+         }
+         .natal h1{
+            margin-top: -170px;
+            margin-left: 85px;
+        
+         }
+        .belem h1{
+            margin-top: -170px;
+            margin-left: 85px;
+        
+        }
+        .paris h1{
+            margin-top: -160px;
+            margin-left: 85px;
+        
+        }
+        .recife h1{
+            margin-top: -160px;
+            margin-left: 83px;
+        
+        
+        }
+        .rio h1{
+            margin-top: -160px;
+            margin-left: 50px;
+        
+        
+        }
+        .salvador h1{
+            margin-top: -160px;
+            margin-left: 73px;
+        
+        
+        }              
+
+}
+/* tela hd 1280x720px */
+@media (width <= 1280px){
+    .box {
+        width: 78.1vw;
+        height: 96vh;
+        background-color: #EBEBEB;
+        border-radius: 35px;
+        z-index: 1;
+         } 
+    .grade_img{
+            display: grid;
+            grid-template-columns: repeat(4,220px);
+            margin-top: 40px;
+            margin-left: 25px;
+            column-gap: 25px;
+            row-gap: 25px;
+        
+          }        
+
+}
 
 
 
@@ -865,6 +998,7 @@ button {
         margin-top: -30px;
         z-index: 9;
     }
+   
 
 
 /* botão para expandir menu lateral - inicio */
@@ -938,12 +1072,12 @@ button {
 
 
 }
+.prev-btn, .next-btn {
+    display: none;
+ }
 
 }
 /* Fim tela para tabletes */
-
-
-
 
 
 
@@ -1027,7 +1161,9 @@ button {
     margin-left: 30px;
 
 }
-
+.prev-btn, .next-btn {
+    display: none;
+ }
 
 }
 /* Fim tela para smartphones */
@@ -1079,6 +1215,7 @@ button {
     border-radius: 50%; /* Apenas uma borda arredondada opcional */
    
   }
+  
  
 /* codigo carousel - final */
 
