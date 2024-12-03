@@ -969,6 +969,7 @@ button {
 
     .aside-lista li > a > span{
         opacity: 0;
+        display: none;
     }
 
     .create-itinerary-btn{
@@ -1030,9 +1031,10 @@ button {
     #sidebar.open-sidebar {
         min-width: 250px;
     }
-    
+    /*-------------------------------------------------------------------------------------------------------------*/
     #sidebar.open-sidebar li a span {
         opacity: 100%;
+        display: inline-block;
     }
 /* botão para expandir menu lateral - final*/
  /*Responsividade do footer - início*/

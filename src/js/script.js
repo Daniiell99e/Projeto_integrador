@@ -2,7 +2,11 @@
 let selectedCity = '';
 let selectedHotel = '';
 
-
+// icone de clique para expandir menu lateral - inicio
+document.getElementById('open_btn').addEventListener('click', function () {
+  document.getElementById('sidebar').classList.toggle('open-sidebar');
+});
+// icone de clique para expandir menu lateral - final
 
 // Função para selecionar uma cidade e armazená-la no LocalStorage
 function selectCity(city, event) {
@@ -688,11 +692,7 @@ document.addEventListener('DOMContentLoaded', function() {
         startSlider();
     // slide - final
 
-// icone de clique para expandir menu lateral - inicio
-    document.getElementById('open_btn').addEventListener('click', function () {
-        document.getElementById('sidebar').classList.toggle('open-sidebar');
-    });
-// icone de clique para expandir menu lateral - final
+
 
 
 
