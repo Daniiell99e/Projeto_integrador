@@ -47,34 +47,36 @@
 
         <main class="main-content container_q">
             <!-- Página 1: Escolha de destino -->
-            <div class="box" id="page-1">
+            <div class="box content-cr" id="page-1">
             <h1 class="text_title">Criar novo roteiro</h1>
             <h2 class="text"> Escolha seu destino </h2>
             <input type="text" class="search-box" placeholder="Ex. Rio, Gramado..." aria-label="Barra de pesquisa de destino">
             <h2 class="text1"> Destinos populares</h2>
-            <div class="grade_img">
+            <div class="grade_img destinations">
                 
 
-                <div class="buenos destination" onclick="selectCity('Buenos Aires', event)" loading="lazy" aria-label="Selecionar Buenos Aires"><img src="../assets/imagens/bueno.jpeg" alt="Buenos Aires" > <h1>Buenos Aires</h1></div>
+                <div class="buenos destination" onclick="selectCity('Buenos Aires', event)" loading="lazy" aria-label="Selecionar Buenos Aires"><h1>Buenos Aires</h1><img src="../assets/imagens/bueno.jpeg" alt="Buenos Aires" > </div>
 
-                <div class="gramado destination" onclick="selectCity('Gramando', event)" loading="lazy" aria-label="Selecionar Gramando"><img src="../assets/imagens/gramado.jpeg" alt="Gramado"><h1>Gramado</h1></div>
+                <div class="gramado destination" onclick="selectCity('Gramando', event)" loading="lazy" aria-label="Selecionar Gramando"><h1>Gramado</h1><img src="../assets/imagens/gramado.jpeg" alt="Gramado"></div>
 
-                <div class="natal destination" onclick="selectCity('Natal', event)" loading="lazy" aria-label="Selecionar Natal"><img src="../assets/imagens/natal.jpeg" alt="Natal">
-                <h1>Natal</h1></div>
+                <div class="natal destination" onclick="selectCity('Natal', event)" loading="lazy" aria-label="Selecionar Natal"><h1>Natal</h1><img src="../assets/imagens/natal.jpeg" alt="Natal">
+                </div>
 
-                <div class="belem destination" onclick="selectCity('Belém', event)" loading="lazy" aria-label="Selecionar Belém"><img src="../assets/imagens/parabelem.png" alt="Belém"><h1>Belém</h1></div>
+                <div class="belem destination" onclick="selectCity('Belém', event)" loading="lazy" aria-label="Selecionar Belém"><h1>Belém</h1><img src="../assets/imagens/parabelem.png" alt="Belém"></div>
 
-                <div class="paris destination" onclick="selectCity('Paris', event)" loading="lazy" aria-label="Selecionar Paris"><img src="../assets/imagens/paris.jpeg" alt="Paris"><h1>paris</h1></div>
+                <div class="paris destination" onclick="selectCity('Paris', event)" loading="lazy" aria-label="Selecionar Paris"><h1>Paris</h1><img src="../assets/imagens/paris.jpeg" alt="Paris"></div>
 
-                <div class="recife destination" onclick="selectCity('Recife', event)" loading="lazy" aria-label="Selecionar Recife"><img src="../assets/imagens/recife.jpeg" alt="Recife"><h1>Recife</h1></div>
+                <div class="recife destination" onclick="selectCity('Recife', event)" loading="lazy" aria-label="Selecionar Recife"><h1>Recife</h1><img src="../assets/imagens/recife.jpeg" alt="Recife"></div>
 
-                <div class="rio destination" onclick="selectCity('Rio de Janeiro', event)" loading="lazy" aria-label="Selecionar Rio de Janeiro"><img src="../assets/imagens/rio.jpeg" alt="Rio de Janeiro"><h1>Rio de Janeiro</h1></div>
+                <div class="rio destination" onclick="selectCity('Rio de Janeiro', event)" loading="lazy" aria-label="Selecionar Rio de Janeiro"><h1>Rio de Janeiro</h1><img src="../assets/imagens/rio.jpeg" alt="Rio de Janeiro"></div>
 
-                <div class="salvador destination" onclick="selectCity('Salvador', event)" loading="lazy" aria-label="Selecionar Salvador"><img src="../assets/imagens/salvador.jpeg" alt="Salvador"><h1>Salvador</h1></div>
+                <div class="salvador destination" onclick="selectCity('Salvador', event)" loading="lazy" aria-label="Selecionar Salvador"><h1>Salvador</h1><img src="../assets/imagens/salvador.jpeg" alt="Salvador"></div>
 
                 
             </div>
-            <button id="continue-btn" onclick="showDatesPage()" disabled aria-label="Continuar para escolha de datas">Continuar</button>
+                <div class="continue-btn-cr">
+                    <button class="continue-cr" id="continue-btn" onclick="showDatesPage()" disabled aria-label="Continuar para escolha de datas">Continuar</button>
+                </div>
             </div>
 
 
