@@ -508,7 +508,7 @@ body{
 .continue-btn-cr{
     display: flex;
     justify-content: flex-end;
-    margin-right: 6.2rem;
+    margin-right: 10%;
 }
 .continue-cr {
     background-color: #f06292;
@@ -935,7 +935,12 @@ body{
 
   .destination img {
     height: 8rem;
+    width: 100%;
   }
+
+  .continue-btn-cr{
+    margin-right: 10%;
+}
 
 .prev-btn, .next-btn {
     display: none;
