@@ -956,11 +956,13 @@ body{
 
 .text_title {
     font-size: 30px;
+    margin-top: 9px;
 }
 .text {
     font-size: 20px;
 }
 .text1 {
+    margin-top: 9px;
     font-size: 28px;
 }
 .search-box {
