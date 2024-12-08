@@ -81,7 +81,8 @@
 
 
             <!-- Página 2: Inserção de datas -->
-            <div id="page-2" class="hidden">
+            <div id="page-2" class="hidden content-cr box-cr">
+                <h1 class="text_title">Criar novo roteiro</h1>
                 <h3>Detalhes da Viagem</h3>
                 <label for="city-name">Destino:</label>
                 <input type="text" id="city-name" readonly>
@@ -89,8 +90,10 @@
                 <input type="date" id="start-date" oninput="checkDates()">
                 <label for="end-date">Data de Fim:</label>
                 <input type="date" id="end-date" oninput="checkDates()">
-                <button id="back-btn" onclick="goBack()">Voltar</button>
-                <button id="hotels-btn" onclick="showHotelsPage()" disabled>Selecionar Hotel</button>
+                <div class="butons">
+                    <button class="back-btn" id="back-btn" onclick="goBack()">Voltar</button>
+                    <button class="continue-cr" id="hotels-btn" onclick="showHotelsPage()" disabled>Selecionar Hotel</button>
+                </div>
             </div>
 
             <!-- Página 3: Escolha de hotéis -->

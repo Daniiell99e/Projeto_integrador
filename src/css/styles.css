@@ -297,22 +297,20 @@ body{
 /* começo da tela criar novo roteiro ---------------------------------------------------------------------*/
 .text_title {
     color: #EA2B59;
-    margin-top: 19px;
-    margin-left: 33px;
+    margin-top: 9px;
     font-size: 35px;
 }
 .text {
     color: #FF5981;
-    margin-top: 10px;
     margin-left: 33px;
 }
 .text1 {
     color: #FF5981;
-    margin: 50px 0 20px 33px;
+    margin: 30px 0 20px 33px;
     font-size: 35px;
 }
 .search-box {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 33px;
 
     background: #fff;
@@ -334,11 +332,13 @@ body{
 .destinations {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    width: 90%;
+    gap: 15px;
+    width: 60%;
+    column-gap: 0;
   }
 
 .destination {
+    width: 90%;
     position: relative;
     padding: 0;
     max-height: 12.5rem;
@@ -364,6 +364,49 @@ body{
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   }
 
+
+.box-cr{
+  display: flex;
+  flex-direction: column;
+}
+
+.box-cr label, input{
+  width: 40%;
+  padding: 10px 5px 10px 5px;
+  border-radius: 5px;
+}
+
+.box-cr input{
+  border: 1px solid #a8a8a8;
+  outline: none;
+}
+
+.box-cr input[type="date"]{
+  border: 1px solid #a8a8a8;
+  outline: none;
+}
+
+.butons{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  margin-top: 25vh;
+}
+
+.back-btn {
+  background-color: #f06292;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.back-btn:hover {
+  background-color: #e91e63;
+}
 
 
 
@@ -633,23 +676,6 @@ body{
     cursor: pointer;
     font-size: 20px;
   }
-  
-  #back-btn {
-    background-color: #f06292;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 10px;
-    margin-bottom: 15px;
-  }
-  
-  #back-btn:hover {
-    background-color: #e91e63;
-  }
-  
-  
-  
   
   /* Estilos do Modal */
   .modal {
