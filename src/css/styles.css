@@ -982,6 +982,8 @@ body{
 
   .destination {
     width: 100%;
+    min-height: 7rem;
+    max-height: 10rem;
   }
 
   .destination img {
