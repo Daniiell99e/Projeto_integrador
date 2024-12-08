@@ -967,10 +967,21 @@ body{
     width: 260px;
   }
 
+.content-cr{
+  width: 100%;
+}
+
 .destinations {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Padrão: 2 colunas */
-    gap: 20px;
+    gap: 15px;
+    column-gap: 25px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .destination {
+    width: 100%;
   }
 
   .destination img {
