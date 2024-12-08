@@ -293,7 +293,8 @@ body{
 #open_btn {
     display: none; /* Esconde o botão lateral de expanção do menu em telas maiores */
 }
-/* começo da tela criar novo roteiro */
+
+/* começo da tela criar novo roteiro ---------------------------------------------------------------------*/
 .text_title {
     color: #EA2B59;
     margin-top: 19px;
@@ -366,7 +367,7 @@ body{
 
 
 
-/* Fim da tela criar novo roteiro*/
+/* Fim da tela criar novo roteiro----------------------------------------------------------------*/
 
 /* codigo Footer - inicio */
 :root{
@@ -926,6 +927,19 @@ body{
     margin-left: 72px;
 }
 /* Resposividade para tablets da tela de criação de roteiros*/
+
+.text_title {
+    font-size: 30px;
+}
+.text {
+    font-size: 20px;
+}
+.text1 {
+    font-size: 28px;
+}
+.search-box {
+    width: 260px;
+  }
 
 .destinations {
     display: grid;
