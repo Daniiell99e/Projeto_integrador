@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pagina do Roteiro</title>
+	<style type="text/css">
+		*{
+			border: 0;
+			margin: 0;
+			padding: 0;
+
+		}
+		html{
+			font-size: 62,5%;
+		}
+		.container{
+			display: block;
+			background-color: #DCDCDC;
+			width: 90%;
+			height: 90%;
+			border-radius: 10px;
+			position: fixed;
+			border-radius: 20px;
+			margin-top: 2%;
+			margin-left: 5%;
+			margin-right: auto ;
+		
+		}
+		header{
+			width: 2%;
+			height: 100%;
+			background-color: #DC143C;
+			position: fixed;
+		}
+		h1{
+			font-family: arial;
+			font-size: 1.8rem;
+			color: #DC143C;
+			padding: 3%;
+			margin: 0;
+		}
+		h2{
+			font-family: arial;
+			text-align: justify;
+			font-size: 1.1rem;
+			color: #DC143C;
+			padding-top: 2px;
+			padding-left: 3%;
+			margin: 0;
+		}
+		input{
+			font-family: sons-serif;
+			font-size: 1.8rem;
+			padding: 5px;
+			border-radius: 10px;
+			margin-left: 5%;
+			width: 35%;
+		}
+		#time{
+			color: #DC143C;
+		}
+		label{
+			color: #DC143C;
+			font-family: arial;
+			font-size: 1.0rem;
+			margin-left: 4%;
+
+		}
+		button{
+			color: #fff;
+			background-color: #DC143C;
+			margin-left: 4%;
+			border-radius: 10px;
+			font-family: arial;
+			font-size: 1.2rem;
+			width: 25%;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+
+
+
+
+
+	</style>
+</head>
+<header></header>
+<body>
+	<section class="container">
+		<h1>Criar novo roteiro</h1>
+		<h2>Informe os horários de inicio e fim dos seus passeios durante todos os dias</h2>
+		<br>
+		<label for="time">Hora de inicio dos passeios</label><br>
+		<br><br>
+		<input  placeholder  = "HH:MM"  type="time" id="time" >
+		<br><br>
+		<label for="time"> Hora do fim dos passeios</label><br>
+		<br><br>
+		<input type="time" ID="time" placeholder="HH:MM">
+		<br><br><br><br><br>
+		<button>Criar roteiro</button>
+
+
+
+	</section>
+
+</body>
+</html>
