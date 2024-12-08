@@ -974,8 +974,8 @@ body{
 .destinations {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Padrão: 2 colunas */
-    gap: 15px;
-    column-gap: 25px;
+    gap: 10px;
+    column-gap: 10px;
     width: 80%;
     margin: 0 auto;
   }
