@@ -8,30 +8,7 @@ document.getElementById('open_btn').addEventListener('click', function () {
 });
 // icone de clique para expandir menu lateral - final
 
-// Função para selecionar uma cidade e armazená-la no LocalStorage
-function selectCity(city, event) {
-    selectedCity = city;
-    // Remove a classe 'selected' de todas as cidades para destacar a selecionada
-    document.querySelectorAll('.destination').forEach((el) => el.classList.remove('selected'));
-    // Adiciona a classe 'selected' à cidade clicada
-    event.target.closest('.destination').classList.add('selected');
-    // Habilita o botão de continuar
-    const button = document.getElementById('continue-btn');
-    button.disabled = false;
-    // Armazena a cidade selecionada no LocalStorage
-    localStorage.setItem('selectedCity', city);
-  }
-  
-  //------------------------------------Função para destacar o destino selecionado ------------------------------
-  
-  // Função para mostrar a página de datas e carregar a cidade selecionada
-  function showDatesPage() {
-    document.getElementById('city-name').value = selectedCity;
-    document.getElementById('page-1').classList.add('hidden');
-    document.getElementById('page-2').classList.remove('hidden');
-  }
-  
-  //-------------------------------------Botão voltar a etapa anterior----------------------------------------------------------
+//-------------------------------------Botão voltar a etapa anterior----------------------------------------------------------
   
   // Função para voltar à página anterior
   function goBack() {
@@ -60,110 +37,166 @@ function selectCity(city, event) {
     document.getElementById('page-3').classList.add('hidden');
     document.getElementById('page-4').classList.remove('hidden');
   }
-  
-  //----------------------------------Função para validar datas--------------------------------------
-  
-  // Função para validar datas e habilitar o botão para seleção de hotéis
-  function checkDates() {
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
-    const hotelsButton = document.getElementById('hotels-btn');
-  
-    if (startDate && endDate) {
-      if (new Date(startDate) > new Date(endDate)) {
-        alert('A data de início não pode ser maior que a data de fim.');
-        hotelsButton.disabled = true;
-      } else {
-        hotelsButton.disabled = false;
-      }
-    } else {
+
+//-------------------------------------------------------------------------------------------------------
+
+// Função para selecionar uma cidade e armazená-la no LocalStorage
+function selectCity(city, event) {
+  selectedCity = city;
+
+  // Remove a classe 'selected' de todas as cidades para destacar a selecionada
+  document.querySelectorAll('.destination').forEach((el) => el.classList.remove('selected'));
+
+  // Adiciona a classe 'selected' à cidade clicada
+  event.target.closest('.destination').classList.add('selected');
+
+  // Habilita o botão de continuar
+  const button = document.getElementById('continue-btn');
+  button.disabled = false;
+
+  // Armazena a cidade selecionada no LocalStorage
+  localStorage.setItem('selectedCity', city);
+}
+
+//---------------------------------------- Função para mostrar a página de datas -------------------------------------------------
+
+// Função para mostrar a página de datas e carregar a cidade selecionada
+function showDatesPage() {
+  // Recupera o nome da cidade do LocalStorage
+  const cityFromStorage = localStorage.getItem('selectedCity');
+
+  // Atualiza o campo de entrada com o nome da cidade
+  const cityNameInput = document.getElementById('city-name');
+  if (cityNameInput) {
+    cityNameInput.value = cityFromStorage || selectedCity; // Use o valor do LocalStorage ou o valor atual da variável
+  }
+
+  // Mostra a página de datas e oculta a página de seleção de destino
+  document.getElementById('page-1').classList.add('hidden');
+  document.getElementById('page-2').classList.remove('hidden');
+}
+
+//---------------------------------------- Função para validar datas -------------------------------------------------------------
+
+// Função para validar datas e habilitar o botão para seleção de hotéis
+function checkDates() {
+  const startDate = document.getElementById('start-date').value;
+  const endDate = document.getElementById('end-date').value;
+  const hotelsButton = document.getElementById('hotels-btn');
+
+  if (startDate && endDate) {
+    if (new Date(startDate) > new Date(endDate)) {
+      alert('A data de início não pode ser maior que a data de fim.');
       hotelsButton.disabled = true;
+    } else {
+      hotelsButton.disabled = false;
+    }
+  } else {
+    hotelsButton.disabled = true;
+  }
+}
+
+//---------------------------------------- Função para mostrar a página de hotéis ------------------------------------------------
+
+// Função para exibir a página de hotéis
+function showHotelsPage() {
+  // Recupera o nome da cidade do LocalStorage
+  const cityFromStorage = localStorage.getItem('selectedCity');
+  selectedCity = cityFromStorage || selectedCity; // Atualiza a variável global com o valor armazenado
+
+  // Atualiza o texto da cidade na página de hotéis
+  const selectedCityElement = document.getElementById('selected-city');
+  if (selectedCityElement) {
+    selectedCityElement.textContent = selectedCity;
+  }
+
+  // Mostra a página de hotéis e oculta a página de datas
+  document.getElementById('page-2').classList.add('hidden');
+  document.getElementById('page-3').classList.remove('hidden');
+}
+
+//---------------------------------------- Função para carregar dados ao carregar a página --------------------------------------
+
+function loadRoteiroFromLocalStorage() {
+  const storedData = localStorage.getItem('dadosViagem');
+
+  if (storedData) {
+    const { cidade, dataInicio, dataFim } = JSON.parse(storedData);
+
+    if (isNaN(new Date(dataInicio)) || isNaN(new Date(dataFim))) {
+      console.error('As datas no localStorage estão em um formato inválido.');
+      return;
+    }
+
+    const nomeCidadeElement = document.getElementById('nome-cidade');
+    if (nomeCidadeElement) {
+      nomeCidadeElement.textContent = `${cidade}`;
+    } else {
+      console.error('Elemento com id "nome-cidade" não encontrado.');
     }
   }
-  
-  //----------------------------------Função para mostrar a página de hotéis--------------------------------------
-  
-  // Função para exibir a página de hotéis
-  function showHotelsPage() {
-    document.getElementById('selected-city').textContent = selectedCity;
-    document.getElementById('page-2').classList.add('hidden');
-    document.getElementById('page-3').classList.remove('hidden');
-  }
-  
-  // Função para mostrar detalhes do hotel selecionado
-  function showHotelDetails(name, description) {
-    document.getElementById('hotel-name').textContent = name;
-    document.getElementById('hotel-description').textContent = description;
-    document.getElementById('hotel-details').classList.remove('hidden');
-  }
-  
-  // Confirmação da seleção do hotel
-  function confirmSelection() {
-    selectedHotel = document.getElementById('hotel-name').textContent;
-    alert(`Você selecionou o ${selectedHotel}!`);
-  }
-  
-  // Cancelar a seleção do hotel
-  function cancelSelection() {
-    document.getElementById('hotel-details').classList.add('hidden');
-  }
-  
-  // Dados dos hotéis disponíveis
-  const hotels = {
-    1: { name: "Hotel 1", image: "hotel1.jpg", description: "Detalhes do Hotel 1." },
-    2: { name: "Hotel 2", image: "hotel2.jpg", description: "Detalhes do Hotel 2." },
-    3: { name: "Hotel 3", image: "hotel3.jpg", description: "Detalhes do Hotel 3." }
-  };
-  
-  // Seleção e detalhes das etapas dos hotéis
-  const hotelSelectionStep = document.getElementById("hotel-selection");
-  const hotelDetailsStep = document.getElementById("hotel-details");
-  const hotelConfirmationStep = document.getElementById("hotel-confirmation");
-  
-  // Elementos de detalhes do hotel
-  const hotelDetailsImage = document.getElementById("hotel-image");
-  const hotelDetailsName = document.getElementById("hotel-name");
-  const hotelDetailsDescription = document.getElementById("hotel-description");
-  
-  const confirmHotelImage = document.getElementById("confirm-hotel-image");
-  const confirmHotelName = document.getElementById("confirm-hotel-name");
-  
-  let selectedHotelId = null;
-  
-  // Configuração de evento para cartões de hotéis
-  document.querySelectorAll(".hotel-card").forEach(card => {
-    card.addEventListener("click", () => {
-      selectedHotelId = card.dataset.hotelId;
-      const hotel = hotels[selectedHotelId];
-      
-      if (hotel) {
-        hotelDetailsImage.src = hotel.image;
-        hotelDetailsName.textContent = hotel.name;
-        hotelDetailsDescription.textContent = hotel.description;
-        selectedHotel = hotel.name;
-        hotelSelectionStep.classList.add("hidden");
-        hotelDetailsStep.classList.remove("hidden");
-      }
-    });
-  });
-  
-  // Evento para continuar para a confirmação
-  document.getElementById("continue-to-confirmation")?.addEventListener("click", () => {
+}
+
+//---------------------------------------- Configuração de eventos para hotéis ---------------------------------------------------
+
+// Dados dos hotéis disponíveis
+const hotels = {
+  1: { name: "Hotel 1", image: "hotel1.jpg", description: "Detalhes do Hotel 1." },
+  2: { name: "Hotel 2", image: "hotel2.jpg", description: "Detalhes do Hotel 2." },
+  3: { name: "Hotel 3", image: "hotel3.jpg", description: "Detalhes do Hotel 3." }
+};
+
+// Seleção e detalhes das etapas dos hotéis
+const hotelSelectionStep = document.getElementById("hotel-selection");
+const hotelDetailsStep = document.getElementById("hotel-details");
+const hotelConfirmationStep = document.getElementById("hotel-confirmation");
+
+// Elementos de detalhes do hotel
+const hotelDetailsImage = document.getElementById("hotel-image");
+const hotelDetailsName = document.getElementById("hotel-name");
+const hotelDetailsDescription = document.getElementById("hotel-description");
+
+const confirmHotelImage = document.getElementById("confirm-hotel-image");
+const confirmHotelName = document.getElementById("confirm-hotel-name");
+
+let selectedHotelId = null;
+
+// Configuração de evento para cartões de hotéis
+document.querySelectorAll(".hotel-card").forEach(card => {
+  card.addEventListener("click", () => {
+    selectedHotelId = card.dataset.hotelId;
     const hotel = hotels[selectedHotelId];
+
     if (hotel) {
-      confirmHotelImage.src = hotel.image;
-      confirmHotelName.textContent = hotel.name;
-      hotelDetailsStep.classList.add("hidden");
-      hotelConfirmationStep.classList.remove("hidden");
+      hotelDetailsImage.src = hotel.image;
+      hotelDetailsName.textContent = hotel.name;
+      hotelDetailsDescription.textContent = hotel.description;
+      selectedHotel = hotel.name;
+      hotelSelectionStep.classList.add("hidden");
+      hotelDetailsStep.classList.remove("hidden");
     }
   });
-  
-  // Evento para remover hotel
-  document.getElementById("remove-hotel")?.addEventListener("click", () => {
-    selectedHotelId = null;
-    hotelConfirmationStep.classList.add("hidden");
-    hotelSelectionStep.classList.remove("hidden");
-  });
+});
+
+// Evento para continuar para a confirmação
+document.getElementById("continue-to-confirmation")?.addEventListener("click", () => {
+  const hotel = hotels[selectedHotelId];
+  if (hotel) {
+    confirmHotelImage.src = hotel.image;
+    confirmHotelName.textContent = hotel.name;
+    hotelDetailsStep.classList.add("hidden");
+    hotelConfirmationStep.classList.remove("hidden");
+  }
+});
+
+// Evento para remover hotel
+document.getElementById("remove-hotel")?.addEventListener("click", () => {
+  selectedHotelId = null;
+  hotelConfirmationStep.classList.add("hidden");
+  hotelSelectionStep.classList.remove("hidden");
+});
+
+//-------------------------------------------------------------------------------------------------------
   
   // Evento para continuar para a próxima etapa
   document.getElementById("continue-to-next")?.addEventListener("click", () => {
