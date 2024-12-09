@@ -408,8 +408,6 @@ body{
   background-color: #e91e63;
 }
 
-
-
 /* Fim da tela criar novo roteiro----------------------------------------------------------------*/
 
 /* codigo Footer - inicio */
@@ -598,7 +596,7 @@ body{
   .hotel-card,
   .hotel-details-card,
   .hotel-confirmation-card {
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
     padding: 15px;
     text-align: center;
     cursor: pointer;
@@ -607,8 +605,12 @@ body{
   .hotel-card img,
   .hotel-details-card img,
   .hotel-confirmation-card img {
-    width: 100%;
-    height: auto;
+    width: 100;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 200px
   }
 
 /*--------------------------------------------------------------------------------------------------*/
