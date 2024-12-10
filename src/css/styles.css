@@ -297,22 +297,20 @@ body{
 /* começo da tela criar novo roteiro ---------------------------------------------------------------------*/
 .text_title {
     color: #EA2B59;
-    margin-top: 19px;
-    margin-left: 33px;
+    margin-top: 9px;
     font-size: 35px;
 }
 .text {
     color: #FF5981;
-    margin-top: 10px;
     margin-left: 33px;
 }
 .text1 {
     color: #FF5981;
-    margin: 50px 0 20px 33px;
+    margin: 30px 0 20px 33px;
     font-size: 35px;
 }
 .search-box {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 33px;
 
     background: #fff;
@@ -334,11 +332,13 @@ body{
 .destinations {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    width: 90%;
+    gap: 15px;
+    width: 60%;
+    column-gap: 0;
   }
 
 .destination {
+    width: 90%;
     position: relative;
     padding: 0;
     max-height: 12.5rem;
@@ -365,7 +365,48 @@ body{
   }
 
 
+.box-cr{
+  display: flex;
+  flex-direction: column;
+}
 
+.box-cr label, input{
+  width: 40%;
+  padding: 10px 5px 10px 5px;
+  border-radius: 5px;
+}
+
+.box-cr input{
+  border: 1px solid #a8a8a8;
+  outline: none;
+}
+
+.box-cr input[type="date"]{
+  border: 1px solid #a8a8a8;
+  outline: none;
+}
+
+.butons{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  margin-top: 25vh;
+}
+
+.back-btn {
+  background-color: #f06292;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.back-btn:hover {
+  background-color: #e91e63;
+}
 
 /* Fim da tela criar novo roteiro----------------------------------------------------------------*/
 
@@ -552,21 +593,99 @@ body{
     gap: 20px;
   }
   
-  .hotel-card,
-  .hotel-details-card,
-  .hotel-confirmation-card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .hotel-card img,
-  .hotel-details-card img,
-  .hotel-confirmation-card img {
-    width: 100%;
-    height: auto;
-  }
+.hotel-card,
+.hotel-details-card,
+.hotel-confirmation-card {
+  border: 0px solid #ccc;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hotel-card img,
+.hotel-details-card img,
+.hotel-confirmation-card img {
+  width: 100;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 200px
+}
+
+/*--Detalhes do Hotel--*/
+
+/* Container que organiza as duas colunas */
+.container {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding-bottom: 100px;
+}
+
+/* Coluna esquerda - imagem e nome do hotel */
+.hotel-left {
+  width: 60%;
+  position: relative;
+}
+
+.hotel-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.hotel-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.hotel-name {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hotel-description {
+  padding: 20px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Coluna direita - endereço e avaliações */
+.hotel-right {
+  width: 40%;
+  padding: 20px;
+}
+
+.hotel-right h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.hotel-right p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.hotel-right h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.hotel-right strong {
+  font-weight: bold;
+}
 
 /*--------------------------------------------------------------------------------------------------*/
 /*Tela SeusRoteiros*/
@@ -633,23 +752,6 @@ body{
     cursor: pointer;
     font-size: 20px;
   }
-  
-  #back-btn {
-    background-color: #f06292;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 10px;
-    margin-bottom: 15px;
-  }
-  
-  #back-btn:hover {
-    background-color: #e91e63;
-  }
-  
-  
-  
   
   /* Estilos do Modal */
   .modal {
@@ -930,21 +1032,36 @@ body{
 
 .text_title {
     font-size: 30px;
+    margin-top: 9px;
 }
 .text {
     font-size: 20px;
 }
 .text1 {
+    margin-top: 9px;
     font-size: 28px;
 }
 .search-box {
     width: 260px;
   }
 
+.content-cr{
+  width: 100%;
+}
+
 .destinations {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Padrão: 2 colunas */
-    gap: 20px;
+    gap: 10px;
+    column-gap: 10px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .destination {
+    width: 100%;
+    min-height: 7rem;
+    max-height: 10rem;
   }
 
   .destination img {
@@ -1053,5 +1170,3 @@ body{
   
  
 /* codigo carousel - final */
-
-
