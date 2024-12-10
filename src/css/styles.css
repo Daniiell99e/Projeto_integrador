@@ -1170,3 +1170,74 @@ body{
   
  
 /* codigo carousel - final */
+<<<<<<< Updated upstream
+=======
+/* horarios inicio */
+.style-h2{
+  color: #DC143C;
+  
+}
+.style-p{
+  color: #000 ;
+  padding-left: 2%;
+  
+}
+.icon{
+  color: #FF1493 ;
+
+} 
+#page-4{
+  display: flexbox;
+  background-color: #DCDCDC ;
+  border-radius: 10px;
+  padding-bottom: 10%;
+
+}
+.style-input{
+  font-family: sans-serif;
+  font-size: 1.3rem;
+  width: 25%;
+  border-radius: 5px;
+  margin-left: 2%;
+  margin-top: 2%;
+  box-shadow:1px 1px 1px 1px #000;
+}
+.style-input:hover{
+  color: #DC143C;
+}
+.style-label{
+  color:#FF1493;
+  padding-left: 2%;
+  padding-top: 1%;
+  text-shadow: 1px 1px 1px #fff;
+}
+.btn-create{
+  color: #fff;
+	background-color: #FF1493;
+	margin-left: 2%;
+  margin-top: 10%;
+	border-radius: 10px;
+	font-family: arial;
+	font-size: 1.2rem;
+	width: 25%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#start-time{
+  text-align: center;
+}
+#end-time{
+  text-align: center;
+}
+
+.btn-close{
+  text-align: right;
+}
+  
+
+
+
+
+
+
+>>>>>>> Stashed changes

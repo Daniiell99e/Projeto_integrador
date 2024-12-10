@@ -161,26 +161,29 @@
             </div>
 
             <!-- Etapa 4: Informe os horários de início e fim dos seus passeios durante todos os dias -->
-            <div id="page-4"Class="modal-container hidden">
-            <div class="modal-content">
-                <h2>Criar novo roteiro</h2>
-                <p>Informe os horários de início e fim dos seus passeios durante todos os dias</p>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+            <div id="page-4"Class="modal-container hidden">       
+                <h2 class="style-h2">Criar novo roteiro</h2>
+                <p class="style-p">Informe os horários de início e fim dos seus passeios durante todos os dias</p>
                 <form id="new-itinerary-form">
                 <div class="input-group">
-                    <label for="start-time">
-                    <span class="icon">☀️</span> Hora de início dos passeios
-                    </label>
-                    <input type="time" id="start-time" value="05:00" required />
+                    <br>
+                    <label class="style-label" type="start-time">
+                    <span class="icon"><i class="fa-solid fa-sun icon"></i></span> Hora de início dos passeios
+                    </label><br>
+                    <input class="style-input" type="time" id="start-time" value="05:00" required />
                 </div>
                 <div class="input-group">
-                    <label for="end-time">
-                    <span class="icon">🌙</span> Hora de fim dos passeios
-                    </label>
-                    <input type="time" id="end-time" value="19:00" required />
+                    <br>
+                    <label class="style-label" type="end-time">
+                    <span class="icon"><i class="fa-regular fa-moon icon"></i></span > Hora de fim dos passeios
+                    </label><br>
+                    <input class="style-input" type="time" id="end-time" value="19:00" required />
                 </div>
                 <button type="submit" onclick="QtdPasseios()"class="btn-create">Criar roteiro</button>
                 </form>
-            </div>
+                <br><br>  
+              
             <button class="btn-close">×</button>
             <button id="back-btn" onclick="goBack()">Voltar</button>
             </div>
