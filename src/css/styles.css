@@ -863,7 +863,55 @@ body{
 /*---------------------------------------------------------------------------------------------------------*/
 .container_q {
     flex-grow: 2;
-} 
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+.card {
+  display: inline-block;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.card img.destino-imagem {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+.card p {
+  margin: 10px 0;
+  font-size: 1em;
+  color: #555;
+}
+
+.contador {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.tempo {
+  text-align: center;
+}
+
+.tempo strong {
+  display: block;
+  font-size: 1.2em;
+  color: #e91e63;
+}
+
+.tempo span {
+  font-size: 0.9em;
+  color: #555;
+}
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
     .aside-container{
