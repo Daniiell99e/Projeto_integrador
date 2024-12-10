@@ -8,6 +8,61 @@ document.getElementById('open_btn').addEventListener('click', function () {
 });
 // icone de clique para expandir menu lateral - final
 
+// Carrega proxima viagem na tela inicial - inicio
+document.addEventListener("DOMContentLoaded", function () {
+  // Identifica o elemento <section> com a classe "proximaviagem"
+  const proximaviagemSection = document.querySelector("section.proximaviagem");
+
+  // Verifica se estamos na página index.html de maneira mais flexível
+  const currentPath = window.location.pathname;
+  const isIndexPage = currentPath.endsWith("index.html") || currentPath === "/" || currentPath === "/index";
+
+  if (isIndexPage && proximaviagemSection) {
+    // Verifica se há dados armazenados no localStorage
+    const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
+    const selectedCity = JSON.parse(localStorage.getItem("selectedCity"));
+
+    if (dadosViagem && selectedCity) {
+      // Extração dos dados armazenados
+      const { cidade, dataInicio } = dadosViagem;
+      const { image } = selectedCity;
+
+      if (!image) {
+        console.error("A propriedade 'image' não foi encontrada em selectedCity.");
+        return;
+      }
+
+      // Cálculo de dias, horas e minutos restantes
+      const hoje = new Date();
+      const dataInicioDate = new Date(dataInicio);
+      const diferencaMs = dataInicioDate - hoje;
+
+      const diasRestantes = Math.max(0, Math.floor(diferencaMs / (1000 * 60 * 60 * 24)));
+      const horasRestantes = Math.max(0, Math.floor((diferencaMs / (1000 * 60 * 60)) % 24));
+      const minutosRestantes = Math.max(0, Math.floor((diferencaMs / (1000 * 60)) % 60));
+
+      // Criação do conteúdo dinâmico
+      proximaviagemSection.innerHTML = `
+        <div class="card">
+          <img src="${image}" alt="${cidade}" class="destino-imagem">
+          <h3>${cidade}</h3>
+          <p>Está chegando!</p>
+          <div class="contador">
+            <div class="tempo"><strong>${diasRestantes}</strong><span>Dias</span></div>
+            <div class="tempo"><strong>${horasRestantes}</strong><span>Horas</span></div>
+            <div class="tempo"><strong>${minutosRestantes}</strong><span>Minutos</span></div>
+          </div>
+        </div>
+      `;
+    } else {
+      // Se não houver dados no localStorage, esconde a seção
+      proximaviagemSection.style.display = "none";
+    }
+  }
+});
+
+// Carrega proxima viagem na tela inicial - final
+
 //-------------------------------------Botão voltar a etapa anterior----------------------------------------------------------
   
   // Função para voltar à página anterior
@@ -50,12 +105,25 @@ function selectCity(city, event) {
   // Adiciona a classe 'selected' à cidade clicada
   event.target.closest('.destination').classList.add('selected');
 
+  // Gera um ID único para a cidade selecionada
+  const cityId = Date.now();
+
+  // Obtém o caminho da imagem (src) da cidade selecionada
+  const cityImage = event.target.closest('.destination').querySelector('img').src;
+
+  // Cria um objeto com o ID, o nome da cidade e o caminho da imagem
+  const cityData = {
+    id: cityId,
+    name: city,
+    image: cityImage,
+  };
+
+  // Armazena os dados da cidade selecionada no LocalStorage
+  localStorage.setItem('selectedCity', JSON.stringify(cityData));
+
   // Habilita o botão de continuar
   const button = document.getElementById('continue-btn');
   button.disabled = false;
-
-  // Armazena a cidade selecionada no LocalStorage
-  localStorage.setItem('selectedCity', city);
 }
 
 //---------------------------------------- Função para mostrar a página de datas -------------------------------------------------
@@ -65,10 +133,13 @@ function showDatesPage() {
   // Recupera o nome da cidade do LocalStorage
   const cityFromStorage = localStorage.getItem('selectedCity');
 
+  // Parse o JSON para obter o objeto cidade
+  const cityData = JSON.parse(cityFromStorage);
+
   // Atualiza o campo de entrada com o nome da cidade
   const cityNameInput = document.getElementById('city-name');
   if (cityNameInput) {
-    cityNameInput.value = cityFromStorage || selectedCity; // Use o valor do LocalStorage ou o valor atual da variável
+    cityNameInput.value = cityData.name; // Use apenas o nome da cidade
   }
 
   // Mostra a página de datas e oculta a página de seleção de destino
@@ -102,7 +173,12 @@ function checkDates() {
 function showHotelsPage() {
   // Recupera o nome da cidade do LocalStorage
   const cityFromStorage = localStorage.getItem('selectedCity');
-  selectedCity = cityFromStorage || selectedCity; // Atualiza a variável global com o valor armazenado
+
+  // Parse o JSON para obter o objeto cidade
+  const cityData = JSON.parse(cityFromStorage);
+
+  // Atualiza a variável global com o nome da cidade
+  selectedCity = cityData.name;
 
   // Atualiza o texto da cidade na página de hotéis
   const selectedCityElement = document.getElementById('selected-city');
@@ -114,7 +190,7 @@ function showHotelsPage() {
   document.getElementById('page-2').classList.add('hidden');
   document.getElementById('page-3').classList.remove('hidden');
 }
-
++787
 //---------------------------------------- Função para carregar dados ao carregar a página --------------------------------------
 
 function loadRoteiroFromLocalStorage() {
@@ -324,6 +400,7 @@ document.getElementById("remove-hotel")?.addEventListener("click", () => {
       });
     }
   });
+
   
   
 //----------------------------------------------------------------------------------------------
