@@ -593,25 +593,99 @@ body{
     gap: 20px;
   }
   
-  .hotel-card,
-  .hotel-details-card,
-  .hotel-confirmation-card {
-    border: 0px solid #ccc;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .hotel-card img,
-  .hotel-details-card img,
-  .hotel-confirmation-card img {
-    width: 100;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 200px
-  }
+.hotel-card,
+.hotel-details-card,
+.hotel-confirmation-card {
+  border: 0px solid #ccc;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hotel-card img,
+.hotel-details-card img,
+.hotel-confirmation-card img {
+  width: 100;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 200px
+}
+
+/*--Detalhes do Hotel--*/
+
+/* Container que organiza as duas colunas */
+.container {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding-bottom: 100px;
+}
+
+/* Coluna esquerda - imagem e nome do hotel */
+.hotel-left {
+  width: 60%;
+  position: relative;
+}
+
+.hotel-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.hotel-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.hotel-name {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hotel-description {
+  padding: 20px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Coluna direita - endereço e avaliações */
+.hotel-right {
+  width: 40%;
+  padding: 20px;
+}
+
+.hotel-right h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.hotel-right p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.hotel-right h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.hotel-right strong {
+  font-weight: bold;
+}
 
 /*--------------------------------------------------------------------------------------------------*/
 /*Tela SeusRoteiros*/
@@ -1096,5 +1170,3 @@ body{
   
  
 /* codigo carousel - final */
-
-
