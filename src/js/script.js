@@ -13,9 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Identifica o elemento <section> com a classe "proximaviagem"
   const proximaviagemSection = document.querySelector("section.proximaviagem");
 
-  // Verifica se estamos na página index.html de maneira mais flexível
+  // Caminho atual da página
   const currentPath = window.location.pathname;
-  const isIndexPage = currentPath.endsWith("index.html") || currentPath === "/" || currentPath === "/index";
+
+  // Verifica se estamos na página inicial do GitHub Pages
+  const isIndexPage =
+    currentPath.endsWith("/index.html") ||
+    currentPath === "/Projeto_integrador/" || // Caminho base do GitHub Pages
+    currentPath === "/Projeto_integrador/index.html";
 
   if (isIndexPage && proximaviagemSection) {
     // Verifica se há dados armazenados no localStorage
