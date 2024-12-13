@@ -8,7 +8,7 @@ document.getElementById('open_btn').addEventListener('click', function () {
 });
 // icone de clique para expandir menu lateral - final
 
-// Carrega proxima viagem na tela inicial - inicio
+// Carrega próxima viagem na tela inicial - início
 document.addEventListener("DOMContentLoaded", function () {
   // Identifica o elemento <section> com a classe "proximaviagem"
   const proximaviagemSection = document.querySelector("section.proximaviagem");
@@ -25,15 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (isIndexPage && proximaviagemSection) {
     // Verifica se há dados armazenados no localStorage
     const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
-    const selectedCity = JSON.parse(localStorage.getItem("selectedCity"));
 
-    if (dadosViagem && selectedCity) {
+    if (dadosViagem) {
       // Extração dos dados armazenados
-      const { cidade, dataInicio } = dadosViagem;
-      const { image } = selectedCity;
+      const { cidade, dataInicio, cityImage } = dadosViagem;
 
-      if (!image) {
-        console.error("A propriedade 'image' não foi encontrada em selectedCity.");
+      if (!cityImage) {
+        console.error("A propriedade 'cityImage' não foi encontrada em dadosViagem.");
         return;
       }
 
@@ -47,16 +45,22 @@ document.addEventListener("DOMContentLoaded", function () {
       const minutosRestantes = Math.max(0, Math.floor((diferencaMs / (1000 * 60)) % 60));
 
       // Criação do conteúdo dinâmico
+      const link = document.createElement("a");
+      link.href = "src/pages/Criar novo roteiro2.html";
+      link.textContent = "Detalhes da viagem >";
+      link.className = "card-editar";
+
       proximaviagemSection.innerHTML = `
         <div class="card">
-          <img src="${image}" alt="${cidade}" class="destino-imagem">
+          <img src="${cityImage}" alt="${cidade}" class="destino-imagem">
           <h3>${cidade}</h3>
           <p>Está chegando!</p>
           <div class="contador">
-            <div class="tempo"><strong>${diasRestantes}</strong><span>Dias</span></div>
-            <div class="tempo"><strong>${horasRestantes}</strong><span>Horas</span></div>
-            <div class="tempo"><strong>${minutosRestantes}</strong><span>Minutos</span></div>
+            <div class="tempo"><span>Dias</span><strong>${diasRestantes}</strong></div>
+            <div class="tempo"><span>Horas</span><strong>${horasRestantes}</strong></div>
+            <div class="tempo"><span>Minutos</span><strong>${minutosRestantes}</strong></div>
           </div>
+          ${link.outerHTML}
         </div>
       `;
     } else {
@@ -66,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Carrega proxima viagem na tela inicial - final
+// Carrega próxima viagem na tela inicial - final
 
 //-------------------------------------Botão voltar a etapa anterior----------------------------------------------------------
   
@@ -297,39 +301,54 @@ document.getElementById("remove-hotel")?.addEventListener("click", () => {
     document.getElementById('page-4').classList.remove('hidden');
   }
   
-  // Função para calcular e validar a criação de passeios
-  function QtdPasseios() {
-    event.preventDefault();
+ // Função para calcular e validar a criação de passeios
+function QtdPasseios() {
+  event.preventDefault();
+
+  // Recupera os dados da cidade selecionada do LocalStorage
+  const selectedCityData = JSON.parse(localStorage.getItem('selectedCity'));
   
-    const cidade = selectedCity;
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
-    const hotelName = selectedHotel;
-    const startTime = document.getElementById('start-time').value;
-    const endTime = document.getElementById('end-time').value;
-    
-    if (!cidade || !startDate || !endDate || !hotelName || !startTime || !endTime) {
-      alert('Por favor, preencha todos os campos antes de continuar.');
-      return false;
-    }
-    
-    const destination = {
-      cidade: cidade,
-      dataInicio: startDate,
-      dataFim: endDate,
-      hotel: hotelName,
-      horarioInicio: startTime,
-      horarioFim: endTime
-    };
-    
-    try {
-      localStorage.setItem('dadosViagem', JSON.stringify(destination));
-      window.location.href = 'https://daniiell99e.github.io/Projeto_integrador/src/pages/SeusRoteiros.html';
-    } catch (error) {
-      console.error('Erro ao salvar dados:', error);
-      alert('Ocorreu um erro ao salvar os dados. Por favor, tente novamente.');
-    }
+  if (!selectedCityData) {
+    alert('Por favor, selecione uma cidade antes de continuar.');
+    return false;
   }
+
+  const { id: cityId, name: cidade, image: cityImage } = selectedCityData;
+
+  const startDate = document.getElementById('start-date').value;
+  const endDate = document.getElementById('end-date').value;
+  const hotelName = selectedHotel;
+  const startTime = document.getElementById('start-time').value;
+  const endTime = document.getElementById('end-time').value;
+
+  // Validação para garantir que todos os campos estão preenchidos
+  if (!cidade || !startDate || !endDate || !hotelName || !startTime || !endTime) {
+    alert('Por favor, preencha todos os campos antes de continuar.');
+    return false;
+  }
+
+  // Criação do objeto com os dados completos da viagem
+  const destination = {
+    id: cityId,           // ID da cidade
+    cidade: cidade,       // Nome da cidade
+    cityImage: cityImage, // Caminho da imagem da cidade
+    dataInicio: startDate,
+    dataFim: endDate,
+    hotel: hotelName,
+    horarioInicio: startTime,
+    horarioFim: endTime
+  };
+
+  try {
+    // Armazena os dados da viagem no LocalStorage
+    localStorage.setItem('dadosViagem', JSON.stringify(destination));
+    window.location.href = '../pages/seusRoteiros.html';
+  } catch (error) {
+    console.error('Erro ao salvar dados:', error);
+    alert('Ocorreu um erro ao salvar os dados. Por favor, tente novamente.');
+
+  }
+}
   
   // Função para calcular dias entre duas datas
   function calculateDaysBetween(startDate, endDate) {
@@ -441,6 +460,11 @@ function saveOrUpdateTour(event) {
   const activeColumn = document.querySelector('.day-column.active');
   const selectedDate = activeColumn ? activeColumn.querySelector('.day-header').textContent.split('|')[1].trim() : '';
 
+  // Obter dados de cidade do localStorage
+  const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
+  const cidadeId = dadosViagem ? dadosViagem.id : null;
+  const cidadeNome = dadosViagem ? dadosViagem.cidade : null;
+
   const tourData = {
     name: document.getElementById('tourName').value,
     duration: document.getElementById('tourDuration').value,
@@ -448,9 +472,11 @@ function saveOrUpdateTour(event) {
     description: document.getElementById('tourDescription').value,
     location: document.getElementById('tourLocation').value,
     category: document.getElementById('tourCategory').value,
-    date: selectedDate
+    date: selectedDate,
+    cidadeId: cidadeId,
+    cidadeNome: cidadeNome
   };
-  
+
   if (editingId) {
     // Atualizar passeio existente
     updateTour(parseInt(editingId), tourData);
@@ -465,7 +491,7 @@ function saveOrUpdateTour(event) {
     localStorage.setItem('tours', JSON.stringify(tours));
     addTourToColumn(tour);
   }
-  
+
   closeModal();
 }
 

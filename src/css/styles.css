@@ -943,13 +943,16 @@ body{
 
 /*----------------------------------------------------------------------------------------------------*/
 .card {
-  display: inline-block;
-  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f8f8f8;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border: solid 1px #ebebeb;
+  padding: 15px 10px 20px 10px;
   max-width: 300px;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .card img.destino-imagem {
@@ -958,8 +961,12 @@ body{
 }
 
 .card h3 {
-  margin-top: 15px;
+  margin-top: -30px;
+  margin-left: 10px;
   font-size: 1.5em;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  margin-right: auto;
 }
 
 .card p {
@@ -971,22 +978,38 @@ body{
 .contador {
   display: flex;
   justify-content: space-around;
-  margin: 20px 0;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: solid 1px #ebebeb;
+  border-radius: 7px;
 }
 
 .tempo {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+
 }
 
 .tempo strong {
   display: block;
   font-size: 1.2em;
-  color: #e91e63;
+  color: white;
+  background-color: #ff2992;
+  border-radius: 7px;
+  padding: 5px 0;
 }
 
 .tempo span {
   font-size: 0.9em;
   color: #555;
+}
+
+.card-editar{
+  text-decoration: none;
+  color: #556;
+  margin-left: auto;
+  font-size: 13px;
 }
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
