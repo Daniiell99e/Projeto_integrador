@@ -226,9 +226,9 @@ function loadRoteiroFromLocalStorage() {
 
 // Dados dos hotéis disponíveis
 const hotels = {
-  1: { name: "Hotel 1", image: "hotel1.jpg", description: "Detalhes do Hotel 1." },
-  2: { name: "Hotel 2", image: "hotel2.jpg", description: "Detalhes do Hotel 2." },
-  3: { name: "Hotel 3", image: "hotel3.jpg", description: "Detalhes do Hotel 3." }
+  1: { name: "Atlantic Bussines ★★★★☆", image: "../assets/imagens/hotel-1-desc.jpg", description: "Situado no centro do Rio de Janeiro e a 4 minutos a pé da estação de metrô Cinelândia, este hotel informal fica a 11 minutos a pé do Museu de Arte Moderna do Rio de Janeiro e a 1,2 km do Aeroporto Santos Dumont." },
+  2: { name: "Hotel Nacional", image: "../assets/imagens/hotel-2.jpg", description: "Detalhes do Hotel 2." },
+  3: { name: "Hotel Comfort", image: "../assets/imagens/hotel-3.jpg", description: "Detalhes do Hotel 3." }
 };
 
 // Seleção e detalhes das etapas dos hotéis
@@ -346,6 +346,7 @@ function QtdPasseios() {
   } catch (error) {
     console.error('Erro ao salvar dados:', error);
     alert('Ocorreu um erro ao salvar os dados. Por favor, tente novamente.');
+
   }
 }
   

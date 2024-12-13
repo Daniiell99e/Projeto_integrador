@@ -97,34 +97,52 @@
             </div>
 
             <!-- Página 3: Escolha de hotéis -->
-            <div id="page-3" class="hidden">
-            <h3>Hotéis Disponíveis em <span id="selected-city"></span></h3>
-            <!-- Etapa 1: Seleção de hotéis -->
-            <div id="hotel-selection" class="step">
-                <h2>Escolha seu hotel</h2>
-                <div class="hotel-list">
-                <div class="hotel-card" data-hotel-id="1">
-                    <img src="hotel1.jpg" alt="Hotel 1">
-                    <h3>Hotel 1</h3>
+            <div id="page-3" class="hidden content-cr box-cr">
+                <h3><span id="selected-city"></span></h3>
+                <!-- Etapa 1: Seleção de hotéis -->
+                <div id="hotel-selection" class="step">
+                    <h2 class="text">Escolha seu hotel ou informe um endereço personalizado</h2>
+                    <input type="text" class="search-box" placeholder="Ex. Atlântico Center">
+                    <h2 class="text1"> Hotéis recomendados</h2>
+                    <div class="hotel-list">
+                    <div class="hotel-card" data-hotel-id="1">
+                        <img src="../assets/imagens/hotel-1.jpg" alt="Atlantic Bussines">
+                        <h3>Atlantic Bussines</h3>
+                    </div>
+                    <div class="hotel-card" data-hotel-id="2">
+                        <img src="../assets/imagens/hotel-2.jpg" alt="Hotel 2">
+                        <h3>Hotel Nacional</h3>
+                    </div>
+                    <div class="hotel-card" data-hotel-id="3">
+                        <img src="../assets/imagens/hotel-3.jpg" alt="Hotel 3">
+                        <h3>Hotel Comfort</h3>
+                    </div>
+                    </div>
                 </div>
-                <div class="hotel-card" data-hotel-id="2">
-                    <img src="hotel2.jpg" alt="Hotel 2">
-                    <h3>Hotel 2</h3>
-                </div>
-                <div class="hotel-card" data-hotel-id="3">
-                    <img src="hotel3.jpg" alt="Hotel 3">
-                    <h3>Hotel 3</h3>
-                </div>
-                </div>
-            </div>
+    
+                <!-- Etapa 2: Detalhes do hotel -->
+                <div id="hotel-details" class="step hidden">
+                <div class="container">
+                    <!-- Seção do hotel -->
+                    <div class="hotel-left">
+                      <div class="hotel-image">
+                        <img id="hotel-image" src="" alt="Hotel selecionado">
+                        <div id="hotel-name" class="hotel-name"></div>
+                      </div>
+                      <p id="hotel-description" class="hotel-description"></p>
+                    </div>
+                    
+                    <!-- Seção de endereço e avaliações -->
+                    <div class="hotel-right">
+                      <h2>Endereço</h2>
+                      <p>R. Sen. Dantas, 25 - Centro, Rio de Janeiro - RJ, 20031-202•(21) 3626-7000</p>
+                
+                      <h3>Avaliações</h3>
+                      <p><strong>⭐⭐⭐⭐⭐</strong> Excelente! Ótimo serviço e localização.</p>
+                      <p><strong>⭐⭐⭐⭐</strong> Muito bom, mas o Wi-Fi poderia ser melhor.</p>
+                    </div>
+                  </div>
 
-            <!-- Etapa 2: Detalhes do hotel -->
-            <div id="hotel-details" class="step hidden">
-                <h2>Detalhes do Hotel</h2>
-                <div class="hotel-details-card">
-                <img id="hotel-image" src="" alt="Hotel Selecionado">
-                <h3 id="hotel-name"></h3>
-                <p id="hotel-description">Descrição do hotel...</p>
                 <button id="continue-to-confirmation">Continuar</button>
                 </div>
             </div>
