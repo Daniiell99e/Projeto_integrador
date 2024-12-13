@@ -1011,6 +1011,63 @@ body{
   margin-left: auto;
   font-size: 13px;
 }
+
+/* Tela de detalhes da viagem ------------------------------------------------------------------------*/
+.container-detViagem {
+  background-color: #f9f9f9;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 20px;
+}
+.header-detViagem {
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #bbb 1px solid;
+  text-align: center;
+  border-radius: 10px;
+}
+.header-detViagem h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 2.5em;
+}
+.details-detViagem {
+  padding: 20px;
+}
+.gallery-detViagem {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+.gallery-detViagem img {
+  width: 30%;
+  height: auto;
+  border-radius: 10px;
+}
+.itinerary-detViagem {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 20px 0;
+}
+.expenses-detViagem {
+  display: flex;
+  justify-content: space-between;
+}
+.expenses-detViagem div {
+  width: 45%;
+}
+#countdown {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin: 20px 0;
+}
+
+/* Tela de detalhes da viagem - fim-----------------------------------------------------------------------*/
 /* Ajustando sidebar com apenas icones. Tela para tabletes*/
 @media (width < 920px){
     .aside-container{
