@@ -342,7 +342,7 @@ function QtdPasseios() {
   try {
     // Armazena os dados da viagem no LocalStorage
     localStorage.setItem('dadosViagem', JSON.stringify(destination));
-    window.location.href = 'daniiell99e.github.io/Projeto_integrador/src/pages/SeusRoteiros.html';
+    window.location.href = 'SeusRoteiros.html';
   } catch (error) {
     console.error('Erro ao salvar dados:', error);
     alert('Ocorreu um erro ao salvar os dados. Por favor, tente novamente.');
