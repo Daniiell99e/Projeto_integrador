@@ -1036,14 +1036,16 @@ body{
   font-size: 2.5em;
 }
 .details-detViagem {
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
 }
 
 .details-detViagem img {
   border-radius: 10px;
-  width: 30rem;
+  width: 60%;
 }
 
 
@@ -1226,6 +1228,12 @@ body{
     display: none;
  }
 
+/*Tela de detalhes da viagem - inicio-----------------------------------------------------------------------*/
+.details-detViagem img {
+  width: 100%;
+}
+
+/*Tela de detalhes da viagem - fim-----------------------------------------------------------------------*/
 }
 /* Fim tela para tabletes */
 
