@@ -1037,12 +1037,33 @@ body{
 }
 .details-detViagem {
   padding: 20px;
+  display: flex;
+  gap: 20px;
 }
+
+.details-detViagem img {
+  border-radius: 10px;
+  width: 30rem;
+}
+
+
+.details-detViagem_details{
+  display: block;
+}
+
 .gallery-detViagem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.gallery-detViagem__img{
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
 }
+
 .gallery-detViagem img {
   width: 30%;
   height: auto;
