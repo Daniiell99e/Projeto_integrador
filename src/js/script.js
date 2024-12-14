@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Criação do conteúdo dinâmico
       const link = document.createElement("a");
-      link.href = "src/pages/Criar novo roteiro2.html";
+      link.href = "src/pages/detalhesviagem.html";
       link.textContent = "Detalhes da viagem >";
       link.className = "card-editar";
 
