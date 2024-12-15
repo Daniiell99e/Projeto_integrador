@@ -199,7 +199,6 @@ function showHotelsPage() {
   document.getElementById('page-2').classList.add('hidden');
   document.getElementById('page-3').classList.remove('hidden');
 }
-+787
 //---------------------------------------- Função para carregar dados ao carregar a página --------------------------------------
 
 function loadRoteiroFromLocalStorage() {
@@ -647,9 +646,15 @@ function updateCountdown() {
       `Contagem Regressiva: ${days} dias, ${hours} horas, ${minutes} minutos`;
 }
 
-// Atualiza a contagem regressiva a cada segundo
-setInterval(updateCountdown, 1000);
-updateCountdown(); // Chama imediatamente para evitar atraso inicial
+function checkPage() {
+  const currentPage = window.location.pathname;
+  if (currentPage.includes('detalhesviagem.html')) {
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Chama imediatamente para evitar atraso inicial
+  }
+}
+
+checkPage();
 
 //função para atualizar o nome da cidade na tela de detalhes da viagem-----------------------------
 function updateCityName() {
@@ -699,6 +704,7 @@ function calcularDiasViagem(dataInicio, dataFim) {
 
 function formatarData(data) {
   const dataObj = new Date(data);
+  dataObj.setDate(dataObj.getDate() + 1); // Adiciona um dia à data
   const dia = dataObj.getDate();
   const mes = getMes(dataObj.getMonth());
   const ano = dataObj.getFullYear();
@@ -723,6 +729,72 @@ function updateCityDestino() {
 
 document.addEventListener("DOMContentLoaded", updateCityDestino);
 
+//função para editar datas na tela de detalhes da viagem---------------------------------------------
+// Função para ir para a página de edição de datas
+function goToEditPage() {
+  // Mostra a página de edição de datas em pop-up
+  const editPage = document.getElementById("details-edit_dates");
+  editPage.classList.remove("hidden");
+  editPage.style.position = "fixed";
+  editPage.style.top = "45%";
+  editPage.style.left = "59%";
+  editPage.style.transform = "translate(-50%, -50%)";
+  editPage.style.zIndex = "1000";
+  editPage.style.width = "79%";
+  // Chama a função atualizarDetalhesViagem
+  atualizarDetalhesViagem();
+}
+
+function atualizarDetalhesViagem() {
+  const dadosViagem = JSON.parse(localStorage.getItem('dadosViagem'));
+  // Atualiza o campo de entrada com o nome da cidade
+  const cityNameInput = document.getElementById('city-name_edit');
+  if (cityNameInput) {
+    cityNameInput.value = dadosViagem.cidade;
+  }
+  // Atualiza os campos de data
+  const startDateInput = document.getElementById('start-date_edit');
+  if (startDateInput) {
+    startDateInput.value = dadosViagem.dataInicio;
+  }
+  const endDateInput = document.getElementById('end-date_edit');
+  if (endDateInput) {
+    endDateInput.value = dadosViagem.dataFim;
+  }
+  verificarDatas();
+}
+
+function verificarDatas() {
+  const startDateInput = document.getElementById('start-date_edit');
+  const endDateInput = document.getElementById('end-date_edit');
+  const startDate = new Date(startDateInput.value);
+  const endDate = new Date(endDateInput.value);
+  if (startDate >= endDate) {
+    alert("A data de início deve ser anterior à data de fim");
+  }
+}
+
+// Função para salvar as alterações e voltar para a tela de detalhes
+function salvarAlteracoes() {
+  // Pega os novos valores dos campos de data
+  const startDateInput = document.getElementById('start-date_edit');
+  const endDateInput = document.getElementById('end-date_edit');
+  // Atualiza o localStorage com os novos valores
+  const dadosViagem = JSON.parse(localStorage.getItem('dadosViagem'));
+  dadosViagem.dataInicio = startDateInput.value;
+  dadosViagem.dataFim = endDateInput.value;
+  localStorage.setItem('dadosViagem', JSON.stringify(dadosViagem));
+  // Volta para a tela de detalhes
+  const editPage = document.getElementById("details-edit_dates");
+  editPage.classList.add("hidden");
+  // Recarrega a página
+  location.reload();
+}
+
+function fecharEditPage() {
+  const editPage = document.getElementById("details-edit_dates");
+  editPage.classList.add("hidden");
+}
 //tela de detalhes da viagem - final----------------------------------------------------------------------------------------------
   
   

@@ -64,7 +64,7 @@
                         <p class="details-detViagem_dataFim">Data de Retorno:<span></span></p>
                         <p class="details-detViagem_duracao">Duração: <span></span></p>
                         <div class="butons-details-detViagem">
-                            <button class="edit-btn">Editar datas</button>
+                            <button class="edit-btn" onclick="goToEditPage()">Editar datas</button>
                         </div>
                      </div>
                     </div>
@@ -118,6 +118,22 @@
                         <h2>Total Estimado</h2>
                         <p id="total-expenses">R$ 5.500,00</p>
                     </div>
+                </div>
+            </div>
+
+             <!-- Página 2: Inserção de datas -->
+             <div id="details-edit_dates" class=" content-cr box-cr hidden">
+                <h1 class="text_title">Editar datas</h1>
+                <h3>Detalhes da Viagem</h3>
+                <label for="city-name_edit">Destino:</label>
+                <input type="text" id="city-name_edit" readonly>
+                <label for="start-date">Data de Início:</label>
+                <input type="date" id="start-date_edit" oninput="verificarDatas()">
+                <label for="end-date_edit">Data de Fim:</label>
+                <input type="date" id="end-date_edit" oninput="verificarDatas()">
+                <div class="butons">
+                    <button class="EditarDatas" onclick="salvarAlteracoes()">Salvar</button>
+                    <button class="fechar" onclick="fecharEditPage()">Fechar</button>
                 </div>
             </div>
             
