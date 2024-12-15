@@ -631,6 +631,99 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', saveOrUpdateTour);
   }
 });
+
+//tela de detalhes da viagem - inicio----------------------------------------------------------------------------------------------
+function updateCountdown() {
+  const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
+  const travelDate = new Date(`${dadosViagem.dataInicio}T00:00:00Z`); // Adiciona 'Z' para forçar UTC
+  const now = new Date();
+  const difference = travelDate - now;
+
+  const days = Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24)));
+  const hours = Math.max(0, Math.floor((difference / (1000 * 60 * 60)) % 24));
+  const minutes = Math.max(0, Math.floor((difference / (1000 * 60)) % 60));
+
+  document.getElementById('countdown').innerHTML = 
+      `Contagem Regressiva: ${days} dias, ${hours} horas, ${minutes} minutos`;
+}
+
+// Atualiza a contagem regressiva a cada segundo
+setInterval(updateCountdown, 1000);
+updateCountdown(); // Chama imediatamente para evitar atraso inicial
+
+//função para atualizar o nome da cidade na tela de detalhes da viagem-----------------------------
+function updateCityName() {
+  const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
+  const cityName = dadosViagem.cidade;
+
+  document.querySelector(".header-detViagem h1 span").textContent = cityName;
+}
+
+document.addEventListener("DOMContentLoaded", updateCityName);
+
+//função para atualizar foto da cidade na tela de detalhes da viagem-----------------------------
+function updateCityImage() {
+  const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
+  const cityImage = dadosViagem.cityImage;
+
+  document.querySelector(".details-detViagem img").src = cityImage;
+}
+
+document.addEventListener("DOMContentLoaded", updateCityImage);
+
+//função para atualizar data da viagem na tela de detalhes da viagem-----------------------------
+function updateTravelDate() {
+  const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
+  const travelDate = dadosViagem.dataInicio;
+  const travelEndDate = dadosViagem.dataFim;
+
+  const diferencaEmDias = calcularDiasViagem(travelDate, travelEndDate);
+
+  const dataInicioFormatada = formatarData(travelDate);
+  const dataFimFormatada = formatarData(travelEndDate);
+
+  document.querySelector(".details-detViagem_dataInicio span").textContent = dataInicioFormatada;
+  document.querySelector(".details-detViagem_dataFim span").textContent = dataFimFormatada;
+  document.querySelector(".details-detViagem_duracao span").textContent = diferencaEmDias + " dias";
+}
+
+function calcularDiasViagem(dataInicio, dataFim) {
+  const dataInicioObj = new Date(dataInicio);
+  const dataFimObj = new Date(dataFim);
+
+  const diferencaEmMilissegundos = dataFimObj - dataInicioObj;
+  const diferencaEmDias = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
+
+  return diferencaEmDias;
+}
+
+function formatarData(data) {
+  const dataObj = new Date(data);
+  const dia = dataObj.getDate();
+  const mes = getMes(dataObj.getMonth());
+  const ano = dataObj.getFullYear();
+
+  return `${dia} de ${mes} de ${ano}`;
+}
+
+function getMes(mes) {
+  const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+  return meses[mes];
+}
+
+document.addEventListener("DOMContentLoaded", updateTravelDate);
+
+//função para atualizar o nome da cidade na tela de detalhes da viagem-----------------------------
+function updateCityDestino() {
+  const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
+  const cityName = dadosViagem.cidade;
+
+  document.querySelector(".details-detViagem_destino span").textContent = cityName;
+}
+
+document.addEventListener("DOMContentLoaded", updateCityDestino);
+
+//tela de detalhes da viagem - final----------------------------------------------------------------------------------------------
   
   
   //----------------------------------------------------------------------------------------------

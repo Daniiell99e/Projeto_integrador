@@ -1014,16 +1014,16 @@ body{
 
 /* Tela de detalhes da viagem ------------------------------------------------------------------------*/
 .container-detViagem {
-  background-color: #f9f9f9;
+  background-color: #d4d4d4;
   width: 100%;
   margin: auto;
   overflow: hidden;
-  background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   padding: 20px;
   border-radius: 20px;
 }
 .header-detViagem {
+  background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
   padding-top: 30px;
   min-height: 70px;
   border-bottom: #bbb 1px solid;
@@ -1034,6 +1034,7 @@ body{
   margin: 0;
   text-align: center;
   font-size: 2.5em;
+  color: white;
 }
 .details-detViagem {
   padding: 20px 0;
