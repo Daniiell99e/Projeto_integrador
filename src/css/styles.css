@@ -1309,19 +1309,57 @@ body{
 
 }
 /* Fim tela para smartphones */
-
-.local-perto{
-    width: 100%;
-    height: 600px;
-    background-color: rgba(0, 0, 0, 0.2);
-
-    .localper-card{
-      display: flex;
-      flex-direction: column;
-      
-  }
-    
+/*curiosidades globais*/
+.local {
+  padding: 20px;
+  background-color: #fce4ec; /* Cor de fundo suave */
+  text-align: center;
+  border-radius: 10px;
 }
+
+/* Títulos */
+.sec-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Container flexível para curiosidades */
+.curiosidade {
+  display: flex;
+  justify-content: space-between; /* Distribui os cards igualmente */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  gap: 20px; /* Espaço entre os cards */
+}
+
+/* Card individual */
+.localper-card {
+  background-color: #fff; /* Fundo branco */
+  border: 1px solid #ffc1e3; /* Borda rosa */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  overflow: hidden; /* Evita transbordamento */
+  text-align: center;
+  width: 30%; /* Cada card ocupa 30% da largura */
+}
+
+/* Imagem */
+.localpert-container img {
+  width: 100%; /* Ajusta largura da imagem */
+  height: 200px; /* Altura fixa */
+  object-fit: cover; /* Corta a imagem para caber */
+}
+
+/* Texto abaixo da imagem */
+.titlers{
+  padding: 10px;
+  font-size: 16px;
+  color: #555;
+  background-color: #f8f8f8;
+  font-weight: 500;
+}
+
 
 
 
