@@ -380,9 +380,14 @@ function QtdPasseios() {
   
       const baiaHTML = `
         <div class="day-column">
+         <div class="containerdat"> 
           <div class="day-header">Dia ${i + 1} | ${formattedDate}</div>
+           </div>
+            <div class="add-task-container">
+                    <button class="add-task">+</button>
+                  </div>
           <div class="task-card">
-            <button class="add-task">+</button>
+            
           </div>
         </div>
       `;
