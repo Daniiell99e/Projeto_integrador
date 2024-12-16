@@ -63,8 +63,8 @@
                         <p class="details-detViagem_dataInicio">Data de Partida:<span></span> </p>
                         <p class="details-detViagem_dataFim">Data de Retorno:<span></span></p>
                         <p class="details-detViagem_duracao">Duração: <span></span></p>
-                        <div class="butons-details-detViagem">
-                            <button class="edit-btn" onclick="goToEditPage()">Editar datas</button>
+                        <div class="details-detViagem_edit">
+                            <button class="continue-cr" onclick="goToEditPage()">Editar datas</button>
                         </div>
                      </div>
                     </div>
@@ -80,18 +80,27 @@
                 </div>
 
                 <div class="hotel-detViagem">
-                    <h2>Hotel Escolhido</h2>
+                    <img id="hotel-image" class="hotel-image" src="" alt="Imagem do Hotel">
                     <div class="hotel-detViagem_info">
-                    <img src="/api/placeholder/300/200" alt="Hotel 1">
-                    <div class="hotel-info">
-                        <h3>Hotel 1</h3>
-                        <p>Avaliação: 4.8/5</p>
-                        <p>Localização: Lisboa, Portugal</p>
-                        <p>Preço por dia: R$ 500,00</p>
+                    <div id="hotel-details" class="hotel-info">
+                        <h2>Hospedagem</h2>
+                        <h1 id="hotel-name"></h1>
+                        
+                        <p><strong>Cidade:</strong> <span id="hotel-cidade"></span></p>
+                        <p><strong>Endereço:</strong> <span id="hotel-endereco"></span></p>
+                        <p><strong>Telefone:</strong> <span id="hotel-telefone"></span></p>
+                        <p id="hotel-description"></p>
                     </div>
-                    <div class="butons-detViagem">
-                        <button class="edit-btn">Editar</button>
+                
+                    <div class="avaliacoes">
+                        <h2>Avaliações</h2>
+                        <div id="avaliacoes-container"></div>
                     </div>
+                    <div class="details-buttons_edit">
+                        <button class="continue-cr">Editar Hospedagem</button>
+                    </div>
+                 </div>
+                    
                 </div>
         
                 <div class="itinerary-detViagem">
@@ -138,6 +147,71 @@
             </div>
             
         </main>
+
+        <!-- tela de edição hotel -->
+          <!-- Página 3: Escolha de hotéis -->
+          <div id="pag-1" class="hidden">
+            <h3>Selecionando hotel em <span id="selected-city"></span></h3>
+            <!-- Etapa 1: Seleção de hotéis -->
+            <div id="hotel-selection" class="step">
+                <h2 class="text">Escolha seu hotel ou informe um endereço personalizado</h2>
+                <input type="text" class="search-box" placeholder="Ex. Atlântico Center">
+                <h2 class="text1"> Hotéis recomendados</h2>
+                <div class="hotel-list">
+                <div class="hotel-card" data-hotel-id="1">
+                    <img src="../assets/imagens/hotel-1.jpg" alt="Atlantic Bussines">
+                    <h3>Atlantic Bussines</h3>
+                </div>
+                <div class="hotel-card" data-hotel-id="2">
+                    <img src="../assets/imagens/hotel-2.jpg" alt="Hotel 2">
+                    <h3>Hotel Nacional</h3>
+                </div>
+                <div class="hotel-card" data-hotel-id="3">
+                    <img src="../assets/imagens/hotel-3.jpg" alt="Hotel 3">
+                    <h3>Hotel Comfort</h3>
+                </div>
+                </div>
+            </div>
+
+            <!-- Etapa 2: Detalhes do hotel -->
+            <div id="hotel-details" class="step hidden">
+            <div class="container">
+                <!-- Seção do hotel -->
+                <div class="hotel-left">
+                  <div class="hotel-image">
+                    <img id="hotel-image" src="" alt="Hotel selecionado">
+                    <div id="hotel-name" class="hotel-name"></div>
+                  </div>
+                  <p id="hotel-description" class="hotel-description"></p>
+                </div>
+                
+                <!-- Seção de endereço e avaliações -->
+                <div class="hotel-right">
+                  <h2>Endereço</h2>
+                  <p>R. Sen. Dantas, 25 - Centro, Rio de Janeiro - RJ, 20031-202•(21) 3626-7000</p>
+            
+                  <h3>Avaliações</h3>
+                  <p><strong>⭐⭐⭐⭐⭐</strong> Excelente! Ótimo serviço e localização.</p>
+                  <p><strong>⭐⭐⭐⭐</strong> Muito bom, mas o Wi-Fi poderia ser melhor.</p>
+                </div>
+              </div>
+
+            <button id="continue-to-confirmation">Continuar</button>
+            </div>
+        </div>
+
+        <!-- Etapa 3: Confirmação do hotel -->
+        <div id="hotel-confirmation" class="step hidden">
+            <h2>Confirmação do Hotel</h2>
+            <div class="hotel-confirmation-card">
+            <img id="confirm-hotel-image" src="" alt="Hotel Selecionado">
+            <h3 id="confirm-hotel-name"></h3>
+            <button id="remove-hotel">Remover</button>
+            </div>
+            <button  onclick="showHorario()" id="continue-btn">Continuar</button>
+            <button id="back-btn" onclick="goBack()">Voltar</button>
+        </div>
+        </div>
        
         
         <!-- Início Footer-->
