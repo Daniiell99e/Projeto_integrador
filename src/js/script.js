@@ -88,20 +88,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   // Exemplo de funções para navegação entre páginas
-  function showDatesPage() {
-    document.getElementById('page-1').classList.add('hidden');
-    document.getElementById('page-2').classList.remove('hidden');
-  }
+  // function showDatesPage() {
+  //   document.getElementById('page-1').classList.add('hidden');
+  //   document.getElementById('page-2').classList.remove('hidden');
+  // }
   
-  function showHotelsPage() {
-    document.getElementById('page-2').classList.add('hidden');
-    document.getElementById('page-3').classList.remove('hidden');
-  }
+  // function showHotelsPage() {
+  //   document.getElementById('page-2').classList.add('hidden');
+  //   document.getElementById('page-3').classList.remove('hidden');
+  // }
   
-  function showHorario() {
-    document.getElementById('page-3').classList.add('hidden');
-    document.getElementById('page-4').classList.remove('hidden');
-  }
+  // function showHorario() {
+  //   document.getElementById('page-3').classList.add('hidden');
+  //   document.getElementById('page-4').classList.remove('hidden');
+  // }
 
 //-------------------------------------------------------------------------------------------------------
 
@@ -261,7 +261,7 @@ const hotels = {
   name: "Hotel Centro Naval", 
   image: "../assets/imagens/hotel-buenos-aires1.jpg", 
   description: "Os quartos do Hotel Centro Naval são confortavelmente mobiliados. Todos eles têm ar-condicionado, TV a cabo e cofre. Os banheiros incluem banheira, secador de cabelo e amenidades de banho gratuitas.",
-  cidade: "buenos Aires",
+  cidade: "buenos aires",
   endereco: "Jean Jaures, Balvanera, 1215 Buenos Aires",
   telefone: "(54) 3xxx-xxxx",
   avaliacoes: [
@@ -274,7 +274,7 @@ const hotels = {
   name: "Gran Hotel Argentino", 
   image: "../assets/imagens/hotel-buenos-aires2.jpg", 
   description: "Os encantadores quartos do Gran Hotel Argentino incluem comodidades modernas, tais como ar condicionado, televisão por cabo e um cofre. Alguns quartos oferecem vistas para a cidade.",
-  cidade: "buenos Aires",
+  cidade: "buenos aires",
   endereco: "Carlos Pellegrini, 37, 1009 Buenos Aires",
   telefone: "(54) 3xxx-xxxx",
   avaliacoes: [
@@ -287,7 +287,7 @@ const hotels = {
   name: "Hotel BA Abasto", 
   image: "../assets/imagens/hotel-buenos-aires3.jpg", 
   description: "Hotel BA Abasto é um alojamento de 4 estrelas situado em Buenos Aires, a 3,2 km de Museu Nacional das Belas Artes e a 3,4 km de Teatro Colon.",
-  cidade: "buenos Aires",
+  cidade: "buenos aires",
   endereco: "896 Jean Jaures, Balvanera, 1215 Buenos Aires",
   telefone: "(54) 3xxx-xxxx",
   avaliacoes: [
@@ -1013,6 +1013,39 @@ function updateCityImage() {
 }
 
 document.addEventListener("DOMContentLoaded", updateCityImage);
+
+//----------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Recuperar dados do localStorage
+  const hotelSelecionado = JSON.parse(localStorage.getItem('hotelSelecionado'));
+
+  if (hotelSelecionado) {
+      // Preencher detalhes do hotel
+      document.getElementById('hotel-name').textContent = hotelSelecionado.name;
+      document.getElementById('hotel-image').src = hotelSelecionado.image;
+      document.getElementById('hotel-cidade').textContent = hotelSelecionado.cidade;
+      document.getElementById('hotel-endereco').textContent = hotelSelecionado.endereco;
+      document.getElementById('hotel-telefone').textContent = hotelSelecionado.telefone;
+      document.getElementById('hotel-description').textContent = hotelSelecionado.description;
+
+      // Renderizar avaliações
+      const avaliacoesContainer = document.getElementById('avaliacoes-container');
+      hotelSelecionado.avaliacoes.forEach(avaliacao => {
+          const avaliacaoDiv = document.createElement('div');
+          avaliacaoDiv.classList.add('avaliacao');
+
+          // Criar estrelas
+          const starsHTML = '★'.repeat(avaliacao.estrelas) + '☆'.repeat(5 - avaliacao.estrelas);
+          avaliacaoDiv.innerHTML = `
+              <p class="stars">${starsHTML}</p>
+              <p>${avaliacao.comentario}</p>
+          `;
+
+          avaliacoesContainer.appendChild(avaliacaoDiv);
+      });
+  }
+});
 
 //função para atualizar data da viagem na tela de detalhes da viagem-----------------------------
 function updateTravelDate() {
