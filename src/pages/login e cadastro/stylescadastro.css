@@ -44,7 +44,7 @@ body{
 }
 
 .form-header {
-    margin-bottom: 2rem; /* Reduzido para otimizar o espaço */
+    margin-bottom: 2rem; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,23 +137,48 @@ body{
 .input-box input::placeholder{
     color: #000000be;
 }
-.gender-group {
+
+.button-group {
     display: flex;
     justify-content: space-between;
-    margin-top: 0.62rem;
-    margin-right: 3px;
-    padding: 0 .2rem;
-}   
-  
-
-.gender-input input {
-    margin-right: 3px;
+    gap: 10px;
+}
+.cancel-button {
+    width: 100%;
+    border: none;
+    background-color: #999;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.gender-input label{
-    font-size: 0.81rem;
-    font-weight: 600;
-    color: #000000c0;
+.cancel-button:hover {
+    background-color: #d46666;
+}
+
+.cancel-button a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.cancel-button button{
+    width: 100%;
+    margin-right: 3.5rem;
+    border: none;
+    background-color: #f3409c;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+}   
+.continue-button {
+    width: 100%;
+    border: none;
+    background-color:#f3409c;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .continue-button button{
@@ -165,17 +190,17 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }   
-
-.continue-button button:hover{  
-    background-color: #be528a;
-}
-
-.continue-button button a{
+.continue-button a {
     text-decoration: none;
     font-size: 0.93rem;
     font-weight: 500;
     color: #fff;
 }
+
+.continue-button:hover{  
+    background-color: #be528a;
+}
+
 
 @media screen and (max-width: 1330px){
     .form-image{
