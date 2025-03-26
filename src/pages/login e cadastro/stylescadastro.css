@@ -1,3 +1,4 @@
+
 body{
     width: 100%;
     height: 100vh;
@@ -14,6 +15,7 @@ body{
     display: flex;
    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
    border-radius: 5px;
+  
    
 }
 
@@ -137,11 +139,33 @@ body{
 .input-box input::placeholder{
     color: #000000be;
 }
+.gender-title{
 
+ 
+}
+.gender-group {
+    margin-right:30px;
+}
+.gender-inputs{
+    align-items: center;
+    margin-bottom:20px;
+    
+}
+
+.gender-inputs input {
+    margin-right: 3px;
+}
+
+.gender-inputs label{
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #000000c0;
+}
 .button-group {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    margin-bottom: 30px;
 }
 .cancel-button {
     width: 100%;
