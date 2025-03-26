@@ -34,7 +34,7 @@
                      </div>
                       <div class="input-box">
                           <label for="email">Email</label>
-                          <input id="email" type="text" name="email" placeholder="Digite seu email" required>
+                          <input id="email" type="email" name="email" placeholder="Digite seu email" required>
                      </div>
                       <div class="input-box">
                           <label for="number">Telefone</label>
@@ -45,8 +45,8 @@
                           <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
                      </div>
                       <div class="input-box">
-                          <label for="password">Confirme sua senha</label>
-                          <input id="password" type="password" name="confirmpassword" placeholder="Repita sua senha" required>
+                          <label for="confirmpassword">Confirme sua senha</label>
+                          <input id="confirmpassword" type="confirmpassword" name="confirmpassword" placeholder="Repita sua senha" required>
                      </div>
                 </div>
                 
@@ -56,30 +56,32 @@
                         <h6>Genero</h6>
                     </div>
 
-                    <div gender-group>
+                    <div class="gender-group">
                         <div gender-input>
                             <input type="radio" id="female" name="gender" value="female">
                             <label for="female">Feminino</label>
                         </div>
 
-                        <div gender-input>
+                        <div class= "gender-input">
                             <input type="radio" id="male" name="gender" value="male">
                             <label for="male">Masculino</label>
                         </div>
                         
-                        <div gender-input>
+                        <div class= "gender-input" >
                             <input type="radio" id="others" name="gender" value="others">
                             <label for="others">Outros</label>
                         </div>
 
-                        <div gender-input>
+                        <div class= "gender-input">
                             <input type="radio" id="others" name="none" value="none">
                             <label for="none">Prefiro não informar</label>
                         </div>
                     </div>
                 </div>
 
-                <div class="continue-button"><button><a href="#">Continuar</a></button>
+                <div class="button-group">
+                    <button class="cancel-button"><a href="#">Cancelar</a></button>
+                    <button class="continue-button"><a href="#">Confirmar</a></button>
                 </div>
              </form>
             </main>
