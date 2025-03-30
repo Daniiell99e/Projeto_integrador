@@ -76,16 +76,20 @@
                             <input type="radio" id="others" name="none" value="none">
                             <label for="none">Prefiro não informar</label>
                         </div>
+
+                        <input type="checkbox" id="contrato" onchange="enableOrDisableButton()">
+                        <label for="contrato">Eu aceito os <a href="#">termos e condições</a></label>
                     </div>
                 </div>
 
                 <div class="button-group">
                     <button class="cancel-button"><a href="#">Cancelar</a></button>
-                    <button class="continue-button"><a href="#">Confirmar</a></button>
+                    <button class="continue-button" type="submit"><a href="#">Confirmar</a></button>
                 </div>
              </form>
             </main>
          </div>
      </div>
+     <script src="../../js/cadastro.js"></script>
  </body>
 </html>
