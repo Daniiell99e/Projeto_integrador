@@ -11,8 +11,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: linear-gradient(to bottom right, #FF6F61, #DE1F83); */
-    background: url('../assets/imagens/background.jpg') no-repeat center center/cover;
+    background: linear-gradient(to bottom right, #c9c9c9, #494949);
+    /* background: url('../assets/imagens/background.jpg') no-repeat center center/cover; */
 }
 
 
@@ -23,12 +23,6 @@ body{
    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
    border-radius: 5px;
    background: linear-gradient(to bottom right, #FF6F61, #DE1F83);
-}
-
-.container form{
-    width: 100%;
-    margin: 0;
-    height: 80vh;
 }
 
 .form-image{
@@ -48,13 +42,11 @@ body{
 
 .form{
     width: 90%;
-    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: #fff;
-    
 }
 
 .form-header {
