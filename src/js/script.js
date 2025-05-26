@@ -973,7 +973,34 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', saveOrUpdateTour);
   }
 });
+//Tela de perfil---------------------------------------------------------------------------------------------------------------------
+const uploadProfile = document.getElementById('uploadProfile');
+    const profilePic = document.getElementById('profilePic');
+    const uploadCover = document.getElementById('uploadCover');
+    const cover = document.getElementById('cover');
 
+    uploadProfile.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profilePic.style.backgroundImage = `url('${e.target.result}')`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    uploadCover.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          cover.style.backgroundImage = `url('${e.target.result}')`;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+//---------------------------------------------------------------------------------------------------------------------
 //tela de detalhes da viagem - inicio----------------------------------------------------------------------------------------------
 function updateCountdown() {
   const dadosViagem = JSON.parse(localStorage.getItem("dadosViagem"));
@@ -1374,8 +1401,3 @@ document.addEventListener('DOMContentLoaded', function() {
         // Inicia o slider
         startSlider();
     // slide - final
-
-
-
-
-

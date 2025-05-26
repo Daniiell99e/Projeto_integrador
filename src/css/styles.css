@@ -1373,6 +1373,22 @@ body{
     display: none;
  }
 
+ /* perfil celular */
+      .profile-header {
+        height: 180px;
+      }
+
+      .profile-pic-wrapper {
+        width: 90px;
+        height: 90px;
+        bottom: -45px;
+        left: 15px;
+      }
+
+      .profile-content {
+        margin-top: 90px;
+        padding: 15px;
+      }  
 }
 /* Fim tela para smartphones */
 /*curiosidades globais*/
@@ -1471,3 +1487,77 @@ body{
   
  
 /* codigo carousel - final */
+
+/* perfil */
+.profile-header {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+  
+  .profile-pic-wrapper {
+    position: absolute;
+    bottom: -60px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    border: 4px solid white;
+    border-radius: 50%;
+    background-color: #fff;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png'); /* <- Placeholder */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .hover-button {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: none;
+    cursor: pointer;
+  }
+
+  .profile-pic-wrapper:hover .hover-button,
+  .profile-header:hover .cover-hover-button {
+    display: block;
+  }
+
+  .cover-hover-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: none;
+    cursor: pointer;
+  }
+
+  .upload-buttons input {
+    display: none;
+  }
+
+  .profile-content {
+    margin-top: 60px;
+    text-align: left;
+    padding: 20px;
+  }
