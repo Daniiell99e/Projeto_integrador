@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+--cor-botao: #0099ff;
+--cor-botao-hover: #007acc;
+--cor-fonte: #333333;
+--cor-subtitulo: #777777;
+--cor-placeholder: #e7e6e6;
+--cor-backgroundBody:#f9f9f9;
+--cor-borda:#15ADE5;
+
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--cor-backgroundBody);
+}
+
+.login-container {
+    background: #fff;
+    border: 1px solid var(--cor-borda);
+    border-radius: .6em;
+    padding: 1.8em 1.2em;
+    width: 20em;
+    text-align: center;
+}
+
+.login-container img {
+    width: 7.5em;
+    margin-bottom: .6em;
+}
+
+.login-container p {
+    color: var(--cor-subtitulo);
+    margin-bottom: 1.2em;
+    font-size: 0.8em;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 0.9em;
+}
+
+.input-group label {
+    display: block;
+    font-size: .8em;
+    margin-bottom: .3em;
+    color: var(--cor-fonte);
+}
+
+.input-group input {
+    width: 100%;
+    padding: .6em;
+    border: none;
+    border-radius: .3em;
+    font-size: .8em;
+    background-color: var(--cor-placeholder);
+}
+
+.input-group input:focus {
+    outline: none;
+    
+}
+.input-wrapper {
+position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: .6em 2.5em .6em .6em; 
+  border: none;
+  border-radius: .3em;
+  font-size: .8em;
+  background-color: var(--cor-placeholder);
+}
+
+.toggle-password {
+  position: absolute;
+  right: .6em;
+  top: 70%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-password img {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+
+.btn-login {
+    width: 100%;
+    padding: .7em;
+    background: var(--cor-botao);
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    border-radius: .3em;
+    cursor: pointer;
+    margin-top: .3em ;
+}
+
+.btn-login:hover {
+    background: var(--cor-botao-hover);
+}
+
+.forgot-password {
+    display: block;
+    margin-top: .6em;
+    font-size: .8em;
+    color: var(--cor-botao);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+.divider {
+    margin: 3em 0em 1em;
+    border-top: .06em solid #ddd;
+}
+
+.signup {
+    font-size: .8em;
+    color: var(--cor-subtitulo);
+}
+
+.signup a {
+    color: var(--cor-botao);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 1em;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
