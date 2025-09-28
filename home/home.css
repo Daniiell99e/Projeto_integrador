@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+:root {
+--cor-botao: #0099ff;
+--cor-botao-hover: #007acc;
+--cor-fonte: #333333;
+--cor-subtitulo: #777777;
+--cor-placeholder: #e7e6e6;
+--cor-backgroundBody:#f9f9f9;
+--cor-borda:#15ADE5;
+
+}
+
+/* Barra de Navegação */
+.barra-navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--cor-backgroundBody);
+  border-bottom: 1px solid #ddd;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--cor-fonte);
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #e6f2ff; /* azul claro */
+  color: var(--cor-botao);
+}
+
+.perfil img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+/* Seção Hero */
+.secao-hero {
+  text-align: center;
+  padding: 24px 16px;
+  background-color: var(--cor-backgroundBody);
+}
+
+.secao-hero h1 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.secao-hero p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.botao-roteiro {
+  background-color: var(--cor-botao);
+  border: none;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.botao-roteiro:hover {
+  background-color:var(--cor-botao-hover);
+}
+
+/* Seção Roteiros */
+.secao-roteiros {
+  padding: 24px 16px;
+}
+
+.secao-roteiros h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.cartao-roteiro {
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--cor-backgroundBody);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.imagem-roteiro {
+  background-color: #292568;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+.conteudo-roteiro {
+  padding: 12px;
+  text-align: center;
+}
+
+.conteudo-roteiro h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.conteudo-roteiro p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.status {
+  display: inline-block;
+  background: #00c853;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.detalhes {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  background: none;
+  color: #007bff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.detalhes:hover {
+  background: #e6f2ff;
+  color: #0056b3;
+}
