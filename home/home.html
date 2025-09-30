@@ -1,45 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel de Roteiros</title>
-  <link rel="stylesheet" href="home.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Roteiros - Recriação</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        body { font-family: 'Roboto', sans-serif; }
+    </style>
 </head>
 <body>
-  <!-- Barra de Navegação -->
-  <nav class="barra-navegacao">
-    <ul class="menu">
-      <li><a href="#">Meus Roteiros</a></li>
-      <li><a href="#">Descobrir</a></li>
-      <li><a href="#">Comunidade</a></li>
-    </ul>
-    <div class="perfil">
-      <img src="icone-usuario.png" alt="Perfil do usuário">
-    </div>
-  </nav>
 
-  <!-- Seção Hero -->
-  <section class="secao-hero">
-    <h1>Sua Aventura<br>Começa Aqui</h1>
-    <p>Crie itinerários de viagem personalizados em minutos. Descubra destinos incríveis e planeje sua próxima fuga com facilidade.</p>
-    <button class="botao-roteiro">+ Novo Roteiro</button>
-  </section>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#">Meus Roteiros</a></li>
+                <li class="nav-item"><a href="#">Explorar</a></li>
+                <li class="nav-item"><a href="#">Comunidade</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <span class="icon search-icon">🔍</span>
+            <span class="profile-icon">👤</span>
+        </div>
+    </header>
 
-  <!-- Seção Roteiros -->
-  <section class="secao-roteiros">
-    <h2>Meu Roteiros</h2>
-    <div class="cartao-roteiro">
-      <div class="imagem-roteiro">
-        <span>Foto da Cidade<br>(Puxada por API ou banco de dados)</span>
-      </div>
-      <div class="conteudo-roteiro">
-        <h3>Paris, França</h3>
-        <p>20 de Outubro - 27 de Outubro</p>
-        <span class="status">Ativo</span>
-        <button class="detalhes">Ver detalhes</button>
-      </div>
-    </div>
-  </section>
+    <main class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Sua Aventura <br>Começa Aqui</h1>
+                <p>Está na hora de tirar a poeira da mochila e descobrir novos horizontes. Planeje sua aventura de forma simples e divertida!</p>
+                <button class="btn btn-primary">➕ Criar Novo Roteiro</button>
+            </div>
+            <!-- <div class="hero-side-image"></div> -->
+        </section>
+
+        <section class="my-routes-section">
+            <h2>Meus Roteiros</h2>
+
+            <article class="route-card">
+                <div class="route-image-placeholder">
+                    <p class="image-text">Foto do Destino (Banda Grande, Praia do Espelho)</p>
+                </div>
+                <div class="route-details">
+                    <h3>Porto Seguro</h3>
+                    <p class="route-info">📍 27 atividades • 🗓️ 15 de Outubro</p>
+                    <button class="btn btn-tertiary">Ver Roteiro</button>
+                </div>
+            </article>
+
+            <article class="route-card">
+                <div class="route-image-placeholder">
+                    <p class="image-text">Foto do Destino (Estátua da Liberdade, Central Park)</p>
+                </div>
+                <div class="route-details">
+                    <h3>Nova York, EUA</h3>
+                    <p class="route-info">📍 34 atividades • 🗓️ 28 de Dezembro</p>
+                    <button class="btn btn-tertiary">Ver Roteiro</button>
+                </div>
+            </article>
+
+            <div class="create-route-card">
+                <div class="create-icon">
+                    <span>+</span>
+                </div>
+                <p class="create-title">Criar Novo Roteiro</p>
+                <p class="create-subtitle">Clique aqui para começar a planejar suas próximas viagens.</p>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#">Empresa</a>
+        <a href="#">Suporte</a>
+        <a href="#">Legal</a>
+    </footer>
+
 </body>
 </html>
