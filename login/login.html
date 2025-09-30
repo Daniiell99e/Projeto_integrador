@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.css">
+  <title>Tela de Login</title>
+</head>
+<body>
+  <div class="login-container">
+    <!-- Logo -->
+    <img src="logo(s)\Logo.png" alt="TripNow Logo">
+
+    <p>Faça login para continuar</p>
+
+    <!-- Campo de E-mail -->
+    <div class="input-group">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" placeholder="Digite seu e-mail">
+    </div>
+
+    <!-- Campo de Senha -->
+    <div class="input-group">
+        <label for="senha">Senha</label>
+        <div class="input-wrapper">
+            <input type="password" id="senha" placeholder="Digite sua senha">
+            <button type="button" class="toggle-password">
+                <img src="logo(s)/view.png" alt="mostrar senha">
+            </button>
+        </div>
+    </div>
+
+    <!-- Botão Entrar -->
+    <button class="btn-login">Entrar</button>
+
+    <!-- Link Esqueci senha -->
+    <a href="#" class="forgot-password">Esqueci minha senha</a>
+
+    <!-- Divisor -->
+    <div class="divider"></div>
+
+    <!-- Cadastro -->
+    <p class="signup">Não tem conta? <a href="#">Cadastre-se aqui</a></p>
+  </div>
+  <script src="mostrarSenha.js"></script>
+</body>
+</html>

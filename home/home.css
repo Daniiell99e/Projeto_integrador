@@ -1,0 +1,308 @@
+/* Variáveis de Cores */
+:root {
+    --primary-color: #00bcd4; /* Azul Claro Principal */
+    --secondary-color: #4dd0e1; /* Azul Secundário */
+    --background-color: #f8fcfd; /* Fundo da página */
+    --text-color: #333;
+    --light-text-color: #616161;
+    --highlight-bg: #e0f7fa; /* Fundo da Seção Hero */
+    --border-color: #e0e0e0;
+    --placeholder-bg: #bdbdbd; /* Cinza do placeholder da imagem */
+    --dotted-border: #9e9e9e; /* Cinza da borda pontilhada */
+}
+
+/* Reset Básico e Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--highlight-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.container {
+    padding: 0 0px;
+    /* Limita a largura máxima para simular a visualização de celular/app */
+    /* max-width: 500px; */
+    width: 100;
+    margin: 0 auto;
+}
+
+/* --- Estilização do Cabeçalho (Header) --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    padding-left: 5%;
+    border-bottom: 1px solid var(--border-color);
+    /* max-width: 500px; */
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--background-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding-bottom: 5px;
+    font-weight: bolder;
+}
+
+/* .nav-item.active a {
+    color: var(--text-color);
+    font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+} */
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-left: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.profile-icon {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+/* --- Seção Principal (Hero Section) --- */
+.hero-section {
+    position: relative;
+    background-color: var(--background-color);
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-right: 15px;
+    margin-left: 15px;
+    padding: 20px;
+    border-radius: 5px;
+    overflow: hidden; /* Garante que a div lateral não vaze */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+}
+
+.hero-content {
+    position: relative;
+    /* z-index: 10; */
+    padding-right: 70px; /* Espaço para a imagem lateral */
+}
+
+.hero-section h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 14px;
+    color: var(--light-text-color);
+    margin-bottom: 20px;
+}
+
+.hero-side-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px; /* Largura da "faixa" da imagem */
+    height: 100%;
+    background-color: #f5f5f5; /* Cor de fundo da faixa */
+    /* Simula a imagem com um gradiente ou cor */
+    background-image: linear-gradient(to right, rgba(224, 247, 250, 0) 0%, #eee 20%, #ddd 100%);
+    /* z-index: 5; */
+}
+
+
+/* --- Botões --- */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #00acc1;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 5px 12px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--highlight-bg);
+}
+
+.btn-tertiary {
+    background-color: white;
+    color: var(--light-text-color);
+    border: 1px solid var(--border-color);
+    padding: 5px 12px;
+}
+.btn-tertiary:hover {
+    background-color: #f5f5f5;
+}
+
+/* --- Seção Meus Roteiros --- */
+.my-routes-section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.my-routes-section{
+    background-color: var(--background-color);
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+
+.route-card {
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.route-image-placeholder {
+    width: 100%;
+    height: 160px; /* Altura do espaço para a imagem */
+    background-color: var(--placeholder-bg);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px;
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.route-details {
+    padding: 15px;
+    border: 1px solid var(--primary-color);
+    border-top: none;
+}
+
+.route-details h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.route-info {
+    font-size: 14px;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+.route-details .btn {
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px 0;
+}
+
+/* Card de Criação de Novo Roteiro (Dashed) */
+.create-route-card {
+    padding: 30px 20px;
+    text-align: center;
+    border: 2px dashed var(--dotted-border);
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+    margin-right: 15px;
+    margin-left: 15px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.create-icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--dotted-border);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    font-size: 24px;
+    color: var(--dotted-border);
+    font-weight: 300;
+}
+
+.create-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.create-subtitle {
+    font-size: 12px;
+    color: var(--light-text-color);
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+/* --- Rodapé (Footer) --- */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.footer a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-size: 12px;
+    font-weight: 500;
+}
