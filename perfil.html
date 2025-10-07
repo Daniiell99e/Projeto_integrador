@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Trip Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="logo(s)/Logo.png" alt="Trip Now Logo"> <span>Trip Up</span>
+        </div>
+        <nav class="main-nav">
+            <a href="#">Meus Roteiros</a>
+            <a href="#">Descobrir</a>
+            <a href="#">Comunidade</a>
+        </nav>
+        <div class="header-actions">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar roteiros...">
+            </div>
+            <div class="profile-icon">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <nav class="breadcrumb">
+            <a href="#">Início</a> / <span>Meu Perfil</span>
+        </nav>
+
+        <section class="profile-summary card">
+            <div class="profile-pic-container">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" alt="Foto de Perfil de Ana Silva" class="profile-pic">
+                <div class="camera-icon"><i class="fas fa-camera"></i></div>
+            </div>
+            <div class="profile-info">
+                <h1>Ana Silva</h1>
+                <button class="edit-profile-btn"><i class="fas fa-pencil-alt"></i> Editar perfil</button>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-number">23</span>
+                    <span class="stat-label">Roteiros criados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Países visitados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2.8K</span>
+                    <span class="stat-label">Curtidas recebidas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">156</span>
+                    <span class="stat-label">Seguidores</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-details">
+            <nav class="details-tabs">
+                <a href="#" class="tab-link active">Dados Pessoais</a>
+                <a href="#" class="tab-link">Histórico</a>
+                <a href="#" class="tab-link">Preferências</a>
+                <a href="#" class="tab-link">Conquistas</a>
+            </nav>
+            <form class="details-form card">
+                <h2>Dados Pessoais</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome completo</label>
+                        <p id="nome">Ana Silva</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <p id="cidade">Goiânia</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <p id="email">ana.silva@email.com</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="pais">País</label>
+                        <p id="pais">Brasil</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <p id="telefone">+55 11 99999-9999</p>
+                    </div>
+                    <div class="form-group form-group-bio">
+                        <label for="bio">Bio</label>
+                        <p id="bio">Apaixonada por viagens e culturas diferentes. Sempre em busca de novos destinos para explorar!</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="nascimento">Data de nascimento</label>
+                        <p id="nascimento">15/08/1999</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Website/Instagram</label>
+                        <p id="instagram">@anaviajante</p>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                    <button type="button" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="#">Empresa</a>
+            <a href="#">Suporte</a>
+            <a href="#">Legal</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>
