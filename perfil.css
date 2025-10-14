@@ -181,9 +181,7 @@ main {
 .footer-links { display: flex; gap: 20px; }
 .social-icons { display: none; }
 
-/* ------------------------------------------- */
 /* ---- LAYOUT DESKTOP (Telas > 800px) ---- */
-/* ------------------------------------------- */
 @media (min-width: 800px) {
     
     main, .main-footer {
@@ -250,4 +248,320 @@ main {
         font-size: 1.2rem;
     }
     .social-icons a { color: var(--cor-fonte); }
+}
+
+/* ---- LÓGICA DAS ABAS ---- */
+.details-content {
+    display: none; /* Esconde todos os conteúdos por padrão */
+}
+.details-content.active {
+    display: block; /* Mostra apenas o conteúdo que tem a classe 'active' */
+}
+
+
+/* ---- ESTILOS DA ABA HISTÓRICO ---- */
+.details-content h2 .fas {
+    margin-right: 8px;
+    color: var(--cor-subtitulo);
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid var(--cor-placeholder);
+    border-radius: 8px;
+}
+
+.history-item-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: var(--cor-placeholder); /* Cor para o placeholder */
+}
+
+.history-item-info {
+    flex-grow: 1; /* Faz esta div ocupar o espaço disponível */
+}
+.history-item-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: var(--cor-fonte);
+}
+.history-item-info p {
+    font-size: 0.9rem;
+    color: var(--cor-subtitulo);
+}
+
+.history-item-status {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0; /* Impede que os itens encolham */
+}
+
+.status-tag {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.status-concluido { background-color: var(--cor-botao); }
+.status-andamento { background-color: #f5a623; } /* Laranja */
+.status-planejado { background-color: #bdc3c7; } /* Cinza */
+
+.rating {
+    color: #f5b942; /* Amarelo para as estrelas */
+}
+.rating .far {
+    color: var(--cor-placeholder); /* Estrela vazia */
+}
+
+.view-link {
+    font-weight: bold;
+    color: var(--cor-subtitulo);
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 600px) {
+    .history-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .history-item-status {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* ---- ABA PREFERÊNCIAS ---- */
+.preferences-section {
+    margin-top: 25px;
+}
+.preferences-section:first-child {
+    margin-top: 0;
+}
+.preferences-section h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.destination-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-btn {
+    padding: 6px 12px; 
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.8rem; 
+    cursor: pointer;
+    background-color: var(--cor-placeholder);
+    color: var(--cor-subtitulo);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+.tag-btn.active {
+    background-color: var(--cor-botao);
+    color: white;
+    border-color: var(--cor-botao);
+}
+.tag-btn:not(.active):hover {
+    background-color: #ddd;
+}
+
+
+.preferences-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Começa com uma coluna no mobile */
+    gap: 25px;
+}
+
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.radio-item, .checkbox-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.checkbox-item {
+    justify-content: space-between; /* Alinha o checkbox à direita */
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cor-placeholder);
+}
+.checkbox-item:last-child {
+    border-bottom: none;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Ajustes da grid para telas maiores */
+@media (min-width: 800px) {
+    .preferences-grid {
+        grid-template-columns: 1fr 1fr; /* Duas colunas em desktop */
+    }
+}
+
+/* ---- ESTILOS DA ABA CONQUISTAS ---- */
+.badge-grid {
+    display: grid;
+    /* Cria colunas responsivas: tenta encaixar itens de 200px, 
+       distribuindo o espaço igualmente. */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.badge-card {
+    border: 1px solid var(--cor-placeholder);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.badge-card h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.badge-card p {
+    font-size: 0.9rem;
+    color: var(--cor-subtitulo);
+    flex-grow: 1; /* Garante que a tag fique sempre embaixo */
+}
+
+.badge-tag {
+    background-color: #f5a623; /* Laranja */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Estilos para badges desbloqueados */
+.badge-card.unlocked {
+    background-color: #FFFBEB;
+    border-color: #FDE68A;
+}
+.badge-card.unlocked .badge-icon {
+    background-color: #FDE68A;
+    color: #FBBF24;
+}
+.badge-card.unlocked h3 {
+    color: #B45309;
+}
+
+/* Estilos para badges bloqueados */
+.badge-card.locked {
+    background-color: var(--cor-card-background);
+}
+.badge-card.locked .badge-icon {
+    background-color: var(--cor-placeholder);
+    color: #b0b0b0;
+}
+.badge-card.locked h3, .badge-card.locked p {
+    color: #b0b0b0;
+}
+
+
+/* Seção de Progresso */
+.progress-section {
+    margin-top: 40px;
+}
+.progress-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--cor-subtitulo);
+}
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: var(--cor-placeholder);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: #2ecc71; /* Verde */
+    border-radius: 6px;
+}
+
+/* ---- [NOVO] LÓGICA DE EDIÇÃO DO PERFIL ---- */
+
+/* Por padrão, esconde os inputs e os botões de salvar/cancelar */
+.edit-mode,
+#dados-pessoais .form-actions {
+    display: none;
+}
+/* Estilo básico para os inputs e textarea */
+.edit-mode {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--cor-placeholder);
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+textarea.edit-mode {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Quando o formulário estiver em modo de edição... */
+#dados-pessoais.is-editing .view-mode {
+    display: none; /* ...esconde os textos <p> */
+}
+#dados-pessoais.is-editing .edit-mode {
+    display: block; /* ...mostra os inputs <input> */
+}
+#dados-pessoais.is-editing .form-actions {
+    display: flex; /* ...mostra os botões de salvar/cancelar */
 }
