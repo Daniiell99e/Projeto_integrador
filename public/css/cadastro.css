@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+--cor-botao: #0099ff;
+--cor-botao-hover: #007acc;
+--cor-fonte: #333333;
+--cor-subtitulo: #777777;
+--cor-placeholder: #e7e6e6;
+--cor-backgroundBody:#f9f9f9;
+--cor-borda:#15ADE5;
+
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--cor-backgroundBody);
+    background: var(--cor-fonte);
+}
+
+.Cadastro-container {
+    background: #fff;
+    border: 1px solid var(--cor-borda);
+    border-radius: .6em;
+    padding: 1em 1em;
+    width: 20em;
+    
+    text-align: center;
+}
+.Cadastro-container p {
+    color: var(--cor-subtitulo);
+    margin-bottom: 1.2em;
+    font-size: 0.8em;
+}
+
+.class-label{
+    display: block;
+    font-size: .8em;
+    margin-bottom: .3em;
+    color: var(--cor-fonte);
+    text-align: left;
+}
+.class-input{
+    width: 100%;
+    padding: .5em;
+    margin-bottom: .2em;
+    /* border: 1px solid var(--cor-borda); */
+    border: none;
+    border-radius: .3em;
+    font-size: .8em;
+    background-color: var(--cor-placeholder);
+    
+}
+
+.class-input:focus{
+    outline: none;
+
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+    font-size: 0.9em;
+    cursor: pointer;
+    
+}
+.checkbox input {
+    margin-right: 0.2em;
+
+}
+.checkbox label {
+    font-size: 0.8em;
+    color: var(--cor-fonte);
+    margin-left: 0;
+}
+
+.button-entrar{
+    width: 100%;
+    padding: .8em;
+    border: none;
+    border-radius: .3em;
+    font-size: .9em;
+    background-color: var(--cor-botao);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 3.2em;
+}
+.button-entrar:hover {
+    background-color: var(--cor-botao-hover);
+}
+
+.paragrafor-final{
+    color: var(--cor-subtitulo);
+    margin-bottom: 1em;
+    font-size: 0.6em;
+    padding: 0.3em;
+
+}
+
+a {
+    color: var(--cor-botao);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}    
+
+a:hover {
+    text-decoration: underline;    
+}
+
+.checkbox a {
+  font-size: .9em;
+    margin-left: 0.2em;
+  
+}
+
+.icons {
+    position: relative;
+    left: 42%;
+    bottom: 1.8em;
+    cursor: pointer;
+}
+
+.input-password {
+    position: relative;
+    margin-top: -1.5em;   
+     
+}
+
+input.invalid {
+    border: 2px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

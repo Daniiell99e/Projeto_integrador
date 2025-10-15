@@ -1,0 +1,29 @@
+{
+  "name": "projeto_integrador",
+  "version": "1.0.0",
+  "description": "Projeto integrador com servidor Node + Express + LiveReload",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniiell99e/Projeto_integrador.git"
+  },
+  "keywords": [],
+  "author": "Seu Nome",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniiell99e/Projeto_integrador/issues"
+  },
+  "homepage": "https://github.com/Daniiell99e/Projeto_integrador#readme",
+  "dependencies": {
+    "express": "^4.21.0",
+    "livereload": "^0.9.3",
+    "connect-livereload": "^0.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
