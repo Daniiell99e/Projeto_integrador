@@ -6,10 +6,10 @@ const toggle = document.querySelector(".icons")
 toggle.addEventListener('click' , () => {
     if (input.type === "password") {
         input.type = "text"
-        toggle.src = "src/assets/imagens/icons/eye-off.svg" 
+        toggle.src = "/logo(s)/icons/eye-off.svg" 
     } else {
         input.type = "password"
-        toggle.src = "src/assets/imagens/icons/eye.svg"
+        toggle.src = "/logo(s)/icons/eye.svg"
     }
 
 
@@ -23,10 +23,10 @@ toggle.addEventListener('click' , () => {
     toggleConfirm.addEventListener('click' , () => {
         if (inputConfirm.type === "password") {
             inputConfirm.type = "text"
-            toggleConfirm.src = "src/assets/imagens/icons/eye-off.svg" 
+            toggleConfirm.src = "/logo(s)/icons/eye-off.svg" 
         } else {
             inputConfirm.type = "password"
-            toggleConfirm.src = "src/assets/imagens/icons/eye.svg"
+            toggleConfirm.src = "/logo(s)/icons/eye.svg"
         }   
 
 
