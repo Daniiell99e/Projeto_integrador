@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Destino</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        body { font-family: 'Roboto', sans-serif; }
+    </style>
+    <link rel="stylesheet" href="detalhesDest.css">
+</head>
+<body>
+    
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-links">
+                <li class="nav-item active"><a href="#">Meus Roteiros</a></li>
+                <li class="nav-item"><a href="#">Descobrir</a></li>
+                <li class="nav-item"><a href="#">Comunidade</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <span class="icon search-icon">🔍</span>
+            <span class="profile-icon">👤</span>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="destination-header">            
+            <p class="breadcrumb">Início / <strong>Detalhes do Destino</strong></p>
+        </section>
+
+        <div class="destination-hero">
+            <div class="city-image-placeholder hero-image">
+                <div class="hero-content">
+                    <h1 class="hero-title">Paris, França</h1>
+                </div>
+            </div>
+            <p class="destination-description">
+                A Cidade Luz é conhecida por sua arte, arquitetura... <a href="#" class="read-more-link">ver mais</a>
+            </p>
+        </div>
+
+        <section class="config-section">
+            <h2 class="config-title">Configurar Viagem</h2>
+            
+            <form class="config-form">
+                
+                <div class="form-group">
+                    <label for="dias" class="form-label">Quantos dias?</label>
+                    <input type="number" id="dias" placeholder=" " class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="data-inicio" class="form-label">Data de início</label>
+                    <div class="input-with-icon">
+                        <input type="text" id="data-inicio" placeholder="dd/mm/aaaa" class="form-input">
+                        <span class="input-icon">🗓️</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Horários preferidos</label>
+                    <div class="time-options-grid">
+                        <button type="button" class="btn time-btn active">Manhã</button>
+                        <button type="button" class="btn time-btn">Tarde</button>
+                        <button type="button" class="btn time-btn">Noite</button>
+                        <button type="button" class="btn time-btn">Todos</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pessoas" class="form-label">Número de pessoas</label>
+                    <input type="number" id="pessoas" value="2" class="form-input">
+                </div>
+
+                <button type="submit" class="btn primary-action-btn continue-btn">Continuar</button>
+            </form>
+        </section>
+
+        <section class="popular-cities-section">
+            <h2 class="section-title">Pontos Turísticos Populares</h2>
+            
+            <div class="tour-cards-list">
+                <article class="tour-card city-card">
+                    <div class="city-image-placeholder tour-image">
+                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
+                    </div>
+                    <div class="tour-details">
+                        <h3 class="tour-name city-name">Torre Eiffel</h3>
+                        <p class="tour-info">⏰ 2-3h &nbsp; | &nbsp; €29</p>
+                        <button class="btn card-button add-to-route-btn">Adicionar ao Roteiro</button>
+                    </div>
+                </article>
+
+                <article class="tour-card city-card">
+                    <div class="city-image-placeholder tour-image">
+                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
+                    </div>
+                    <div class="tour-details">
+                        <h3 class="tour-name city-name">Museu do Louvre</h3>
+                        <p class="tour-info">⏰ 4-5h &nbsp; | &nbsp; €17</p>
+                        <button class="btn card-button add-to-route-btn">Adicionar ao Roteiro</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <a href="#">Empresa</a>
+        <a href="#">Suporte</a>
+        <a href="#">Legal</a>
+    </footer>
+
+</body>
+</html>
