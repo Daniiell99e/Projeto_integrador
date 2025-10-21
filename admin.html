@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Trip Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="admin.css"> 
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="header-left">
+            <div class="admin-logo-placeholder">
+                <img src="src/assets/imagens/Logo.png" alt="Trip Now Admin Logo" style="height: 30px;">
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="admin-name">Administrador</span>
+            <div class="admin-avatar"></div>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <h1 class="main-title">Painel Administrativo</h1>
+        <p class="main-subtitle">Gerencie cupons, ofertas e monitore o sistema</p>
+
+        <nav class="admin-tabs">
+            <a href="#" class="admin-tab-link active">Dashboard</a>
+            <a href="#" class="admin-tab-link">Cupons</a>
+            <a href="#" class="admin-tab-link">Relatórios</a>
+            <a href="#" class="admin-tab-link">Configurações</a>
+        </nav>
+
+        <section class="dashboard-content">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Usuários Ativos</span>
+                        <i class="fas fa-users metric-icon blue-icon"></i>
+                    </div>
+                    <p class="metric-value">2.847</p>
+                    <p class="metric-change positive">+12% este mês</p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Roteiros Criados</span>
+                        <i class="fas fa-map-marker-alt metric-icon green-icon"></i>
+                    </div>
+                    <p class="metric-value">18.293</p>
+                    <p class="metric-change positive">+8% este mês</p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Cupons Ativos</span>
+                        <i class="fas fa-percent metric-icon red-icon"></i>
+                    </div>
+                    <p class="metric-value">156</p>
+                    <p class="metric-change negative">-3% este mês</p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-title">Receita</span>
+                        <i class="fas fa-chart-line metric-icon purple-icon"></i>
+                    </div>
+                    <p class="metric-value">$89.4K</p>
+                    <p class="metric-change positive">+15% este mês</p>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <i class="fas fa-chart-bar chart-icon"></i>
+                        <h3>Usuários por Mês</h3>
+                    </div>
+                    <div class="chart-canvas-container">
+                        <canvas id="userChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <i class="fas fa-chart-pie chart-icon"></i>
+                        <h3>Destinos Mais Populares</h3>
+                    </div>
+                    <div class="chart-placeholder">
+                        GRÁFICO DE DESTINOS
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pega o "contexto" 2D do canvas
+            const ctx = document.getElementById('userChart').getContext('2d');
+
+            // Criando um gradiente para o fundo
+            const gradient = ctx.createLinearGradient(0, 0, 0, 250);
+            gradient.addColorStop(0, 'rgba(0, 123, 255, 0.3)');
+            gradient.addColorStop(1, 'rgba(0, 123, 255, 0)');
+
+            // Dados de exemplo para "Acessos Mensais"
+            const labels = ['Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov'];
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Acessos Mensais',
+                    data: [1800, 1950, 2200, 2100, 2400, 2350, 2600],
+                    fill: true,
+                    backgroundColor: gradient,
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    tension: 0.3, // Deixa a linha suave
+                    pointBackgroundColor: 'rgba(0, 123, 255, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(0, 123, 255, 1)'
+                }]
+            };
+
+            // Configuração do Gráfico
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `Acessos: ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false }
+                        },
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                color: '#e9ecef',
+                                drawBorder: false
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Cria o gráfico
+            const userChart = new Chart(ctx, config);
+        });
+    </script>
+</body>
+</html>
