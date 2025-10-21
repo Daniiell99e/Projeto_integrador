@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontos Turísticos - Seleção</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        body { font-family: 'Roboto', sans-serif; }
+    </style>
+    <link rel="stylesheet" href="pontosTuris.css">
+</head>
+<body>
+    
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-links">
+                <li class="nav-item active"><a href="#">Meus Roteiros</a></li>
+                <li class="nav-item"><a href="#">Descobrir</a></li>
+                <li class="nav-item"><a href="#">Comunidade</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <span class="icon search-icon">🔍</span>
+            <span class="profile-icon">👤</span>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="destination-header">            
+            <p class="breadcrumb">Início / Detalhes do Destino</p>
+            <h1 class="page-title page-title--large">Pontos Turísticos - Paris</h1>
+            <p class="page-subtitle">Selecione as atrações para seu roteiro</p>
+        </section>
+
+        <div class="action-bar">
+            <button class="btn btn-secondary action-btn--secondary">Voltar</button>
+            <button class="btn primary-action-btn action-btn--primary">Finalizar Seleção</button>
+            <span class="selection-count">Selecionadas: 1/10</span>
+        </div>
+        
+        <section class="filters-section">
+            <span class="filter-label">Filtrar por:</span>
+            <div class="filter-tags-container">
+                <button class="btn filter-tag active">Todos</button>
+                <button class="btn filter-tag">Museus</button>
+                <button class="btn filter-tag">Monumentos</button>
+                <button class="btn filter-tag">Parques</button>
+                <button class="btn filter-tag">Compras</button>
+                <button class="btn filter-tag">Gastronomia</button>
+            </div>
+        </section>
+
+        <section class="attractions-grid">
+            
+            <article class="city-card attraction-card attraction-card--selected">
+                <div class="city-image-placeholder attraction-image">
+                    <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
+                </div>
+                <div class="attraction-details">
+                    <h3 class="city-name">Museu do Louvre</h3>
+                    <p class="attraction-info">⏰ 4-5h &nbsp; | &nbsp; €17</p>
+                    <button class="btn card-button selected-btn">Selecionado</button>
+                </div>
+            </article>
+
+            <article class="city-card attraction-card">
+                <div class="city-image-placeholder attraction-image">
+                    <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
+                </div>
+                <div class="attraction-details">
+                    <h3 class="city-name">Museu do Louvre</h3>
+                    <p class="attraction-info">⏰ 4-5h &nbsp; | &nbsp; €17</p>
+                    <button class="btn card-button add-to-route-btn">Adicionar ao Roteiro</button>
+                </div>
+            </article>
+
+            <article class="city-card attraction-card">
+                <div class="city-image-placeholder attraction-image">
+                    <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
+                </div>
+                <div class="attraction-details">
+                    <h3 class="city-name">Museu do Louvre</h3>
+                    <p class="attraction-info">⏰ 4-5h &nbsp; | &nbsp; €17</p>
+                    <button class="btn card-button add-to-route-btn">Adicionar ao Roteiro</button>
+                </div>
+            </article>
+
+            <article class="city-card attraction-card">
+                <div class="city-image-placeholder attraction-image">
+                    <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
+                </div>
+                <div class="attraction-details">
+                    <h3 class="city-name">Museu do Louvre</h3>
+                    <p class="attraction-info">⏰ 4-5h &nbsp; | &nbsp; €17</p>
+                    <button class="btn card-button add-to-route-btn">Adicionar ao Roteiro</button>
+                </div>
+            </article>
+            
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <a href="#">Empresa</a>
+        <a href="#">Suporte</a>
+        <a href="#">Legal</a>
+    </footer>
+
+</body>
+</html>
