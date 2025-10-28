@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Trip Now</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/admin.css"> 
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="header-left">
+            <div class="admin-logo-placeholder"></div>
+        </div>
+        <div class="header-right">
+            <span class="admin-name">Administrador</span>
+            <div class="admin-avatar"></div>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <h1 class="main-title">Painel Administrativo</h1>
+        <p class="main-subtitle">Gerencie cupons, ofertas e monitore o sistema</p>
+
+        <nav class="admin-tabs">
+            <a href="#" class="admin-tab-link active" data-tab="dashboard-content">Dashboard</a>
+            <a href="#" class="admin-tab-link" data-tab="cupons-content">Cupons</a>
+            <a href="#" class="admin-tab-link" data-tab="relatorios-content">Relatórios</a>
+            <a href="#" class="admin-tab-link" data-tab="configuracoes-content">Configurações</a>
+            <a href="#" class="admin-tab-link" data-tab="cidades-content">Gerenciar Cidades</a>
+        </nav>
+
+        <section id="dashboard-content" class="admin-content-panel active">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-header"><span class="metric-title">Usuários Ativos</span><i class="fas fa-users metric-icon blue-icon"></i></div><p class="metric-value">2.847</p><p class="metric-change positive">+12% este mês</p></div>
+                <div class="metric-card"><div class="metric-header"><span class="metric-title">Roteiros Criados</span><i class="fas fa-map-marker-alt metric-icon green-icon"></i></div><p class="metric-value">18.293</p><p class="metric-change positive">+8% este mês</p></div>
+                <div class="metric-card"><div class="metric-header"><span class="metric-title">Cupons Ativos</span><i class="fas fa-percent metric-icon red-icon"></i></div><p class="metric-value">156</p><p class="metric-change negative">-3% este mês</p></div>
+                <div class="metric-card"><div class="metric-header"><span class="metric-title">Receita</span><i class="fas fa-chart-line metric-icon purple-icon"></i></div><p class="metric-value">$89.4K</p><p class="metric-change positive">+15% este mês</p></div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header"><i class="fas fa-chart-bar chart-icon"></i><h3>Usuários por Mês</h3></div>
+                    <div class="chart-canvas-container"><canvas id="userChart"></canvas></div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <i class="fas fa-chart-bar chart-icon"></i> 
+                        <h3>Destinos Mais Populares</h3>
+                    </div>
+                    <div class="chart-canvas-container">
+                        <canvas id="destinationsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cupons-content" class="admin-content-panel">
+            <div class="coupon-manager-header"><h2>Gerenciar Cupons de Parceiros</h2><button class="btn-primary"><i class="fas fa-plus"></i> Novo Cupom</button></div>
+            <div class="form-card"><form class="coupon-form"><div class="form-group"><label for="parceiro">Parceiro</label><input type="text" id="parceiro" placeholder="Nome do parceiro"></div><div class="form-group"><label for="desconto">Desconto</label><input type="text" id="desconto" placeholder="20%"></div><div class="form-group"><label for="validade">Validade</label><input type="text" id="validade" placeholder="dd/mm/aaaa"></div><button type="submit" class="btn-primary">Adicionar</button></form></div>
+            <h2 class="section-title">Cupons Ativos</h2>
+            <div class="coupon-list-card"><ul class="coupon-list"><li class="coupon-list-item"><div class="coupon-img-placeholder"></div><div class="coupon-info"><h3>Hotel Central Paris</h3><div class="coupon-tags"><span>Hospedagem</span><span>Paris</span></div></div><div class="coupon-details"><span class="discount-value green">€50 OFF</span><span class="uses">45 usos</span></div><div class="coupon-validity"><span>Válido até</span><span>31/12/2024</span></div><div class="coupon-status-actions"><span class="status-tag-admin ativo">Ativo</span><div class="action-icons"><i class="fas fa-eye"></i><i class="fas fa-pencil-alt"></i><i class="fas fa-trash"></i></div></div></li><li class="coupon-list-item"><div class="coupon-img-placeholder"></div><div class="coupon-info"><h3>Restaurante Le Petit</h3><div class="coupon-tags"><span>Gastronomia</span><span>Paris</span></div></div><div class="coupon-details"><span class="discount-value gray">20%</span><span class="uses">23 usos</span></div><div class="coupon-validity"><span>Válido até</span><span>31/12/2024</span></div><div class="coupon-status-actions"><span class="status-tag-admin ativo">Ativo</span><div class="action-icons"><i class="fas fa-eye"></i><i class="fas fa-pencil-alt"></i><i class="fas fa-trash"></i></div></div></li><li class="coupon-list-item"><div class="coupon-img-placeholder"></div><div class="coupon-info"><h3>Tokyo Tours</h3><div class="coupon-tags"><span>Turismo</span><span>Tokyo</span></div></div><div class="coupon-details"><span class="discount-value green">¥2000 OFF</span><span class="uses">12 usos</span></div><div class="coupon-validity"><span>Válido até</span><span>15/01/2025</span></div><div class="coupon-status-actions"><span class="status-tag-admin ativo">Ativo</span><div class="action-icons"><i class="fas fa-eye"></i><i class="fas fa-pencil-alt"></i><i class="fas fa-trash"></i></div></div></li><li class="coupon-list-item"><div class="coupon-img-placeholder"></div><div class="coupon-info"><h3>Bali Adventures</h3><div class="coupon-tags"><span>Atividades</span><span>Bali</span></div></div><div class="coupon-details"><span class="discount-value gray">15%</span><span class="uses">67 usos</span></div><div class="coupon-validity"><span>Válido até</span><span>20/11/2024</span></div><div class="coupon-status-actions"><span class="status-tag-admin expirado">Expirado</span><div class="action-icons"><i class="fas fa-eye"></i><i class="fas fa-pencil-alt"></i><i class="fas fa-trash"></i></div></div></li></ul></div>
+        </section>
+
+        <section id="relatorios-content" class="admin-content-panel">
+            <div class="form-card report-filters"><form class="coupon-form"><div class="form-group"><label for="periodo">Período</label><select id="periodo"><option selected>Último mês</option><option>Últimos 3 meses</option><option>Este ano</option></select></div><div class="form-group"><label for="tipo">Tipo</label><select id="tipo"><option selected>Todos</option><option>Usuários</option><option>Cupons</option></select></div><div class="form-group"><label for="regiao">Região</label><select id="regiao"><option selected>Global</option><option>América do Norte</option><option>América Central</option><option>América do Sul</option><option>Europa</option><option>Africa</option><option>Ásia</option><option>Oceania</option></select></div><button type="submit" class="btn-primary">Gerar Relatório</button></form></div>
+            <div class="charts-grid"><div class="chart-card report-card"><h3>Crescimento de Usuários</h3><div class="chart-canvas-container"><canvas id="growthChart"></canvas></div><div class="report-summary-metrics"><div class="summary-metric-item"><span class="metric-value metric-blue">+342</span><span class="metric-label">Este mês</span></div><div class="summary-metric-item"><span class="metric-value metric-green">+12%</span><span class="metric-label">Crescimento</span></div><div class="summary-metric-item"><span class="metric-value metric-purple">2.847</span><span class="metric-label">Total</span></div></div></div><div class="chart-card report-card"><h3>Uso de Cupons</h3><div class="chart-placeholder">GRÁFICO DE CUPONS</div><div class="report-summary-metrics"><div class="summary-metric-item"><span class="metric-value metric-orange">1.234</span><span class="metric-label">Usados</span></div><div class="summary-metric-item"><span class="metric-value metric-green">€45K</span><span class="metric-label">Economia</span></div><div class="summary-metric-item"><span class="metric-value metric-blue">76%</span><span class="metric-label">Taxa uso</span></div></div></div></div>
+            <div class="form-card export-card"><h3>Exportar Dados</h3><div class="export-buttons-group"><a href="#" class="export-btn"><i class="fas fa-file-pdf"></i> Relatório Completo (PDF)</a><a href="#" class="export-btn"><i class="fas fa-file-excel"></i> Dados Brutos (Excel)</a><a href="#" class="export-btn"><i class="fas fa-chart-line"></i> Dashboard Executivo</a></div></div>
+        </section>
+        
+        <section id="configuracoes-content" class="admin-content-panel">
+            <h2 class="section-title">Configurações do Sistema</h2>
+            <div class="form-card"><div class="settings-section"><h3>Cupons e Promoções</h3><div class="settings-checkbox-group"><label class="settings-checkbox-item"><span>Aprovar novos cupons automaticamente</span><input type="checkbox"></label><label class="settings-checkbox-item"><span>Notificar usuários sobre novos cupons</span><input type="checkbox" checked></label><label class="settings-checkbox-item"><span>Permitir cupons limitados por usuário</span><input type="checkbox" checked></label></div></div><div class="settings-section"><h3>Moderação</h3><div class="settings-checkbox-group"><label class="settings-checkbox-item"><span>Aprovar roteiros públicos automaticamente</span><input type="checkbox" checked></label><label class="settings-checkbox-item"><span>Permitir comentários anônimos</span><input type="checkbox"></label><label class="settings-checkbox-item"><span>Filtro automático de conteúdo inadequado</span><input type="checkbox" checked></label></div></div><div class="settings-section"><h3>Limites e Quotas</h3><div class="settings-input-grid"><div class="form-group"><label for="max-roteiros">Máximo de roteiros por usuário/mês</label><input type="number" id="max-roteiros" value="50"></div><div class="form-group"><label for="max-cupons">Máximo de cupons por parceiro</label><input type="number" id="max-cupons" value="10"></div></div></div><div class="settings-actions"><button type="submit" class="btn-primary">Salvar Configurações</button><button type="button" class="btn-secondary">Restaurar Padrões</button></div></div>
+        </section>
+
+        <section id="cidades-content" class="admin-content-panel">
+            
+            <div class="form-card">
+                <div class="coupon-manager-header" style="margin-bottom: 0;">
+                    <h2>Ações Rápidas</h2>
+                    <button id="clear-cache-btn" class="btn-secondary">Limpar Cache do Servidor</button>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 30px; margin-bottom: 20px;">Cidades Curadas</h2>
+            
+            <div class="form-card">
+                <div class="coupon-manager-header" style="padding-bottom: 20px; border-bottom: 1px solid var(--admin-border-color);">
+                    <h3 style="font-size: 1.2rem; font-weight: 500;">Lista de Cidades</h3>
+                    <button id="add-new-city-btn" class="btn-primary"><i class="fas fa-plus"></i> Adicionar Cidade</button>
+                </div>
+                
+                <div id="cities-list" style="margin-top: 20px;">
+                    </div>
+                
+                <div id="status" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
+                
+                <button id="save-all-changes-btn" class="btn-primary">
+                    Salvar Todas as Alterações
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="city-modal" class="admin-modal">
+        <div class="admin-modal-content">
+            <h2 id="modal-title">Adicionar Nova Cidade</h2>
+            <form id="city-form">
+                <input type="hidden" id="city-id">
+                <div class="form-group">
+                    <label for="city-name">Nome da Cidade</label>
+                    <input type="text" id="city-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Pontos Turísticos</label>
+                    <div id="tourist-spots-container">
+                        </div>
+                    <button type="button" id="add-spot-btn" class="btn-secondary" style="margin-top: 10px;">
+                        <i class="fas fa-plus"></i> Adicionar Ponto
+                    </button>
+                </div>
+                <div class="settings-actions" style="margin-top: 10px; padding-top: 20px;">
+                    <button type="button" id="cancel-btn" class="btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
