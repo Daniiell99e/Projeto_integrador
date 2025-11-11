@@ -1,0 +1,42 @@
+{
+    "profilePictureUrl": "https://img.freepik.com/fotos-gratis/pessoa-de-origem-indiana-se-divertindo_23-2150285283.jpg?semt=ais_hybrid&w=740&q=80",
+    "personalInfo": {
+        "nome": "Ana Silva",
+        "cidade": "Goiânia",
+        "email": "ana.silva@email.com",
+        "pais": "Brasil",
+        "telefone": "+55 62 91234-5678",
+        "bio": "Esta é uma bio carregada dinamicamente do arquivo JSON. Apaixonada por viagens e culturas!",
+        "nascimento": "15/08/1999",
+        "instagram": "@anaviajante"
+    },
+    "history": [
+        {
+            "id": 1,
+            "title": "5 dias mágicos em Paris",
+            "date": "15/09/2024",
+            "thumbnailUrl": "https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "status": "Concluído",
+            "rating": 4,
+            "mapLocation": "Paris, France"
+        },
+        {
+            "id": 2,
+            "title": "Tokyo para iniciantes",
+            "date": "01/08/2024",
+            "thumbnailUrl": "https://img.freepik.com/fotos-gratis/vista-aerea-da-paisagem-urbana-de-toquio-com-a-montanha-fuji-no-japao_335224-148.jpg?semt=ais_hybrid&w=740&q=80",
+            "status": "Planejado",
+            "rating": 5,
+            "mapLocation": "Tokyo, Japan"
+        },
+        {
+            "id": 3,
+            "title": "Eurotrip econômico",
+            "date": "20/07/2024",
+            "thumbnailUrl": "https://images.pexels.com/photos/417054/pexels-photo-417054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "status": "Em andamento",
+            "rating": 1,
+            "mapLocation": "Europe"
+        }
+    ]
+}
