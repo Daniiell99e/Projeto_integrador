@@ -145,7 +145,7 @@ body {
 .btn {
     padding: 8px 15px;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -209,30 +209,51 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
-.route-image-placeholder {
+.route-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.route-image img {
     width: 100%;
     height: 160px; /* Altura do espaço para a imagem */
-    background-color: var(--placeholder-bg);
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: flex-end;
-    padding: 10px;
-    color: white;
-    font-size: 12px;
-    font-weight: 300;
+    object-fit: cover;
+   
+    
 }
+
+.image-text {
+    position: absolute;
+    
+    /* Configura a posição desejada (exemplo: rodapé) */
+    bottom: 0; 
+    left: 0; 
+    
+    /* Estilização para o overlay */
+    width: 100%; 
+    padding: 10px; 
+    color: white;
+}
+
+.image-text p {
+   text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+   font-size: 1.3em;
+   font-weight: bold;
+}
+
+
 
 .route-details {
     padding: 15px;
     border: 1px solid var(--primary-color);
     border-top: none;
+    text-align: center;
 }
 
-.route-details h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
+
 
 .route-info {
     font-size: 14px;

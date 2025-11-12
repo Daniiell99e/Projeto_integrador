@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Roteiros - Recriação</title>
-    <link rel="stylesheet" href="home.css">
+    <title>TripNow/Home</title>
+    <link rel="stylesheet" href="../css/home.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
         body { font-family: 'Roboto', sans-serif; }
@@ -16,13 +16,12 @@
         <nav class="nav">
             <ul class="nav-links">
                 <li class="nav-item"><a href="#">Meus Roteiros</a></li>
-                <li class="nav-item"><a href="#">Explorar</a></li>
+                <li class="nav-item"><a href="#">Criar Roteiro</a></li>
                 <li class="nav-item"><a href="#">Comunidade</a></li>
             </ul>
         </nav>
         <div class="header-icons">
-            <span class="icon search-icon">🔍</span>
-            <span class="profile-icon">👤</span>
+                <span class="profile-icon">👤</span>
         </div>
     </header>
 
@@ -40,35 +39,17 @@
             <h2>Meus Roteiros</h2>
 
             <article class="route-card">
-                <div class="route-image-placeholder">
-                    <p class="image-text">Foto do Destino (Banda Grande, Praia do Espelho)</p>
+                <div class="route-image">
+                    <img src="/src/assets/imagens/salvador.jpeg" alt="salvador">
+                    <div class="image-text">
+                        <p>Porto Seguro, Bahia</p>
+                    </div>
                 </div>
                 <div class="route-details">
-                    <h3>Porto Seguro</h3>
                     <p class="route-info">📍 27 atividades • 🗓️ 15 de Outubro</p>
                     <button class="btn btn-tertiary">Ver Roteiro</button>
                 </div>
             </article>
-
-            <article class="route-card">
-                <div class="route-image-placeholder">
-                    <p class="image-text">Foto do Destino (Estátua da Liberdade, Central Park)</p>
-                </div>
-                <div class="route-details">
-                    <h3>Nova York, EUA</h3>
-                    <p class="route-info">📍 34 atividades • 🗓️ 28 de Dezembro</p>
-                    <button class="btn btn-tertiary">Ver Roteiro</button>
-                </div>
-            </article>
-
-            <div class="create-route-card">
-                <div class="create-icon">
-                    <span>+</span>
-                </div>
-                <p class="create-title">Criar Novo Roteiro</p>
-                <p class="create-subtitle">Clique aqui para começar a planejar suas próximas viagens</p>
-            </div>
-
         </section>
     </main>
 
