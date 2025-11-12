@@ -37,14 +37,18 @@ body {
 }
 
 /* --- 1. Cabeçalho (Header) --- */
+/* --- Estilização do Cabeçalho (Header) --- */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%; 
+    padding: 20px 5%;
+    padding-left: 5%;
+    border-bottom: 1px solid var(--border-color);
+    /* max-width: 500px; */
     width: 100%;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra sutil para destacar */
+    margin: 0 auto;
+    background-color: var(--background-color);
 }
 
 .nav-links {
@@ -52,8 +56,6 @@ body {
     display: flex;
     font-size: 14px;
     white-space: nowrap;
-    padding-left: 0;
-    margin-left: 0;
 }
 
 .nav-item {
@@ -62,17 +64,16 @@ body {
 
 .nav-item a {
     text-decoration: none;
-    color: var(--light-text-color);
+    color: var(--text-color);
     padding-bottom: 5px;
-    font-weight: 500;
-    transition: color 0.3s;
+    font-weight: bolder;
 }
 
-.nav-item.active a {
-    color: var(--text-color); /* Link ativo */
-    font-weight: 700; 
-    border-bottom: 2px solid var(--primary-color); /* Linha azul de destaque */
-}
+/* .nav-item.active a {
+    color: var(--text-color);
+    font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+} */
 
 .header-icons {
     display: flex;
@@ -81,9 +82,8 @@ body {
 
 .icon {
     margin-left: 15px;
-    font-size: 20px; 
+    font-size: 18px;
     cursor: pointer;
-    color: var(--text-color);
 }
 
 .profile-icon {
@@ -98,6 +98,7 @@ body {
     font-size: 16px;
     margin-left: 15px;
 }
+
 
 /* --- 2. Conteúdo Principal (MAIN) - Estilos Específicos da Página --- */
 
