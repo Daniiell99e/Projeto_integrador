@@ -45,6 +45,9 @@ body {
     width: 100%;
     margin: 0 auto;
     background-color: var(--background-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .nav-links {

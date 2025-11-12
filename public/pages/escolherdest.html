@@ -38,61 +38,17 @@
             <input type="text" placeholder="Digite o nome da cidade..." class="city-search-input">
         </div>
 
-        <section class="popular-cities-section">
+        <section class="popular-cities-section" id="containerCards">
             <h2>Cidades Populares</h2>
-            
-            <div class="city-cards-grid">
-                
-                <article class="city-card">
-                    <div class="city-image-placeholder">
-                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
-                    </div>
-                    <div class="city-details">
-                        <h3 class="city-name">Paris, França</h3>
-                        <button class="btn btn-secondary card-button">Ver detalhes</button>
-                    </div>
-                </article>
-
-                <article class="city-card">
-                    <div class="city-image-placeholder">
-                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
-                    </div>
-                    <div class="city-details">
-                        <h3 class="city-name">Paris, França</h3>
-                        <button class="btn btn-secondary card-button">Ver detalhes</button>
-                    </div>
-                </article>
-
-                <article class="city-card">
-                    <div class="city-image-placeholder">
-                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
-                    </div>
-                    <div class="city-details">
-                        <h3 class="city-name">Paris, França</h3>
-                        <button class="btn btn-secondary card-button">Ver detalhes</button>
-                    </div>
-                </article>
-
-                <article class="city-card">
-                    <div class="city-image-placeholder">
-                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
-                    </div>
-                    <div class="city-details">
-                        <h3 class="city-name">Paris, França</h3>
-                        <button class="btn btn-secondary card-button">Ver detalhes</button>
-                    </div>
-                </article>
-
-            </div>
+            <div class="city-cards-grid"></div>
         </section>
-
+        
     </main>
-
     <footer class="footer">
         <a href="#">Empresa</a>
         <a href="#">Suporte</a>
         <a href="#">Legal</a>
     </footer>
-
+<script src="../js/cardDinamico.js"></script>
 </body>
 </html>
