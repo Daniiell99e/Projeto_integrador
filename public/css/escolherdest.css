@@ -201,10 +201,11 @@ body {
 }
 
 .city-name {
-    font-size: 16px;
-    font-weight: 700;
     margin: 5px 0 10px 0;
-    color: var(--text-color);
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 /* Estilo do Botão Ver Detalhes */

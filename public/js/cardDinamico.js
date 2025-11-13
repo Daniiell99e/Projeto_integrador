@@ -73,6 +73,7 @@ if (!containerCardsGrid) {
         // Conteúdo do Botão: <button class="btn btn-secondary card-button">
         const botaoDetalhes = document.createElement('button')
         botaoDetalhes.className = 'btn btn-secondary card-button'
+        botaoDetalhes.id = 'verDetalhes'
         botaoDetalhes.textContent = 'Ver detalhes'
 
         
@@ -94,3 +95,4 @@ if (!containerCardsGrid) {
     // Renderização Final: Insere o Fragmento no contêiner principal.
     containerCardsGrid.appendChild(fragmento)
 }
+
