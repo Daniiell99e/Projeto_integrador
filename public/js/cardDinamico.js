@@ -1,124 +1,35 @@
 const destinos = [
     {        
-        enderecoImg: "imgsDestinos/RioDeJaneiro.jpg", 
+        enderecoImg: "../imgsDestino/Rio.jpg", 
         nomeCidade: "Rio de Janeiro",
         nomePais: "Brasil"
     },
     {
-        enderecoImg: "imgsDestinos/Paris.jpg",
+        enderecoImg: "../imgsDestino/Paris.jpg",
         nomeCidade: "Paris",
         nomePais: "França"
     },
     {
-        enderecoImg: "imgsDestinos/Toquio.jpg",
+        enderecoImg: "../imgsDestino/Tóquio.jpg",
         nomeCidade: "Tóquio",
         nomePais: "Japão"
     },
     {
-        enderecoImg: "imgsDestinos/NewYork.jpg",
+        enderecoImg: "../imgsDestino/NovaIorque.jpg",
         nomeCidade: "Nova Iorque",
         nomePais: "EUA"
     },
     {
-        enderecoImg: "imgsDestinos/Sidney.jpg",
+        enderecoImg: "../imgsDestino/Sidney.jpg",
         nomeCidade: "Sydney",
         nomePais: "Austrália"
     },
     {
-        enderecoImg: "imgsDestinos/Roma.jpg",
-        nomeCidade: "Roma",
-        nomePais: "Itália"
-    },
-    {        
-        enderecoImg: "imgsDestinos/RioDeJaneiro.jpg", 
-        nomeCidade: "Rio de Janeiro",
-        nomePais: "Brasil"
-    },
-    {
-        enderecoImg: "imgsDestinos/Paris.jpg",
-        nomeCidade: "Paris",
-        nomePais: "França"
-    },
-    {
-        enderecoImg: "imgsDestinos/Toquio.jpg",
-        nomeCidade: "Tóquio",
-        nomePais: "Japão"
-    },
-    {
-        enderecoImg: "imgsDestinos/NewYork.jpg",
-        nomeCidade: "Nova Iorque",
-        nomePais: "EUA"
-    },
-    {
-        enderecoImg: "imgsDestinos/Sidney.jpg",
-        nomeCidade: "Sydney",
-        nomePais: "Austrália"
-    },
-    {
-        enderecoImg: "imgsDestinos/Roma.jpg",
-        nomeCidade: "Roma",
-        nomePais: "Itália"
-    },
-    {        
-        enderecoImg: "imgsDestinos/RioDeJaneiro.jpg", 
-        nomeCidade: "Rio de Janeiro",
-        nomePais: "Brasil"
-    },
-    {
-        enderecoImg: "imgsDestinos/Paris.jpg",
-        nomeCidade: "Paris",
-        nomePais: "França"
-    },
-    {
-        enderecoImg: "imgsDestinos/Toquio.jpg",
-        nomeCidade: "Tóquio",
-        nomePais: "Japão"
-    },
-    {
-        enderecoImg: "imgsDestinos/NewYork.jpg",
-        nomeCidade: "Nova Iorque",
-        nomePais: "EUA"
-    },
-    {
-        enderecoImg: "imgsDestinos/Sidney.jpg",
-        nomeCidade: "Sydney",
-        nomePais: "Austrália"
-    },
-    {
-        enderecoImg: "imgsDestinos/Roma.jpg",
-        nomeCidade: "Roma",
-        nomePais: "Itália"
-    },
-    {        
-        enderecoImg: "imgsDestinos/RioDeJaneiro.jpg", 
-        nomeCidade: "Rio de Janeiro",
-        nomePais: "Brasil"
-    },
-    {
-        enderecoImg: "imgsDestinos/Paris.jpg",
-        nomeCidade: "Paris",
-        nomePais: "França"
-    },
-    {
-        enderecoImg: "imgsDestinos/Toquio.jpg",
-        nomeCidade: "Tóquio",
-        nomePais: "Japão"
-    },
-    {
-        enderecoImg: "imgsDestinos/NewYork.jpg",
-        nomeCidade: "Nova Iorque",
-        nomePais: "EUA"
-    },
-    {
-        enderecoImg: "imgsDestinos/Sidney.jpg",
-        nomeCidade: "Sydney",
-        nomePais: "Austrália"
-    },
-    {
-        enderecoImg: "imgsDestinos/Roma.jpg",
+        enderecoImg: "../imgsDestino/Roma.jpg",
         nomeCidade: "Roma",
         nomePais: "Itália"
     }
+    
 ]
 
 // Localiza o contêiner onde os cards serão injetados 
