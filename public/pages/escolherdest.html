@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolher Destino</title>
+    <link rel="stylesheet" href="/public/css/escolherdest.css"> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        body { font-family: 'Roboto', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="/public/pages/home.html">Meus Roteiros</a></li>
+                <li class="nav-item"><a href="#">Criar Roteiro</a></li>
+                <li class="nav-item"><a href="#">Comunidade</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+                <span class="profile-icon">👤</span>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="destination-header">
+            <p class="breadcrumb">Início / <strong>Escolher Destino</strong></p>
+            <h1 class="page-title">Escolha seu destino</h1>
+            <p class="page-subtitle">Selecione a cidade para onde você quer viajar</p>
+        </section>
+
+        <div class="search-input-container">
+            <span class="search-icon-input">🔍</span>
+            <input type="text" placeholder="Digite o nome da cidade..." class="city-search-input">
+        </div>
+
+        <section class="popular-cities-section" id="containerCards">
+            <h2>Cidades Populares</h2>
+            <div class="city-cards-grid"></div>
+        </section>
+        
+    </main>
+    <footer class="footer">
+        <a href="#">Empresa</a>
+        <a href="#">Suporte</a>
+        <a href="#">Legal</a>
+    </footer>
+<script src="../js/cardDinamico.js"></script>
+<script src="../js/btnVerDetalhes.js"></script>
+</body>
+</html>
