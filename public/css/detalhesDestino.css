@@ -235,6 +235,9 @@ body {
     border-color: var(--primary-color);
 }
 
+.hidden-radio {
+    display: none;
+}
 /* Botão Continuar */
 .continue-btn {
     width: 100%;
