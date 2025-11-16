@@ -1,11 +1,21 @@
-const btsVerDetalhes = document.querySelectorAll('.card-button')
+const btsVerDetalhes = document.querySelectorAll('.card-button');
 
 btsVerDetalhes.forEach(botao => {
-  botao.addEventListener('click', () => {
-    // Pega o ID do item, por exemplo via data-attribute
-    const id = botao.getAttribute('data-id');
+    botao.addEventListener('click', () => {
+        // 1. Pega o ID do destino que foi setado no atributo 'data-id'
+        const id = botao.getAttribute('data-id'); // Ex: 'paris_franca'
 
-    // Redireciona para a página de detalhes correspondente
-    window.location.href = 'detalhesDestino.html';
-  });
+        if (id) {
+            // 2. Cria a URL incluindo o Parâmetro de Consulta (Query Parameter)
+            // O formato é: ?CHAVE=VALOR
+            const urlDestino = `detalhesDestino.html?cidadeID=${id}`;
+            
+            // 3. Redireciona o navegador para a URL completa
+            window.location.href = urlDestino; // Ex: detalhesDestino.html?cidadeID=paris_franca
+        } else {
+            console.error('ID do destino não encontrado no botão.');
+            // Tratar erro ou continuar o redirecionamento sem ID, se necessário.
+            window.location.href = 'detalhesDestino.html';
+        }
+    });
 });

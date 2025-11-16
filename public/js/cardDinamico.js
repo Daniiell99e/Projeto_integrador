@@ -43,6 +43,8 @@ if (!containerCardsGrid) {
 
     // Itera sobre cada destino
     destinos.forEach(destino => {
+
+        const destinoId = criarIdDestino(destino.nomeCidade, destino.nomePais); // Ex: 'paris_franca'
         
         // Estrutura: <article class="city-card">
         const cardDestino = document.createElement('article')
@@ -73,7 +75,8 @@ if (!containerCardsGrid) {
         // Conteúdo do Botão: <button class="btn btn-secondary card-button">
         const botaoDetalhes = document.createElement('button')
         botaoDetalhes.className = 'btn btn-secondary card-button'
-        botaoDetalhes.id = 'verDetalhes'
+        botaoDetalhes.id = `id_${destinoId}`
+        botaoDetalhes.setAttribute('data-id', destinoId)
         botaoDetalhes.textContent = 'Ver detalhes'
 
         
@@ -96,3 +99,12 @@ if (!containerCardsGrid) {
     containerCardsGrid.appendChild(fragmento)
 }
 
+// Função auxiliar para criar um ID amigável (slug)
+function criarIdDestino(cidade, pais) {
+    // Concatena, converte para minúsculas, remove acentos, e substitui espaços por underscore
+    const idString = `${cidade}_${pais}`
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, "") // Remove acentos
+        .replace(/\s+/g, '_'); // Substitui espaços por underscores
+    return idString;
+}
