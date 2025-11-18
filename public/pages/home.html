@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripNow/Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="../css/home.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-        body { font-family: 'Roboto', sans-serif; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
     </style>
 </head>
+
 <body>
 
     <header class="header">
@@ -21,7 +27,24 @@
             </ul>
         </nav>
         <div class="header-icons">
-                <span class="profile-icon">👤</span>
+            <div class="profile-dropdown-container">
+
+                <div class="profile-icon" id="profile-menu-trigger">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="dropdown-menu" id="profile-dropdown">
+                    <div class="dropdown-header">
+                        <p id="user-greeting">Olá, Viajante!</p>
+                    </div>
+                    <a href="/public/pages/perfil.html" class="dropdown-item">
+                        <i class="fas fa-user-circle"></i> Meu Perfil
+                    </a>
+                    <a href="#" id="logout-btn" class="dropdown-item logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -29,10 +52,10 @@
         <section class="hero-section">
             <div class="hero-content">
                 <h1>Sua Aventura <br>Começa Aqui</h1>
-                <p>Está na hora de tirar a poeira da mochila e descobrir novos horizontes. Planeje sua aventura de forma simples e divertida!</p>
-                <button class="btn btn-primary">➕ Criar Novo Roteiro</button>
+                <p>Está na hora de tirar a poeira da mochila e descobrir novos horizontes. Planeje sua aventura de forma
+                    simples e divertida!</p>
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Criar Novo Roteiro</button>
             </div>
-            <!-- <div class="hero-side-image"></div> -->
         </section>
 
         <section class="my-routes-section">
@@ -46,7 +69,10 @@
                     </div>
                 </div>
                 <div class="route-details">
-                    <p class="route-info">📍 27 atividades • 🗓️ 15 de Outubro</p>
+                    <p class="route-info">
+                        <i class="fas fa-map-marker-alt"></i> 27 atividades • <i class="fas fa-calendar-alt"></i> 15 de
+                        Outubro
+                    </p>
                     <button class="btn btn-tertiary">Ver Roteiro</button>
                 </div>
             </article>
@@ -54,10 +80,19 @@
     </main>
 
     <footer class="footer">
-        <a href="#">Empresa</a>
-        <a href="#">Suporte</a>
-        <a href="#">Legal</a>
+        <div class="footer-links">
+            <a href="#">Empresa</a>
+            <a href="#">Suporte</a>
+            <a href="#">Legal</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
-
+    <script src="../js/home.js"></script>
 </body>
+
 </html>

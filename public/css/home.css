@@ -27,8 +27,6 @@ body {
 
 .container {
     padding: 0 0px;
-    /* Limita a largura máxima para simular a visualização de celular/app */
-    /* max-width: 500px; */
     width: 100;
     margin: 0 auto;
 }
@@ -41,7 +39,6 @@ body {
     padding: 20px 5%;
     padding-left: 5%;
     border-bottom: 1px solid var(--border-color);
-    /* max-width: 500px; */
     width: 100%;
     margin: 0 auto;
     background-color: var(--background-color);
@@ -68,12 +65,6 @@ body {
     font-weight: bolder;
 }
 
-/* .nav-item.active a {
-    color: var(--text-color);
-    font-weight: 500;
-    border-bottom: 2px solid var(--primary-color);
-} */
-
 .header-icons {
     display: flex;
     align-items: center;
@@ -94,8 +85,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 14px; /* Ajustado para o ícone caber */
     margin-left: 15px;
+    text-decoration: none; /* [NOVO] Remove sublinhado do link */
 }
 
 /* --- Seção Principal (Hero Section) --- */
@@ -108,15 +100,14 @@ body {
     margin-left: 15px;
     padding: 20px;
     border-radius: 5px;
-    overflow: hidden; /* Garante que a div lateral não vaze */
+    overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     border-color: var(--primary-color);
 }
 
 .hero-content {
     position: relative;
-    /* z-index: 10; */
-    padding-right: 70px; /* Espaço para a imagem lateral */
+    padding-right: 70px;
 }
 
 .hero-section h1 {
@@ -135,12 +126,10 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 60px; /* Largura da "faixa" da imagem */
+    width: 60px;
     height: 100%;
-    background-color: #f5f5f5; /* Cor de fundo da faixa */
-    /* Simula a imagem com um gradiente ou cor */
+    background-color: #f5f5f5;
     background-image: linear-gradient(to right, rgba(224, 247, 250, 0) 0%, #eee 20%, #ddd 100%);
-    /* z-index: 5; */
 }
 
 
@@ -153,6 +142,11 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+/* [NOVO] Adiciona espaço entre ícone e texto */
+.btn i {
+    margin-right: 6px;
 }
 
 .btn-primary {
@@ -219,23 +213,17 @@ body {
 
 .route-image img {
     width: 100%;
-    height: 160px; /* Altura do espaço para a imagem */
+    height: 160px;
     display: block;
     justify-content: center;
     align-items: flex-end;
     object-fit: cover;
-   
-    
 }
 
 .image-text {
-    position: absolute;
-    
-    /* Configura a posição desejada (exemplo: rodapé) */
+    position: absolute; 
     bottom: 0; 
     left: 0; 
-    
-    /* Estilização para o overlay */
     width: 100%; 
     padding: 10px; 
     color: white;
@@ -247,8 +235,6 @@ body {
    font-weight: bold;
 }
 
-
-
 .route-details {
     padding: 15px;
     border: 1px solid var(--primary-color);
@@ -256,12 +242,19 @@ body {
     text-align: center;
 }
 
-
-
 .route-info {
     font-size: 14px;
     color: var(--light-text-color);
     margin-bottom: 15px;
+}
+
+/* [NOVO] Adiciona espaço para os ícones */
+.route-info i {
+    margin-right: 4px;
+    color: var(--primary-color); /* Dá cor aos ícones */
+}
+.route-info i.fa-calendar-alt {
+    margin-left: 8px; /* Espaço antes do ícone de data */
 }
 
 .route-details .btn {
@@ -271,7 +264,7 @@ body {
     padding: 8px 0;
 }
 
-/* Card de Criação de Novo Roteiro (Dashed) */
+/* --- Card de Criação de Novo Roteiro (Dashed) --- */
 .create-route-card {
     padding: 30px 20px;
     text-align: center;
@@ -284,7 +277,6 @@ body {
     background-color: #fff;
     cursor: pointer;
 }
-
 .create-icon {
     width: 40px;
     height: 40px;
@@ -298,14 +290,12 @@ body {
     color: var(--dotted-border);
     font-weight: 300;
 }
-
 .create-title {
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
     margin-bottom: 5px;
 }
-
 .create-subtitle {
     font-size: 12px;
     color: var(--light-text-color);
@@ -313,15 +303,18 @@ body {
     margin: 0 auto;
 }
 
-/* --- Rodapé (Footer) --- */
+/* --- [NOVO] Rodapé (Footer) --- */
 .footer {
     display: flex;
-    justify-content: space-around;
-    padding: 20px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px 20px;
     border-top: 1px solid var(--border-color);
     width: 100%;
     margin: 0 auto;
     background-color: white;
+    font-size: 0.9rem;
 }
 
 .footer a {
@@ -329,4 +322,111 @@ body {
     color: var(--light-text-color);
     font-size: 12px;
     font-weight: 500;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+.social-icons {
+    display: none; /* Escondido no mobile */
+}
+
+/* [NOVO] Media query para o rodapé em desktop */
+@media (min-width: 800px) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 1140px; /* Alinha com o layout do perfil */
+    }
+    .social-icons {
+        display: flex;
+        gap: 20px;
+        font-size: 1.2rem;
+    }
+    .social-icons a {
+        color: var(--text-color);
+    }
+}
+
+/* --- Menu Dropdown do Perfil --- */
+
+.profile-dropdown-container {
+    position: relative; /* Importante para o menu absoluto se basear aqui */
+    display: inline-block;
+}
+
+.profile-icon {
+    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+    position: relative;
+    z-index: 101; /* Fica acima do menu se necessário */
+}
+
+.dropdown-menu {
+    display: none; /* Começa escondido */
+    position: absolute;
+    top: 120%; /* Um pouco abaixo do ícone */
+    right: 0; /* Alinhado à direita do container */
+    width: 200px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000; /* Garante que fique por cima de tudo na página */
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Classe que o JS vai adicionar para mostrar o menu */
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--highlight-bg);
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+    color: var(--light-text-color);
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: var(--primary-color);
+}
+
+.dropdown-item:hover i {
+    color: var(--primary-color);
+}
+
+.dropdown-item.logout:hover {
+    background-color: #ffebee; /* Fundo avermelhado suave para logout */
+    color: #d32f2f;
+}
+.dropdown-item.logout:hover i {
+    color: #d32f2f;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
