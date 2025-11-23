@@ -1,0 +1,350 @@
+/* Variáveis de Cores (Baseado no seu fornecimento) */
+:root {    
+    --primary-color: #00bcd4; /* Azul Claro Principal */    
+    --secondary-color: #4dd0e1; /* Azul Secundário */    
+    --background-color: #f8fcfd; /* Fundo da página */    
+    --text-color: #333; /* Texto principal (títulos) */    
+    --light-text-color: #616161; /* Texto secundário (subtítulos, links inativos) */    
+    --highlight-bg: #e0f7fa; /* Fundo da Seção Hero */    
+    --border-color: #e0e0e0;    
+    --placeholder-bg: #bdbdbd; /* Cinza do placeholder da imagem */    
+    --dotted-border: #9e9e9e; 
+}
+
+/* Reset Básico e Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Roboto', sans-serif; 
+}
+
+/* --- Layout Container (Central e Limitado) --- */
+.container {
+    padding: 0 15px; 
+    max-width: 500px; /* Simula a largura de um app mobile */
+    width: 100%;
+    margin: 0 auto;
+    /* Adicionando padding na base para que o conteúdo não fique debaixo do footer fixo */
+    padding-bottom: 70px; 
+}
+
+/* --- Estilização do Cabeçalho (Header) --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    padding-left: 5%;
+    border-bottom: 1px solid var(--border-color);
+    /* max-width: 500px; */
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding-bottom: 5px;
+    font-weight: bolder;
+}
+
+/* .nav-item.active a {
+    color: var(--text-color);
+    font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+} */
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-left: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.profile-icon {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+
+/* --- 2. Conteúdo Principal (MAIN) - Estilos Específicos da Página --- */
+
+/* Breadcrumb e Título */
+.destination-header {
+    padding-top: 20px;
+    padding-bottom: 0px; /* Reduzido para encaixar melhor com o Hero */
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: var(--light-text-color);
+    margin-bottom: 20px;
+}
+
+/* Estilos Hero/Imagem do Destino */
+.destination-hero {
+    margin-bottom: 20px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 180px; /* Altura da imagem de topo */
+    position: relative;
+    border-radius: 8px; /* Borda arredondada */
+    overflow: hidden;
+    /* Usando a cor de fundo do placeholder para a área da imagem */
+    background-color: var(--placeholder-bg);
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para destacar o texto */
+}
+
+.hero-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.destination-description {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-top: 10px;
+    padding: 0 5px;
+}
+
+.read-more-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* --- Seção de Configuração da Viagem (Formulário) --- */
+.config-section {
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.config-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: white;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text-color);
+    font-size: 18px;
+    pointer-events: none; /* Garante que o ícone não interfira no input */
+}
+
+/* Botões de Horário */
+.time-options-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.time-btn {
+    padding: 8px 5px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: white;
+    color: var(--light-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.time-btn.active,
+.time-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.hidden-radio {
+    display: none;
+}
+/* Botão Continuar */
+.continue-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.continue-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* --- Seção Pontos Turísticos (Adaptado do city-cards-grid) --- */
+.popular-cities-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.tour-cards-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Permite scroll horizontal para os cards */
+    padding-bottom: 10px; /* Espaço para a barra de scroll */
+    margin-bottom: 30px;
+}
+
+/* Card Individual de Ponto Turístico */
+.tour-card {
+    min-width: 150px; /* Largura mínima para o card no scroll */
+    max-width: 180px;
+    flex: 0 0 auto; /* Impede o card de crescer ou encolher */
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.tour-image {
+    width: 100%;
+    height: 100px; 
+    /* Redefine background-color do placeholder */
+    background-color: var(--placeholder-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.tour-details {
+    padding: 10px;
+    text-align: left;
+}
+
+.tour-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: var(--text-color);
+}
+
+.tour-info {
+    font-size: 12px;
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Estilo do Botão Adicionar ao Roteiro */
+.card-button {
+    width: 100%;
+    border-radius: 5px;
+    padding: 6px 0;
+    font-size: 13px; /* Levemente menor para caber */
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color); /* Borda azul primária para destaque */
+    font-weight: 700;
+}
+
+.card-button:hover {
+    background-color: var(--highlight-bg);
+}
+
+/* --- 3. Rodapé (Footer) - Mantido --- */
+.footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0; 
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05); 
+    z-index: 100;
+}
+
+.footer a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-size: 12px;
+    font-weight: 500;
+}

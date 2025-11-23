@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Trip Now</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="..\css\perfil.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="..\..\src\assets\imagens\Logo.png" alt="Trip Now Logo"> <span>Trip Now</span>
+        </div>
+        <nav class="main-nav">
+            <a href="#">Meus Roteiros</a>
+            <a href="#">Descobrir</a>
+            <a href="#">Comunidade</a>
+        </nav>
+        <div class="header-actions">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar roteiros...">
+            </div>
+            <div class="profile-icon">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <nav class="breadcrumb">
+            <a href="#">Início</a> / <span>Meu Perfil</span>
+        </nav>
+
+        <section class="profile-summary card">
+            <div class="profile-pic-container">
+                
+                <div class="profile-pic-cropper">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" alt="Foto de Perfil" class="profile-pic" id="user-profile-pic">
+                </div>
+
+                <div class="camera-icon"><i class="fas fa-camera"></i></div>
+
+                <input type="file" id="file-upload-input" accept="image/*">
+
+            </div>
+            <div class="profile-info">
+                <h1 id="user-profile-name">Carregando...</h1>
+                <button class="edit-profile-btn"><i class="fas fa-pencil-alt"></i> Editar perfil</button>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-item"><span class="stat-number">23</span><span class="stat-label">Roteiros criados</span></div>
+                <div class="stat-item"><span class="stat-number">12</span><span class="stat-label">Países visitados</span></div>
+                <div class="stat-item"><span class="stat-number">2.8K</span><span class="stat-label">Curtidas recebidas</span></div>
+                <div class="stat-item"><span class="stat-number">156</span><span class="stat-label">Seguidores</span></div>
+            </div>
+        </section>
+
+        <section class="profile-details">
+            <nav class="details-tabs">
+                <a href="#" class="tab-link active" data-tab="dados-pessoais">Dados Pessoais</a>
+                <a href="#" class="tab-link" data-tab="historico">Histórico</a>
+                <a href="#" class="tab-link" data-tab="preferencias">Preferências</a>
+                <a href="#" class="tab-link" data-tab="conquistas">Conquistas</a>
+            </nav>
+            
+            <form id="dados-pessoais" class="details-content active card">
+                <h2>Dados Pessoais</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome completo</label>
+                        <p class="view-mode" data-field="nome"></p>
+                        <input type="text" class="edit-mode" data-field="nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <p class="view-mode" data-field="cidade"></p>
+                        <input type="text" class="edit-mode" data-field="cidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <p class="view-mode" data-field="email"></p>
+                        <input type="email" class="edit-mode" data-field="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pais">País</label>
+                        <p class="view-mode" data-field="pais"></p>
+                        <input type="text" class="edit-mode" data-field="pais">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <p class="view-mode" data-field="telefone"></p>
+                        <input type="tel" class="edit-mode" data-field="telefone">
+                    </div>
+                    <div class="form-group form-group-bio">
+                        <label for="bio">Bio</label>
+                        <p class="view-mode" data-field="bio"></p>
+                        <textarea class="edit-mode" data-field="bio"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="nascimento">Data de nascimento</label>
+                        <p class="view-mode" data-field="nascimento"></p>
+                        <input type="date" class="edit-mode" data-field="nascimento">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Website/Instagram</label>
+                        <p class="view-mode" data-field="instagram"></p>
+                        <input type="text" class="edit-mode" data-field="instagram">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="saveChangesBtn" class="btn btn-primary">Salvar alterações</button>
+                    <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+
+            <div id="historico" class="details-content card">
+                <h2><i class="fas fa-history"></i> Histórico de Roteiros</h2>
+                <ul class="history-list" id="history-list-container">
+                    </ul>
+            </div>
+
+            <form id="preferencias" class="details-content card">
+                <h2><i class="fas fa-cog"></i> Preferências de Viagem</h2>
+                <div class="preferences-section">
+                    <h3>Tipos de destino preferidos</h3>
+                    <div class="destination-tags">
+                        <button type="button" class="tag-btn active">Praia</button><button type="button" class="tag-btn">Montanha</button><button type="button" class="tag-btn">Cidade</button><button type="button" class="tag-btn">Histórico</button><button type="button" class="tag-btn">Natureza</button><button type="button" class="tag-btn active">Cultura</button><button type="button" class="tag-btn">Aventura</button><button type="button" class="tag-btn active">Gastronomia</button><button type="button" class="tag-btn active">Arte</button><button type="button" class="tag-btn">Compras</button>
+                    </div>
+                </div>
+                <div class="preferences-grid">
+                    <div class="preferences-section">
+                        <h3>Faixa de orçamento preferida</h3>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="budget" value="eco"> Econômico (até $50/dia)</label><label class="radio-item"><input type="radio" name="budget" value="mid" checked> Médio ($50-150/dia)</label><label class="radio-item"><input type="radio" name="budget" value="premium"> Premium ($150+/dia)</label>
+                        </div>
+                    </div>
+                    <div class="preferences-section">
+                        <h3>Duração preferida</h3>
+                        <div class="radio-group">
+                            <label class="radio-item"><input type="radio" name="duration" value="short"> Fins de semana (2-3 dias)</label><label class="radio-item"><input type="radio" name="duration" value="medium" checked> Férias curtas (4-7 dias)</label><label class="radio-item"><input type="radio" name="duration" value="long"> Férias longas (8+ dias)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="preferences-section">
+                    <h3>Notificações</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item"><span>Promoções e ofertas especiais</span><input type="checkbox" checked></label><label class="checkbox-item"><span>Lembretes de datas de viagem</span><input type="checkbox"></label><label class="checkbox-item"><span>Clima no destino</span><input type="checkbox" checked></label><label class="checkbox-item"><span>Novos roteiros da comunidade</span><input type="checkbox" checked></label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Salvar preferências</button><button type="reset" class="btn btn-secondary">Resetar</button>
+                </div>
+            </form>
+
+            <div id="conquistas" class="details-content card">
+                <h2><i class="fas fa-shield-alt"></i> Conquistas (Badges)</h2>
+                <div class="badge-grid">
+                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-trophy"></i></div><h3>Primeiro Roteiro</h3><p>Criou seu primeiro roteiro</p><span class="badge-tag">Desbloqueado</span></div>
+                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-compass"></i></div><h3>Explorador</h3><p>Visitou 5 países diferentes</p><span class="badge-tag">Desbloqueado</span></div>
+                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-clipboard-list"></i></div><h3>Planejador Expert</h3><p>Criou 10 roteiros</p><span class="badge-tag">Desbloqueado</span></div>
+                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-heart"></i></div><h3>Compartilhador</h3><p>Roteiro curtido 100 vezes</p><span class="badge-tag">Desbloqueado</span></div>
+                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-globe-americas"></i></div><h3>Globetrotter</h3><p>Visitou 10 países</p><span class="badge-tag">Desbloqueado</span></div>
+                    <div class="badge-card locked"><div class="badge-icon"><i class="fas fa-thumbs-up"></i></div><h3>Influencer</h3><p>1000 curtidas recebidas</p></div>
+                    <div class="badge-card locked"><div class="badge-icon"><i class="fas fa-award"></i></div><h3>Master Planner</h3><p>Criou 50 roteiros</p></div>
+                    <div class="badge-card locked"><div class="badge-icon"><i class="fas fa-flag"></i></div><h3>Continente Collector</h3><p>Visitou todos os continentes</p></div>
+                </div>
+                <div class="progress-section">
+                    <h3>Próximas Conquistas</h3>
+                    <div class="progress-item"><div class="progress-labels"><span>Influencer (1000 curtidas)</span><span>2847/1000 <i class="fas fa-check-circle" style="color: #2ecc71;"></i></span></div><div class="progress-bar-container"><div class="progress-bar-fill" style="width: 100%;"></div></div></div>
+                </div>
+            </div>
+
+         </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-links"><a href="#">Empresa</a><a href="#">Suporte</a><a href="#">Legal</a></div>
+        <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+    </footer>
+
+    <div id="map-modal" class="map-modal">
+        <div class="map-modal-content">
+            <span class="close-modal-btn">&times;</span>
+            <h3 id="modal-map-title">Localização</h3>
+            <div class="map-iframe-container">
+                <iframe id="google-map-iframe" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/perfil.js"></script>
+</body>
+</html>

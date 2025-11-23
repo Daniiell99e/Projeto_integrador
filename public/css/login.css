@@ -150,3 +150,21 @@ position: relative;
 .signup a:hover {
     text-decoration: underline;
 }
+
+.error-message {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.4);
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 500;
+    width: 100%;
+    
+    display: none;
+    margin-bottom: 15px;
+}
+
+.error-message.active {
+    display: block;
+}

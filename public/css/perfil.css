@@ -38,7 +38,8 @@ a {
 /* ---- HEADER ---- */
 .main-header {
     display: flex;
-    justify-content: space-between;
+    gap: 13%;
+    justify-content: center;
     align-items: center;
     padding: 15px 20px;
     background-color: var(--cor-card-background);
@@ -77,21 +78,54 @@ main {
     text-align: center;
     gap: 15px;
 }
-.profile-pic-container { position: relative; }
-.profile-pic { width: 80px; height: 80px; border-radius: 50%; }
-.camera-icon {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: var(--cor-botao);
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    border: 2px solid white;
+.profile-pic-container { 
+    width: 120px; /* Exemplo: ajuste ao tamanho desejado */
+    height: 120px; /* Exemplo: ajuste ao tamanho desejado */
+    border-radius: 50%; /* Faz o contêiner circular */
+    position: relative; /* Necessário para posicionar o ícone da câmera */
+    border: 3px solid var(--cor-borda-clara); /* Exemplo de borda */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+.profile-pic {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.profile-pic-cropper {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%; /* O círculo fica aqui */
+        overflow: hidden;   /* O corte fica aqui */
+        
+        /* Opcional: Mova a borda e sombra para cá */
+        border: 3px solid white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+.camera-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: var(--cor-botao);
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        border: 2px solid white;
+        z-index: 10; /* Adicione isso para garantir que fique por cima */
+    }
+
+    #file-upload-input {
+    display: none;
+}
+
+.camera-icon {
+    cursor: pointer;
+}
+
 .profile-info h1 { font-size: 1.5rem; }
 .edit-profile-btn {
     background: none;
@@ -564,4 +598,88 @@ textarea.edit-mode {
 }
 #dados-pessoais.is-editing .form-actions {
     display: flex; /* ...mostra os botões de salvar/cancelar */
+}
+
+.map-icon {
+    font-size: 1.2em;
+    color: var(--cor-principal); /* Ou outra cor que combine */
+    cursor: pointer;
+    margin-left: 10px; /* Espaçamento à esquerda do ícone */
+    transition: color 0.2s ease;
+}
+
+.map-icon:hover {
+    color: var(--cor-secundaria); /* Escurece ou muda de cor ao passar o mouse */
+}
+
+/* Garante que o ícone de GPS fique na mesma linha que o "Ver" */
+.history-item-status {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adiciona um pequeno espaço entre os itens de status */
+}
+
+
+/* --- Estilos para o Modal do Mapa --- */
+.map-modal {
+    display: none; /* Começa escondido */
+    position: fixed; /* Fixa na tela */
+    z-index: 100; /* Acima de todo o resto */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
+    background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente escuro */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.map-modal-content {
+    background-color: white;
+    margin: auto; /* Centraliza vertical e horizontalmente */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    width: 90%; /* Largura do modal */
+    max-width: 800px; /* Largura máxima */
+    animation: fadeIn 0.3s ease-out; /* Animação simples de entrada */
+}
+
+.close-modal-btn {
+    color: var(--cor-subtitulo);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: var(--cor-principal);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-map-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--cor-titulo);
+}
+
+.map-iframe-container {
+    height: 450px; /* Altura do contêiner do mapa */
+    border: 1px solid var(--cor-borda-clara);
+    border-radius: 5px;
+    overflow: hidden; /* Garante que o iframe não vaze bordas */
+}
+
+/* Animação para o modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
