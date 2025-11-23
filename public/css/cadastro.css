@@ -19,10 +19,16 @@
 body {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
+    margin-right: 15%;
     min-height: 100vh;
     background-color: var(--cor-backgroundBody);
-    background: var(--cor-fonte);
+    background-image: url("/imagens/Gemini_Generated_Image_e0sr74e0sr74e0sr.png") ;
+    background-repeat: no-repeat;
+    background-size:  100% 100%;
+    background-position: center;
+    z-index: -1;
+
 }
 
 .Cadastro-container {
@@ -31,13 +37,13 @@ body {
     border-radius: .6em;
     padding: 1em 1em;
     width: 20em;
-    
     text-align: center;
 }
-.Cadastro-container p {
-    color: var(--cor-subtitulo);
+.title {
+    color: var(--cor-borda);
     margin-bottom: 1.2em;
-    font-size: 0.8em;
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
 .class-label{
@@ -50,7 +56,7 @@ body {
 .class-input{
     width: 100%;
     padding: .5em;
-    margin-bottom: .2em;
+    margin-bottom: .8em;
     /* border: 1px solid var(--cor-borda); */
     border: none;
     border-radius: .3em;
@@ -100,8 +106,8 @@ body {
 
 .paragrafor-final{
     color: var(--cor-subtitulo);
-    margin-bottom: 1em;
-    font-size: 0.6em;
+    padding-bottom: 5em;
+    font-size: 0.8em;
     padding: 0.3em;
 
 }
@@ -123,15 +129,27 @@ a:hover {
     margin-left: 0.2em;
   
 }
+.elemento_a {
+    margin-bottom: -8em;
+}
 
 .icons {
     position: relative;
     left: 42%;
-    bottom: 1.8em;
+    bottom: 2.2em;
     cursor: pointer;
+    color: #e7e6e6;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+.icons:hover{
+    opacity: 1;
 }
 
+
+
 .input-password {
+    
     position: relative;
     margin-top: -1.5em;   
      
@@ -140,6 +158,8 @@ a:hover {
 input.invalid {
     border: 2px solid red;
 }
+
+
 
 
 
