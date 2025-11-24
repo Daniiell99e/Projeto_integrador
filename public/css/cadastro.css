@@ -124,16 +124,9 @@ a:hover {
   
 }
 
-.icons {
-    position: relative;
-    left: 42%;
-    bottom: 1.8em;
-    cursor: pointer;
-}
-
 .input-password {
     position: relative;
-    margin-top: -1.5em;   
+    /* margin-top: 10px;  */
      
 }
 
@@ -141,6 +134,29 @@ input.invalid {
     border: 2px solid red;
 }
 
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover {
+    color: #00bcd4;
+}
 
 
 

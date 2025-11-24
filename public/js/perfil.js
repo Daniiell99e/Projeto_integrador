@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+    // --- VARIÁVEIS GLOBAIS ---
+    let currentUserId = null;
+
     // 1. Verifica Token
     const token = localStorage.getItem('token');
     if (!token) {
@@ -8,25 +11,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 2. Configuração da API
-    const API_URL = 'http://localhost:3333/user/profile';
+    const API_PROFILE_URL = 'http://localhost:3333/user/profile';
+    const API_DELETE_URL = 'http://localhost:3333/user'; // + ID
 
     // 3. Mapeamento: [Nome no HTML (data-field)] : [Nome no Banco de Dados]
     const fieldMapping = {
-        'nome': 'name',            // BD: name -> HTML: nome (Nome Completo)
-        // 'user_name' não está no form, mas existe no banco
-        'email': 'email',          // BD: email
-        'telefone': 'telefone',    // BD: telefone
-        'cidade': 'cidade',        // BD: cidade
-        'pais': 'pais',            // BD: pais
-        'bio': 'biografia',        // BD: biografia -> HTML: bio
-        'nascimento': 'data_nascimento', // BD: data_nascimento -> HTML: nascimento
-        'instagram': 'rede_social' // BD: rede_social -> HTML: instagram
+        'nome': 'name',
+        'email': 'email',
+        'telefone': 'telefone',
+        'cidade': 'cidade',
+        'pais': 'pais',
+        'bio': 'biografia',
+        'nascimento': 'data_nascimento',
+        'instagram': 'rede_social'
     };
 
     // --- LÓGICA DE CARREGAMENTO ---
     async function fetchAndLoadProfile() {
         try {
-            const response = await fetch(API_URL, {
+            const response = await fetch(API_PROFILE_URL, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -40,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const userData = await response.json();
             
+            // Salva o ID para uso futuro (ex: deletar conta)
+            currentUserId = userData.id;
+
             // Preenche a tela com os dados reais
             loadProfileInfo(userData);
 
@@ -49,10 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } catch (error) {
             console.error("Falha:", error);
-            document.getElementById('user-profile-name').textContent = "Usuário";
-            // Se o token for inválido, pode deslogar:
-            // localStorage.removeItem('token');
-            // window.location.href = '/public/index.html';
+            const nameEl = document.getElementById('user-profile-name');
+            if(nameEl) nameEl.textContent = "Erro ao carregar";
         }
     }
 
@@ -90,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (inputElement.type === 'date' && dbValue) {
                     // O input date precisa de AAAA-MM-DD
                     const dateObj = new Date(dbValue);
+                    // Ajuste simples para fuso horário ao converter para ISO
                     const isoDate = dateObj.toISOString().split('T')[0];
                     inputElement.value = isoDate;
                 } else {
@@ -109,14 +114,16 @@ document.addEventListener('DOMContentLoaded', function() {
             historyListContainer.innerHTML = '<p style="color: var(--cor-subtitulo); padding: 20px;">Você ainda não tem roteiros no histórico.</p>';
             return;
         }
-        // (Aqui entraria o loop forEach igual ao anterior se tivéssemos dados)
+        // (Aqui entraria o loop forEach se tivéssemos dados de histórico)
     }
 
-    // Inicializa
+    // Inicializa o carregamento
     fetchAndLoadProfile();
 
+
+    // =========================================================
     // --- LÓGICA DE INTERFACE (Abas, Edição, Modal, etc.) ---
-    // (Copiado do código anterior, mantendo funcionalidade)
+    // =========================================================
     
     // 1. Abas
     const tabs = document.querySelectorAll('.tab-link');
@@ -155,14 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (saveChangesBtn) {
         saveChangesBtn.addEventListener('click', function(event) {
             event.preventDefault();
-            // Por enquanto apenas fecha visualmente, 
-            // no próximo passo faremos o PUT para salvar no banco!
+            // Por enquanto apenas fecha visualmente
             
             // Atualiza visualmente os <p> com o que está no <input>
             profileForm.querySelectorAll('.edit-mode').forEach(input => {
                 const fieldName = input.dataset.field;
                 const p = profileForm.querySelector(`.view-mode[data-field="${fieldName}"]`);
-                if(p) p.textContent = input.value; // (Simplificado para visualização)
+                if(p) p.textContent = input.value;
             });
 
             profileForm.classList.remove('is-editing');
@@ -181,9 +187,96 @@ document.addEventListener('DOMContentLoaded', function() {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (ev) => { profilePicImg.src = ev.target.result; };
+                reader.onload = (ev) => { 
+                    if(profilePicImg) profilePicImg.src = ev.target.result; 
+                };
                 reader.readAsDataURL(file);
             }
+        });
+    }
+
+    // 4. Modal de Configurações (Excluir Conta)
+    const settingsBtn = document.getElementById('open-settings-btn');
+    const settingsModal = document.getElementById('settings-modal');
+    const cancelSettingsBtn = document.getElementById('cancel-settings-btn');
+    const deleteAccountBtn = document.getElementById('delete-account-btn');
+
+    // Abrir Modal
+    if (settingsBtn && settingsModal) {
+        settingsBtn.addEventListener('click', () => {
+            settingsModal.style.display = 'flex';
+        });
+    }
+
+    // Fechar Modal
+    if (cancelSettingsBtn && settingsModal) {
+        cancelSettingsBtn.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+        });
+    }
+
+    // Ação de Excluir Conta
+    if (deleteAccountBtn) {
+        deleteAccountBtn.addEventListener('click', async () => {
+            if (!currentUserId) {
+                alert("Erro: ID do usuário não encontrado.");
+                return;
+            }
+
+            const confirmDelete = confirm("Tem certeza ABSOLUTA? Todos os seus dados serão apagados.");
+            
+            if (confirmDelete) {
+                try {
+                    const response = await fetch(`${API_DELETE_URL}/${currentUserId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert("Sua conta foi excluída com sucesso. Sentiremos sua falta!");
+                        // Limpa dados e redireciona para login
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('userName');
+                        window.location.href = '/public/index.html';
+                    } else {
+                        const data = await response.json();
+                        alert("Erro ao excluir conta: " + (data.error || "Desconhecido"));
+                    }
+                } catch (error) {
+                    console.error("Erro:", error);
+                    alert("Erro de conexão ao tentar excluir a conta.");
+                }
+            }
+        });
+    }
+
+    // Fechar modais ao clicar fora
+    window.onclick = function(event) {
+        if (settingsModal && event.target == settingsModal) {
+            settingsModal.style.display = "none";
+        }
+        const mapModal = document.getElementById('map-modal');
+        if (mapModal && event.target == mapModal) {
+            mapModal.style.display = "none";
+        }
+    }
+
+    // 5. Lógica do Modal do Mapa (Mantida para o futuro quando o histórico funcionar)
+    const mapModal = document.getElementById('map-modal');
+    const closeModalBtn = document.querySelector('.close-modal-btn');
+    const googleMapIframe = document.getElementById('google-map-iframe');
+    const modalMapTitle = document.getElementById('modal-map-title');
+
+    // Esta função precisa ser global ou acessível se for chamada de fora (ex: onclick no HTML gerado)
+    // Mas como geramos o HTML via JS, podemos anexar o evento direto no elemento
+    // (Veja a lógica comentada de loadHistory acima para referência)
+
+    if (closeModalBtn && mapModal) {
+        closeModalBtn.addEventListener('click', () => {
+            mapModal.style.display = 'none';
+            if(googleMapIframe) googleMapIframe.src = '';
         });
     }
 });
