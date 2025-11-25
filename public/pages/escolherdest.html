@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escolher Destino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="/public/css/escolherdest.css"> 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
@@ -20,8 +21,26 @@
                 <li class="nav-item"><a href="#">Comunidade</a></li>
             </ul>
         </nav>
+        
         <div class="header-icons">
-                <span class="profile-icon">👤</span>
+            <div class="profile-dropdown-container">
+                
+                <div class="profile-icon" id="profile-menu-trigger">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="dropdown-menu" id="profile-dropdown">
+                    <div class="dropdown-header">
+                        <p id="user-greeting">Olá, Viajante!</p>
+                    </div>
+                    <a href="/public/pages/perfil.html" class="dropdown-item">
+                        <i class="fas fa-user-circle"></i> Meu Perfil
+                    </a>
+                    <a href="#" id="logout-btn" class="dropdown-item logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -34,7 +53,7 @@
         </section>
 
         <div class="search-input-container">
-            <span class="search-icon-input">🔍</span>
+            <i class="fas fa-search search-icon-input"></i>
             <input type="text" placeholder="Digite o nome da cidade..." class="city-search-input">
         </div>
 
@@ -49,6 +68,7 @@
         <a href="#">Suporte</a>
         <a href="#">Legal</a>
     </footer>
+
 <script src="../js/cardDinamico.js"></script>
 <script src="../js/btnVerDetalhes.js"></script>
 </body>
