@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Destino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/detalhesDestino.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
         body { font-family: 'Roboto', sans-serif; }
     </style>
-    <link rel="stylesheet" href="../css/detalhesDestino.css">
 </head>
 <body>
     
@@ -20,68 +21,87 @@
                 <li class="nav-item"><a href="#">Comunidade</a></li>
             </ul>
         </nav>
+        
         <div class="header-icons">
-                <span class="profile-icon">👤</span>
+            <div class="profile-dropdown-container">
+                <div class="profile-icon" id="profile-menu-trigger">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="dropdown-menu" id="profile-dropdown">
+                    <div class="dropdown-header">
+                        <p id="user-greeting">Olá, Viajante!</p>
+                    </div>
+                    <a href="/public/pages/perfil.html" class="dropdown-item">
+                        <i class="fas fa-user-circle"></i> Meu Perfil
+                    </a>
+                    <a href="#" id="logout-btn" class="dropdown-item logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="container">
         
         <section class="destination-header">            
-            <p class="breadcrumb">Início / <strong>Detalhes do Destino</strong></p>
+            <p class="breadcrumb">Início / Escolher Destino / <strong>Detalhes</strong></p>
         </section>
 
-        <div class="destination-hero">
-            <div class="city-image-placeholder hero-image">
-                <div class="hero-content">
-                    <h1 class="hero-title">Paris, França</h1>
-                </div>
+        <div class="destination-hero" id="dest-hero-image">
+            <div class="hero-overlay"></div> <div class="hero-content">
+                <h1 class="hero-title" id="dest-city-name">Carregando...</h1>
+                <p class="destination-description" id="dest-description">
+                    Aguarde um momento...
+                </p>
             </div>
-            <p class="destination-description">
-                A Cidade Luz é conhecida por sua arte, arquitetura... <a href="#" class="read-more-link">ver mais</a>
-            </p>
         </div>
 
         <section class="config-section">
-            <h2 class="config-title">Criar Roteiro</h2>
+            <h2 class="config-title">Configure sua Viagem</h2>
             
-            <form class="config-form">
+            <form class="config-form" id="trip-config-form">
                 
                 <div class="form-group">
                     <label for="dias" class="form-label">Quantos dias?</label>
-                    <input type="number" id="dias" placeholder=" " class="form-input">
+                    <input type="number" id="dias" placeholder="Ex: 5" class="form-input" required min="1">
                 </div>
 
                 <div class="form-group">
                     <label for="data-inicio" class="form-label">Data de início</label>
                     <div class="input-with-icon">
-                        <input type="text" id="data-inicio" placeholder="dd/mm/aaaa" class="form-input">
-                        <span class="input-icon">🗓️</span>
+                        <input type="date" id="data-inicio" class="form-input" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Horários preferidos</label>
-                         <div class="time-options-grid">
-                
-                            <input type="radio" id="horario-manha" name="horario_preferido" value="manha" checked class="hidden-radio">
-                            <label for="horario-manha" class="btn time-btn">Manhã</label>
+                    <label class="form-label">Horário preferido para atividades</label>
+                     <div class="time-options-grid">
+                        <input type="radio" id="horario-manha" name="horario_preferido" value="manha" class="hidden-radio">
+                        <label for="horario-manha" class="btn time-btn">Manhã</label>
 
-                            <input type="radio" id="horario-tarde" name="horario_preferido" value="tarde" class="hidden-radio">
-                            <label for="horario-tarde" class="btn time-btn">Tarde</label>
+                        <input type="radio" id="horario-tarde" name="horario_preferido" value="tarde" class="hidden-radio">
+                        <label for="horario-tarde" class="btn time-btn">Tarde</label>
 
-                            <input type="radio" id="horario-noite" name="horario_preferido" value="noite" class="hidden-radio">
-                            <label for="horario-noite" class="btn time-btn">Noite</label>
+                        <input type="radio" id="horario-noite" name="horario_preferido" value="noite" class="hidden-radio">
+                        <label for="horario-noite" class="btn time-btn">Noite</label>
 
-                            <input type="radio" id="horario-todos" name="horario_preferido" value="todos" class="hidden-radio">
-                            <label for="horario-todos" class="btn time-btn">Todos</label>
-                        
-                         </div>
+                        <input type="radio" id="horario-todos" name="horario_preferido" value="todos" checked class="hidden-radio">
+                        <label for="horario-todos" class="btn time-btn">Todos</label>
+                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="pessoas" class="form-label">Número de pessoas</label>
-                    <input type="number" id="pessoas" value="1" class="form-input">
+                    <input type="number" id="pessoas" value="1" class="form-input" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orcamento" class="form-label">Orçamento Total Estimado</label>
+                    <div class="input-with-icon">
+                        <input type="number" id="orcamento" placeholder="Ex: 2000" class="form-input" min="0">
+                        <span class="input-icon currency-symbol">R$</span>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn primary-action-btn continue-btn">Continuar</button>
@@ -89,31 +109,10 @@
         </section>
 
         <section class="popular-cities-section">
-            <h2 class="section-title">Pontos Turísticos Populares</h2>
+            <h2 class="section-title">O que fazer em <span id="dest-city-name-span">...</span></h2>
             
-            <div class="tour-cards-list">
-                <article class="tour-card city-card">
-                    <div class="city-image-placeholder tour-image">
-                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
-                    </div>
-                    <div class="tour-details">
-                        <h3 class="tour-name city-name">Torre Eiffel</h3>
-                        <p class="tour-info">⏰ 2-3h &nbsp; | &nbsp; €29</p>
-                        <button class="btn card-button add-to-route-btn">Adicionar ao Roteiro</button>
-                    </div>
-                </article>
-
-                <article class="tour-card city-card">
-                    <div class="city-image-placeholder tour-image">
-                        <p class="image-text">Foto da Cidade (Puxada por API ou banco de dados)</p>
-                    </div>
-                    <div class="tour-details">
-                        <h3 class="tour-name city-name">Museu do Louvre</h3>
-                        <p class="tour-info">⏰ 4-5h &nbsp; | &nbsp; €17</p>
-                        <button class="btn card-button add-to-route-btn">Adicionar ao Roteiro</button>
-                    </div>
-                </article>
-            </div>
+            <div class="tour-cards-list" id="attractions-list">
+                </div>
         </section>
     </main>
     
@@ -122,7 +121,7 @@
         <a href="#">Suporte</a>
         <a href="#">Legal</a>
     </footer>
+
     <script src="../js/detalhesDestino.js"></script>
-    <script src="../js/renderizaDetalhesDest.js"></script>
 </body>
 </html>
