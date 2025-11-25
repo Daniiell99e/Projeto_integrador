@@ -317,3 +317,110 @@ body {
     font-size: 12px;
     font-weight: 500;
 }
+
+/* ====== VERSÃO DESKTOP (TELAS MAIORES) ====== */
+@media (min-width: 1024px) {
+
+    /* Container mais largo no desktop */
+    .container {
+        max-width: 1200px; /* área central mais "web" */
+        padding: 0 40px;
+    }
+
+    /* Header mais espaçado */
+    .header {
+        padding: 20px 40px;
+    }
+
+    .nav-links {
+        font-size: 16px;
+    }
+
+    /* Área de título mais espaçada */
+    .destination-header {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .page-title {
+        font-size: 32px;
+    }
+
+    .page-subtitle {
+        font-size: 16px;
+    }
+
+    /* Ações — Botões maiores */
+    .action-bar {
+        margin-bottom: 35px;
+    }
+
+    .action-btn--primary,
+    .action-btn--secondary {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    /* Filtros alinhados no desktop */
+    .filters-section {
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .filter-tags-container {
+        overflow: visible; /* Desktop não precisa de scroll */
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-tag {
+        font-size: 14px;
+        padding: 7px 14px;
+    }
+
+    /* GRID DESKTOP — Agora vira até 4 colunas dependendo da área */
+    .attractions-grid {
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 20px;
+    }
+
+    /* Card Desktop */
+    .attraction-card {
+        border-radius: 8px;
+        transition: transform .2s;
+    }
+
+    .attraction-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .attraction-image {
+        height: 160px;
+    }
+
+    .city-name {
+        font-size: 18px;
+    }
+
+    .attraction-info {
+        font-size: 15px;
+    }
+
+    .card-button {
+        font-size: 15px;
+        padding: 8px 0;
+    }
+
+    /* Footer em desktop fica menor/mais discreto */
+    .footer {
+        padding: 10px 0;
+        position: static; /* não fixo no desktop */
+        box-shadow: none;
+        margin-top: 40px;
+    }
+
+    .footer a {
+        font-size: 14px;
+    }
+}

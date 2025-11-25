@@ -766,3 +766,111 @@ textarea.edit-mode {
     gap: 15px;
     margin-top: 25px;
 }
+
+/* ================================
+   DESKTOP VERSION (16:9)
+   ================================ */
+@media (min-width: 1024px) {
+
+    /* Página inteira em layout widescreen */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background-size: cover;
+        padding: 40px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    /* Layout em duas colunas — sidebar + conteúdo */
+    .card {
+        flex-direction: row;
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    /* Perfil + menu lateral */
+    .profile-section {
+        width: 30%;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Conteúdo principal (detalhes, tickets etc.) */
+    .details-section {
+        width: 70%;
+        padding: 20px;
+    }
+
+    /* Tickets */
+    .ticket-table {
+        width: 100%;
+    }
+
+    .ticket-table th,
+    .ticket-table td {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    /* Modal fica maior no desktop */
+    .modal-content {
+        width: 600px;
+        max-width: 600px;
+        padding: 25px;
+    }
+
+    /* Botões maiores */
+    button {
+        cursor: pointer;
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    /* Formulários ocupam duas colunas no desktop */
+    .form-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .form-container input,
+    .form-container textarea {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    /* Dashboard “cards” alinhados em grid */
+    .requests-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .request-card {
+        padding: 25px;
+    }
+
+    /* Fotos maiores no desktop */
+    .profile-photo {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Listas mais largas */
+    .list-container {
+        width: 100%;
+    }
+
+    /* Modal de ADM mais largo */
+    .admin-modal-content {
+        width: 700px;
+    }
+}

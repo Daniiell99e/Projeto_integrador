@@ -85,9 +85,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px; /* Ajustado para o ícone caber */
+    font-size: 14px;
     margin-left: 15px;
-    text-decoration: none; /* [NOVO] Remove sublinhado do link */
+    text-decoration: none;
 }
 
 /* --- Seção Principal (Hero Section) --- */
@@ -132,7 +132,6 @@ body {
     background-image: linear-gradient(to right, rgba(224, 247, 250, 0) 0%, #eee 20%, #ddd 100%);
 }
 
-
 /* --- Botões --- */
 .btn {
     padding: 8px 15px;
@@ -144,7 +143,6 @@ body {
     transition: background-color 0.3s;
 }
 
-/* [NOVO] Adiciona espaço entre ícone e texto */
 .btn i {
     margin-right: 6px;
 }
@@ -193,7 +191,6 @@ body {
     padding-bottom: 20px;
     padding-top: 10px;
 }
-
 
 .route-card {
     background-color: white;
@@ -248,13 +245,12 @@ body {
     margin-bottom: 15px;
 }
 
-/* [NOVO] Adiciona espaço para os ícones */
 .route-info i {
     margin-right: 4px;
-    color: var(--primary-color); /* Dá cor aos ícones */
+    color: var(--primary-color);
 }
 .route-info i.fa-calendar-alt {
-    margin-left: 8px; /* Espaço antes do ícone de data */
+    margin-left: 8px;
 }
 
 .route-details .btn {
@@ -303,7 +299,7 @@ body {
     margin: 0 auto;
 }
 
-/* --- [NOVO] Rodapé (Footer) --- */
+/* --- Rodapé (Footer) --- */
 .footer {
     display: flex;
     flex-direction: column;
@@ -328,16 +324,16 @@ body {
     display: flex;
     gap: 20px;
 }
+
 .social-icons {
-    display: none; /* Escondido no mobile */
+    display: none;
 }
 
-/* [NOVO] Media query para o rodapé em desktop */
 @media (min-width: 800px) {
     .footer {
         flex-direction: row;
         justify-content: space-between;
-        max-width: 1140px; /* Alinha com o layout do perfil */
+        max-width: 1140px;
     }
     .social-icons {
         display: flex;
@@ -352,32 +348,31 @@ body {
 /* --- Menu Dropdown do Perfil --- */
 
 .profile-dropdown-container {
-    position: relative; /* Importante para o menu absoluto se basear aqui */
+    position: relative;
     display: inline-block;
 }
 
 .profile-icon {
-    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+    cursor: pointer;
     position: relative;
-    z-index: 101; /* Fica acima do menu se necessário */
+    z-index: 101;
 }
 
 .dropdown-menu {
-    display: none; /* Começa escondido */
+    display: none;
     position: absolute;
-    top: 120%; /* Um pouco abaixo do ícone */
-    right: 0; /* Alinhado à direita do container */
+    top: 120%;
+    right: 0;
     width: 200px;
     background-color: white;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 1000; /* Garante que fique por cima de tudo na página */
+    z-index: 1000;
     overflow: hidden;
     animation: fadeIn 0.2s ease-out;
 }
 
-/* Classe que o JS vai adicionar para mostrar o menu */
 .dropdown-menu.show {
     display: block;
 }
@@ -419,7 +414,7 @@ body {
 }
 
 .dropdown-item.logout:hover {
-    background-color: #ffebee; /* Fundo avermelhado suave para logout */
+    background-color: #ffebee;
     color: #d32f2f;
 }
 .dropdown-item.logout:hover i {
@@ -429,4 +424,74 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* ============================================================
+   ===============   VERSÃO DESKTOP (>=1024px)  ===============
+   ============================================================ */
+@media (min-width: 1024px) {
+
+    /* Centraliza o conteúdo */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Header mais espaçado */
+    .header {
+        padding: 20px 40px;
+    }
+
+    /* HERO em duas colunas */
+    .hero-section {
+        display: flex;
+        align-items: center;
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 40px;
+    }
+
+    .hero-content {
+        width: 70%;
+        padding-right: 40px;
+    }
+
+    .hero-side-image {
+        position: static;
+        width: 30%;
+        height: 220px;
+        border-radius: 8px;
+    }
+
+    /* GRID DE ROTEIROS */
+    .my-routes-section {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .route-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 0 15px;
+    }
+
+    .route-card {
+        margin: 0;
+    }
+
+    /* Card de criar novo roteiro alinhado no grid */
+    .create-route-card {
+        margin: 0;
+        height: 230px;
+    }
+
+    /* Footer desktop */
+    .footer {
+        max-width: 1100px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

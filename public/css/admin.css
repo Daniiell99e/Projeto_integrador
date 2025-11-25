@@ -816,3 +816,64 @@ body {
     line-height: 1;
     font-weight: bold;
 }
+
+/* =============================== */
+/*   VERSÃO DESKTOP (≥ 1024px)     */
+/* =============================== */
+@media (min-width: 1024px) {
+
+    body {
+        justify-content: center;
+        padding: 40px 0;
+    }
+
+    .Cadastro-container {
+        width: 450px;          /* aumenta o tamanho no desktop */
+        padding: 2.5em 2em;    /* mais espaço interno */
+        border-radius: 1em;
+    }
+
+    .Cadastro-container p {
+        font-size: 1em;
+        margin-bottom: 1.5em;
+    }
+
+    .class-label {
+        font-size: 1em;
+    }
+
+    .class-input {
+        font-size: 1em;
+        padding: 0.8em;
+    }
+
+    .checkbox {
+        font-size: 1em;
+        margin-top: 0.5em;
+    }
+
+    .checkbox label {
+        font-size: 0.95em;
+    }
+
+    .button-entrar {
+        font-size: 1.1em;
+        padding: 1em;
+        border-radius: .4em;
+        margin-bottom: 2em;
+    }
+
+    a {
+        font-size: 1em;
+    }
+
+    .password-container input {
+        padding-right: 50px;
+        font-size: 1em;
+    }
+
+    .toggle-password {
+        font-size: 1.3rem;
+        right: 18px;
+    }
+}

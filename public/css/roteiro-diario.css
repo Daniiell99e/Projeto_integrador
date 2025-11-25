@@ -157,3 +157,112 @@ body {
 .btn-danger:hover {
     background-color: #b71c1c;
 }
+
+/* ====== VERSÃO DESKTOP (TELAS GRANDES – 16:9) ====== */
+@media (min-width: 1024px) {
+
+    /* Container mais largo para visual desktop */
+    .container {
+        max-width: 1400px;
+        padding: 0 40px;
+    }
+
+    /* Header desktop */
+    .header {
+        padding: 25px 60px;
+    }
+
+    .nav-links {
+        font-size: 16px;
+    }
+
+    .profile-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* Cabeçalho da página */
+    .itinerary-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 25px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    #itinerary-title {
+        font-size: 2.4rem;
+    }
+
+    .date-info {
+        font-size: 1.05rem;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 12px 26px;
+        border-radius: 10px;
+    }
+
+    /* Cards dos dias → grid no desktop */
+    .days-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .day-card {
+        border-radius: 14px;
+        transition: transform 0.2s;
+    }
+
+    .day-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 5px 14px rgba(0,0,0,0.07);
+    }
+
+    /* Cabeçalho do dia */
+    .day-header {
+        padding: 20px 25px;
+    }
+
+    .day-header h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Lista interna */
+    .day-activities {
+        padding: 18px;
+    }
+
+    /* Itens de atividade */
+    .activity-item {
+        padding: 14px;
+        margin-bottom: 12px;
+    }
+
+    .activity-item img {
+        width: 75px;
+        height: 75px;
+        border-radius: 8px;
+    }
+
+    .activity-info h4 {
+        font-size: 1.1rem;
+    }
+
+    .activity-info p {
+        font-size: 0.95rem;
+    }
+
+    .activity-actions {
+        font-size: 1rem;
+    }
+
+    .empty-day-msg {
+        font-size: 1rem;
+        padding: 30px;
+    }
+}

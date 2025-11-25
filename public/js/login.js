@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro de conexão:', error);
             showError('Não foi possível conectar ao servidor. Tente novamente mais tarde.');
         }
-    };
+    }; /*
 
     const showError = (message) => {
         errorMessage.textContent = message;

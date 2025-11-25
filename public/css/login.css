@@ -22,7 +22,6 @@ body {
     justify-content: center;
     min-height: 100vh;
     background-color: var(--cor-backgroundBody);
-    
 }
 
 .login-container {
@@ -68,37 +67,36 @@ body {
 
 .input-group input:focus {
     outline: none;
-    
 }
+
 .input-wrapper {
-position: relative;
+    position: relative;
 }
 
 .input-wrapper input {
-  width: 100%;
-  padding: .6em 2.5em .6em .6em; 
-  border: none;
-  border-radius: .3em;
-  font-size: .8em;
-  background-color: var(--cor-placeholder);
+    width: 100%;
+    padding: .6em 2.5em .6em .6em; 
+    border: none;
+    border-radius: .3em;
+    font-size: .8em;
+    background-color: var(--cor-placeholder);
 }
 
 .toggle-password {
-  position: absolute;
-  right: .6em;
-  top: 70%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+    position: absolute;
+    right: .6em;
+    top: 70%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }
 
 .toggle-password img {
-  width: 1.2em;
-  height: 1.2em;
+    width: 1.2em;
+    height: 1.2em;
 }
-
 
 .btn-login {
     width: 100%;
@@ -127,7 +125,6 @@ position: relative;
 .forgot-password:hover {
     text-decoration: underline;
 }
-
 
 .divider {
     margin: 3em 0em 1em;
@@ -160,11 +157,69 @@ position: relative;
     font-size: 0.9em;
     font-weight: 500;
     width: 100%;
-    
     display: none;
     margin-bottom: 15px;
 }
 
 .error-message.active {
     display: block;
+}
+
+/* ================================
+      VERSÃO DESKTOP REAL 16:9
+================================ */
+@media (min-width: 1366px) {
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: var(--cor-backgroundBody);
+        padding: 2em;
+    }
+
+    .login-container {
+        width: 32em;           /* aumenta largura */
+        padding: 3em 2.5em;    /* mais espaçamento interno */
+        border-radius: 0.8em;  
+    }
+
+    .login-container img {
+        width: 11em; /* aumenta logo */
+        margin-bottom: 1em;
+    }
+
+    .login-container p {
+        font-size: 1em;
+    }
+
+    .input-group label {
+        font-size: 1em;
+    }
+
+    .input-group input,
+    .input-wrapper input {
+        font-size: 1em;
+        padding: 0.9em 2.8em 0.9em 0.9em;
+    }
+
+    .toggle-password img {
+        width: 1.4em;
+        height: 1.4em;
+    }
+
+    .btn-login {
+        font-size: 1.1em;
+        padding: 1em;
+    }
+
+    .forgot-password,
+    .signup {
+        font-size: 0.95em;
+    }
+
+    .divider {
+        margin: 3em 0 2em;
+    }
 }

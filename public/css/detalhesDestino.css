@@ -473,3 +473,93 @@ body {
 .dropdown-menu.show { display: block; }
 .dropdown-item { display: block; padding: 10px; color: #333; text-decoration: none; }
 .dropdown-item:hover { background: #f5f5f5; }
+
+/* ======== DESKTOP (min-width: 1024px) ======== */
+@media (min-width: 1024px) {
+
+    .container {
+        max-width: 1200px;
+        padding: 0 40px;
+    }
+
+    /* HEADER */
+    .header {
+        padding: 25px 40px;
+        justify-content: flex-start;
+        gap: 50px;
+    }
+
+    .nav-links {
+        font-size: 16px;
+        gap: 30px;
+    }
+
+    .nav-item {
+        margin-right: 30px;
+    }
+
+    /* HERO / IMAGEM */
+    .destination-hero {
+        height: 400px;
+        border-radius: 15px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .destination-header {
+        text-align: left;
+    }
+
+    .destination-description {
+        font-size: 1.2rem;
+        max-width: 900px;
+    }
+
+    /* FORMULÁRIO */
+    .config-title {
+        font-size: 22px;
+    }
+
+    .form-group {
+        max-width: 600px;
+    }
+
+    .form-input {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .time-options-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* CARD DE ATRAÇÕES */
+    .tour-cards-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .tour-card {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .tour-image {
+        height: 180px;
+    }
+
+    /* FOOTER EM MODO DESKTOP */
+    .footer {
+        position: relative;
+        box-shadow: none;
+        justify-content: center;
+        gap: 60px;
+        padding: 25px 0;
+    }
+
+    .footer a {
+        font-size: 14px;
+    }
+}
