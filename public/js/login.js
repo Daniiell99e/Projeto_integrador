@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         loginButton.textContent = 'Entrando...';
 
         // 2. Pega os valores dos inputs
-        const email = emailInput.value;
-        const senha = senhaInput.value;
+        // const email = emailInput.value;
+        // const senha = senhaInput.value;
 
         // 3. Validação simples no front-end
         if (!email || !senha) {
