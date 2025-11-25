@@ -19,10 +19,15 @@
 body {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
+    margin-right: 15%;
     min-height: 100vh;
     background-color: var(--cor-backgroundBody);
-    
+    background-image: url("/imagens/Gemini_Generated_Image_e0sr74e0sr74e0sr.png");
+    background-repeat: no-repeat;
+    background-size:  100% 100%;
+    background-position: center;
+    z-index: -1;
 }
 
 .login-container {
@@ -39,10 +44,11 @@ body {
     margin-bottom: .6em;
 }
 
-.login-container p {
-    color: var(--cor-subtitulo);
+.title {
+    color: var(--cor-botao);
     margin-bottom: 1.2em;
-    font-size: 0.8em;
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
 .input-group {
