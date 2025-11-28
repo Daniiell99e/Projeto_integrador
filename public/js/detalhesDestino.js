@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. LÓGICA DE AUTH (Padrão) ---
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/public/index.html';
+        window.location.href = 'login.html';
         return;
     }
     // (Lógica do Header omitida para brevidade, mas mantenha se tiver o código do menu)

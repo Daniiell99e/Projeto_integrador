@@ -1,14 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const userName = localStorage.getItem('userName');
+    const profileTrigger = document.getElementById('profile-menu-trigger');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    const logoutBtn = document.getElementById('logout-btn');
 
     let currentUserId = null;
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/public/index.html';
+        window.location.href = 'login.html';
         return;
     }
 
+    if (userName) {
+        const greetingElement = document.getElementById('user-greeting');
+        if (greetingElement) {
+            const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
+            greetingElement.textContent = `Olá, ${formattedName}!`;
+        }
+    }
+
+    if (profileTrigger) {
+        profileTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show');
+        });
+    }
+
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (profileDropdown && profileDropdown.classList.contains('show')) {
+            if (!profileDropdown.contains(e.target) && !profileTrigger.contains(e.target)) {
+                profileDropdown.classList.remove('show');
+            }
+        }
+    });
+
     const API_PROFILE_URL = 'http://localhost:3333/user/profile';
-    const API_ROTEIROS_URL = 'http://localhost:3333/roteiros'; // [NOVO] Rota de roteiros
+    const API_ROTEIROS_URL = 'http://localhost:3333/roteiros';
     const API_DELETE_URL = 'http://localhost:3333/user';
     const fieldMapping = {
         'nome': 'name',
