@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- CONFIGURAÇÃO E AUTH ---
+    // ============================================================
+    // 1. CONFIGURAÇÃO E AUTENTICAÇÃO
+    // ============================================================
     const token = localStorage.getItem('token');
     if (!token) { window.location.href = '/public/index.html'; return; }
 
@@ -8,34 +10,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const roteiroId = urlParams.get('id');
 
+    // Estado Global
     let roteiroAtual = null;
     let diaSelecionado = 1;
     let hasUnsavedChanges = false;
     let sugestoesCache = [];
 
+    // Elementos UI
     const saveBtn = document.getElementById('save-itinerary-btn');
     const deleteBtn = document.getElementById('delete-itinerary-btn');
     const actionsCard = document.querySelector('.actions-card');
 
+    // ============================================================
+    // 2. FUNÇÕES AUXILIARES
+    // ============================================================
 
-    // --- FUNÇÃO AUXILIAR PARA REMOVER DUPLICATAS ---
     function removeDuplicates(list) {
         const seen = new Set();
         return list.filter(item => {
             const name = item.nome ? item.nome.trim().toLowerCase() : '';
-            
-            if (!name) return false; // Ignora itens sem nome
-
-            if (seen.has(name)) {
-                return false;
-            }
+            if (!name) return false;
+            if (seen.has(name)) return false;
             seen.add(name);
             return true;
         });
     }
 
+    function normalizeAttraction(p) {
+        return {
+            nome: p.nome,
+            descricao: p.descricao,
+            categoria: p.categoria || 'Geral',
+            imagem: p.url_imagem || p.imagem,
+            price: p.valor || p.price || 0,
+            duration: '2h',
+            time: '09:00'
+        };
+    }
 
-    // --- INICIALIZAÇÃO ---
+    // ============================================================
+    // 3. INICIALIZAÇÃO
+    // ============================================================
+
     async function init() {
         if (roteiroId) {
             await loadFromAPI(roteiroId);
@@ -116,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for(let dia in roteiroAtual.dias) {
                 roteiroAtual.dias[dia] = roteiroAtual.dias[dia].map(item => ({
-                    id: item.id,
+                    id: item.id, // ID do vínculo
                     nome: item.atracao.nome,
                     descricao: item.atracao.descricao,
                     categoria: item.atracao.categoria || 'Geral',
@@ -136,19 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function normalizeAttraction(p) {
-        return {
-            nome: p.nome,
-            descricao: p.descricao,
-            categoria: p.categoria || 'Geral',
-            imagem: p.url_imagem || p.imagem,
-            price: p.valor || p.price || 0,
-            duration: '2h',
-            time: '09:00'
-        };
-    }
+    // ============================================================
+    // 4. RENDERIZAÇÃO
+    // ============================================================
 
-    // --- RENDERIZAÇÃO ---
     function renderPage() {
         renderHeader();
         renderDayTabs();
@@ -170,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('dayTabs');
         container.innerHTML = '';
 
-        // 1. Renderiza os dias existentes
+        // Dias existentes
         for (let i = 1; i <= roteiroAtual.duracao_dias; i++) {
             const btn = document.createElement('button');
             btn.className = `day-tab ${i === diaSelecionado ? 'active' : ''}`;
@@ -184,39 +191,32 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(btn);
         }
 
+        // Botão Adicionar Dia (+)
         const addBtn = document.createElement('button');
         addBtn.className = 'day-tab add-day-btn';
         addBtn.innerHTML = '<i class="fas fa-plus"></i>';
         addBtn.title = "Adicionar um dia ao roteiro";
         
         addBtn.onclick = () => {
-            // Lógica para adicionar dia
             roteiroAtual.duracao_dias++;
             const novoDia = roteiroAtual.duracao_dias;
-            
-            // Inicializa o array vazio para o novo dia
             roteiroAtual.dias[novoDia] = [];
-            
-            // Seleciona o novo dia automaticamente
             diaSelecionado = novoDia;
             
-            // Marca como alterado e re-renderiza
             markUnsaved();
             renderHeader();
             renderDayTabs();
             renderActivities();
             updateSummaries();
-            
-            // Scroll suave para o fim das abas
             setTimeout(() => container.scrollLeft = container.scrollWidth, 100);
         };
-
         container.appendChild(addBtn);
     }
 
     function renderActivities() {
         const container = document.getElementById('activitiesList');
         const atividadesDoDia = roteiroAtual.dias[diaSelecionado] || [];
+        
         const currentData = new Date(roteiroAtual.data_inicio);
         currentData.setDate(currentData.getDate() + (diaSelecionado - 1));
         const dataStr = currentData.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -233,8 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="activity-card">
                 <div class="activity-header">
                     <div class="activity-time-info">
-                        <div class="activity-time">${act.time}</div>
-                        <div class="activity-duration">${act.duration}</div>
+                        <div class="activity-time">${act.time || '00:00'}</div>
+                        <div class="activity-duration">${act.duration || '1h'}</div>
                     </div>
                     <div class="activity-actions">
                         <button class="action-btn delete-btn" onclick="window.removeActivity(${index})" title="Remover">
@@ -280,7 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- MODAL E BUSCA ---
+    // ============================================================
+    // 5. MODAL E BUSCA
+    // ============================================================
+    
     const modal = document.getElementById('activityModal');
     const addBtn = document.getElementById('addActivityBtn');
     const closeBtn = document.getElementById('closeModal');
@@ -328,7 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let rawList = Array.isArray(data) ? data : (data.pontos_turisticos || []);
             
             sugestoesCache = removeDuplicates(rawList);
-            
             renderSuggestions(sugestoesCache);
 
         } catch (e) {
@@ -374,18 +376,69 @@ document.addEventListener('DOMContentLoaded', () => {
         renderSuggestions(filtered);
     });
 
-    function addActivityToDay(attraction) {
-        const novaAtividade = normalizeAttraction(attraction);
-        if(!roteiroAtual.dias[diaSelecionado]) roteiroAtual.dias[diaSelecionado] = [];
-        roteiroAtual.dias[diaSelecionado].push(novaAtividade);
-        markUnsaved();
-        renderActivities();
-        updateSummaries();
-        closeModal();
+    // ============================================================
+    // 6. AÇÕES (ADICIONAR, REMOVER, SALVAR)
+    // ============================================================
+
+    async function addActivityToDay(attraction) {
+        const novaAtividadeDados = normalizeAttraction(attraction);
+
+        // --- MODO EDIÇÃO (SALVAR NO BANCO) ---
+        if (roteiroAtual.isEditMode) {
+            try {
+                const response = await fetch(`${API_BASE}/roteiros/${roteiroAtual.id}/atracoes`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                    body: JSON.stringify({
+                        nova_atracao: novaAtividadeDados,
+                        numero_dia: diaSelecionado,
+                        horario: novaAtividadeDados.time
+                    })
+                });
+                if (!response.ok) throw new Error("Erro ao adicionar");
+                const vinculoCriado = await response.json();
+                
+                // Atualiza local com ID real
+                novaAtividadeDados.id = vinculoCriado.id;
+                if(!roteiroAtual.dias[diaSelecionado]) roteiroAtual.dias[diaSelecionado] = [];
+                roteiroAtual.dias[diaSelecionado].push(novaAtividadeDados);
+
+                renderActivities();
+                updateSummaries();
+                closeModal();
+            } catch (e) {
+                alert("Erro ao adicionar: " + e.message);
+            }
+        } else {
+            // --- MODO CRIAÇÃO (LOCAL) ---
+            if(!roteiroAtual.dias[diaSelecionado]) roteiroAtual.dias[diaSelecionado] = [];
+            roteiroAtual.dias[diaSelecionado].push(novaAtividadeDados);
+            markUnsaved();
+            renderActivities();
+            updateSummaries();
+            closeModal();
+        }
     }
 
-    window.removeActivity = (index) => {
-        if(confirm("Remover esta atividade?")) {
+    window.removeActivity = async (index) => {
+        if(!confirm("Remover esta atividade?")) return;
+        const atividade = roteiroAtual.dias[diaSelecionado][index];
+
+        if (roteiroAtual.isEditMode && atividade.id) {
+            try {
+                const response = await fetch(`${API_BASE}/roteiro-atividades/${atividade.id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!response.ok) throw new Error("Erro ao remover");
+                
+                roteiroAtual.dias[diaSelecionado].splice(index, 1);
+                renderActivities();
+                updateSummaries();
+            } catch (e) {
+                alert("Erro ao remover: " + e.message);
+            }
+        } else {
             roteiroAtual.dias[diaSelecionado].splice(index, 1);
             markUnsaved();
             renderActivities();
@@ -397,37 +450,48 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBtn.addEventListener('click', async () => {
             saveBtn.disabled = true;
             const originalContent = saveBtn.innerHTML; 
-            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Salvando...';
 
             try {
                 let url = `${API_BASE}/roteiros`;
                 let method = 'POST';
+                
+                // Prepara o Payload (Dados)
+                const diasArray = [];
+                for(let i=1; i<=roteiroAtual.duracao_dias; i++) {
+                    diasArray.push({
+                        numero_dia: i,
+                        pontos_turisticos: (roteiroAtual.dias[i] || []).map(a => ({
+                            nome: a.nome, 
+                            descricao: a.descricao, 
+                            categoria: a.categoria, 
+                            url_imagem: a.imagem, 
+                            valor: a.price, 
+                            time: a.time,
+                            latitude: 0, longitude: 0, endereco: "Manual"
+                        }))
+                    });
+                }
+
                 let payload = {};
 
                 if (roteiroAtual.isEditMode) {
                     url = `${API_BASE}/roteiros/${roteiroAtual.id}`;
                     method = 'PUT';
+                    
                     payload = {
                         titulo: roteiroAtual.titulo,
                         orcamento_total: roteiroAtual.orcamento_total,
-                        duracao_dias: roteiroAtual.duracao_dias
+                        duracao_dias: roteiroAtual.duracao_dias,
+                        dias: diasArray
                     };
                 } else {
                     const sessionData = JSON.parse(sessionStorage.getItem('novoRoteiro'));
                     sessionData.roteiro.duracao_dias = roteiroAtual.duracao_dias;
-
-                    const diasArray = [];
-                    for(let i=1; i<=roteiroAtual.duracao_dias; i++) {
-                        diasArray.push({
-                            numero_dia: i,
-                            pontos_turisticos: roteiroAtual.dias[i].map(a => ({
-                                nome: a.nome, descricao: a.descricao, categoria: a.categoria, url_imagem: a.imagem, valor: a.price, latitude: 0, longitude: 0, endereco: "Manual"
-                            }))
-                        });
-                    }
                     payload = { ...sessionData, dias: diasArray };
                 }
 
+                // 2. Envia
                 const response = await fetch(url, {
                     method: method,
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
@@ -438,10 +502,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert("Roteiro salvo com sucesso!");
                     hasUnsavedChanges = false;
                     saveBtn.classList.remove('unsaved');
+                    
                     if (!roteiroAtual.isEditMode) {
                         sessionStorage.removeItem('novoRoteiro');
                         window.location.href = '/public/pages/home.html';
-                    } else {
+                    } else {                
                         window.location.reload();
                     }
                 } else {
@@ -450,7 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
             } catch (error) {
-                alert("Erro: " + error.message);
+                console.error(error);
+                alert("Erro ao salvar: " + error.message);
             } finally {
                 saveBtn.disabled = false;
                 saveBtn.innerHTML = originalContent;
