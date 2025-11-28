@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logout-btn');
 
     if (!token) {
-        window.location.href = '/public/index.html';
+        window.location.href = 'login.html';
         return;
     }
 
     if (userName) {
         const greetingElement = document.getElementById('user-greeting');
         if (greetingElement) {
-            // Capitaliza a primeira letra (opcional, fica mais bonito)
             const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
             greetingElement.textContent = `Olá, ${formattedName}!`;
         }
@@ -23,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (profileTrigger) {
         profileTrigger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Impede que o clique feche o menu imediatamente
+            e.stopPropagation();
             profileDropdown.classList.toggle('show');
         });
     }
 
-    // 2. Fechar menu ao clicar fora
+    // Fechar menu ao clicar fora
     document.addEventListener('click', (e) => {
         if (profileDropdown && profileDropdown.classList.contains('show')) {
             if (!profileDropdown.contains(e.target) && !profileTrigger.contains(e.target)) {
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 localStorage.removeItem('token');
                 alert('Sua sessão expirou. Por favor, faça login novamente.');
-                window.location.href = '/public/index.html';
+                window.location.href = 'login.html';
             }
 
         } catch (error) {
@@ -68,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Limpa TUDO do localStorage (Token e Nome)
             localStorage.removeItem('token');
-            localStorage.removeItem('userName'); // [NOVO] Remove o nome
+            localStorage.removeItem('userName');
             
             // Redireciona para o login
-            window.location.href = '/public/index.html';
+            window.location.href = 'login.html';
         });
     }
 

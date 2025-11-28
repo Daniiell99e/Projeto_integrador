@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. LÓGICA DE AUTH E HEADER ---
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/public/index.html';
+        window.location.href = 'login.html';
         return;
     }
     const userName = localStorage.getItem('userName');
