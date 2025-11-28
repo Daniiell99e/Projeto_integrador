@@ -1,71 +1,305 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roteiro Diário - Trip Now</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/roteiro-diario.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-        body { font-family: 'Roboto', sans-serif; }
-    </style>
-</head>
-<body>
+    <title>Roteiro: Paris, França - TripNow</title>
+    <meta name="description" content="Planeje seu roteiro de viagem diário com TripNow">
 
+    <!-- Google Fonts - Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/roteiro_do_dia.css">
+</head>
+
+<body>
+    <!-- Header -->
     <header class="header">
-        <nav class="nav">
-            <ul class="nav-links">
-                <li class="nav-item"><a href="/public/pages/home.html">Meus Roteiros</a></li>
-                <li class="nav-item"><a href="/public/pages/escolherdest.html">Criar Roteiro</a></li>
-                <li class="nav-item"><a href="#">Comunidade</a></li>
-            </ul>
-        </nav>
-        
-        <div class="header-icons">
-            <div class="profile-dropdown-container">
-                <div class="profile-icon" id="profile-menu-trigger">
-                    <i class="fas fa-user"></i>
+        <div class="container header-content">
+            <div class="logo"><img src="../logos/logo.png" alt="logo" width="100"></div>
+            <nav class="nav">
+                <a href="home.html" class="nav-link">Meus Roteiros</a>
+                <a href="#" class="nav-link">Descobrir</a>
+                <a href="#" class="nav-link">Comunidade</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" placeholder="Buscar..." class="search-input">
                 </div>
-                <div class="dropdown-menu" id="profile-dropdown">
-                    <div class="dropdown-header">
-                        <p id="user-greeting">Olá, Viajante!</p>
-                    </div>
-                    <a href="/public/pages/perfil.html" class="dropdown-item">
-                        <i class="fas fa-user-circle"></i> Meu Perfil
-                    </a>
-                    <a href="#" id="logout-btn" class="dropdown-item logout">
-                        <i class="fas fa-sign-out-alt"></i> Sair
-                    </a>
-                </div>
+                <button class="user-button" aria-label="Perfil do usuário">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="container">
-        
-        <section class="itinerary-header">
-            <div class="header-content">
-                <p class="breadcrumb">Criar Roteiro / <strong>Roteiro Diário</strong></p>
-                <h1 id="itinerary-title">Meu Roteiro em...</h1>
-                <p id="itinerary-dates" class="date-info"><i class="far fa-calendar-alt"></i> Carregando datas...</p>
-            </div>
-            <div class="header-actions">
-                <button id="delete-itinerary-btn" class="btn btn-danger" style="display: none; margin-right: 10px;">
-                    <i class="fas fa-trash-alt"></i> Excluir
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="home.html" class="breadcrumb-link">Início</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Roteiro Diário</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1 class="page-title">Roteiro: Paris, França</h1>
+            <p class="page-subtitle">5 dias • 15-20 Mar 2024 • 2 pessoas</p>
+        </div>
+
+        <!-- Day Tabs -->
+        <div class="day-tabs" id="dayTabs">
+            <button class="day-tab active" data-day="1">Dia 1</button>
+            <button class="day-tab" data-day="2">Dia 2</button>
+            <button class="day-tab" data-day="3">Dia 3</button>
+            <button class="day-tab" data-day="4">Dia 4</button>
+            <button class="day-tab" data-day="5">Dia 5</button>
+        </div>
+
+        <div class="content-grid">
+            <!-- Activities Section -->
+            <div class="activities-section">
+                <div class="section-header">
+                    <h3 class="section-title">Sexta-feira, 15 de Março</h3>
+                </div>
+
+                <!-- Activity Cards Container -->
+                <div class="activities-list" id="activitiesList">
+                    <!-- Cards serão inseridos via JavaScript -->
+                </div>
+
+                <!-- Add Activity Button -->
+                <button class="btn btn-primary btn-add-activity" id="addActivityBtn">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Adicionar Atividade
                 </button>
-
-                <button id="save-itinerary-btn" class="btn btn-primary">
-                    <i class="fas fa-save"></i> Finalizar e Salvar
-                </button>
-            </div>
-        </section>
-
-        <div class="days-container" id="days-list">
             </div>
 
+            <!-- Sidebar - Summary and Actions -->
+            <aside class="sidebar">
+                <!-- Daily Summary -->
+                <div class="card actions-card" style="margin-top: 20px;">
+                    <h3 class="card-title">Finalizar Roteiro</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">
+                        Tudo pronto? Salve seu roteiro para acessá-lo a qualquer momento.
+                    </p>
+
+                    <div class="action-buttons">
+                        <button id="save-itinerary-btn" class="btn btn-primary"
+                            style="width: 100%; justify-content: center; padding: 15px; font-size: 1rem;">
+                            <i class="fas fa-save"></i> Salvar Roteiro
+                        </button>
+
+                        <button id="delete-itinerary-btn" class="btn btn-outline"
+                            style="width: 100%; justify-content: center; display: none; color: #d32f2f; border-color: #d32f2f;">
+                            <i class="fas fa-trash-alt"></i> Excluir Roteiro
+                        </button>
+                    </div>
+                </div>
+                <!-- Trip Summary -->
+                <div class="trip-summary">
+                    <h3 class="card-title">Resumo de Gastos da Viagem</h3>
+                    <div class="summary-grid">
+                        <div class="summary-card-small">
+                            <div class="summary-card-header">
+                                <p class="summary-card-label">Estimado</p>
+                                <svg class="summary-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1">
+                                    </path>
+                                    <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+                                </svg>
+                            </div>
+                            <p class="summary-card-value">€450</p>
+                            <p class="summary-card-desc">Total previsto</p>
+                        </div>
+
+                        <div class="summary-card-small">
+                            <div class="summary-card-header">
+                                <p class="summary-card-label">Acomodações</p>
+                                <svg class="summary-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <p class="summary-card-value">€600</p>
+                            <p class="summary-card-desc">5 noites</p>
+                        </div>
+
+                        <div class="summary-card-small">
+                            <div class="summary-card-header">
+                                <p class="summary-card-label">Alimentação</p>
+                                <svg class="summary-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                                    <path d="M2 12h20"></path>
+                                </svg>
+                            </div>
+                            <p class="summary-card-value">€800</p>
+                            <p class="summary-card-desc">Refeições</p>
+                        </div>
+
+                        <div class="summary-card-small">
+                            <div class="summary-card-header">
+                                <p class="summary-card-label">Atividades</p>
+                                <svg class="summary-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                            </div>
+                            <p class="summary-card-value">€1.850</p>
+                            <p class="summary-card-desc">Passeios</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <!-- Export Dropdown -->
+                    <div class="dropdown" id="exportDropdown">
+                        <button class="btn btn-outline dropdown-toggle" id="exportBtn">
+                            <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Exportar
+                        </button>
+                        <div class="dropdown-menu" id="exportMenu">
+                            <button class="dropdown-item" data-action="pdf">
+                                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Exportar PDF
+                            </button>
+                            <button class="dropdown-item" data-action="excel">
+                                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
+                                Exportar Excel
+                            </button>
+                            <button class="dropdown-item" data-action="print">
+                                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                    <path
+                                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                    </path>
+                                    <rect x="6" y="14" width="12" height="8"></rect>
+                                </svg>
+                                Imprimir
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline">
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                        Compartilhar
+                    </button>
+
+                    <button class="btn btn-outline" onclick="window.print()">
+                        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                            <rect x="6" y="14" width="12" height="8"></rect>
+                        </svg>
+                        Imprimir
+                    </button>
+                </div>
+            </aside>
+        </div>
     </main>
 
-    <script src="../js/roteiro-diario.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Empresa</a>
+                <a href="#" class="footer-link">Suporte</a>
+                <a href="#" class="footer-link">Legal</a>
+            </div>
+            <p class="footer-text">© 2024 TripNow. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Atividade -->
+    <div class="modal" id="activityModal">
+        <div class="modal-content" style="max-width: 700px; height: 80vh;">
+            <div class="modal-header">
+                <h2 class="modal-title">Adicionar Atividade</h2>
+                <button class="modal-close" id="closeModal" aria-label="Fechar modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body" style="display: flex; flex-direction: column; height: 100%; padding-bottom: 0;">
+
+                <div class="search-box-modal">
+                    <i class="fas fa-search search-icon-modal"></i>
+                    <input type="text" id="attractionSearchInput" class="form-input search-input-modal"
+                        placeholder="Busque por museus, restaurantes, parques..." autocomplete="off">
+                </div>
+
+                <h3 style="font-size: 1rem; color: #666; margin-bottom: 15px; margin-top: 20px;">Sugestões para você
+                </h3>
+
+                <div id="attractionSearchResults" class="attractions-grid-modal">
+                    <p style="text-align: center; color: #999; grid-column: 1/-1;">Carregando sugestões...</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JavaScript -->
+    <script src="../js/roteiro_do_dia.js"></script>
 </body>
+
 </html>
