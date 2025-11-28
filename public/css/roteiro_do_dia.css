@@ -93,13 +93,6 @@ body {
     gap: 2rem;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
-}
-
 .nav {
     display: flex;
     gap: 2rem;
@@ -1048,4 +1041,156 @@ body {
         box-shadow: none;
         border: 1px solid #ddd;
     }
+}
+
+/* --- INDICADOR DE "ALTERAÇÕES NÃO SALVAS" --- */
+
+.btn-primary.unsaved {
+    background-color: #ff9800;
+    color: white;
+    animation: pulse-save 2s infinite;
+    position: relative;
+}
+
+.btn-primary.unsaved:hover {
+    background-color: #f57c00;
+}
+
+.btn-primary.unsaved::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 12px;
+    height: 12px;
+    background-color: #d32f2f;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+@keyframes pulse-save {
+    0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
+}
+
+/* --- MODAL DE BUSCA DE ATIVIDADES --- */
+
+/* Barra de Busca */
+.search-box-modal {
+    position: relative;
+    width: 100%;
+}
+
+.search-input-modal {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border-radius: 25px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+.search-input-modal:focus {
+    background-color: #fff;
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.search-icon-modal {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+/* Grid de Resultados */
+.attractions-grid-modal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+    overflow-y: auto; 
+    padding-bottom: 20px;
+}
+
+/* Card de Atração (Miniatura) */
+.attraction-card-mini {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Faz todos os cards da linha terem a mesma altura */
+    min-height: 220px; /* Garante uma altura mínima para não sumir o texto */
+}
+
+.attraction-card-mini:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+}
+
+.attraction-mini-img {
+    height: 140px; 
+    width: 100%;
+    object-fit: cover;
+    background-color: #eee;
+    flex-shrink: 0; /* Impede a imagem de encolher */
+}
+
+.attraction-mini-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.attraction-mini-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.attraction-mini-info {
+    font-size: 0.85rem;
+    color: var(--light-text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empurra essa info para o final do card */
+}
+
+/* Botão de Adicionar no Hover */
+.attraction-card-mini:hover .attraction-mini-title {
+    color: var(--primary-color);
+}
+
+/* Botão de Adicionar Dia (+) na barra de abas */
+.add-day-btn {
+    min-width: 40px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: var(--primary);
+    background-color: rgba(21, 173, 229, 0.1);
+    border: 2px dashed var(--primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.add-day-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-style: solid;
 }

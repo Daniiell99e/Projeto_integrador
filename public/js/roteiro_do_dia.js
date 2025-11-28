@@ -1,563 +1,472 @@
-/**
- * ========================================
- * ROTEIRO DIÁRIO - JAVASCRIPT
- * Sistema de gerenciamento de roteiros de viagem
- * ========================================
- */
-
-// ========================================
-// ESTADO DA APLICAÇÃO
-// ========================================
-
-let activities = [
-    {
-        time: "09:00",
-        duration: "2h",
-        title: "Torre Eiffel",
-        description: "Visita ao monumento mais famoso de Paris",
-        category: "Monumentos",
-        price: "€29 por pessoa"
-    },
-    {
-        time: "13:00",
-        duration: "2h",
-        title: "Museu do Louvre",
-        description: "Exploração das obras de arte mais famosas do mundo",
-        category: "Museus",
-        price: "€17 por pessoa"
-    },
-    {
-        time: "18:00",
-        duration: "3h",
-        title: "Cruzeiro no Sena",
-        description: "Jantar romântico com vista para os monumentos iluminados",
-        category: "Entretenimento",
-        price: "€85 por pessoa"
-    }
-];
-
-let editingIndex = null;
-let isEditMode = false;
-
-// ========================================
-// INICIALIZAÇÃO
-// ========================================
-
 document.addEventListener('DOMContentLoaded', () => {
-    initializeApp();
-});
-
-function initializeApp() {
-    renderActivities();
-    attachEventListeners();
-    updateDailySummary();
-}
-
-// ========================================
-// EVENT LISTENERS
-// ========================================
-
-function attachEventListeners() {
-    // Day Tabs
-    const dayTabs = document.querySelectorAll('.day-tab');
-    dayTabs.forEach(tab => {
-        tab.addEventListener('click', handleDayChange);
-    });
-
-    // Add Activity Button
-    const addBtn = document.getElementById('addActivityBtn');
-    addBtn.addEventListener('click', handleAddActivity);
-
-    // Modal Controls
-    const modal = document.getElementById('activityModal');
-    const closeBtn = document.getElementById('closeModal');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const backdrop = document.getElementById('modalBackdrop');
     
-    closeBtn.addEventListener('click', closeModal);
-    cancelBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
+    // --- CONFIGURAÇÃO E AUTH ---
+    const token = localStorage.getItem('token');
+    if (!token) { window.location.href = '/public/index.html'; return; }
 
-    // Form Submit
-    const form = document.getElementById('activityForm');
-    form.addEventListener('submit', handleFormSubmit);
+    const API_BASE = 'http://localhost:3333';
+    const urlParams = new URLSearchParams(window.location.search);
+    const roteiroId = urlParams.get('id');
 
-    // Export Dropdown
-    const exportBtn = document.getElementById('exportBtn');
-    const exportMenu = document.getElementById('exportMenu');
-    
-    exportBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        exportMenu.classList.toggle('show');
-    });
+    let roteiroAtual = null;
+    let diaSelecionado = 1;
+    let hasUnsavedChanges = false;
+    let sugestoesCache = [];
 
-    // Fechar dropdown ao clicar fora
-    document.addEventListener('click', (e) => {
-        if (!exportMenu.contains(e.target) && e.target !== exportBtn) {
-            exportMenu.classList.remove('show');
+    const saveBtn = document.getElementById('save-itinerary-btn');
+    const deleteBtn = document.getElementById('delete-itinerary-btn');
+    const actionsCard = document.querySelector('.actions-card');
+
+
+    // --- FUNÇÃO AUXILIAR PARA REMOVER DUPLICATAS ---
+    function removeDuplicates(list) {
+        const seen = new Set();
+        return list.filter(item => {
+            const name = item.nome ? item.nome.trim().toLowerCase() : '';
+            
+            if (!name) return false; // Ignora itens sem nome
+
+            if (seen.has(name)) {
+                return false;
+            }
+            seen.add(name);
+            return true;
+        });
+    }
+
+
+    // --- INICIALIZAÇÃO ---
+    async function init() {
+        if (roteiroId) {
+            await loadFromAPI(roteiroId);
+        } else {
+            loadFromSession();
         }
-    });
 
-    // Export Actions
-    const exportItems = document.querySelectorAll('.dropdown-item');
-    exportItems.forEach(item => {
-        item.addEventListener('click', handleExport);
-    });
-}
-
-// ========================================
-// RENDERIZAÇÃO DE ATIVIDADES
-// ========================================
-
-function renderActivities() {
-    const container = document.getElementById('activitiesList');
-    
-    if (activities.length === 0) {
-        container.innerHTML = `
-            <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
-                <p>Nenhuma atividade adicionada ainda.</p>
-                <p style="font-size: 0.875rem; margin-top: 0.5rem;">Clique em "Adicionar Atividade" para começar.</p>
-            </div>
-        `;
-        return;
-    }
-    
-    container.innerHTML = activities.map((activity, index) => `
-        <div class="activity-card">
-            <div class="activity-header">
-                <div class="activity-time-info">
-                    <div class="activity-time">${activity.time}</div>
-                    <div class="activity-duration">${activity.duration}</div>
-                </div>
-                <div class="activity-actions">
-                    <button class="action-btn" onclick="moveActivityUp(${index})" aria-label="Mover para cima" ${index === 0 ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="18 15 12 9 6 15"></polyline>
-                        </svg>
-                    </button>
-                    <button class="action-btn" onclick="moveActivityDown(${index})" aria-label="Mover para baixo" ${index === activities.length - 1 ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                    <button class="action-btn" onclick="editActivity(${index})" aria-label="Editar">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                        </svg>
-                    </button>
-                    <button class="action-btn delete-btn" onclick="deleteActivity(${index})" aria-label="Excluir">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="activity-body">
-                <h4 class="activity-title">${escapeHtml(activity.title)}</h4>
-                <p class="activity-description">${escapeHtml(activity.description)}</p>
-            </div>
-            <div class="activity-footer">
-                <span class="activity-category">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    </svg>
-                    ${activity.category}
-                </span>
-                <span class="activity-price">${activity.price}</span>
-            </div>
-        </div>
-    `).join('');
-}
-
-// ========================================
-// GERENCIAMENTO DE ATIVIDADES
-// ========================================
-
-function handleAddActivity() {
-    isEditMode = false;
-    editingIndex = null;
-    
-    document.getElementById('modalTitle').textContent = 'Adicionar Atividade';
-    document.getElementById('modalDescription').textContent = 'Preencha os campos abaixo para adicionar uma nova atividade ao roteiro.';
-    document.getElementById('submitBtn').textContent = 'Adicionar';
-    
-    // Limpar formulário
-    document.getElementById('activityForm').reset();
-    clearErrors();
-    
-    openModal();
-}
-
-function editActivity(index) {
-    isEditMode = true;
-    editingIndex = index;
-    
-    const activity = activities[index];
-    
-    document.getElementById('modalTitle').textContent = 'Editar Atividade';
-    document.getElementById('modalDescription').textContent = 'Preencha os campos abaixo para editar a atividade ao roteiro.';
-    document.getElementById('submitBtn').textContent = 'Salvar';
-    
-    // Preencher formulário
-    document.getElementById('activityTitle').value = activity.title;
-    document.getElementById('activityDescription').value = activity.description;
-    document.getElementById('activityTime').value = activity.time;
-    document.getElementById('activityDuration').value = activity.duration;
-    document.getElementById('activityCategory').value = activity.category;
-    document.getElementById('activityPrice').value = activity.price;
-    
-    clearErrors();
-    openModal();
-}
-
-function deleteActivity(index) {
-    if (confirm('Tem certeza que deseja excluir esta atividade?')) {
-        const activity = activities[index];
-        activities.splice(index, 1);
-        renderActivities();
-        updateDailySummary();
-        showToast(`"${activity.title}" foi excluída`, 'error');
-    }
-}
-
-function moveActivityUp(index) {
-    if (index > 0) {
-        [activities[index - 1], activities[index]] = [activities[index], activities[index - 1]];
-        renderActivities();
-        showToast('Atividade movida para cima', 'info');
-    }
-}
-
-function moveActivityDown(index) {
-    if (index < activities.length - 1) {
-        [activities[index], activities[index + 1]] = [activities[index + 1], activities[index]];
-        renderActivities();
-        showToast('Atividade movida para baixo', 'info');
-    }
-}
-
-// ========================================
-// FORMULÁRIO
-// ========================================
-
-function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    // Limpar erros anteriores
-    clearErrors();
-    
-    // Coletar dados do formulário
-    const formData = {
-        title: document.getElementById('activityTitle').value.trim(),
-        description: document.getElementById('activityDescription').value.trim(),
-        time: document.getElementById('activityTime').value,
-        duration: document.getElementById('activityDuration').value.trim(),
-        category: document.getElementById('activityCategory').value,
-        price: document.getElementById('activityPrice').value.trim()
-    };
-    
-    // Validar
-    if (!validateForm(formData)) {
-        return;
-    }
-    
-    // Adicionar ou editar
-    if (isEditMode) {
-        activities[editingIndex] = formData;
-        showToast('Atividade atualizada com sucesso!', 'success');
-    } else {
-        activities.push(formData);
-        showToast('Atividade adicionada com sucesso!', 'success');
-    }
-    
-    // Atualizar UI
-    renderActivities();
-    updateDailySummary();
-    closeModal();
-}
-
-function validateForm(data) {
-    let isValid = true;
-    
-    // Validar título
-    if (!data.title || data.title.length > 100) {
-        showError('titleError', 'Título é obrigatório e deve ter no máximo 100 caracteres');
-        isValid = false;
-    }
-    
-    // Validar descrição
-    if (!data.description || data.description.length > 500) {
-        showError('descriptionError', 'Descrição é obrigatória e deve ter no máximo 500 caracteres');
-        isValid = false;
-    }
-    
-    // Validar horário
-    if (!data.time) {
-        showError('timeError', 'Horário é obrigatório');
-        isValid = false;
-    }
-    
-    // Validar duração
-    if (!data.duration) {
-        showError('durationError', 'Duração é obrigatória');
-        isValid = false;
-    }
-    
-    // Validar categoria
-    if (!data.category) {
-        showError('categoryError', 'Categoria é obrigatória');
-        isValid = false;
-    }
-    
-    // Validar preço
-    if (!data.price) {
-        showError('priceError', 'Preço é obrigatório');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-function showError(elementId, message) {
-    const errorElement = document.getElementById(elementId);
-    errorElement.textContent = message;
-    errorElement.classList.add('show');
-}
-
-function clearErrors() {
-    const errors = document.querySelectorAll('.form-error');
-    errors.forEach(error => {
-        error.textContent = '';
-        error.classList.remove('show');
-    });
-}
-
-// ========================================
-// MODAL
-// ========================================
-
-function openModal() {
-    const modal = document.getElementById('activityModal');
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-    const modal = document.getElementById('activityModal');
-    modal.classList.remove('show');
-    document.body.style.overflow = '';
-    
-    // Limpar formulário
-    document.getElementById('activityForm').reset();
-    clearErrors();
-}
-
-// Fechar modal com ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const modal = document.getElementById('activityModal');
-        if (modal.classList.contains('show')) {
-            closeModal();
+        if (roteiroAtual) {
+            renderPage();
+            if (roteiroAtual.isEditMode) {
+                activateMinimalMode();
+            }
         }
     }
-});
 
-// ========================================
-// DAY TABS
-// ========================================
-
-function handleDayChange(e) {
-    const dayTabs = document.querySelectorAll('.day-tab');
-    dayTabs.forEach(tab => tab.classList.remove('active'));
-    e.target.classList.add('active');
-    
-    const day = e.target.dataset.day;
-    showToast(`Visualizando Dia ${day}`, 'info');
-}
-
-// ========================================
-// EXPORTAÇÃO
-// ========================================
-
-function handleExport(e) {
-    const action = e.currentTarget.dataset.action;
-    const menu = document.getElementById('exportMenu');
-    menu.classList.remove('show');
-    
-    switch(action) {
-        case 'pdf':
-            exportToPDF();
-            break;
-        case 'excel':
-            exportToExcel();
-            break;
-        case 'print':
-            window.print();
-            break;
+    function activateMinimalMode() {
+        if (actionsCard) actionsCard.classList.add('minimal');
+        if(saveBtn) {
+            saveBtn.innerHTML = '<i class="fas fa-save"></i> <span>Salvar</span>';
+            saveBtn.title = "Salvar Alterações";
+        }
+        if (deleteBtn) {
+            deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> <span>Excluir</span>';
+            deleteBtn.title = "Excluir Roteiro";
+        }
     }
-}
 
-function exportToPDF() {
-    showToast('Exportando para PDF...', 'info');
-    // Aqui você implementaria a lógica real de exportação
-    setTimeout(() => {
-        showToast('PDF exportado com sucesso!', 'success');
-    }, 1500);
-}
+    function markUnsaved() {
+        if (!hasUnsavedChanges && saveBtn) {
+            hasUnsavedChanges = true;
+            saveBtn.classList.add('unsaved');
+            saveBtn.title = "Você tem alterações não salvas!";
+        }
+    }
 
-function exportToExcel() {
-    showToast('Exportando para Excel...', 'info');
-    // Aqui você implementaria a lógica real de exportação
-    setTimeout(() => {
-        showToast('Excel exportado com sucesso!', 'success');
-    }, 1500);
-}
+    function loadFromSession() {
+        const json = sessionStorage.getItem('novoRoteiro');
+        if (!json) {
+            alert("Nenhum roteiro em construção. Voltando.");
+            window.location.href = '/public/pages/escolherdest.html';
+            return;
+        }
+        const rawData = JSON.parse(json);
+        roteiroAtual = {
+            isEditMode: false,
+            titulo: `Roteiro: ${rawData.cidade.nome}`,
+            data_inicio: rawData.roteiro.data_inicio,
+            duracao_dias: parseInt(rawData.roteiro.duracao_dias),
+            pessoas: parseInt(rawData.roteiro.numero_pessoas),
+            orcamento_total: parseFloat(rawData.roteiro.orcamento_total),
+            cidade_id: rawData.cidade.id,
+            dias: {} 
+        };
+        for(let i=1; i<=roteiroAtual.duracao_dias; i++) roteiroAtual.dias[i] = [];
+        if (rawData.dias && rawData.dias[0] && rawData.dias[0].pontos_turisticos) {
+            roteiroAtual.dias[1] = rawData.dias[0].pontos_turisticos.map(p => normalizeAttraction(p));
+        }
+    }
 
-// ========================================
-// RESUMO DIÁRIO
-// ========================================
+    async function loadFromAPI(id) {
+        try {
+            const response = await fetch(`${API_BASE}/roteiros/${id}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!response.ok) throw new Error('Erro ao buscar roteiro');
+            const data = await response.json();
 
-function updateDailySummary() {
-    // Calcular estatísticas
-    const totalActivities = activities.length;
-    const totalHours = calculateTotalHours();
-    const totalCost = calculateTotalCost();
-    
-    // Atualizar UI
-    document.getElementById('dailyActivities').textContent = 
-        totalActivities === 1 ? '1 ponto turístico' : `${totalActivities} pontos turísticos`;
-    
-    document.getElementById('dailyDuration').textContent = totalHours;
-    document.getElementById('dailyCost').textContent = totalCost;
-}
+            roteiroAtual = {
+                isEditMode: true,
+                id: data.roteiro.id,
+                titulo: data.roteiro.titulo,
+                data_inicio: data.roteiro.data_inicio,
+                duracao_dias: data.roteiro.duracao_dias,
+                pessoas: data.roteiro.numero_pessoas,
+                orcamento_total: data.roteiro.orcamento_total,
+                dias: data.dias 
+            };
 
-function calculateTotalHours() {
-    let totalMinutes = 0;
-    
-    activities.forEach(activity => {
-        const duration = activity.duration.toLowerCase();
-        const hours = duration.match(/(\d+)h/);
-        const minutes = duration.match(/(\d+)m/);
+            for(let dia in roteiroAtual.dias) {
+                roteiroAtual.dias[dia] = roteiroAtual.dias[dia].map(item => ({
+                    id: item.id,
+                    nome: item.atracao.nome,
+                    descricao: item.atracao.descricao,
+                    categoria: item.atracao.categoria || 'Geral',
+                    imagem: item.atracao.url_imagem,
+                    price: item.atracao.preco_estimado || 0,
+                    duration: '2h', 
+                    time: item.horario || '09:00'
+                }));
+            }
+            
+            if(deleteBtn) deleteBtn.style.display = 'inline-flex';
+
+        } catch (error) {
+            console.error(error);
+            alert("Erro ao carregar roteiro.");
+            window.location.href = '/public/pages/home.html';
+        }
+    }
+
+    function normalizeAttraction(p) {
+        return {
+            nome: p.nome,
+            descricao: p.descricao,
+            categoria: p.categoria || 'Geral',
+            imagem: p.url_imagem || p.imagem,
+            price: p.valor || p.price || 0,
+            duration: '2h',
+            time: '09:00'
+        };
+    }
+
+    // --- RENDERIZAÇÃO ---
+    function renderPage() {
+        renderHeader();
+        renderDayTabs();
+        renderActivities();
+        updateSummaries();
+    }
+
+    function renderHeader() {
+        document.querySelector('.page-title').textContent = roteiroAtual.titulo;
+        const start = new Date(roteiroAtual.data_inicio);
+        start.setMinutes(start.getMinutes() + start.getTimezoneOffset());
+        const end = new Date(start);
+        end.setDate(start.getDate() + roteiroAtual.duracao_dias);
+        const fmt = (d) => d.toLocaleDateString('pt-BR', {day:'2-digit', month:'short', year:'numeric'});
+        document.querySelector('.page-subtitle').textContent = `${roteiroAtual.duracao_dias} dias • ${fmt(start)} - ${fmt(end)} • ${roteiroAtual.pessoas} pessoas`;
+    }
+
+    function renderDayTabs() {
+        const container = document.getElementById('dayTabs');
+        container.innerHTML = '';
+
+        // 1. Renderiza os dias existentes
+        for (let i = 1; i <= roteiroAtual.duracao_dias; i++) {
+            const btn = document.createElement('button');
+            btn.className = `day-tab ${i === diaSelecionado ? 'active' : ''}`;
+            btn.textContent = `Dia ${i}`;
+            btn.onclick = () => {
+                diaSelecionado = i;
+                renderDayTabs();
+                renderActivities();
+                updateSummaries();
+            };
+            container.appendChild(btn);
+        }
+
+        const addBtn = document.createElement('button');
+        addBtn.className = 'day-tab add-day-btn';
+        addBtn.innerHTML = '<i class="fas fa-plus"></i>';
+        addBtn.title = "Adicionar um dia ao roteiro";
         
-        if (hours) totalMinutes += parseInt(hours[1]) * 60;
-        if (minutes) totalMinutes += parseInt(minutes[1]);
-    });
-    
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = totalMinutes % 60;
-    
-    if (minutes === 0) {
-        return hours === 1 ? '1 hora' : `${hours} horas`;
+        addBtn.onclick = () => {
+            // Lógica para adicionar dia
+            roteiroAtual.duracao_dias++;
+            const novoDia = roteiroAtual.duracao_dias;
+            
+            // Inicializa o array vazio para o novo dia
+            roteiroAtual.dias[novoDia] = [];
+            
+            // Seleciona o novo dia automaticamente
+            diaSelecionado = novoDia;
+            
+            // Marca como alterado e re-renderiza
+            markUnsaved();
+            renderHeader();
+            renderDayTabs();
+            renderActivities();
+            updateSummaries();
+            
+            // Scroll suave para o fim das abas
+            setTimeout(() => container.scrollLeft = container.scrollWidth, 100);
+        };
+
+        container.appendChild(addBtn);
     }
-    
-    return `${hours}h${minutes}min`;
-}
 
-function calculateTotalCost() {
-    let total = 0;
-    
-    activities.forEach(activity => {
-        const priceMatch = activity.price.match(/€(\d+)/);
-        if (priceMatch) {
-            total += parseInt(priceMatch[1]);
+    function renderActivities() {
+        const container = document.getElementById('activitiesList');
+        const atividadesDoDia = roteiroAtual.dias[diaSelecionado] || [];
+        const currentData = new Date(roteiroAtual.data_inicio);
+        currentData.setDate(currentData.getDate() + (diaSelecionado - 1));
+        const dataStr = currentData.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
+        
+        const titleEl = document.querySelector('.section-title');
+        if(titleEl) titleEl.textContent = dataStr.charAt(0).toUpperCase() + dataStr.slice(1);
+
+        if (atividadesDoDia.length === 0) {
+            container.innerHTML = `<div style="text-align: center; padding: 3rem; color: #9CA3AF; background: white; border-radius: 12px; border: 1px solid #E5E7EB;"><p>Nenhuma atividade neste dia.</p><p style="font-size: 0.875rem; margin-top: 0.5rem;">Clique em "Adicionar Atividade" para começar.</p></div>`;
+            return;
         }
+
+        container.innerHTML = atividadesDoDia.map((act, index) => `
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-time-info">
+                        <div class="activity-time">${act.time}</div>
+                        <div class="activity-duration">${act.duration}</div>
+                    </div>
+                    <div class="activity-actions">
+                        <button class="action-btn delete-btn" onclick="window.removeActivity(${index})" title="Remover">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="activity-body">
+                    <h4 class="activity-title">${act.nome}</h4>
+                    <p class="activity-description">${act.descricao ? act.descricao.substring(0, 60) + '...' : ''}</p>
+                </div>
+                <div class="activity-footer">
+                    <span class="activity-category">${act.categoria}</span>
+                    <span class="activity-price">€${act.price || 0}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function updateSummaries() {
+        const atividadesDoDia = roteiroAtual.dias[diaSelecionado] || [];
+        let custoDia = 0;
+        let minutosDia = 0;
+        atividadesDoDia.forEach(a => {
+            custoDia += parseFloat(a.price || 0);
+            const dur = a.duration || "0";
+            if(dur.includes('h')) minutosDia += parseInt(dur) * 60;
+            if(dur.includes('m')) minutosDia += parseInt(dur);
+        });
+        const custoDiaTotal = custoDia * roteiroAtual.pessoas;
+
+        const elActivities = document.getElementById('dailyActivities');
+        const elDuration = document.getElementById('dailyDuration');
+        const elCost = document.getElementById('dailyCost');
+
+        if (elActivities) elActivities.textContent = atividadesDoDia.length === 1 ? '1 atividade' : `${atividadesDoDia.length} atividades`;
+        if (elDuration) {
+            const horas = Math.floor(minutosDia / 60);
+            const mins = minutosDia % 60;
+            elDuration.textContent = mins > 0 ? `${horas}h ${mins}min` : `${horas}h`;
+        }
+        if (elCost) elCost.textContent = `€${custoDiaTotal.toFixed(2)} (€${custoDia.toFixed(2)}/pessoa)`;
+    }
+
+
+    // --- MODAL E BUSCA ---
+    const modal = document.getElementById('activityModal');
+    const addBtn = document.getElementById('addActivityBtn');
+    const closeBtn = document.getElementById('closeModal');
+    const searchInput = document.getElementById('attractionSearchInput');
+    const resultsContainer = document.getElementById('attractionSearchResults');
+
+    if(addBtn) {
+        addBtn.addEventListener('click', async () => {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            searchInput.value = ''; 
+            searchInput.focus();
+
+            if (sugestoesCache.length > 0) {
+                renderSuggestions(sugestoesCache);
+            } else {
+                await fetchSuggestions();
+            }
+        });
+    }
+
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    async function fetchSuggestions() {
+        resultsContainer.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Carregando sugestões...</p>';
+        try {
+            let url;
+            if (roteiroAtual.isEditMode) {
+                url = `${API_BASE}/roteiros/${roteiroAtual.id}/sugestoes-atracoes`;
+            } else {
+                const cidadeNome = roteiroAtual.titulo.replace('Roteiro: ', '').split(',')[0].trim();
+                url = `${API_BASE}/api/tourist/search?q=${encodeURIComponent(cidadeNome)}`;
+            }
+
+            const response = await fetch(url, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if(!response.ok) throw new Error("Erro ao buscar");
+
+            const data = await response.json();
+            let rawList = Array.isArray(data) ? data : (data.pontos_turisticos || []);
+            
+            sugestoesCache = removeDuplicates(rawList);
+            
+            renderSuggestions(sugestoesCache);
+
+        } catch (e) {
+            console.error(e);
+            resultsContainer.innerHTML = '<p style="text-align:center; color:red; grid-column:1/-1;">Erro ao carregar sugestões.</p>';
+        }
+    }
+
+    function renderSuggestions(list) {
+        resultsContainer.innerHTML = '';
+        if(list.length === 0) {
+            resultsContainer.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Nenhuma sugestão encontrada.</p>';
+            return;
+        }
+        const fragment = document.createDocumentFragment();
+        list.forEach(att => {
+            const div = document.createElement('div');
+            div.className = 'attraction-card-mini';
+            const img = att.url_imagem || att.imagem || 'https://via.placeholder.com/150';
+            const price = att.e_gratuito ? 'Grátis' : (att.moeda || '$') + ' ' + (att.valor || att.preco || '?');
+            div.innerHTML = `
+                <img src="${img}" class="attraction-mini-img">
+                <div class="attraction-mini-content">
+                    <div class="attraction-mini-title" title="${att.nome}">${att.nome}</div>
+                    <div class="attraction-mini-info">
+                        <span>${att.categoria || 'Geral'}</span>
+                        <span style="font-weight:bold; color:var(--primary);">${price}</span>
+                    </div>
+                </div>
+            `;
+            div.addEventListener('click', () => addActivityToDay(att));
+            fragment.appendChild(div);
+        });
+        resultsContainer.appendChild(fragment);
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const filtered = sugestoesCache.filter(item => 
+            item.nome.toLowerCase().includes(term) || 
+            (item.categoria && item.categoria.toLowerCase().includes(term))
+        );
+        renderSuggestions(filtered);
     });
-    
-    const perPerson = (total / 2).toFixed(2);
-    return `€${total} (€${perPerson}/pessoa)`;
-}
 
-// ========================================
-// TOAST NOTIFICATIONS
-// ========================================
+    function addActivityToDay(attraction) {
+        const novaAtividade = normalizeAttraction(attraction);
+        if(!roteiroAtual.dias[diaSelecionado]) roteiroAtual.dias[diaSelecionado] = [];
+        roteiroAtual.dias[diaSelecionado].push(novaAtividade);
+        markUnsaved();
+        renderActivities();
+        updateSummaries();
+        closeModal();
+    }
 
-function showToast(message, type = 'info') {
-    const container = document.getElementById('toastContainer');
-    
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    
-    const icon = getToastIcon(type);
-    
-    toast.innerHTML = `
-        ${icon}
-        <span class="toast-message">${escapeHtml(message)}</span>
-    `;
-    
-    container.appendChild(toast);
-    
-    // Remover após 3 segundos
-    setTimeout(() => {
-        toast.style.animation = 'toastSlideIn 0.3s ease reverse';
-        setTimeout(() => {
-            container.removeChild(toast);
-        }, 300);
-    }, 3000);
-}
-
-function getToastIcon(type) {
-    const icons = {
-        success: `
-            <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-        `,
-        error: `
-            <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="15" y1="9" x2="9" y2="15"></line>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-            </svg>
-        `,
-        info: `
-            <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-        `
+    window.removeActivity = (index) => {
+        if(confirm("Remover esta atividade?")) {
+            roteiroAtual.dias[diaSelecionado].splice(index, 1);
+            markUnsaved();
+            renderActivities();
+            updateSummaries();
+        }
     };
-    
-    return icons[type] || icons.info;
-}
 
-// ========================================
-// UTILITÁRIOS
-// ========================================
+    if(saveBtn) {
+        saveBtn.addEventListener('click', async () => {
+            saveBtn.disabled = true;
+            const originalContent = saveBtn.innerHTML; 
+            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
 
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+            try {
+                let url = `${API_BASE}/roteiros`;
+                let method = 'POST';
+                let payload = {};
 
-// ========================================
-// RESPONSIVIDADE MOBILE
-// ========================================
+                if (roteiroAtual.isEditMode) {
+                    url = `${API_BASE}/roteiros/${roteiroAtual.id}`;
+                    method = 'PUT';
+                    payload = {
+                        titulo: roteiroAtual.titulo,
+                        orcamento_total: roteiroAtual.orcamento_total,
+                        duracao_dias: roteiroAtual.duracao_dias
+                    };
+                } else {
+                    const sessionData = JSON.parse(sessionStorage.getItem('novoRoteiro'));
+                    sessionData.roteiro.duracao_dias = roteiroAtual.duracao_dias;
 
-// Detectar clique fora de elementos
-function handleClickOutside(element, callback) {
-    document.addEventListener('click', (e) => {
-        if (!element.contains(e.target)) {
-            callback();
-        }
-    });
-}
+                    const diasArray = [];
+                    for(let i=1; i<=roteiroAtual.duracao_dias; i++) {
+                        diasArray.push({
+                            numero_dia: i,
+                            pontos_turisticos: roteiroAtual.dias[i].map(a => ({
+                                nome: a.nome, descricao: a.descricao, categoria: a.categoria, url_imagem: a.imagem, valor: a.price, latitude: 0, longitude: 0, endereco: "Manual"
+                            }))
+                        });
+                    }
+                    payload = { ...sessionData, dias: diasArray };
+                }
 
-// Smooth scroll para elementos
-function smoothScrollTo(element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                    body: JSON.stringify(payload)
+                });
 
-// ========================================
-// EXPORTAÇÃO DE FUNÇÕES GLOBAIS
-// ========================================
+                if (response.ok) {
+                    alert("Roteiro salvo com sucesso!");
+                    hasUnsavedChanges = false;
+                    saveBtn.classList.remove('unsaved');
+                    if (!roteiroAtual.isEditMode) {
+                        sessionStorage.removeItem('novoRoteiro');
+                        window.location.href = '/public/pages/home.html';
+                    } else {
+                        window.location.reload();
+                    }
+                } else {
+                    const err = await response.json();
+                    throw new Error(err.message || "Erro ao salvar");
+                }
 
-// Funções que precisam ser acessadas via onclick no HTML
-window.moveActivityUp = moveActivityUp;
-window.moveActivityDown = moveActivityDown;
-window.editActivity = editActivity;
-window.deleteActivity = deleteActivity;
+            } catch (error) {
+                alert("Erro: " + error.message);
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = originalContent;
+            }
+        });
+    }
+
+    if(deleteBtn) {
+        deleteBtn.addEventListener('click', async () => {
+            if(!confirm("Tem certeza?")) return;
+            try {
+                await fetch(`${API_BASE}/roteiros/${roteiroAtual.id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+                window.location.href = '/public/pages/home.html';
+            } catch (e) { alert("Erro ao excluir."); }
+        });
+    }
+
+    init();
+});
