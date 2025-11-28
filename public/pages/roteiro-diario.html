@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escolher Destino</title>
+    <title>Roteiro Diário - Trip Now</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="/public/css/escolherdest.css"> 
+    <link rel="stylesheet" href="../css/roteiro-diario.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
         body { font-family: 'Roboto', sans-serif; }
     </style>
 </head>
@@ -17,18 +17,16 @@
         <nav class="nav">
             <ul class="nav-links">
                 <li class="nav-item"><a href="/public/pages/home.html">Meus Roteiros</a></li>
-                <li class="nav-item"><a href="#">Criar Roteiro</a></li>
+                <li class="nav-item"><a href="/public/pages/escolherdest.html">Criar Roteiro</a></li>
                 <li class="nav-item"><a href="#">Comunidade</a></li>
             </ul>
         </nav>
         
         <div class="header-icons">
             <div class="profile-dropdown-container">
-                
                 <div class="profile-icon" id="profile-menu-trigger">
                     <i class="fas fa-user"></i>
                 </div>
-
                 <div class="dropdown-menu" id="profile-dropdown">
                     <div class="dropdown-header">
                         <p id="user-greeting">Olá, Viajante!</p>
@@ -46,30 +44,28 @@
 
     <main class="container">
         
-        <section class="destination-header">
-            <p class="breadcrumb">Início / <strong>Escolher Destino</strong></p>
-            <h1 class="page-title">Escolha seu destino</h1>
-            <p class="page-subtitle">Selecione a cidade para onde você quer viajar</p>
+        <section class="itinerary-header">
+            <div class="header-content">
+                <p class="breadcrumb">Criar Roteiro / <strong>Roteiro Diário</strong></p>
+                <h1 id="itinerary-title">Meu Roteiro em...</h1>
+                <p id="itinerary-dates" class="date-info"><i class="far fa-calendar-alt"></i> Carregando datas...</p>
+            </div>
+            <div class="header-actions">
+                <button id="delete-itinerary-btn" class="btn btn-danger" style="display: none; margin-right: 10px;">
+                    <i class="fas fa-trash-alt"></i> Excluir
+                </button>
+
+                <button id="save-itinerary-btn" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Finalizar e Salvar
+                </button>
+            </div>
         </section>
 
-        <div class="search-input-container">
-            <i class="fas fa-search search-icon-input"></i>
-            <input type="text" placeholder="Digite o nome da cidade..." class="city-search-input">
-        </div>
+        <div class="days-container" id="days-list">
+            </div>
 
-        <section class="popular-cities-section" id="containerCards">
-            <h2>Cidades Populares</h2>
-            <div class="city-cards-grid"></div>
-        </section>
-        
     </main>
-    <footer class="footer">
-        <a href="#">Empresa</a>
-        <a href="#">Suporte</a>
-        <a href="#">Legal</a>
-    </footer>
 
-<script src="../js/cardDinamico.js"></script>
-<script src="../js/btnVerDetalhes.js"></script>
+    <script src="../js/roteiro-diario.js"></script>
 </body>
 </html>

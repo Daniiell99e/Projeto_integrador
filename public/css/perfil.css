@@ -609,42 +609,42 @@ textarea.edit-mode {
 }
 
 .map-icon:hover {
-    color: var(--cor-secundaria); /* Escurece ou muda de cor ao passar o mouse */
+    color: var(--cor-secundaria);
 }
 
 /* Garante que o ícone de GPS fique na mesma linha que o "Ver" */
 .history-item-status {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adiciona um pequeno espaço entre os itens de status */
+    gap: 10px;
 }
 
 
 /* --- Estilos para o Modal do Mapa --- */
 .map-modal {
-    display: none; /* Começa escondido */
-    position: fixed; /* Fixa na tela */
-    z-index: 100; /* Acima de todo o resto */
+    display: none;
+    position: fixed;
+    z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
-    background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente escuro */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
 }
 
 .map-modal-content {
     background-color: white;
-    margin: auto; /* Centraliza vertical e horizontalmente */
+    margin: auto;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     position: relative;
-    width: 90%; /* Largura do modal */
-    max-width: 800px; /* Largura máxima */
-    animation: fadeIn 0.3s ease-out; /* Animação simples de entrada */
+    width: 90%;
+    max-width: 800px;
+    animation: fadeIn 0.3s ease-out;/
 }
 
 .close-modal-btn {
@@ -672,14 +672,97 @@ textarea.edit-mode {
 }
 
 .map-iframe-container {
-    height: 450px; /* Altura do contêiner do mapa */
+    height: 450px;
     border: 1px solid var(--cor-borda-clara);
     border-radius: 5px;
-    overflow: hidden; /* Garante que o iframe não vaze bordas */
+    overflow: hidden;
 }
 
 /* Animação para o modal */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header-container h2 {
+    margin-bottom: 0;
+}
+
+.settings-icon {
+    font-size: 1.4rem;
+    color: var(--cor-subtitulo);
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.settings-icon:hover {
+    color: var(--cor-botao);
+    transform: rotate(90deg);
+}
+
+.btn-danger {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+.btn-danger:hover {
+    background-color: #b71c1c;
+}
+
+.admin-modal {
+    display: none; /* [IMPORTANTE] Começa escondido */
+    position: fixed; /* Fixa na tela, ignora a rolagem */
+    z-index: 2000; /* Garante que fique na frente de tudo (até do header) */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Fundo preto semi-transparente */
+    
+    /* Flexbox para centralizar a caixa branca perfeitamente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* A Caixa Branca do Modal */
+.admin-modal-content {
+    background-color: var(--cor-card-background);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 400px; /* Largura máxima para não ficar gigante */
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn 0.3s ease-out; /* Efeito suave de entrada */
+}
+
+/* Animação de entrada */
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajuste para o botão de cancelar dentro do modal */
+.settings-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
 }

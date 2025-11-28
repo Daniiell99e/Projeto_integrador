@@ -3,24 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
     <title>Tela de Cadastro</title>
+    <style>
+        .hidden { display: none; }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-align: center;
+            display: none;
+        }
+        .success-message {
+            color: green;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="Cadastro-container">
 
-        <img src="/logos/Logo.png" alt="logo do site" width="40%" height="40%">
 
-        <p class="title">Crie sua conta</p>
+        <img src="../logo(s)/Logo.png" alt="logo do site" width="40%" height="40%">
+
+        <p id="feedback-message" class="error-message"></p>
 
 
-        <form id="form-cadastro" action="/submit" method="post">
+        <div id="step-signup">
+            <p>Crie sua conta</p>
+            <form id="form-cadastro">
+                <label class="class-label" for="name">Nome Completo</label>
+                <input class="class-input" type="text" id="name" name="name" placeholder="Digite seu nome" required>
 
-            <!-- nome -->
-             <label class="class-label" for="name">Nome Completo</label>
-             <input class="class-input" type="text" id="name" name="name"  placeholder="Digite seu nome" required>
+                <label class="class-label" for="user_name">Nome de Usuário</label>
+                <input class="class-input" type="text" id="user_name" name="user_name" placeholder="Ex: Ana_23" required>
+
+                <label class="class-label" for="e-mail">E-mail</label>
+                <input class="class-input" type="email" id="input-email" name="e-mail" placeholder="Digite seu e-mail" required>
+                
+                <div class="input-wrapper">
+                    <label class="class-label" for="password">Senha</label>
+                    <div class="password-container">
+                        <input class="class-input" type="password" id="input-password" name="password" placeholder="Digite sua senha" required>
+                        <i class="fas fa-eye toggle-password" data-target="input-password"></i>
+                    </div>
+                </div>  
+
+                <div class="input-password">
+                    <label class="class-label" for="confirm-password">Confirmar Senha</label>
+                    <div class="password-container">
+                        <input class="class-input" type="password" id="input-confirm-password" name="confirm-password" placeholder="Confirme sua senha" required>
+                        <i class="fas fa-eye toggle-password" data-target="input-confirm-password"></i>
+                    </div>
+                </div>  
+
+                <div class="checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Eu concordo com os </label>
+                    <a href="#">Termos de Serviço</a>
+                </div>
+
+                <button type="submit" class="button-entrar" id="btn-cadastrar">Cadastrar</button>
+            </form>
+        </div>
+
+        <div id="step-verification" class="hidden">
+            <p>Verifique seu E-mail</p>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 20px;">Enviamos um código para <span id="email-display" style="font-weight: bold;"></span>.</p>
             
+            <form id="form-verification">
+                <label class="class-label" for="code">Código de Verificação</label>
+                <input class="class-input" type="text" id="code" name="code" placeholder="Ex: 108386" required>
+                <button type="submit" class="button-entrar" id="btn-verificar" style="margin-top: 20px;">Verificar Código</button>
+            </form>
+        </div>
 
+<<<<<<< HEAD
             <!-- E-mail -->
               <label class="class-label" for="e-mail">E-mail</label>
               <input class="class-input" type="email" name="e-mail" id="input-email" placeholder="Digite seu e-mail" required>
@@ -54,8 +115,13 @@
         <!-- <hr> -->
         <p class="paragrafor-final">Já tem conta?</p>
         <a class="elemento_a" href="/index.html">Faça login aqui</a>
+=======
+        <hr>
+        <p class="paragrafor-final">Já tem conta?</p>
+        <a href="../index.html">Faça login aqui</a>
+>>>>>>> origin/main
         
     </div>
-    <script src="/js/cadastro.js"></script>
+    <script src="../js/cadastro.js"></script>
 </body>
 </html>
