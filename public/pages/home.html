@@ -3,86 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TripNow/Home</title>
+    <title>TripNow - Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/home.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
         body { font-family: 'Roboto', sans-serif; }
     </style>
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
 
-    <header class="header">
-        <nav class="nav">
-            <ul class="nav-links">
-                <li class="nav-item"><a href="#">Meus Roteiros</a></li>
-                <li class="nav-item"><a href="/public/pages/escolherdest.html">Criar Roteiro</a></li>
-                <li class="nav-item"><a href="#">Comunidade</a></li>
-            </ul>
-        </nav>
-        <div class="header-icons">
-            <div class="profile-dropdown-container">
-                
-                <div class="profile-icon" id="profile-menu-trigger">
-                    <i class="fas fa-user"></i>
-                </div>
-
-                <div class="dropdown-menu" id="profile-dropdown">
-                    <div class="dropdown-header">
-                        <p id="user-greeting">Olá, Viajante!</p>
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="/public/pages/home.html">
+                    <img src="../../src/assets/imagens/Logo.png" alt="Trip Now Logo">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#" class="active">Meus Roteiros</a>
+                <a href="/public/pages/escolherdest.html">Criar Roteiro</a>
+                <a href="#">Comunidade</a>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="profile-dropdown-container">
+                    <div class="profile-icon" id="profile-menu-trigger">
+                        <i class="far fa-user"></i>
                     </div>
-                    <a href="/public/pages/perfil.html" class="dropdown-item">
-                        <i class="fas fa-user-circle"></i> Meu Perfil
-                    </a>
-                    <a href="#" id="logout-btn" class="dropdown-item logout">
-                        <i class="fas fa-sign-out-alt"></i> Sair
-                    </a>
+                    <div class="dropdown-menu" id="profile-dropdown">
+                        <div class="dropdown-header">
+                            <p id="user-greeting">Olá, Viajante!</p>
+                        </div>
+                        <a href="/public/pages/perfil.html" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i> Meu Perfil
+                        </a>
+                        <a href="#" id="logout-btn" class="dropdown-item logout">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="container">
-        <section class="hero-section">
-            <div class="hero-content">
+    <section class="hero-section-wrapper">
+        <div class="container hero-container">
+            
+            <div class="hero-card">
                 <h1>Sua Aventura <br>Começa Aqui</h1>
-                <p>Está na hora de tirar a poeira da mochila e descobrir novos horizontes. Planeje sua aventura de forma simples e divertida!</p>
-                <button class="btn btn-primary"><i class="fas fa-plus"></i> Criar Novo Roteiro</button>
+                <p>Crie itinerários de viagem personalizados em minutos. Descubra destinos incríveis e planeje sua próxima fuga com facilidade.</p>
+                
+                <a href="/public/pages/escolherdest.html" class="btn btn-hero">
+                    <i class="fas fa-plus"></i> Novo Roteiro
+                </a>
             </div>
-            </section>
 
-        <section class="my-routes-section">
-            <h2>Meus Roteiros</h2>
+            <div class="hero-image-container">
+                <img src="../imagens/photo-16.jpg" alt="Avião no pôr do sol">
+            </div>
 
-            <article class="route-card">
-                <div class="route-image">
-                    <img src="/src/assets/imagens/salvador.jpeg" alt="salvador">
-                    <div class="image-text">
-                        <p>Porto Seguro, Bahia</p>
-                    </div>
-                </div>
-                <div class="route-details">
-                    <p class="route-info">
-                        <i class="fas fa-map-marker-alt"></i> 27 atividades • <i class="fas fa-calendar-alt"></i> 15 de Outubro
-                    </p>
-                    <button class="btn btn-tertiary">Ver Roteiro</button>
-                </div>
-            </article>
-        </section>
+        </div>
+    </section>
+
+    <main class="container my-routes-section">
+        <h2>Meu Roteiros</h2>
+
+        <div id="my-routes-container" class="route-card-grid">
+            <p style="text-align: center; color: #666; width: 100%; padding: 20px;">Carregando seus roteiros...</p>
+        </div>
     </main>
 
     <footer class="footer">
-        <div class="footer-links">
-            <a href="#">Empresa</a>
-            <a href="#">Suporte</a>
-            <a href="#">Legal</a>
-        </div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#">Empresa</a>
+                <a href="#">Suporte</a>
+                <a href="#">Legal</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
         </div>
     </footer>
 
