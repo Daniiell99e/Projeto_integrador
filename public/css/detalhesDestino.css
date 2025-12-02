@@ -185,7 +185,7 @@ body {
 /* --- Seção de Configuração da Viagem (Formulário) --- */
 .config-section {
     padding: 20px 0;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     border-top: 1px solid var(--border-color);
 }
 
@@ -289,7 +289,7 @@ body {
     gap: 15px;
     overflow-x: auto; /* Permite scroll horizontal para os cards */
     padding-bottom: 10px; /* Espaço para a barra de scroll */
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 /* Card Individual de Ponto Turístico */
@@ -404,18 +404,45 @@ body {
 
 /* --- Cards de Atrações --- */
 .tour-cards-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    display: flex;
     gap: 20px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding-bottom: 3px;
+}
+
+.tour-cards-list::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tour-cards-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 6px;
 }
 
 .tour-card {
+    min-width: 280px;
+    max-width: 280px;
+
+    scroll-snap-align: start;
+
     border: 1px solid #eee;
     border-radius: 8px;
     overflow: hidden;
     background: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+
+/* .tour-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+} */
 
 .tour-image {
     height: 160px;
