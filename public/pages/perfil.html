@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil - Trip Now</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+    </style>
+    <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="..\css\perfil.css">
 </head>
+
 <body>
 
     <header class="main-header">
-        <div class="logo">
-            <img src="..\..\src\assets\imagens\Logo.png" alt="Trip Now Logo"> <span>Trip Now</span>
-        </div>
-        
-        <nav class="main-nav">
-            <a href="#">Meus Roteiros</a>
-            <a href="#">Criar Roteiro</a>
-            <a href="#">Comunidade</a>
-        </nav>
-        
-        <div class="header-actions">
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Buscar roteiros...">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="/public/pages/home.html">
+                    <img src="../../src/assets/imagens/Logo.png" alt="Trip Now Logo">
+                </a>
             </div>
-            
-            <div class="profile-dropdown-container">
-                <div class="profile-icon" id="profile-menu-trigger">
-                    <i class="fas fa-user"></i>
-                </div>
 
-                <div class="dropdown-menu" id="profile-dropdown">
-                    <div class="dropdown-header">
-                        <p id="user-greeting">Olá, Viajante!</p>
+            <nav class="main-nav">
+                <a href="/public/pages/home.html">Roteiros</a>
+                <a href="/public/pages/escolherdest.html">Criar</a>
+                <a href="#">Comunidade</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="profile-dropdown-container">
+                    <div class="profile-icon" id="profile-menu-trigger">
+                        <i class="far fa-user"></i>
                     </div>
-                    <a href="/public/pages/home.html" class="dropdown-item">
-                        <i class="fas fa-home"></i> Ir para Home
-                    </a>
-                    <a href="#" id="logout-btn" class="dropdown-item logout">
-                        <i class="fas fa-sign-out-alt"></i> Sair
-                    </a>
+                    <div class="dropdown-menu" id="profile-dropdown">
+                        <div class="dropdown-header">
+                            <p id="user-greeting">Olá, Viajante!</p>
+                        </div>
+                        <a href="/public/pages/perfil.html" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i> Meu Perfil
+                        </a>
+                        <a href="#" id="logout-btn" class="dropdown-item logout">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <nav class="breadcrumb">
+        <nav class="breadcrumb container" style="margin-top: 20px;">
             <a href="home.html">Início</a> / <span>Meu Perfil</span>
         </nav>
 
-        <section class="profile-summary card">
+        <section class="profile-summary card container" style="margin-top: 20px;">
             <div class="profile-pic-container">
-                
+
                 <div class="profile-pic-cropper">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" alt="Foto de Perfil" class="profile-pic" id="user-profile-pic">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                        alt="Foto de Perfil" class="profile-pic" id="user-profile-pic">
                 </div>
 
                 <div class="camera-icon"><i class="fas fa-camera"></i></div>
@@ -68,21 +73,25 @@
                 <button class="edit-profile-btn"><i class="fas fa-pencil-alt"></i> Editar perfil</button>
             </div>
             <div class="profile-stats">
-                <div class="stat-item"><span class="stat-number">23</span><span class="stat-label">Roteiros criados</span></div>
-                <div class="stat-item"><span class="stat-number">12</span><span class="stat-label">Países visitados</span></div>
-                <div class="stat-item"><span class="stat-number">2.8K</span><span class="stat-label">Curtidas recebidas</span></div>
-                <div class="stat-item"><span class="stat-number">156</span><span class="stat-label">Seguidores</span></div>
+                <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">Roteiros
+                        criados</span></div>
+                <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">Países
+                        visitados</span></div>
+                <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">Curtidas
+                        recebidas</span></div>
+                <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">Seguidores</span>
+                </div>
             </div>
         </section>
 
-        <section class="profile-details">
+        <section class="profile-details containers" style="margin-bottom: 40px;">
             <nav class="details-tabs">
                 <a href="#" class="tab-link active" data-tab="dados-pessoais">Dados Pessoais</a>
                 <a href="#" class="tab-link" data-tab="historico">Histórico</a>
                 <a href="#" class="tab-link" data-tab="preferencias">Preferências</a>
                 <a href="#" class="tab-link" data-tab="conquistas">Conquistas</a>
             </nav>
-            
+
             <form id="dados-pessoais" class="details-content active card">
                 <div class="section-header-container">
                     <h2>Dados Pessoais</h2>
@@ -140,7 +149,7 @@
             <div id="historico" class="details-content card">
                 <h2><i class="fas fa-history"></i> Histórico de Roteiros</h2>
                 <ul class="history-list" id="history-list-container">
-                    </ul>
+                </ul>
             </div>
 
             <form id="preferencias" class="details-content card">
@@ -148,58 +157,128 @@
                 <div class="preferences-section">
                     <h3>Tipos de destino preferidos</h3>
                     <div class="destination-tags">
-                        <button type="button" class="tag-btn active">Praia</button><button type="button" class="tag-btn">Montanha</button><button type="button" class="tag-btn">Cidade</button><button type="button" class="tag-btn">Histórico</button><button type="button" class="tag-btn">Natureza</button><button type="button" class="tag-btn active">Cultura</button><button type="button" class="tag-btn">Aventura</button><button type="button" class="tag-btn active">Gastronomia</button><button type="button" class="tag-btn active">Arte</button><button type="button" class="tag-btn">Compras</button>
+                        <button type="button" class="tag-btn active">Praia</button><button type="button"
+                            class="tag-btn">Montanha</button><button type="button"
+                            class="tag-btn">Cidade</button><button type="button"
+                            class="tag-btn">Histórico</button><button type="button"
+                            class="tag-btn">Natureza</button><button type="button"
+                            class="tag-btn active">Cultura</button><button type="button"
+                            class="tag-btn">Aventura</button><button type="button"
+                            class="tag-btn active">Gastronomia</button><button type="button"
+                            class="tag-btn active">Arte</button><button type="button" class="tag-btn">Compras</button>
                     </div>
                 </div>
                 <div class="preferences-grid">
                     <div class="preferences-section">
                         <h3>Faixa de orçamento preferida</h3>
                         <div class="radio-group">
-                            <label class="radio-item"><input type="radio" name="budget" value="eco"> Econômico (até $50/dia)</label><label class="radio-item"><input type="radio" name="budget" value="mid" checked> Médio ($50-150/dia)</label><label class="radio-item"><input type="radio" name="budget" value="premium"> Premium ($150+/dia)</label>
+                            <label class="radio-item"><input type="radio" name="budget" value="eco"> Econômico (até
+                                $50/dia)</label><label class="radio-item"><input type="radio" name="budget" value="mid"
+                                    checked> Médio ($50-150/dia)</label><label class="radio-item"><input type="radio"
+                                    name="budget" value="premium"> Premium ($150+/dia)</label>
                         </div>
                     </div>
                     <div class="preferences-section">
                         <h3>Duração preferida</h3>
                         <div class="radio-group">
-                            <label class="radio-item"><input type="radio" name="duration" value="short"> Fins de semana (2-3 dias)</label><label class="radio-item"><input type="radio" name="duration" value="medium" checked> Férias curtas (4-7 dias)</label><label class="radio-item"><input type="radio" name="duration" value="long"> Férias longas (8+ dias)</label>
+                            <label class="radio-item"><input type="radio" name="duration" value="short"> Fins de semana
+                                (2-3 dias)</label><label class="radio-item"><input type="radio" name="duration"
+                                    value="medium" checked> Férias curtas (4-7 dias)</label><label
+                                class="radio-item"><input type="radio" name="duration" value="long"> Férias longas (8+
+                                dias)</label>
                         </div>
                     </div>
                 </div>
                 <div class="preferences-section">
                     <h3>Notificações</h3>
                     <div class="checkbox-group">
-                        <label class="checkbox-item"><span>Promoções e ofertas especiais</span><input type="checkbox" checked></label><label class="checkbox-item"><span>Lembretes de datas de viagem</span><input type="checkbox"></label><label class="checkbox-item"><span>Clima no destino</span><input type="checkbox" checked></label><label class="checkbox-item"><span>Novos roteiros da comunidade</span><input type="checkbox" checked></label>
+                        <label class="checkbox-item"><span>Promoções e ofertas especiais</span><input type="checkbox"
+                                checked></label><label class="checkbox-item"><span>Lembretes de datas de
+                                viagem</span><input type="checkbox"></label><label class="checkbox-item"><span>Clima no
+                                destino</span><input type="checkbox" checked></label><label
+                            class="checkbox-item"><span>Novos roteiros da comunidade</span><input type="checkbox"
+                                checked></label>
                     </div>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Salvar preferências</button><button type="reset" class="btn btn-secondary">Resetar</button>
+                    <button type="submit" class="btn btn-primary">Salvar preferências</button><button type="reset"
+                        class="btn btn-secondary">Resetar</button>
                 </div>
             </form>
 
             <div id="conquistas" class="details-content card">
                 <h2><i class="fas fa-shield-alt"></i> Conquistas (Badges)</h2>
                 <div class="badge-grid">
-                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-trophy"></i></div><h3>Primeiro Roteiro</h3><p>Criou seu primeiro roteiro</p><span class="badge-tag">Desbloqueado</span></div>
-                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-compass"></i></div><h3>Explorador</h3><p>Visitou 5 países diferentes</p><span class="badge-tag">Desbloqueado</span></div>
-                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-clipboard-list"></i></div><h3>Planejador Expert</h3><p>Criou 10 roteiros</p><span class="badge-tag">Desbloqueado</span></div>
-                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-heart"></i></div><h3>Compartilhador</h3><p>Roteiro curtido 100 vezes</p><span class="badge-tag">Desbloqueado</span></div>
-                    <div class="badge-card unlocked"><div class="badge-icon"><i class="fas fa-globe-americas"></i></div><h3>Globetrotter</h3><p>Visitou 10 países</p><span class="badge-tag">Desbloqueado</span></div>
-                    <div class="badge-card locked"><div class="badge-icon"><i class="fas fa-thumbs-up"></i></div><h3>Influencer</h3><p>1000 curtidas recebidas</p></div>
-                    <div class="badge-card locked"><div class="badge-icon"><i class="fas fa-award"></i></div><h3>Master Planner</h3><p>Criou 50 roteiros</p></div>
-                    <div class="badge-card locked"><div class="badge-icon"><i class="fas fa-flag"></i></div><h3>Continente Collector</h3><p>Visitou todos os continentes</p></div>
+                    <div class="badge-card unlocked">
+                        <div class="badge-icon"><i class="fas fa-trophy"></i></div>
+                        <h3>Primeiro Roteiro</h3>
+                        <p>Criou seu primeiro roteiro</p><span class="badge-tag">Desbloqueado</span>
+                    </div>
+                    <div class="badge-card unlocked">
+                        <div class="badge-icon"><i class="fas fa-compass"></i></div>
+                        <h3>Explorador</h3>
+                        <p>Visitou 5 países diferentes</p><span class="badge-tag">Desbloqueado</span>
+                    </div>
+                    <div class="badge-card unlocked">
+                        <div class="badge-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h3>Planejador Expert</h3>
+                        <p>Criou 10 roteiros</p><span class="badge-tag">Desbloqueado</span>
+                    </div>
+                    <div class="badge-card unlocked">
+                        <div class="badge-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Compartilhador</h3>
+                        <p>Roteiro curtido 100 vezes</p><span class="badge-tag">Desbloqueado</span>
+                    </div>
+                    <div class="badge-card unlocked">
+                        <div class="badge-icon"><i class="fas fa-globe-americas"></i></div>
+                        <h3>Globetrotter</h3>
+                        <p>Visitou 10 países</p><span class="badge-tag">Desbloqueado</span>
+                    </div>
+                    <div class="badge-card locked">
+                        <div class="badge-icon"><i class="fas fa-thumbs-up"></i></div>
+                        <h3>Influencer</h3>
+                        <p>1000 curtidas recebidas</p>
+                    </div>
+                    <div class="badge-card locked">
+                        <div class="badge-icon"><i class="fas fa-award"></i></div>
+                        <h3>Master Planner</h3>
+                        <p>Criou 50 roteiros</p>
+                    </div>
+                    <div class="badge-card locked">
+                        <div class="badge-icon"><i class="fas fa-flag"></i></div>
+                        <h3>Continente Collector</h3>
+                        <p>Visitou todos os continentes</p>
+                    </div>
                 </div>
                 <div class="progress-section">
                     <h3>Próximas Conquistas</h3>
-                    <div class="progress-item"><div class="progress-labels"><span>Influencer (1000 curtidas)</span><span>2847/1000 <i class="fas fa-check-circle" style="color: #2ecc71;"></i></span></div><div class="progress-bar-container"><div class="progress-bar-fill" style="width: 100%;"></div></div></div>
+                    <div class="progress-item">
+                        <div class="progress-labels"><span>Influencer (1000 curtidas)</span><span>2847/1000 <i
+                                    class="fas fa-check-circle" style="color: #2ecc71;"></i></span></div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-         </section>
+        </section>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-links"><a href="#">Empresa</a><a href="#">Suporte</a><a href="#">Legal</a></div>
-        <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a href="#" class="footer-link">Termos</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+                <div class="footer-text">
+                    &copy; 2025 Trip Now. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
     </footer>
 
     <div id="map-modal" class="map-modal">
@@ -207,15 +286,18 @@
             <span class="close-modal-btn">&times;</span>
             <h3 id="modal-map-title">Localização</h3>
             <div class="map-iframe-container">
-                <iframe id="google-map-iframe" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <iframe id="google-map-iframe" width="100%" height="450" frameborder="0" style="border:0;"
+                    allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
     </div>
 
-    <div id="settings-modal" class="admin-modal"> <div class="admin-modal-content" style="max-width: 400px; text-align: center;">
+    <div id="settings-modal" class="admin-modal">
+        <div class="admin-modal-content" style="max-width: 400px; text-align: center;">
             <h2 style="color: #d32f2f;"><i class="fas fa-exclamation-triangle"></i> Zona de Perigo</h2>
-            <p style="margin-bottom: 20px;">Deseja realmente excluir sua conta permanentemente? Esta ação não pode ser desfeita.</p>
-            
+            <p style="margin-bottom: 20px;">Deseja realmente excluir sua conta permanentemente? Esta ação não pode ser
+                desfeita.</p>
+
             <div class="settings-actions" style="justify-content: center; border-top: none;">
                 <button type="button" id="cancel-settings-btn" class="btn-secondary">Cancelar</button>
                 <button type="button" id="delete-account-btn" class="btn-danger">
@@ -225,6 +307,8 @@
         </div>
     </div>
 
+    <script src="../js/layout.js"></script>
     <script src="../js/perfil.js"></script>
 </body>
+
 </html>

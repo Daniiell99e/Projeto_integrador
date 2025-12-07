@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-        body { font-family: 'Roboto', sans-serif; }
     </style>
+    <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
+
 <body>
 
     <header class="main-header">
@@ -20,13 +22,13 @@
                     <img src="../../src/assets/imagens/Logo.png" alt="Trip Now Logo">
                 </a>
             </div>
-            
+
             <nav class="main-nav">
-                <a href="#" class="active">Meus Roteiros</a>
-                <a href="/public/pages/escolherdest.html">Criar Roteiro</a>
+                <a href="/public/pages/home.html" class="active">Roteiros</a>
+                <a href="/public/pages/escolherdest.html">Criar</a>
                 <a href="#">Comunidade</a>
             </nav>
-            
+
             <div class="header-actions">
                 <div class="profile-dropdown-container">
                     <div class="profile-icon" id="profile-menu-trigger">
@@ -50,11 +52,12 @@
 
     <section class="hero-section-wrapper">
         <div class="container hero-container">
-            
+
             <div class="hero-card">
                 <h1>Sua Aventura <br>Começa Aqui</h1>
-                <p>Crie itinerários de viagem personalizados em minutos. Descubra destinos incríveis e planeje sua próxima fuga com facilidade.</p>
-                
+                <p>Crie itinerários de viagem personalizados em minutos. Descubra destinos incríveis e planeje sua
+                    próxima fuga com facilidade.</p>
+
                 <a href="/public/pages/escolherdest.html" class="btn btn-hero">
                     <i class="fas fa-plus"></i> Novo Roteiro
                 </a>
@@ -76,20 +79,23 @@
     </main>
 
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="#">Empresa</a>
-                <a href="#">Suporte</a>
-                <a href="#">Legal</a>
-            </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-tiktok"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a href="#" class="footer-link">Termos</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+                <div class="footer-text">
+                    &copy; 2025 Trip Now. Todos os direitos reservados.
+                </div>
             </div>
         </div>
     </footer>
 
+    <script src="../js/layout.js"></script>
     <script src="../js/home.js"></script>
 </body>
+
 </html>

@@ -1,101 +1,20 @@
 /* Variáveis (Extraídas da imagem) */
-:root {
-    --primary-color: #15ADE5; /* Azul do botão Novo Roteiro */
-    --primary-hover: #1296CC;
-    --bg-hero: #E6F7FD; /* Azul bem clarinho do fundo do Hero */
-    --text-dark: #1A1A1A; /* Quase preto para títulos */
-    --text-gray: #6B7280; /* Cinza para textos */
-    --card-placeholder: #D1D5DB; /* Cinza do placeholder da imagem */
-    --white: #FFFFFF;
-    --border: #E5E7EB;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: 'Roboto', sans-serif;
-    color: var(--text-dark);
-    background-color: var(--white);
-    line-height: 1.5;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- Header --- */
-.main-header {
-    background-color: var(--white);
-    padding: 15px 0;
-    /* Sombra sutil ou borda se quiser separar do hero */
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 50px; /* Ajuste conforme sua logo */
-    /* Filtro para deixar preto e branco se sua logo for colorida, opcional */
-    /* filter: grayscale(100%); */ 
-}
-
-.main-nav {
-    display: flex;
-    gap: 40px;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 700; /* Negrito como na imagem */
-    font-size: 0.95rem;
-}
-
-/* Ícone de Perfil (Círculo com borda azul) */
-.profile-dropdown-container { position: relative; }
-
-.profile-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-color); /* Borda azul */
-    color: var(--text-dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    cursor: pointer;
-    background: transparent; /* Fundo transparente */
-}
-.profile-icon:hover { background: #f0f9ff; }
-
-/* Dropdown Menu (Mantido funcional) */
-.dropdown-menu {
-    display: none; position: absolute; top: 120%; right: 0; width: 200px;
-    background: white; border: 1px solid var(--border); border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1000;
-}
-.dropdown-menu.show { display: block; }
-.dropdown-header { padding: 10px; background: #f9fafb; border-bottom: 1px solid #eee; font-weight: bold; font-size: 0.9rem; }
-.dropdown-item { display: block; padding: 10px; color: #333; text-decoration: none; font-size: 0.9rem; }
-.dropdown-item:hover { background: #f3f4f6; }
-
+/* Mantendo variáveis específicas se necessário, mas as globais estão no layout.css */
+/* Se houver conflito, o layout.css carrega primeiro, então aqui sobrescreve se redefinir. */
 
 /* --- Hero Section --- */
 .hero-section-wrapper {
-    background-color: var(--bg-hero); /* Fundo azul claro geral */
-    padding: 60px 0 80px 0; /* Espaçamento vertical generoso */
+    background-color: var(--bg-hero);
+    /* Fundo azul claro geral */
+    padding: 60px 0 80px 0;
+    /* Espaçamento vertical generoso */
 }
 
 .hero-container {
     display: flex;
     gap: 30px;
-    align-items: center; /* Centraliza verticalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
 }
 
 /* Card Branco Esquerda */
@@ -103,9 +22,12 @@ body {
     background-color: var(--white);
     padding: 40px;
     border-radius: 8px;
-    flex: 1; /* Ocupa metade */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02); /* Sombra muito sutil */
-    height: 400px; /* Altura fixa para alinhar com a imagem */
+    flex: 1;
+    /* Ocupa metade */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    /* Sombra muito sutil */
+    height: 400px;
+    /* Altura fixa para alinhar com a imagem */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -138,11 +60,15 @@ body {
     gap: 8px;
     transition: background 0.2s;
 }
-.btn-hero:hover { background-color: var(--primary-hover); }
+
+.btn-hero:hover {
+    background-color: var(--primary-hover);
+}
 
 /* Imagem Direita */
 .hero-image-container {
-    flex: 1.5; /* Ocupa um pouco mais da metade */
+    flex: 1.5;
+    /* Ocupa um pouco mais da metade */
     height: 400px;
     border-radius: 8px;
     overflow: hidden;
@@ -169,8 +95,8 @@ body {
 
 .route-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
-    justify-content: center;  
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
     gap: 30px;
 }
 
@@ -182,28 +108,29 @@ body {
     background: var(--white);
     transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .route-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* Parte de cima do card (Cinza com texto) */
 .route-image-placeholder {
     background-color: #D9D9D9;
-    
+
     /* [LIMITE DE TAMANHO] Define a altura fixa */
-    height: 180px; 
+    height: 180px;
     width: 100%;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    
+
     /* [IMPORTANTE] Garante que a imagem não "vaze" para fora do card */
-    overflow: hidden; 
-    
+    overflow: hidden;
+
     color: #777;
     font-size: 0.8rem;
     text-align: center;
@@ -218,13 +145,16 @@ img {
 /* Regra para a imagem dentro do placeholder */
 .route-image-placeholder img {
     position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; /* Força a imagem a respeitar a altura de 180px */
-    object-fit: cover; /* Corta as bordas para preencher sem esticar/distorcer */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Força a imagem a respeitar a altura de 180px */
+    object-fit: cover;
+    /* Corta as bordas para preencher sem esticar/distorcer */
     z-index: 0;
-    transition: transform 0.5s ease; /* Adiciona um efeito suave */
+    transition: transform 0.5s ease;
+    /* Adiciona um efeito suave */
 }
 
 /* Efeito de zoom leve na imagem ao passar o mouse (Opcional, fica bonito) */
@@ -238,7 +168,7 @@ img {
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -267,8 +197,17 @@ img {
     font-weight: 700;
     color: white;
 }
-.status-badge.active { background-color: var(--primary-color); } /* Azul */
-.status-badge.pending { background-color: #9CA3AF; } /* Cinza */
+
+.status-badge.active {
+    background-color: var(--primary-color);
+}
+
+/* Azul */
+.status-badge.pending {
+    background-color: #9CA3AF;
+}
+
+/* Cinza */
 
 .btn-details {
     width: 100%;
@@ -282,89 +221,60 @@ img {
     font-weight: 600;
     transition: background 0.2s;
 }
-.btn-details:hover { background: #f9fafb; }
 
-/* --- Footer --- */
-.footer {
-    margin-top: 80px;
-    padding: 40px 0;
-    /* border-top removido para ficar clean como na imagem */
+.btn-details:hover {
+    background: #f9fafb;
 }
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-links {
-    display: flex;
-    gap: 40px;
-}
-.footer-links a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-}
-
-.social-icons {
-    display: flex;
-    gap: 20px;
-    font-size: 1.5rem;
-    color: var(--text-dark);
-}
-.social-icons a { color: inherit; }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    
-    /* --- Header Mobile (Mantido) --- */
-    .main-nav { flex-direction: row; gap: 10px; margin: 1em;}
-    .footer-content { flex-direction: column; gap: 20px; }
-    .footer-links { flex-direction: column; align-items: center; gap: 15px; }
 
     /* --- HERO SECTION COM SWIPE (NOVO) --- */
-    
+
     .hero-container {
         /* Mantém lado a lado */
         display: flex;
-        flex-direction: row; 
-        
+        flex-direction: row;
+
         /* Permite rolar para o lado */
-        overflow-x: auto; 
-        
+        overflow-x: auto;
+
         /* Efeito magnético (snap) para parar certinho no card */
-        scroll-snap-type: x mandatory; 
-        
+        scroll-snap-type: x mandatory;
+
         /* Espaçamento e comportamento */
         gap: 15px;
-        padding-bottom: 20px; /* Espaço para não cortar a sombra */
-        
+        padding-bottom: 20px;
+        /* Espaço para não cortar a sombra */
+
         /* Esconde a barra de rolagem para parecer app */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;  /* IE 10+ */
-        -webkit-overflow-scrolling: touch; /* Suavidade no iOS */
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE 10+ */
+        -webkit-overflow-scrolling: touch;
+        /* Suavidade no iOS */
     }
-    
+
     /* Esconde barra de rolagem no Chrome/Safari */
-    .hero-container::-webkit-scrollbar { 
-        display: none; 
+    .hero-container::-webkit-scrollbar {
+        display: none;
     }
 
     /* Configuração dos "Slides" (Card de Texto e Imagem) */
-    .hero-card, 
+    .hero-card,
     .hero-image-container {
         /* Define a largura: 85% da tela para dar a dica que tem mais coisa ao lado */
-        min-width: 88vw; 
-        
+        min-width: 88vw;
+
         /* Impede que o flexbox esmague os elementos */
-        flex-shrink: 0; 
-        
+        flex-shrink: 0;
+
         /* Alinha o elemento ao centro ao soltar o dedo */
-        scroll-snap-align: center; 
-        
+        scroll-snap-align: center;
+
         /* Altura igual para ambos */
-        height: 420px; 
+        height: 420px;
         margin: 0;
     }
 
@@ -375,16 +285,22 @@ img {
 
     /* Ajuste específico para o texto não ficar gigante */
     .hero-card h1 {
-        font-size: 2rem; 
+        font-size: 2rem;
+    }
+
+    .route-card-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 /* --- Botão Terciário (Usado nos Cards de Roteiro) --- */
 .btn-tertiary {
-    background-color: var(--primary-color); /* Fundo Azul */
-    color: var(--white); /* Texto Branco */
+    background-color: var(--primary-color);
+    /* Fundo Azul */
+    color: var(--white);
+    /* Texto Branco */
     border: 1px solid var(--primary-color);
-    
+
     width: 60%;
     padding: 6px 0px;
     border-radius: 6px;
@@ -398,10 +314,11 @@ img {
 }
 
 .btn-tertiary:hover {
-    background-color: var(--primary-hover); /* Azul mais escuro no hover */
+    background-color: var(--primary-hover);
+    /* Azul mais escuro no hover */
     border-color: var(--primary-hover);
 }
 
 .route-details {
-margin-bottom: 1em;
+    margin-bottom: 1em;
 }
