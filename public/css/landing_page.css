@@ -26,7 +26,8 @@ body {
 
 .header-content {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .login-link {
@@ -41,7 +42,7 @@ body {
     color: #007bff;
 }
 
-.imagem_logo{
+.imagem_logo {
     display: flex;
     text-align: end;
     justify-content: center;
@@ -86,6 +87,7 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .hero-button:hover {
@@ -201,27 +203,27 @@ body {
 }
 
 .login-btn {
-  display: flex;
-  align-items: center;
-  gap: 2em;
-  font-size: 1em;
-  color: #1e1e1e;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: 0.2s;
-  
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    font-size: 1em;
+    color: #1e1e1e;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.2s;
+
 }
+
 i {
-  font-size: 0.8em; 
-  padding: 0.8em; 
-  border: 2px solid  #007bff;
-  border-radius: 50%;  
-  /* background-color: #0056b3; */
+    font-size: 0.8em;
+    padding: 0.8em;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    /* background-color: #0056b3; */
 
 }
 
 .login-btn:hover {
-  background-color: #f3f3f3;
+    background-color: #f3f3f3;
 }
-

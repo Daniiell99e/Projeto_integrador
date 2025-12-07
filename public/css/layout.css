@@ -1,0 +1,185 @@
+/* Variáveis Globais */
+:root {
+    --primary-color: #15ADE5;
+    --primary-hover: #1296CC;
+    --bg-hero: #E6F7FD;
+    --text-dark: #1A1A1A;
+    --text-gray: #6B7280;
+    --card-placeholder: #D1D5DB;
+    --white: #FFFFFF;
+    --border: #E5E7EB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--white);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+    /* Adicionado para consistência em outras páginas */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--primary-color);
+}
+
+/* Ícone de Perfil */
+.profile-dropdown-container {
+    position: relative;
+}
+
+.profile-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: transparent;
+}
+
+.profile-icon:hover {
+    background: #f0f9ff;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 200px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-header {
+    padding: 10px;
+    background: #f9fafb;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+    background: #f3f4f6;
+}
+
+/* --- Footer --- */
+.footer {
+    margin-top: auto;
+    /* Empurra o footer para o final se o conteúdo for curto */
+    padding: 40px 0;
+    background-color: var(--white);
+    border-top: 1px solid var(--border);
+    /* Adicionado para separação visual */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-text {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Responsividade Básica do Layout */
+@media (max-width: 768px) {
+    .main-nav {
+        display: flex;
+        gap: 10px;
+    }
+
+    /* Menu hambúrguer seria ideal aqui, mas mantendo simples por enquanto */
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

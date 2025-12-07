@@ -1,50 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- 1. AUTH & HEADER ---
-    const token = localStorage.getItem('token');
-    if (!token) {
-        window.location.href = '/public/index.html'; 
-        return;
-    }
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-        const greetingElement = document.getElementById('user-greeting');
-        if (greetingElement) {
-            const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
-            greetingElement.textContent = `Olá, ${formattedName}!`;
-        }
-    }
-
-    // --- 2. MENU DROPDOWN ---
-    const profileTrigger = document.getElementById('profile-menu-trigger');
-    const profileDropdown = document.getElementById('profile-dropdown');
-    const logoutBtn = document.getElementById('logout-btn');
-
-    if (profileTrigger) {
-        profileTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            profileDropdown.classList.toggle('show');
-        });
-    }
-    document.addEventListener('click', (e) => {
-        if (profileDropdown && profileDropdown.classList.contains('show')) {
-            if (!profileDropdown.contains(e.target) && !profileTrigger.contains(e.target)) {
-                profileDropdown.classList.remove('show');
-            }
-        }
-    });
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('token');
-            localStorage.removeItem('userName');
-            window.location.href = '/public/index.html';
-        });
-    }
-
     // --- 3. CARREGAR ROTEIROS (NOVO) ---
     const routesContainer = document.getElementById('my-routes-container');
     const API_ROTEIROS = 'http://localhost:3333/roteiros';
+    const token = localStorage.getItem('token'); // Ainda precisa do token para o fetch
 
     async function fetchMyRoutes() {
         try {
@@ -85,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         roteiros.forEach(roteiro => {
             const card = document.createElement('article');
             card.className = 'route-card';
-            
+
             // Formatação de Dados
             const dataInicio = new Date(roteiro.data_inicio).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
             const imagemCidade = roteiro.cidade?.url_imagem || 'https://via.placeholder.com/400x200?text=Sem+Imagem';
@@ -93,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const nomePais = roteiro.cidade?.pais?.nome || '';
             // Tenta contar atividades (se o backend mandar esse dado, senão mostra "?")
             // Como o endpoint getAll atual não manda contagem, deixamos genérico ou removemos
-            const atividadesTexto = "Ver detalhes"; 
+            const atividadesTexto = "Ver detalhes";
 
             card.innerHTML = `
                 <div class="route-image">

@@ -14,34 +14,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- CSS -->
+    <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/roteiro_do_dia.css">
 </head>
 
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="container header-content">
-            <div class="logo"><img src="../logos/logo.png" alt="logo" width="100"></div>
-            <nav class="nav">
-                <a href="home.html" class="nav-link">Meus Roteiros</a>
-                <a href="#" class="nav-link">Descobrir</a>
-                <a href="#" class="nav-link">Comunidade</a>
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="/public/pages/home.html">
+                    <img src="../../src/assets/imagens/Logo.png" alt="Trip Now Logo">
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="/public/pages/home.html">Roteiros</a>
+                <a href="/public/pages/escolherdest.html">Criar</a>
+                <a href="#">Comunidade</a>
             </nav>
+
             <div class="header-actions">
-                <div class="search-box">
-                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                    <input type="text" placeholder="Buscar..." class="search-input">
+                <div class="profile-dropdown-container">
+                    <div class="profile-icon" id="profile-menu-trigger">
+                        <i class="far fa-user"></i>
+                    </div>
+                    <div class="dropdown-menu" id="profile-dropdown">
+                        <div class="dropdown-header">
+                            <p id="user-greeting">Olá, Viajante!</p>
+                        </div>
+                        <a href="/public/pages/perfil.html" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i> Meu Perfil
+                        </a>
+                        <a href="#" id="logout-btn" class="dropdown-item logout">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
                 </div>
-                <button class="user-button" aria-label="Perfil do usuário">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                </button>
             </div>
         </div>
     </header>
@@ -253,13 +262,18 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="#" class="footer-link">Empresa</a>
-                <a href="#" class="footer-link">Suporte</a>
-                <a href="#" class="footer-link">Legal</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a href="#" class="footer-link">Termos</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+                <div class="footer-text">
+                    &copy; 2025 Trip Now. Todos os direitos reservados.
+                </div>
             </div>
-            <p class="footer-text">© 2024 TripNow. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -299,6 +313,7 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <!-- JavaScript -->
+    <script src="../js/layout.js"></script>
     <script src="../js/roteiro_do_dia.js"></script>
 </body>
 

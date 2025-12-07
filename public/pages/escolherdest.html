@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escolher Destino</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="/public/css/escolherdest.css"> 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-        body { font-family: 'Roboto', sans-serif; }
     </style>
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/escolherdest.css">
 </head>
+
 <body>
 
-    <header class="header">
-        <nav class="nav">
-            <ul class="nav-links">
-                <li class="nav-item"><a href="/public/pages/home.html">Meus Roteiros</a></li>
-                <li class="nav-item"><a href="#">Criar Roteiro</a></li>
-                <li class="nav-item"><a href="#">Comunidade</a></li>
-            </ul>
-        </nav>
-        
-        <div class="header-icons">
-            <div class="profile-dropdown-container">
-                
-                <div class="profile-icon" id="profile-menu-trigger">
-                    <i class="fas fa-user"></i>
-                </div>
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="/public/pages/home.html">
+                    <img src="../../src/assets/imagens/Logo.png" alt="Trip Now Logo">
+                </a>
+            </div>
 
-                <div class="dropdown-menu" id="profile-dropdown">
-                    <div class="dropdown-header">
-                        <p id="user-greeting">Olá, Viajante!</p>
+            <nav class="main-nav">
+                <a href="/public/pages/home.html">Roteiros</a>
+                <a href="/public/pages/escolherdest.html" class="active">Criar</a>
+                <a href="#">Comunidade</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="profile-dropdown-container">
+                    <div class="profile-icon" id="profile-menu-trigger">
+                        <i class="far fa-user"></i>
                     </div>
-                    <a href="/public/pages/perfil.html" class="dropdown-item">
-                        <i class="fas fa-user-circle"></i> Meu Perfil
-                    </a>
-                    <a href="#" id="logout-btn" class="dropdown-item logout">
-                        <i class="fas fa-sign-out-alt"></i> Sair
-                    </a>
+                    <div class="dropdown-menu" id="profile-dropdown">
+                        <div class="dropdown-header">
+                            <p id="user-greeting">Olá, Viajante!</p>
+                        </div>
+                        <a href="/public/pages/perfil.html" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i> Meu Perfil
+                        </a>
+                        <a href="#" id="logout-btn" class="dropdown-item logout">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <main class="container">
-        
+
         <section class="destination-header">
             <p class="breadcrumb">Início / <strong>Escolher Destino</strong></p>
             <h1 class="page-title">Escolha seu destino</h1>
@@ -61,15 +67,28 @@
             <h2>Cidades Populares</h2>
             <div class="city-cards-grid"></div>
         </section>
-        
+
     </main>
+
     <footer class="footer">
-        <a href="#">Empresa</a>
-        <a href="#">Suporte</a>
-        <a href="#">Legal</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a href="#" class="footer-link">Termos</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+                <div class="footer-text">
+                    &copy; 2025 Trip Now. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
     </footer>
 
-<script src="../js/cardDinamico.js"></script>
-<script src="../js/btnVerDetalhes.js"></script>
+    <script src="../js/layout.js"></script>
+    <script src="../js/cardDinamico.js"></script>
+    <script src="../js/btnVerDetalhes.js"></script>
 </body>
+
 </html>

@@ -22,12 +22,12 @@ body {
     justify-content: end;
     margin-right: 15%;
     min-height: 100vh;
+
     background-color: var(--cor-backgroundBody);
     background-image: url("../imagens/Gemini_Generated_Image_e0sr74e0sr74e0sr.png");
     background-repeat: no-repeat;
-    background-size:  100% 100%;
-    background-position: center;
-    z-index: -1;
+    background-size: cover; /* mantém proporção sem distorcer */
+    background-position: center; /* centraliza a imagem */
 }
 
 .login-container {
@@ -173,4 +173,12 @@ position: relative;
 
 .error-message.active {
     display: block;
+}
+
+@media (max-width: 768px) {
+    body {
+        justify-content: center;
+        margin-right: 0;
+        background-image: url(../imagens/mobile.png);
+    }
 }

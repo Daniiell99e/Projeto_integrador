@@ -1,14 +1,21 @@
 /* Variáveis de Cores (Baseado no seu fornecimento) */
-:root {    
-    --primary-color: #00bcd4; /* Azul Claro Principal */    
-    --secondary-color: #4dd0e1; /* Azul Secundário */    
-    --background-color: #f8fcfd; /* Fundo da página */    
-    --text-color: #333; /* Texto principal (títulos) */    
-    --light-text-color: #616161; /* Texto secundário (subtítulos, links inativos) */    
-    --highlight-bg: #e0f7fa; /* Fundo da Seção Hero */    
-    --border-color: #e0e0e0;    
-    --placeholder-bg: #bdbdbd; /* Cinza do placeholder da imagem */    
-    --dotted-border: #9e9e9e; 
+:root {
+    --primary-color: #00bcd4;
+    /* Azul Claro Principal */
+    --secondary-color: #4dd0e1;
+    /* Azul Secundário */
+    --background-color: #f8fcfd;
+    /* Fundo da página */
+    --text-color: #333;
+    /* Texto principal (títulos) */
+    --light-text-color: #616161;
+    /* Texto secundário (subtítulos, links inativos) */
+    --highlight-bg: #e0f7fa;
+    /* Fundo da Seção Hero */
+    --border-color: #e0e0e0;
+    --placeholder-bg: #bdbdbd;
+    /* Cinza do placeholder da imagem */
+    --dotted-border: #9e9e9e;
 }
 
 /* Reset Básico e Configurações Globais */
@@ -23,17 +30,16 @@ body {
     color: var(--text-color);
     font-size: 16px;
     line-height: 1.6;
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
 }
 
 /* --- Layout Container (Central e Limitado) --- */
 .container {
-    padding: 0 15px; 
-    max-width: 500px; /* Simula a largura de um app mobile */
+    padding: 0 15px;
+    max-width: 500px;
+    /* Simula a largura de um app mobile */
     width: 100%;
     margin: 0 auto;
-    /* Adicionando padding na base para que o conteúdo não fique debaixo do footer fixo */
-    padding-bottom: 70px; 
 }
 
 /* --- Estilização do Cabeçalho (Header) --- */
@@ -71,43 +77,13 @@ body {
     font-weight: bolder;
 }
 
-/* .nav-item.active a {
-    color: var(--text-color);
-    font-weight: 500;
-    border-bottom: 2px solid var(--primary-color);
-} */
-
-.header-icons {
-    display: flex;
-    align-items: center;
-}
-
-.icon {
-    margin-left: 15px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.profile-icon {
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    margin-left: 15px;
-}
-
-
 /* --- 2. Conteúdo Principal (MAIN) - Estilos Específicos da Página --- */
 
 /* Breadcrumb e Título */
 .destination-header {
     padding-top: 20px;
-    padding-bottom: 0px; /* Reduzido para encaixar melhor com o Hero */
+    padding-bottom: 0px;
+    /* Reduzido para encaixar melhor com o Hero */
 }
 
 .breadcrumb {
@@ -119,36 +95,43 @@ body {
 /* Estilos Hero/Imagem do Destino */
 .destination-hero {
     position: relative;
-    height: 300px; /* Altura fixa */
+    height: 300px;
+    /* Altura fixa */
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 30px;
     background-size: cover;
     background-position: center;
     /* Imagem padrão caso falhe */
-    background-image: url('https://via.placeholder.com/1200x400?text=Carregando+Imagem...'); 
+    background-image: url('https://via.placeholder.com/1200x400?text=Carregando+Imagem...');
     display: flex;
-    align-items: flex-end; /* Texto embaixo */
+    align-items: flex-end;
+    /* Texto embaixo */
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
     z-index: 1;
 }
 
 .hero-title {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-image {
     width: 100%;
-    height: 180px; /* Altura da imagem de topo */
+    height: 180px;
+    /* Altura da imagem de topo */
     position: relative;
-    border-radius: 8px; /* Borda arredondada */
+    border-radius: 8px;
+    /* Borda arredondada */
     overflow: hidden;
     /* Usando a cor de fundo do placeholder para a área da imagem */
     background-color: var(--placeholder-bg);
@@ -159,7 +142,8 @@ body {
     bottom: 10px;
     left: 15px;
     color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para destacar o texto */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* Sombra para destacar o texto */
 }
 
 .hero-title {
@@ -229,7 +213,8 @@ body {
     transform: translateY(-50%);
     color: var(--light-text-color);
     font-size: 18px;
-    pointer-events: none; /* Garante que o ícone não interfira no input */
+    pointer-events: none;
+    /* Garante que o ícone não interfira no input */
 }
 
 /* Botões de Horário */
@@ -261,6 +246,7 @@ body {
 .hidden-radio {
     display: none;
 }
+
 /* Botão Continuar */
 .continue-btn {
     width: 100%;
@@ -287,16 +273,20 @@ body {
 .tour-cards-list {
     display: flex;
     gap: 15px;
-    overflow-x: auto; /* Permite scroll horizontal para os cards */
-    padding-bottom: 10px; /* Espaço para a barra de scroll */
+    overflow-x: auto;
+    /* Permite scroll horizontal para os cards */
+    padding-bottom: 10px;
+    /* Espaço para a barra de scroll */
     margin-bottom: 10px;
 }
 
 /* Card Individual de Ponto Turístico */
 .tour-card {
-    min-width: 150px; /* Largura mínima para o card no scroll */
+    min-width: 150px;
+    /* Largura mínima para o card no scroll */
     max-width: 180px;
-    flex: 0 0 auto; /* Impede o card de crescer ou encolher */
+    flex: 0 0 auto;
+    /* Impede o card de crescer ou encolher */
     background-color: white;
     border-radius: 5px;
     overflow: hidden;
@@ -306,12 +296,12 @@ body {
 
 .tour-image {
     width: 100%;
-    height: 100px; 
+    height: 100px;
     /* Redefine background-color do placeholder */
     background-color: var(--placeholder-bg);
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .tour-details {
@@ -338,10 +328,12 @@ body {
     width: 100%;
     border-radius: 5px;
     padding: 6px 0;
-    font-size: 13px; /* Levemente menor para caber */
+    font-size: 13px;
+    /* Levemente menor para caber */
     background-color: white;
     color: var(--primary-color);
-    border: 1px solid var(--primary-color); /* Borda azul primária para destaque */
+    border: 1px solid var(--primary-color);
+    /* Borda azul primária para destaque */
     font-weight: 700;
 }
 
@@ -350,30 +342,10 @@ body {
 }
 
 /* --- 3. Rodapé (Footer) - Mantido --- */
-.footer {
-    position: fixed; 
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0; 
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05); 
-    z-index: 100;
-}
-
-.footer a {
-    text-decoration: none;
-    color: var(--light-text-color);
-    font-size: 12px;
-    font-weight: 500;
-}
 
 .hidden-radio {
-    display: none; /* Esconde a bolinha padrão */
+    display: none;
+    /* Esconde a bolinha padrão */
 }
 
 .time-options-grid {
@@ -396,7 +368,7 @@ body {
 }
 
 /* Quando o rádio está CHECADO, muda o estilo do Label associado */
-.hidden-radio:checked + .time-btn {
+.hidden-radio:checked+.time-btn {
     background-color: var(--primary-color, #00bcd4);
     color: white;
     border-color: var(--primary-color, #00bcd4);
@@ -433,7 +405,7 @@ body {
     border-radius: 8px;
     overflow: hidden;
     background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* .tour-card {
@@ -448,6 +420,7 @@ body {
     height: 160px;
     overflow: hidden;
 }
+
 .tour-image img {
     width: 100%;
     height: 100%;
@@ -485,7 +458,8 @@ body {
 
 /* Estado Selecionado (Adicionado) */
 .card-button.selected {
-    background-color: #2ecc71; /* Verde */
+    background-color: #2ecc71;
+    /* Verde */
     border-color: #2ecc71;
     color: white;
 }
@@ -495,8 +469,35 @@ body {
 }
 
 /* --- Dropdown [incompleto] --- */
-.profile-dropdown-container { position: relative; display: inline-block; }
-.dropdown-menu { /* ... mesmos estilos da home ... */ display: none; position: absolute; top: 120%; right: 0; width: 200px; background: white; border: 1px solid #ddd; border-radius: 8px; z-index: 1000; }
-.dropdown-menu.show { display: block; }
-.dropdown-item { display: block; padding: 10px; color: #333; text-decoration: none; }
-.dropdown-item:hover { background: #f5f5f5; }
+.profile-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    /* ... mesmos estilos da home ... */
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 200px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background: #f5f5f5;
+}

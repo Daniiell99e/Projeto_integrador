@@ -1,55 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Destino</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/detalhesDestino.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-        body { font-family: 'Roboto', sans-serif; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
     </style>
 </head>
+
 <body>
-    
-    <header class="header">
-        <nav class="nav">
-            <ul class="nav-links">
-                <li class="nav-item"><a href="/public/pages/home.html">Meus Roteiros</a></li>
-                <li class="nav-item"><a href="/public/pages/escolherdest.html">Criar Roteiro</a></li>
-                <li class="nav-item"><a href="#">Comunidade</a></li>
-            </ul>
-        </nav>
-        
-        <div class="header-icons">
-            <div class="profile-dropdown-container">
-                <div class="profile-icon" id="profile-menu-trigger">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="dropdown-menu" id="profile-dropdown">
-                    <div class="dropdown-header">
-                        <p id="user-greeting">Olá, Viajante!</p>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="/public/pages/home.html">
+                    <img src="../../src/assets/imagens/Logo.png" alt="Trip Now Logo">
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <a href="/public/pages/home.html">Roteiros</a>
+                <a href="/public/pages/escolherdest.html">Criar</a>
+                <a href="#">Comunidade</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="profile-dropdown-container">
+                    <div class="profile-icon" id="profile-menu-trigger">
+                        <i class="far fa-user"></i>
                     </div>
-                    <a href="/public/pages/perfil.html" class="dropdown-item">
-                        <i class="fas fa-user-circle"></i> Meu Perfil
-                    </a>
-                    <a href="#" id="logout-btn" class="dropdown-item logout">
-                        <i class="fas fa-sign-out-alt"></i> Sair
-                    </a>
+                    <div class="dropdown-menu" id="profile-dropdown">
+                        <div class="dropdown-header">
+                            <p id="user-greeting">Olá, Viajante!</p>
+                        </div>
+                        <a href="/public/pages/perfil.html" class="dropdown-item">
+                            <i class="fas fa-user-circle"></i> Meu Perfil
+                        </a>
+                        <a href="#" id="logout-btn" class="dropdown-item logout">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <main class="container">
-        
-        <section class="destination-header">            
+
+        <section class="destination-header">
             <p class="breadcrumb">Início / Escolher Destino / <strong>Detalhes</strong></p>
         </section>
 
         <div class="destination-hero" id="dest-hero-image">
-            <div class="hero-overlay"></div> <div class="hero-content">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
                 <h1 class="hero-title" id="dest-city-name">Carregando...</h1>
                 <p class="destination-description" id="dest-description">
                     Aguarde um momento...
@@ -59,9 +72,9 @@
 
         <section class="config-section">
             <h2 class="config-title">Configure sua Viagem</h2>
-            
+
             <form class="config-form" id="trip-config-form">
-                
+
                 <div class="form-group">
                     <label for="dias" class="form-label">Quantos dias?</label>
                     <input type="number" id="dias" placeholder="Ex: 5" class="form-input" required min="1">
@@ -76,26 +89,30 @@
 
                 <div class="form-group">
                     <label class="form-label">Horário preferido para atividades</label>
-                     <div class="time-options-grid">
-                        <input type="radio" id="horario-manha" name="horario_preferido" value="manha" class="hidden-radio">
+                    <div class="time-options-grid">
+                        <input type="radio" id="horario-manha" name="horario_preferido" value="manha"
+                            class="hidden-radio">
                         <label for="horario-manha" class="btn time-btn">Manhã</label>
 
-                        <input type="radio" id="horario-tarde" name="horario_preferido" value="tarde" class="hidden-radio">
+                        <input type="radio" id="horario-tarde" name="horario_preferido" value="tarde"
+                            class="hidden-radio">
                         <label for="horario-tarde" class="btn time-btn">Tarde</label>
 
-                        <input type="radio" id="horario-noite" name="horario_preferido" value="noite" class="hidden-radio">
+                        <input type="radio" id="horario-noite" name="horario_preferido" value="noite"
+                            class="hidden-radio">
                         <label for="horario-noite" class="btn time-btn">Noite</label>
 
-                        <input type="radio" id="horario-todos" name="horario_preferido" value="todos" checked class="hidden-radio">
+                        <input type="radio" id="horario-todos" name="horario_preferido" value="todos" checked
+                            class="hidden-radio">
                         <label for="horario-todos" class="btn time-btn">Todos</label>
-                     </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="pessoas" class="form-label">Número de pessoas</label>
                     <input type="number" id="pessoas" value="1" class="form-input" min="1" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="orcamento" class="form-label">Orçamento Total Estimado</label>
                     <div class="input-with-icon">
@@ -104,25 +121,35 @@
                     </div>
                 </div>
 
-                
+                <section class="popular-cities-section">
+                    <h2 class="section-title">O que fazer em <span id="dest-city-name-span">...</span></h2>
+
+                    <div class="tour-cards-list" id="attractions-list">
+                    </div>
+                </section>
+                <button type="submit" class="btn primary-action-btn continue-btn">Continuar</button>
             </form>
         </section>
-
-        <section class="popular-cities-section">
-            <h2 class="section-title">O que fazer em <span id="dest-city-name-span">...</span></h2>
-            
-            <div class="tour-cards-list" id="attractions-list">
-                </div>
-        </section>
-        <button type="submit" class="btn primary-action-btn continue-btn">Continuar</button>
     </main>
-    
+
     <footer class="footer">
-        <a href="#">Empresa</a>
-        <a href="#">Suporte</a>
-        <a href="#">Legal</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Sobre nós</a>
+                    <a href="#" class="footer-link">Termos</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+                <div class="footer-text">
+                    &copy; 2025 Trip Now. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <script src="../js/layout.js"></script>
     <script src="../js/detalhesDestino.js"></script>
 </body>
+
 </html>
