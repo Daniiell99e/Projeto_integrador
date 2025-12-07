@@ -639,7 +639,7 @@ input[type="checkbox"] {
 
 .admin-modal-content,
 .map-modal-content {
-    background-color: var(--cor-card-background);
+    background-color: var(--background);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
